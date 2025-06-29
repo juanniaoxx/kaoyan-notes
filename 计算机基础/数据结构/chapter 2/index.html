@@ -87,6 +87,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -1307,6 +1312,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -1553,6 +1560,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -1565,6 +1574,16 @@
               <article class="md-content__inner md-typeset">
                 
                   
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+        <a href="../../../tag/#tag:数据结构" class="md-tag">数据结构</a>
+      
+    
+  </nav>
 
 
   
@@ -1584,7 +1603,59 @@
   
 
 
-  <h1>Chapter 2</h1>
+<h1 id="_1">线性表<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">主要内容</p>
+<p>线性表的定义,逻辑结构与物理结构
+(循环)单链表(双链表)的插入删除操作
+静态链表</p>
+</div>
+<p><ins>线性表</ins> 由同一类的数据元素构成的有序序列,这种线性序列反映的是线性表的逻辑结构.</p>
+<p>线性表的存储结构主要由两种<ins class="critic">顺序(结构)表与链式(结构)表</ins></p>
+<div class="admonition note">
+<p class="admonition-title">顺序表操作的时间复杂度</p>
+<ul>
+<li>表尾插入操作 <span class="arithmatex">\(O(1)\)</span></li>
+<li>其余部分插入 <span class="arithmatex">\(O(n)\)</span></li>
+<li>查询某个下标为<span class="arithmatex">\(i\)</span>的元素, <span class="arithmatex">\(O(1)\)</span> ----&gt; 具有按址随机存取的特性</li>
+<li>查询某个值为<span class="arithmatex">\(x\)</span>的元素, <span class="arithmatex">\(O(1)\)</span> </li>
+<li>删除操作<span class="arithmatex">\(O(n)\)</span> </li>
+</ul>
+</div>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1">// 链式存储的线性表的结构体定义</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="n">node</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">val</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">next</span><span class="p">(</span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="p">};</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition note">
+<p class="admonition-title">单链表操作的事件复杂度</p>
+<ul>
+<li>求表长 <span class="arithmatex">\(O(n)\)</span></li>
+<li>查找 <span class="arithmatex">\(O(n)\)</span></li>
+<li>插入 <span class="arithmatex">\(O(n)\)</span></li>
+<li>删除 <span class="arithmatex">\(O(n)\)</span></li>
+</ul>
+</div>
+<p><ins>单链表的插入操作</ins>
+<img alt="alt text" src="../%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E6%8F%92%E5%85%A5.png" />
+<ins>双链表的插入操作</ins>
+<img alt="alt text" src="../%E5%8F%8C%E9%93%BE%E8%A1%A8%E7%9A%84%E6%8F%92%E5%85%A5.png" /></p>
+<p>注意双链表的插入操作并非只有这一个顺序,只要能保证更改指针的过程中不丢失节点即可.</p>
+<p><ins class="critic">链表题在选择题中一般只需要模拟就可以,安安静静的模拟一遍就好</ins></p>
+<div class="admonition example">
+<p class="admonition-title">拓展-静态链表</p>
+<p>所谓静态链表即使用数组模拟链表,通过预先给定链表的最大可能长度,结合数组随机存取的特性来优化某些操作(比如删除操作)
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">next</span><span class="p">;</span><span class="w"> </span><span class="c1">// 通过data数组存储val值,通过next存储i位置的next指针在next数组中的位置</span>
+</code></pre></div></td></tr></table></div></p>
+</div>
+<p><img alt="" src="../%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8.png" /></p>
 
 
 
@@ -1592,7 +1663,8 @@
 
 
 
-
+  
+  
 
 
 <!--

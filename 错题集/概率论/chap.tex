@@ -1,15 +1,133 @@
 \ifx\allfiles\undefined
 \documentclass[12pt, a4paper, oneside, UTF8]{ctexbook}
-\def\path{../../config}
-\input{../../config/_config}
+\def\path{../config}
+\input{../config/_config}
 \begin{document}
-% \input{../config/cover}
 \else
 \fi
 \chapter{概率论}
 
 \section{880}
+\begin{enumerate}
+    \item 有一根长为$L$的木棒,将其任意折成三段,记事件$A=\{\text{中间一段为三段中的最长者}\}$,则$P(A)=\_\_\_\_$
+    \begin{solution}
+    
+    \end{solution}
+    \item 设甲乙两人独立对同一目标进行一次设计,其命中率分别为0.5和0.4,已知目标被命中,则它是乙射中的概率为\_\_\_\_
+    \begin{solution}
+        
+    \end{solution}
+    \item 已知$10$部手机中有$7$个合格品和$3$个次品,每次任取一个作测试,测试后不放回,直到将$3$个次品都找到为止
+    ,则需要测试$7$次的概率为\_\_\_\_
+    \begin{solution}
+        
+    \end{solution}
+    \item 在 \( n \) 重伯努利试验中,事件 \( A \) 发生的概率为 \( p \) ,则事件 \( A \) 发生奇数次的概率为\_\_\_\_ 
+    \begin{solution}
+        \item [(方法一)]
+        首先考虑第n次试验,A发生奇数次的情况有两种.(1)前n-1次成功率偶数次,第n次成功;(2)前n-1次成功了奇数次,第n次失败了.
+        则不发令$A_k=\{第k次试验成功\},P(A_k)=p;B_k=\{\text{k次实验中成功奇数次}\}$,记$P(B_k)=p_k$,则有
+        \[
+        B_n=B_{n-1}\bar{A_n}+\overline{B_{n-1}}A_n
+        \]
+        显然$B_{n-1}\bar{A_n}$与$\overline{B_{n-1}}A_n$互斥,则有
+        \[
+        p_n=P(B_{n-1}\bar{A_n}+\overline{B_{n-1}}A_n)=P(B_{n-1}\bar{A_n})+P(\overline{B_{n-1}}A_n)
+        \]
+        又由于伯努利试验的独立性,有
+        \begin{align*}
+            \text{上式}&=P(B_{n-1})P(\bar{A})+P(\overline{B_{n-1}})P(A_n) \\
+            &=(1-p)p_{n-1}+p(1-p_{n-1}) \\
+            &=p+(1-2p)p_{n-1}
+        \end{align*}
+        有递推关系式,可以得到
+        \[
+        p_n-\frac{1}{2}=(1-2p)[p_{n-1}-\frac{1}{2}]\xlongequal{\text{等比数列}}{-\frac{(1-2p)^n}{2}}
+        \]
 
+        \item [(方法二) 利用奇偶]
+        设$X\sim B(n,p)$,则$P(X=k)=C_{n}^{k}p^k(1-p)^(n-k),k=0,1,2,\ldots$\\
+        若n为偶数则
+        \begin{align*}
+            P(X=odd) &=P(X=1)+P(X=3)+\ldots+P(X=n-1) \\
+            &=C_{n}^{1}(1-p)^{n-1}+C_{n}^{3}p^3(1-p)^{n-3}+\ldots+C_{n}^{n-1}p^{n-1}(1-p) \\
+            P(X=even) &=P(X=0)+P(X=2)+\ldots+P(X=n) \\
+            &=C_{n}^{0}p^0(1-p)^{n}+\ldots+C_{n}^{n}p^n(1-p)^0
+        \end{align*}
+        且$P(X=odd)+P(X=even)=1$,有注意到\\
+        \begin{align*}
+            P(X=odd) &=P(X=1)+P(X=3)+\ldots+P(X=n-1) \\
+            &=-C_{n}^{1}(p-1)^{n-1}-C_{n}^{3}p^3(p-1)^{n-3}-\ldots-C_{n}^{n-1}p^{n-1}(p-1) \\
+            P(X=even) &=P(X=0)+P(X=2)+\ldots+P(X=n) \\
+            &=C_{n}^{0}p^0(p-1)^{n}+\ldots+C_{n}^{n}p^n(p-1)^0
+        \end{align*}
+        则
+        \begin{align*}
+        P(X=even)-P(X=odd)
+        &=C_{n}^{0}p^0(p-1)^{n}+C_{n}^{1}p^1(p-1)^{n-1}+\ldots+C_{n}^{n}p^n(p-1)^0 \\
+        &\xlongequal{\text{二项式定理}}{}(2p-1)^n 
+        \end{align*}
+        则$2P(X=odd)=1-(2p-1)^n\implies P(X=odd)=\frac{1-(2p-1)^n}{2}$\\
+        同理当n为奇数的时候,上述也成立,故$P(X=\text{奇数})=\frac{1-(2p-1)^n}{2}$
+        \item [(方法三)]
+        设 $ X \sim B(n, p) $，则 $ P(X = k) = C_{n}^{k} p^k (1 - p)^{n - k} $,$ k = 0, 1, 2, \ldots $\\
+        令 $ Y = \frac{1}{2} [1 + (-1)^X] $，当 $ X $ 为奇数时，$ Y = 0 $；当 $ X $ 为偶数时，$ Y = 1 $
+        \\于是原问题转换为求 $ P(X \text{为奇数}) = P(Y = 0) $
+        注意到 $ E[Y] = 0 \cdot P(Y = 0) + 1 \cdot P(Y = 1) = P(Y = 1) = 1 - P(Y = 0) $，故只需要求 $ E[Y] $
+        \begin{align*}
+            EY&=E(\frac{1}{2} [1 + (-1)^X])=\frac{1}{2}+E(-1)^X \\
+            &=\frac{1}{2}+\frac{1}{2}\sum_{k=0}^{n}(-1)^kC_n^kp^k(1-p)^{n-k} \\
+            &\xlongequal{\text{\text{逆用二项式定理}}}{}=\frac{1}{2}+\frac{1}{2}(1-2p)^n
+        \end{align*}
+        故$P(Y=0)=1-P(Y=1)=\frac{1-(1-2p)^n}{2}$
+    \end{solution}
+    \item 设甲盒中有 4 个红球和 2 个白球,乙盒中有 2 个红球和 4 个白球,掷一枚均匀的硬币,若正面出现,
+    则从甲盒中任取一球,若反面出现,则从乙盒中任取一球,设每次取出的球观看颜色后放回原盒中.
+    \begin{enumerate}
+        \item [(I)]若前两次都取得红球,求第三次也取得红球的概率；
+        \item [(II)]若前两次都取得红球,求红球都来自甲盒的概率.
+    \end{enumerate}
+
+    \begin{solution}
+        设$A_i=\{\text{第i次取得红球}\}(i=1,2,3),B_i=\{\text{第j次投掷银币出现正面}\}(j=1,2,3)$ 
+        \begin{enumerate}
+            \item [(1)] 显然$A_i$与$B_j$之间是相互独立的,所求概率为
+            \begin{align*}
+                &P(A_3\mid A_1A_2)=\frac{P(A_1A_2A_3)}{P(A_1A_2)}=P(A_3)=P(A_1) \\
+                &P(A_1)\xlongequal{\text{全概率公式}}{}P(A\mid B_1)P(B_1)+P(A\mid \bar{B_1})P(\bar{B_1}) \\
+                &=\frac{1}{2}\frac{4}{6}+\frac{1}{2}\frac{2}{6}=\frac{1}{2} 
+            \end{align*}
+            \item [(2)] 由于两次试验都是独立重复的所以$A_1B_1$与$A_2B_2$是相互独立的\\
+            则$P(A_1B_1)=P(A_2B_2)=P(B_1)P(A_1\mid P(B_1))=\frac{1}{3}$ \\
+            则所求概率为
+            \[
+            P(B_1B_2\mid A_1A_2)=\frac{B_1B_2A_1A_2}{P(A_1A_2)}=\frac{\frac{1}{3}^2}{\frac{1}{2}^2}=\frac{4}{9}
+            \]
+        \end{enumerate}
+    \end{solution}
+    \item (考的可能性比较低)设一批产品中有$15\%$的次品,进行独立重复抽样检验,若抽取 20 个样品,则抽出的20个样品中,
+    可能性最大的次品数是多少?并求其概率.
+
+    \begin{solution}
+        设20次抽取其中出现次品的次数为X,其显然满足$X\sim B(20,0.15)$,不妨假设当$X=k$的时候物品的可能性最大,则有
+        $P(X=k)\geq P(X=k-1),P(X=k)\geq P(X=k+1)$即
+        \[
+        \frac{C_{20}^{k}0.15^{k}0.85^{(20-k)}}{C_{20}^{(k-1)}0.15^{k-1}0.85^{(21-k)}} \geq 1
+        \]
+        与
+        \[
+        \frac{C_{20}^{k}0.15^{k}0.85^{(20-k)}}{C_{20}^{(k+1)}0.15^{k+1}0.85^{(19-k)}} \geq 1
+        \]
+        得到如下结果
+        \[
+        \begin{cases}
+            300-15k+15\geq 85k \\
+            85k+85\geq 300-15k
+        \end{cases}
+        \]
+        即$2.15\leq k \leq 3.15$ 故$k=3$,其概率为$P(X=3)=C_{20}^{3}0.15^{3}0.85^{17}$
+    \end{solution}
+\end{enumerate} 
 \section{李艳芳900}
 
 \section{张宇题源大全}
