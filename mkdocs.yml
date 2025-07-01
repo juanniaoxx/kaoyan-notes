@@ -67,39 +67,43 @@ repo_name: Weary Bird # 右上角的名字
 # [Navigtion]
 nav:
   - 标签: tag.md
+  - 计算机基础(408)考纲: 考纲/计算机基础考纲/main.pdf
+  - 数学一考纲: 考纲/数学考纲/main.pdf
   - 考研数学笔记: 数学笔记/main.pdf
   - 冲刺150: 冲刺150/main.pdf
   - 数学错题集: 错题集/main.pdf
-  - 操作系统:
-    - Chapter 1: 计算机基础/操作系统/chapter 1.md
-    - Chapter 2: 计算机基础/操作系统/chapter 2.md
-    - Chapter 3: 计算机基础/操作系统/chapter 3.md
-    - Chapter 4: 计算机基础/操作系统/chapter 4.md
-    - Chapter 5: 计算机基础/操作系统/chapter 5.md
-  - 计算机组成原理:
-    - Chapter 1: 计算机基础/计算机组成原理/chapter 1.md
-    - Chapter 2: 计算机基础/计算机组成原理/chapter 2.md
-    - Chapter 3: 计算机基础/计算机组成原理/chapter 3.md
-    - Chapter 4: 计算机基础/计算机组成原理/chapter 4.md
-    - Chapter 5: 计算机基础/计算机组成原理/chapter 5.md
-    - Chapter 6: 计算机基础/计算机组成原理/chapter 6.md
-    - Chapter 7: 计算机基础/计算机组成原理/chapter 7.md
-  - 计算机网络:
-    - Chapter 1: 计算机基础/计算机网络/chapter 1.md
-    - Chapter 2: 计算机基础/计算机网络/chapter 2.md
-    - Chapter 3: 计算机基础/计算机网络/chapter 3.md
-    - Chapter 4: 计算机基础/计算机网络/chapter 4.md
-    - Chapter 5: 计算机基础/计算机网络/chapter 5.md
-    - Chapter 6: 计算机基础/计算机网络/chapter 6.md
-  - 数据结构:
-    - Chapter 1: 计算机基础/数据结构/chapter 1.md
-    - Chapter 2: 计算机基础/数据结构/chapter 2.md
-    - Chapter 3: 计算机基础/数据结构/chapter 3.md
-    - Chapter 4: 计算机基础/数据结构/chapter 4.md
-    - Chapter 5: 计算机基础/数据结构/chapter 5.md
-    - Chapter 6: 计算机基础/数据结构/chapter 6.md
-    - Chapter 7: 计算机基础/数据结构/chapter 7.md
-    - Chapter 8: 计算机基础/数据结构/chapter 8.md
+
+  - 计算机基础(408):
+    - 数据结构:
+      - 绪论: 计算机基础/数据结构/chapter 1.md
+      - 线性表: 计算机基础/数据结构/chapter 2.md
+      - 栈,队列与数组: 计算机基础/数据结构/chapter 3.md
+      - 串: 计算机基础/数据结构/chapter 4.md
+      - 树与二叉树: 计算机基础/数据结构/chapter 5.md
+      - 图与图算法: 计算机基础/数据结构/chapter 6.md
+      - 查找: 计算机基础/数据结构/chapter 7.md
+      - 排序: 计算机基础/数据结构/chapter 8.md
+    - 计算机网络:
+      - 绪论: 计算机基础/计算机网络/chapter 1.md
+      - 物理层: 计算机基础/计算机网络/chapter 2.md
+      - 数据链路层: 计算机基础/计算机网络/chapter 3.md
+      - 网络层: 计算机基础/计算机网络/chapter 4.md
+      - 运输层: 计算机基础/计算机网络/chapter 5.md
+      - 应用层: 计算机基础/计算机网络/chapter 6.md
+    - 计算机组成原理:
+      - 绪论: 计算机基础/计算机组成原理/chapter 1.md
+      - 数据的表示和运算: 计算机基础/计算机组成原理/chapter 2.md
+      - 存储系统: 计算机基础/计算机组成原理/chapter 3.md
+      - 指令系统: 计算机基础/计算机组成原理/chapter 4.md
+      - 中央处理器: 计算机基础/计算机组成原理/chapter 5.md
+      - 总线: 计算机基础/计算机组成原理/chapter 6.md
+      - 输入输出系统: 计算机基础/计算机组成原理/chapter 7.md
+    - 操作系统:
+      - 绪论: 计算机基础/操作系统/chapter 1.md
+      - 进程和线程: 计算机基础/操作系统/chapter 2.md
+      - 内存管理: 计算机基础/操作系统/chapter 3.md
+      - 文件系统: 计算机基础/操作系统/chapter 4.md
+      - 输入输出管理: 计算机基础/操作系统/chapter 5.md
   - 历年真题解析: []
   - 英语笔记: []
   - 政治笔记: []
