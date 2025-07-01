@@ -10,31 +10,93 @@
 
 \chapter{矩阵}
 \section{求高次幂}
-
+\begin{remark}
+    基本方法 \\
+    (1) 若$r(A)=1$,则$A^n=tr(A)^{n-1}A$, 关键点在于$r(A)=1\implies A=\alpha\beta^T$ \\
+    (2) 若$A$可以分解为$E+B$,且$B$是类似于如下形式(非零元素仅在对角线的上方或下方)的矩阵则有如下结论.
+    \[
+    B=\left(
+    \begin{array}{ccc}
+        0& a& b \\
+        0& 0& c \\
+        0& 0& 0 \\
+    \end{array}\right),
+    \text{则}B^2=\left(\begin{array}{ccc}
+        0& 0& ac \\
+        0& 0& 0 \\
+        0& 0& 0 \\
+    \end{array}\right), B^3 = \mathbf{0}
+    \]
+    $A^n=C_{n}^{n}E+C_{n}^{1}B+C_{n}^{2}B^2$ \\
+    (3) 分块矩阵
+    \[
+        A=\left(\begin{array}{cc}
+        \mathbf{B} & \mathbf{0} \\
+        \mathbf{0} & \mathbf{C}
+    \end{array}\right), 
+    A^n=\left(\begin{array}{cc}
+        \mathbf{B}^n & \mathbf{0} \\
+        \mathbf{0} & \mathbf{C}^n
+    \end{array}\right)
+    \] 
+    (4) 相似对角化 \\
+    $P^{-1}AP=\Lambda$则$A=P\Lambda P^{-1}$,
+    \[
+    A^n=P\Lambda^n P^{-1}=P diag(\lambda_1^n,\ldots,\lambda_n^n)P^{-1}
+    \]
+\end{remark}
 \begin{enumerate}[label=\arabic*.]
     % 例题2.1
-    \item 设 $\left(\begin{array}{rrr}
+    \item 设 A=$\left(\begin{array}{rrr}
         2&-1&3\\
         a&1&b\\
         4&c&6
     \end{array}\right)$,
-    $ B $ 为3阶矩阵,满足 $ BA = O $,且 $ r(B) > 1 $,则 $ A^n =\_\_\_\_$.
-    
+        $ B $ 为3阶矩阵,满足 $ BA = O $,且 $ r(B) > 1 $,则 $ A^n =\_\_\_\_$.
     \begin{solution}
-    \newpage
+    由$BA=0$知$r(A)+r(B)\leq n$,又$r(B)>1,r(A)\geq 1$所以$1\leq r(A)\leq 1,\implies r(A)=1$,
+    \begin{align*}
+        A=\left(\begin{array}{rrr}
+        2&-1&3\\
+        a&1&b\\
+        4&c&6
+    \end{array}\right)=\begin{pmatrix}
+        2\\
+        -1\\
+        3
+    \end{pmatrix}\begin{pmatrix}
+        1,&-1,&2
+    \end{pmatrix} \\
+    A^n=tr(A)^{n-1}\alpha\beta^{T}=9^{n-1}\begin{pmatrix}
+        2& -1& 3\\
+        -2& 1& -3\\
+        4& -2& 6
+    \end{pmatrix}
+    \end{align*}
     \end{solution}
     % 例题2.2
     \item 设$
     A = \begin{pmatrix}
     2 & 0 & 0 \\
-    0 & -3 & 2 \\
-    0 & 4 & 1
+    0 & 2 & 0 \\
+    4 & 1&  2
     \end{pmatrix}$
     则 $ A^n = $ \underline{\hspace{3cm}}.
     
     \begin{solution}
-    \newpage
-    \end{solution}
+    $A=2E+B$,$B=\begin{pmatrix}
+        0& 0& 0\\
+        -3& 0& 0\\
+        4& 1& 0
+    \end{pmatrix}$, $B^2=\begin{pmatrix}
+        0& 0& 0\\
+        0& 0& 0\\
+        -3& 0& 0
+    \end{pmatrix}$, $B^3=\mathbf{0}$,则
+    \[
+    A^n=2^nE+2^{n-1}nB+2^{n-3}n(n-1)B^2
+    \]
+    \end{solution},
     
     % 例题2.3
     \item 设
@@ -46,7 +108,8 @@
     $ P $ 为3阶可逆矩阵,$ B = P^{-1}AP $,则 $ (B + E)^{100} =\_\_\_\_ $ 
     
     \begin{solution}
-    \newpage
+    $r(A)=1, A^2=tr(A)\cdot A=-2A$即$A^2+2A=\mathbf{0}, (A+E)^2=E$,由题 \\
+    $(B+E)^{100}=(P^{-1}AP+E)^{100}=(P^{-1}AP+P^{-1}EP)^{100}=(P^{-1}(A+E)P)^{100}=E$
     \end{solution}
 \end{enumerate}
 
@@ -71,6 +134,18 @@
     \newpage
     \end{solution}
     
+    \begin{tcolorbox}[title=总结]
+    (1)$A_{n\times n}B_{n\times n}=E\implies\begin{cases}
+        \text{可逆}\\
+        \text{求逆}, B=A^{-1}, A=B^{-1} \\
+        \text{满足交换律},AB=BA
+    \end{cases}$ \\
+    (2)$AB$可交换的充分条件$\begin{cases}
+        B=f(A),A^{-1},A^* \\
+        AB=aA+bB(a,b\neq 0) \\
+        A^2+aAB=E,(a\neq 0)
+    \end{cases}$
+    \end{tcolorbox}
     % 例题2.6
     \item 设 
     $A = \begin{pmatrix}
@@ -90,7 +165,8 @@
 \end{enumerate}
 
 \section{秩的计算与证明}
-\begin{remark}
+\begin{remark} 秩 \\
+    秩的定义:$\exists r$阶子式非零且$\forall r+1$阶子式均为零 \\
     秩的性质
     \item[(1)] 设$A$为$m\times n$阶矩阵,则$r(A)<\min\{m,n\}$
     \item[(2)] $r(A+B)\leq r(A)+r(B)$
@@ -99,7 +175,8 @@
     \item[(5)] $r(A)=r(kA)(k\neq 0)$
     \item[(6)] 设$A$为$m\times n$阶矩阵,$P$为$m$阶可逆矩阵,$Q$为$n$阶可逆矩阵,则
     $r(A)=r(PA)=r(AQ)=r(PAQ)$
-    \item[(7)] 设$A$为$m\times n$阶矩阵,若$r(A)=n$则$r(AB)=r(B)$,若$r(A)=m$则$r(CA)=r(C)$
+    \item[(7)] 设$A$为$m\times n$阶矩阵,若$r(A)=n$则$r(AB)=r(B)$,若$r(A)=m$则$r(CA)=r(C)$ \\
+    左乘列满秩,右乘行满秩,秩不变
     \item[(8)] $r(A)=r(A^T)=r(A^TA)=r(AA^T)$
     \item[(9)] 设$A$为$m\times n$阶矩阵, $B$为$n\times s$阶矩阵,$AB=0$,则$r(A)+r(B)\leq n$
 \end{remark}
