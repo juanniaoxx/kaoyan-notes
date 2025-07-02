@@ -33,9 +33,9 @@ struct node {
     - 删除 $O(n)$
 
 ^^单链表的插入操作^^
-![alt text](./单链表的插入.png)
+![alt text](./images/单链表的插入.png)
 ^^双链表的插入操作^^
-![alt text](./双链表的插入.png)
+![alt text](./images/双链表的插入.png)
 
 注意双链表的插入操作并非只有这一个顺序,只要能保证更改指针的过程中不丢失节点即可.
 
@@ -47,4 +47,5 @@ struct node {
     std::array(int, N) data, next; // 通过data数组存储val值,通过next存储i位置的next指针在next数组中的位置
     ```
 
-![](./静态链表.png)
+![](./images/静态链表.png)
+

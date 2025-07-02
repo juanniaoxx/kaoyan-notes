@@ -87,12 +87,12 @@ public:
 ## 队列(Queen) 先进先出结构
 ^^队列^^ 队列也是一种限制访问点的线性表,只能在队头删除元素,只能往队尾插入元素. 
 
-![](./队列.png)
+![](./images/队列.png)
 队列一般考察顺序队列的判满条件,与循环队列操作的模拟.
 
 循环队列(假溢出判定):rear = capacity - 1
 
-![alt text](循环队列.png)
+![alt text](./images/循环队列.png)
 
 ## 数组
 数组最重要的特点就是可以{++随机存取++}
@@ -102,11 +102,11 @@ public:
 std::array(std::array(int, N), N) matrix; // 写成int[N][N] matrix也可以啦
 ```
 注意在计算机底层,并没有想象中的行*列结构,而是如下结构
-![alt text](二维数组.png)
+![alt text](./images/二维数组.png)
 
 ### 特殊矩阵的压缩存储
 ^^对称矩阵^^, 下图为按行优先的方式存储的图示 
-![alt text](对角矩阵的压缩存储.png)
+![alt text](./images/对角矩阵的压缩存储.png)
 
 ^^三对角矩阵^^
 

@@ -1,15 +1,6 @@
----
-tags: [数据结构]
----
-# 串(模式匹配)
-^^模式匹配^^ 在字符串$s$中找出与字符串$t$相等的子串的操作.其中字符串$s$被称为主串或者目标串,$t$被称为模式串.
-## 朴素匹配法(BF算法)
-^^算法描述^^ 枚举目标串$s$中每一个与模式串$t$相等的子串,判断是否匹配;即首先将模式串$t$的第0位字符与目标串第0位字符对齐,然后依次对比每个字符,若都相等则匹配成功,否则将t整体后移动一位,然后重新开始匹配.
+#include <iostream>
+#include <string>
 
-^^图示^^ 
-![](./images/BF.jpg)
-
-```cpp
 /**
  * BF（Brute Force）算法实现字符串模式匹配
  * 
@@ -43,6 +34,10 @@ int PatternMathBF(const std::string& S, const std::string& P) {
     
     return -1;
 }
-```
-时间复杂度$O(nm)$,由于指针会后退所以最坏的情况要遍历主串(n-m)次,遍历模式串(m)次,最大次数为(nm-m^2),所以时间复杂度的上界为$O(nm)$
-## KMP算法
+
+int main() {
+    std::string s, t;
+    std::cin >> s >> t;
+    if (PatternMathBF(s, t)) std::cout << "Success" << std::endl;
+    else std::cout << "Failure" << std::endl;
+}

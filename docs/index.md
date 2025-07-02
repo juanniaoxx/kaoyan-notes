@@ -15,10 +15,11 @@ comments: false
     ![image](./Weary%20Bird.png){ class="responsive-image" align=right width="230" height="300" style="border-radius: 25px;" }
 
     
-    - [x] 基于{~~~>Material for MkDocs~~}美化
+    - [x] Weary Bird's 考研笔记
     - [x] 如遇页面卡顿，请使用{--科学上网--}
-    - [x] 𝕙𝕒𝕧𝕖 𝕒 𝕘𝕠𝕠𝕕 𝕥𝕚𝕞𝕖 !  
-      === "Mac/PC端"
+    - [x] 𝕙𝕒𝕧𝕖 𝕒 𝕘𝕠𝕠𝕕 𝕥𝕚𝕞𝕖 ! 
+    - [x] 最近更新:概率论第三章笔记 2025/7/2
+    === "Mac/PC端"
 
         请在上方标签选择分类/左侧目录选择文章
 
