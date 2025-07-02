@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -1817,7 +1817,7 @@
 
 
   
-    <a href="https://github.com/juanniaoxx/edit/main/docs/计算机基础/数据结构/chapter 3.md" title="编辑此页" class="md-content__button md-icon">
+    <a href="https://github.com/juanniaoxx/edit/main/docs/计算机基础/数据结构/chapter 3.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1836,7 +1836,7 @@
 <h1 id="_1">栈,队列与数组<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="stack">栈(stack) 后进先出结构<a class="headerlink" href="#stack" title="Permanent link">&para;</a></h2>
 <p><ins>栈</ins> 栈是一种受限的<ins class="critic">线性表</ins>,只运行在栈顶加入元素与在栈顶删除元素
-<img alt="alt text" src="../%E6%A0%88.png" />
+<img alt="alt text" src="栈.png" />
 <ins>栈的存储结构-顺序存储</ins> 使用数组模拟栈
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
@@ -1978,27 +1978,27 @@
 </thead>
 <tbody>
 <tr>
-<td><img alt="alt text" src="../%E5%85%B1%E4%BA%AB%E6%A0%88.png" /></td>
-<td><img alt="alt text" src="../%E5%8F%8C%E6%A0%88.png" /></td>
+<td><img alt="alt text" src="./共享栈.png" /></td>
+<td><img alt="alt text" src="./双栈.png" /></td>
 </tr>
 </tbody>
 </table>
 <h2 id="queen">队列(Queen) 先进先出结构<a class="headerlink" href="#queen" title="Permanent link">&para;</a></h2>
 <p><ins>队列</ins> 队列也是一种限制访问点的线性表,只能在队头删除元素,只能往队尾插入元素. </p>
-<p><img alt="" src="../%E9%98%9F%E5%88%97.png" />
+<p><img alt="" src="../images/%E9%98%9F%E5%88%97.png" />
 队列一般考察顺序队列的判满条件,与循环队列操作的模拟.</p>
 <p>循环队列(假溢出判定):rear = capacity - 1</p>
-<p><img alt="alt text" src="../%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97.png" /></p>
+<p><img alt="alt text" src="../images/%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97.png" /></p>
 <h2 id="_2">数组<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>数组最重要的特点就是可以<ins class="critic">随机存取</ins></p>
 <p><ins>高维数组的存储结构</ins>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">),</span><span class="w"> </span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="n">matrix</span><span class="p">;</span><span class="w"> </span><span class="c1">// 写成int[N][N] matrix也可以啦</span>
 </code></pre></div></td></tr></table></div>
 注意在计算机底层,并没有想象中的行*列结构,而是如下结构
-<img alt="alt text" src="../%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84.png" /></p>
+<img alt="alt text" src="../images/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84.png" /></p>
 <h3 id="_3">特殊矩阵的压缩存储<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p><ins>对称矩阵</ins>, 下图为按行优先的方式存储的图示 
-<img alt="alt text" src="../%E5%AF%B9%E8%A7%92%E7%9F%A9%E9%98%B5%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%AD%98%E5%82%A8.png" /></p>
+<img alt="alt text" src="../images/%E5%AF%B9%E8%A7%92%E7%9F%A9%E9%98%B5%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%AD%98%E5%82%A8.png" /></p>
 <p><ins>三对角矩阵</ins></p>
 <p><ins>稀疏矩阵</ins></p>
 
@@ -2158,7 +2158,7 @@
       <script id="__config" type="application/json">{"base": "../../..", "features": ["announce.dismiss", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "search.share", "navigation.expand", "navigation.indexes", "content.tabs.link", "content.tooltips", "content.code.copy", "content.action.edit", "content.action.view", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       
