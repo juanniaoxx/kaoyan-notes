@@ -7,6 +7,56 @@
 \fi
 \chapter{概率论}
 
+\section{李正元复习全书}
+\begin{enumerate}
+    \item 每箱产品有 10 件,其中次品数从 0 到 2 是等可能的,开箱检验时,从中任取一件,
+    如果检验为次品,则认为该箱产品不合格而拒收. 由于检验误差,一件正品被误判为次品的概率为 2\%,
+    一件次品被误判为正品的概率为 10\%. 试求：
+        \item[(I)]随机检验一箱产品,它能通过验收的概率$p$ ;
+        \item[(II)]检验10箱产品通过率不低于90\%的概率$q$ .
+    \begin{solution}
+        (1)设$B=\{\text{任取一件为正品}\}$,$A=\{\text{一箱产品能通过验收}\}$
+        则由全概率公式有$$P(A)=P(A\mid B)P(B)+P(A\mid\bar{B})P(\bar{B})$$
+        而其中$$P(A\mid B)= 1 - 0.02 = 0.98,P(A\mid\bar{B})=1-0.1=0.9$$代入全概率公式有
+        $p=P(A)=1+0.88P(B)$,为求$P(B)$,记$C_i$为每箱中包含$i$件次品,且$C_0,C_1,C_2$为完备事件组,再
+        由全概率公式可以求出$$P(B)=\sum_{i=0}^{2}P(C_i)P(B\mid C_i)=0.9$$故$P(A)=0.892$ \\
+        (2)$q=P\{X/10\geq 0.9\}=P\{X\geq 9\}=P\{X=9\}+P\{X=10\}\approx 0.705$
+    \end{solution}
+    \item 一条自动生产线生产 $n$ 件产品不出故障的概率为 
+    $\frac{{\lambda }^{n}}{n!}{\mathrm{e}}^{-\lambda },n = 0,1,2,\cdots$ . 
+    假设产品的优质品率为 $p\left( {0 < p < 1}\right)$ . 如果各件产品是否为优质品相互独立.
+        \item[(I)]计算生产线在两次故障间共生产 $k$ 件 $\left( {k = 0,1,2,\cdots }\right)$ 优质品的概率；
+        \item[(II)]若已知在某两次故障间该生产线生产了 $k$ 件优质品,求它共生产 $m$ 件产品的概率.
+    \begin{solution}
+        (1)不妨令\\
+        $B_k=\{\text{两次故障公生产了k件优质品}\}$,$A_n=\{\text{两次故障间总共生产了n件产品}\}$,显然$A_0,A_1,\ldots$构成了
+        一个完备事件组,故利用全概率公式有
+        \begin{align*}
+        P(B_k) &=\sum_{n=0}^{\infty}P(A_n)P(B_k\mid A_n) \\
+        &\xlongequal{\text{前k-1次不可能产生k件优质品}}\sum_{n=k}^{\infty}P(A_n)P(B_k\mid A_n)\\
+        &=\frac{(\lambda p)^k}{k!}e^{-\lambda p}\sum_{n=k}^{\infty}\frac{(\lambda p)^{n-k}}{(n-k)!}e^{-\lambda p} \\
+        &\xlongequal{\text{Possion分布}}\frac{(\lambda p)^k}{k!}e^{-\lambda p}
+        \end{align*}
+        (2)当$m<k$的时候,$P(A_m\mid B_k)=0$,当$m\geq k$,
+        \begin{align*}
+            P(A_m\mid B_k) &=\frac{P(A_m)P(B_k\mid A_m)}{P(B_k)} \\
+            &= \frac{(\lambda q)^{m-k}}{(m-k)!}e^{-\lambda q}, m\in (k,k+1,\ldots)
+        \end{align*}
+    \end{solution}
+    \begin{tcolorbox}[title=总结]
+        关于全概率公式与贝叶斯公式的总结 \\
+        这种问题的关键在于寻找一个合适的完备事件组,当问题涉及"原因推结果/结果推原因"大概率要用贝叶斯公式(条件概率是贝叶斯的特殊情况)
+    \end{tcolorbox}
+    \item 甲、乙二人轮流投篮,游戏规则规定为甲先开始,且甲每轮只投一次,而乙每轮连续投两次,先投中者为胜. 设甲、乙每次投篮的命中率分别是 $p$ 与 0.5,
+    则 $p =$\_\_\_时,甲、乙胜负概率相同.
+    \begin{solution}
+        这道题和笔记中的交替射击模型一致,记$A=\{\text{甲获胜}\},B=\{\text{乙获胜}\}$,则由题意有 
+        \[
+        P(A)=p+(1-p)(1-0.5)(1-0.5)P(A)\implies P(A)=\frac{p}{1-0.25(1-p)}
+        \]
+        再由题意可知,要使得甲乙获胜概率一致,则$P(A)=P(B)=0.5\implies p = \frac{3}{7}$
+    \end{solution}
+\end{enumerate}
 \section{880}
 \begin{enumerate}
     \item 有一根长为$L$的木棒,将其任意折成三段,记事件$A=\{\text{中间一段为三段中的最长者}\}$,则$P(A)=\_\_\_\_$
