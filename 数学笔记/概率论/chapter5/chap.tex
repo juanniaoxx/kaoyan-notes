@@ -8,7 +8,22 @@
 \fi
 
 \chapter{大数定律与中心极限定理}
-
+\begin{remark}
+    三个考点
+    \item[(1)] 切比雪夫不等式 
+    \[
+    P\{\left|X-EX\right|\geq\epsilon\}\leq \frac{DX}{\epsilon^2},
+    \text{或者}P\{\left|X-EX\right| < \epsilon\}>1-\frac{DX}{\epsilon^2}
+    \]
+    \item[(2)] 大数定理 
+    \[
+    \frac{1}{n}\sum_{i=1}^{n}\fbox{$X_i$}\xrightarrow{P}E\fbox{$X_i$}
+    \]
+    \item[(3)] 中心极限定理
+    \[
+    \sum_{i=1}^{n}X_i\sim N(n\mu,n\sigma^2)
+    \]
+\end{remark}
 \begin{enumerate}[label=\arabic*.]
     \item (2022,数一)设随机变量$X_1,X_2,\cdots,X_n$相互独立同分布,$\mu_k=E(X_i^k)(k=1,2,3,4)$。由切比雪夫不等式,对任意$\varepsilon>0$,有
         $P\left\{\left|\frac{1}{n}\sum_{i=1}^n X_i^2-\mu_2\right|\geq\varepsilon\right\}\leq$
@@ -17,7 +32,10 @@
     \end{align*}
     
     \begin{solution}
-    【详解】
+    首先需要确定$E(\frac{1}{n}\sum_{i=1}^n X_i^2)$是否等于$\mu_2$显然,所以这个式子满足切比雪夫不等式,故根据切比雪夫不等式有
+    \[
+    \text{原式}\geq \frac{D(\frac{1}{n}\sum_{i=1}^n X_i^2)}{\epsilon^2}=\frac{\mu_4-\mu_2^2}{n\epsilon^2}
+    \]
     \end{solution}
     
     \item (2022,数一)设随机变量$X_1,X_2,\cdots,X_n$相互独立同分布,$X_i$的概率密度为
@@ -30,7 +48,10 @@
     则当$n\rightarrow\infty$时,$\frac{1}{n}\sum_{i=1}^n X_i^2$依概率收敛于?.
     
     \begin{solution}
-    【详解】
+    由大数定理有$\frac{1}{n}\sum_{i=1}^n X_i^2\xrightarrow{P}EX_i^2$,又期望的定义有
+    \[
+    EX_i^2=2\int_{0}^{1}x^2(1-x)\d x = \frac{1}{6}
+    \]
     \end{solution}
     
     \item (2020,数一)设$X_1,X_2,\cdots,X_n$为来自总体$X$的简单随机样本,$P\{X=0\}=P\{X=1\}=\frac{1}{2}$,$\Phi(x)$表示标准正态分布函数。利用中心极限定理得$P\left\{\sum_{i=1}^{100} X_i\leq 55\right\}$的近似值为
@@ -39,7 +60,10 @@
     \end{align*}
     
     \begin{solution}
-    【详解】
+    由中心极限定理有$\sum_{i=1}^{100} X_i\sim N(50, 25)$标准化后所求概率为 
+    \[
+    P\{\frac{X-50}{5}\leq 1\} \implies \Phi(1)
+    \]
     \end{solution}
 \end{enumerate}
 

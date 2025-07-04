@@ -15,13 +15,20 @@
     矩估计\\
     令$EX^k=\frac{1}{n}\sum_{i=1}^{n}X_i^k$或者$E(X-EX)^k=\frac{1}{n}\sum_{i=1}^{n}(X_i-\bar{X})^k,k=1,2,\ldots$
     得到$\theta_1,\theta_2\ldots$的矩估计量 \\
+    \[
+    \begin{cases}
+        EX=\bar{X}, &\text{一个参数} \\
+        EX^2=\frac{1}{n}\sum_{i=1}^{n}X_i^2 & \text{两个参数}
+    \end{cases}
+    \]
     最大似然估计
     \item[(1)]对样本点$x_1,x_2\ldots,x_n$,似然函数为$L(\theta)\begin{cases}
         \prod_{i=1}^{n}p(x_i;\theta) \\
         \prod_{i=1}^{n}f(x_i;\theta) 
     \end{cases}$
     \item[(2)]似然函数两端取对数求导 
-    \item[(3)]令$\frac{\d\ln{L(\theta)}}{\d\theta}=0$就可以得到$\theta$的最大似然估计值 
+    \item[(3)]令$\frac{\d\ln{L(\theta)}}{\d\theta}=0$就可以得到$\theta$的最大似然估计值\\ 
+    一个关于规范的小提示,如果问估计值用小写字母(样本值),问估计量用大写字母(随机变量)
 \end{remark}
 \begin{enumerate}[label=\arabic*.]
     \item (2002,数一)设总体$X$的概率分布为
@@ -35,27 +42,63 @@
     其中$0<\theta<\frac{1}{2}$为未知参数,利用总体$X$的如下样本值$3,1,3,0,3,1,2,3$,求$\theta$的矩估计值与最大似然估计值。
     
     \begin{solution}
-    \newpage
+    \item [(矩估计)] 这道题只有一个参数,只需要用一阶矩估计$EX=2\theta(1-\theta)+2\theta^2+3-6\theta=\bar{X}$,其中
+    $\bar{X}=\frac{16}{8}=2$,故$\theta$的矩估计值$\hat{\theta}=\frac{1}{4}$
+    \item[(最大似然估计)]对于样本$3,1,3,0,3,1,2,3$,似然估计函数为
+    \[
+    L(\theta)=4\theta^{6}(1-\theta)^2(1-2\theta)^4
+    \]
+    令$\frac{\d\ln{\theta}}{\d\theta}=0$有$\theta=\frac{7+\sqrt{13}}{12}$又$0<\theta<\frac{1}{2}$,故最终$\theta=\frac{7-\sqrt{13}}{12}$
     \end{solution}
     
-    \item (2011,数一)设$X_1,X_2,\cdots,X_n$为来自正态总体$N(\mu_0,\sigma^2)$的简单随机样本,其中$\mu_0$已知,$\sigma^2>0$未知,样本均值为$\bar{X}$,样本方差为$S^2$。
+    \item (2011,数一)设$X_1,X_2,\cdots,X_n$为来自正态总体$N(\mu,\sigma^2)$的简单随机样本,其中$\mu$已知,$\sigma^2>0$未知,样本均值为$\bar{X}$,样本方差为$S^2$。
     \begin{enumerate}
-        \item 求$\sigma^2$的最大似然估计量$\hat{\sigma}^2$;
-        \item 求$E(\hat{\sigma}^2)$与$D(\hat{\sigma}^2)$。
+        \item[(1)] 求$\sigma^2$的最大似然估计量$\hat{\sigma}^2$;
+        \item[(2)] 求$E(\hat{\sigma}^2)$与$D(\hat{\sigma}^2)$。
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    \item[(1)] 对于样本$X_1,\ldots,X_n$其最大似然函数为 
+    \[
+    L(\sigma^2)=\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x_i-\mu)^2}{2\sigma^2}} 
+    \]
+    注意参数为$\sigma^2$,令$\frac{\d\ln{\sigma^2}}{\d\sigma^2}=0$,有$\hat{\sigma^2}=\frac{1}{n}\sum_{i=1}{n}(X_i-\mu)^2$
+    \item[(2)] 这种题优先考虑$\chi^2$分布的期望与方差结论,有题(1)有
+    \[
+    \frac{X_i-\mu}{\sigma}\sim N(0,1) \implies \sum_{i=1}^{n}\left(\frac{X_i-\mu}{\sigma}\right)^2\sim \chi^2(n)
+    \]
+    故$E(\hat{\sigma}^2)=\sigma^2,D(\hat{\sigma}^2)=\frac{2\sigma^4}{n}$
     \end{solution}
     
     \item (2022,数一、三)设$X_1,X_2,\cdots,X_n$为来自期望为$\theta$的指数分布总体的简单随机样本,$Y_1,Y_2,\cdots,Y_m$为来自期望为$2\theta$的指数分布总体的简单随机样本,两个样本相互独立。利用$X_1,X_2,\cdots,X_n$与$Y_1,Y_2,\cdots,Y_m$,
     \begin{enumerate}
-        \item 求$\theta$的最大似然估计量$\hat{\theta}$；
-        \item 求$D(\hat{\theta})$。
+        \item[(1)] 求$\theta$的最大似然估计量$\hat{\theta}$;
+        \item[(2)] 求$D(\hat{\theta})$。
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    这是双总体,但基本上和单总体一致,不要被唬住了哦!
+    \item [(1)]
+    由题有$X\sim E(\frac{1}{\theta}),Y\sim E(\frac{1}{2\theta})$,故其概率密度分别为
+    \[
+    f_{X}(x)=\begin{cases}
+        \frac{1}{\theta}e^{-\frac{x}{\theta}}, &x > 0\\
+        0, & x\leq 0
+    \end{cases}\qquad f_{Y}(y)=\begin{cases}
+        \frac{1}{2\theta}e^{-\frac{y}{2\theta}}, &y > 0\\
+        0, & x\leq 0
+    \end{cases}
+    \]
+    则对于样本$X_1,X_2,\ldots,X_n$与$Y_1,Y_2,\ldots,Y_n$,最大似然估计函数为
+    \[
+        L(\theta)= (\frac{1}{2})^m\theta^{-(m+n)}e^{-\frac{1}{\theta}(\sum_{i=1}^{n}X_i+\frac{1}{2}\sum_{j=1}^{m}Y_j)}
+    \]
+    则令$\frac{\d\ln{\theta}}{\d\theta}=0$,有$\hat{\theta}=\frac{1}{n+m}(\sum_{i=1}^{n}X_i+\frac{1}{2}\sum_{j=1}^{m}Y_j)$
+    \item [(2)]
+    \begin{align*}
+        D(\hat{\theta}) &=(\frac{1}{m+n})^2D(\sum_{i=1}^{n}X_i+\frac{1}{2}\sum_{j=1}^{m}Y_j) \\
+        &=\frac{\theta^2}{m+n}
+    \end{align*}
     \end{solution}
 \end{enumerate}
 
@@ -63,10 +106,11 @@
 \begin{remark}
     估计量的评价标准
     \item[(1)] (无偏性)设$\hat{\theta}$为$\theta$的估计量,若$E\hat{\theta}=\theta$则称其为$\theta$无偏估计量
-    \item[(2)] (有效性)设$\hat{\theta_1},\hat{\theta_2}$为$\theta$的无偏估计,若$D(\hat{theta_1})<D(\hat{\theta_2})$则称$\hat{\theta_1}$
+    \item[(2)] (有效性)设$\hat{\theta_1},\hat{\theta_2}$为$\theta$的无偏估计,若$D(\hat{\theta_1})<D(\hat{\theta_2})$则称$\hat{\theta_1}$
     比$\hat{\theta_2}$更有效 
     \item[(3)] 设$\hat{\theta}$为$\theta$的估计量,若$\hat{\theta}$依概率收敛于$\theta$,则称$\hat{\theta}$为$\theta$
-    一致(相合)估计量
+    一致(相合)估计量 \\
+    一致性的考点在于---$\frac{1}{n}\sum\fbox{}\xrightarrow{P}E\fbox{}$
 \end{remark}
 \begin{enumerate}[label=\arabic*.,start=4]
     \item 设总体$X$的概率密度为
@@ -78,15 +122,77 @@
     \end{align*}
     其中$\theta>0$为未知参数,$X_1,X_2,\cdots,X_n$为来自总体$X$的简单随机样本。
     \begin{enumerate}
-        \item 求$\theta$的最大似然估计量$\hat{\theta}$;
-        \item 问$\hat{\theta}$是否为$\theta$的无偏估计量？并说明理由。
+        \item[(1)] 求$\theta$的最大似然估计量$\hat{\theta}$;
+        \item[(2)] 问$\hat{\theta}$是否为$\theta$的无偏估计量？并说明理由。
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    \item[(1)] 对于样本$X_1,X_2,\ldots,X_n$的最大似然估计函数为 
+    \[
+        L(\theta)=\prod_{i=1}^{n}2e^{-2(x_i-\theta)}=2^ne^{-\sum_{i=1}^{n}(x_i-\theta)}
+    \]
+    显然$L(\theta)$关于$\theta$是单调递增的,则根据最大似然的定义,应该取使得$L(\theta)$最大的值,而由题目有$X_1>\theta,X_2>\theta,
+    \ldots$,故$\hat{\theta}=\min{\{X_1,X_2\ldots,X_n\}}$
+    \item [(2)] 由概率密度函数有$F_X(x)=\int_{-\infty}^{x}f(t)dt$,故
+    \[
+    F_X(x)=\int_{-\infty}^{x}f(t)dt=\begin{cases}
+        1-e^{-2(x-\theta)}, & x > \theta \\
+        0, & x\leq\theta
+    \end{cases}
+    \]
+    故$F_{min}=1-\left[1-F_X(x)\right]^{n}$即 
+    \[
+    F_{min}=\begin{cases}
+        1-e^{-2n(x-\theta)}, & x > \theta \\
+        0, x\leq\theta
+    \end{cases}
+    \]
+    故
+    \[
+    f_{min}=\begin{cases}
+        2ne^{-2n(x-\theta)}, &x > \theta\\
+        0, & x\leq\theta
+    \end{cases}
+    \]
+    由期望的定义有
+    \[
+    E\hat{\theta}=\int_{\theta}^{+\infty}2nxe^{-2n(x-\theta)}=\theta+\frac{1}{2n}
+    \]
     \end{solution}
-\section{区间估计与假设检验}
+
+    \item (2010,数一)设总体$X$的概率分布为 
+    \[
+    \begin{array}{|c|c|c|c|}
+        \hline
+        X & 1 & 2 & 3 \\
+        \hline
+        P & 1-\theta & \theta - \theta^2 & \theta^2 \\
+        \hline
+    \end{array}
+    \]
+    其中参数$\theta\in(0,1)$未知,$N_i$表示来自总体$X$的简单随机样本(样本容量为n)中等于$i$的个数$(i=1,2,3)$
+    求常数$a_1,a_2,a_3$使得$T=\sum_{i=1}^{3}a_iN_i$为$\theta$的无偏估计量,并求T的方差.
+    \begin{solution}
+        由题可知$N_i\sim B(n,p)$,具体来说有
+        \[
+        \begin{cases}
+            N_1\sim B(n, 1-\theta) \\
+            N_2\sim B(n, \theta-\theta^2)\\
+            N_3\sim B(n, \theta^2)
+        \end{cases}
+        \]且有$N_1+N_2+N_3=n$ \\
+        故$ET=\sum_{i=1}^{3}a_iEN_i=n\left[a_1+(a_2-a_1)\theta+(a_3-a_2)\theta^2\right]=\theta$,只需要令
+        \[
+        \begin{cases}
+            a_1 = 0\\
+            a_2 = \frac{1}{n} \\
+            a_3 = \frac{1}{n}
+        \end{cases}
+        \]
+        求$DT=\frac{1}{n^2}D(n-N_1)=\frac{1}{n^2}DN_1=\frac{\theta(1-\theta)}{n}$
+    \end{solution}
 \end{enumerate}
+\section{区间估计与假设检验}
 \ifx\allfiles\undefined
 \end{document}
 \fi
