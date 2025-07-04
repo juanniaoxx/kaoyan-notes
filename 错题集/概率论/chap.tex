@@ -56,7 +56,43 @@
         \]
         再由题意可知,要使得甲乙获胜概率一致,则$P(A)=P(B)=0.5\implies p = \frac{3}{7}$
     \end{solution}
+    \item (非离散非连续的概率)设随机变量X的绝对值不大于1,且$P\{X=0\}=\frac{1}{4}$,已知当$X\neq 0$的时候,X在其他取值范围内
+    满足均匀分布,求X的分布函数$F_{X}(x)$.
+    \begin{solution}
+        由题意有$P\{|X|\leq 1\}=1,P\{X=0\}=\frac{1}{4}\implies P\{X\neq = 0\}=\frac{3}{4}$,又因为区间长度为$2$,有
+        \[F_{X}(x) =
+        \begin{cases}
+            0, & x < -1 \\
+            \frac{3}{8}(x+1), & -1 <= x < 0 \\
+            \frac{3x+5}{8}, & 0\leq x < 1 \\
+            1, & 0 \geq 1
+        \end{cases}
+        \]
+    \end{solution}
+    \item 设有四个编号分别为$1,2,3,4$的盒子和三只球，现将每个球随机地放入四个盒子，记$X$为至少有一只球的盒子的最小号码.
+    \begin{enumerate}
+        \item [(1)] 求X的分布律; 
+        \item [(2)] 若当$X=k$的时候,随机变量在$\left[0,k\right]$上服从均匀分布,求$P\{Y\leq 2\}$;
+    \end{enumerate}
+    \begin{solution}
+        \item[(1)] 由题有$P\{X=1\}=\frac{C_{3}^{1}3^2+C_{3}^{2}3+C_{3}^{3}}{4^3}=\frac{37}{64}$
+        解释:总共有$4^3$种方案,若1是最小的有球的盒子,则其中可以有$1,2,3$三种可能,$C_{3}^{1}3^2$表示选择一个球加入1号盒子,其余两个球可以从剩余
+        3个盒子中随机选择两个放入.
+        同理可以求出X=2,3,4,故有
+        \[
+        X\sim\left(\begin{array}{cccc}
+            1 & 2 & 3 & 4\\
+            \frac{37}{64} & \frac{19}{64} & \frac{7}{64} & \frac{1}{61}
+        \end{array}
+        \right)
+        \]
+        \item[(2)] 由全概率公式$P\{Y\leq 2\}=\sum_{i=1}^{4}P\{Y\leq 2\mid X=k\}=\frac{367}{384}$
+    \end{solution}
+    
+
 \end{enumerate}
+
+
 \section{880}
 \begin{enumerate}
     \item 有一根长为$L$的木棒,将其任意折成三段,记事件$A=\{\text{中间一段为三段中的最长者}\}$,则$P(A)=\_\_\_\_$
