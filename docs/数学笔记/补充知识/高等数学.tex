@@ -13,7 +13,26 @@
     (1)菲砖 \\
     (2)做题总结
 \end{tcolorbox}
-
+\section{平方数和的求和公式}
+\[
+\sum_{k=1}^{n}k^2=\frac{n(n-1)(n-2)}{6}
+\]
+\section{莱布尼兹法则}
+\[
+F(x)=\int_{a(x)}^{b(x)}f(x,t)\d t 
+\]
+那么F(x)的导数为 
+\[
+F'(x) = f(x, b(x)) \cdot b'(x) - f(x, a(x)) \cdot a'(x) + \int_{a(x)}^{b(x)} \frac{\partial}{\partial x} f(x, t) dt
+\]
+特别的,若上下限为常数有 
+\[
+F'(x) = \int_{a}^{b}\frac{\partial}{\partial x}f(x,t)\d t
+\]
+例如对于$F(x)=\int_{1}^{0}e^{-x^2t^2}dt$,则 
+\[
+F'(x)=2x\int_{0}^{1}t^2e^{-x^2t^2}\d t
+\]
 \ifx\allfiles\undefined
 \end{document}
 \fi
