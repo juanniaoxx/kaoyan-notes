@@ -126,5 +126,35 @@
 若$X\sim P(\lambda)$,其中的某些部分(或者优秀,或者糟糕,或者其他)独立的产生,其产生的概率为$\alpha$,则$Y$表示产生这些特殊
 事件的次数,将会服从$P(\lambda\alpha)$ \\
 Poisson定理,对于$X\sim B(n, p)$当$n$很大,$p$很小的时候,可以近似的认为$X\sim P(np)$
+
+\section{二维随机变量的换元法}
+设$(X,Y)$的联合概率密度为$f_{X,Y}(x,y)$变化T为:
+\[
+\begin{cases}
+    U=g_1(X,Y) \\
+    V=g_2(X,Y)
+\end{cases}
+\]
+如果T可逆(即存在逆变化$T^{-1}$),则(U,V)的联合概率密度为
+\[
+f_{U,V}(u,v)=f_{X,Y}(x(u,v),y(u,v))\cdot \left|J\right|
+\]
+其中J是Jacobian行列式即
+\[
+J=\left|\begin{array}{cc}
+    \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\
+    \frac{\partial y}{\partial u} & \frac{\partial y}{\partial u}
+\end{array}\right|
+\]
+例如: \\
+    若U=X+Y,V=X-Y,$f(x,y)=e^{-(x+y)},(x,y > 0)$
+    \[
+    X=\frac{U+V}{2}, Y=\frac{U-V}{2},\left|\mathbf{J}\right|=\left|\left|\begin{array}{cc}
+        \frac{1}{2} & \frac{1}{2} \\
+        \frac{1}{2} & -\frac{1}{2}
+    \end{array}\right|\right| = \frac{1}{2}
+    \]
+    则$f(u,v)=e^{-(\frac{u+v}{2}+\frac{u-v}{2})}\cdot\frac{1}{2}=\frac{1}{2}e^{-u}$
+    其中u,v的范围由变换确定,例如$u>0$但$v$取决于$x,y$的关系
 \end{document}
 \fi

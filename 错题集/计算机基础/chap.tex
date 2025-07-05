@@ -1,0 +1,43 @@
+\ifx\allfiles\undefined
+\documentclass[12pt, a4paper, oneside, UTF8]{ctexbook}
+\def\path{../config}
+\input{../config/_config}
+\begin{document}
+% \input{../config/cover}
+\else
+\fi
+\chapter{计算机基础}
+\section{数据结构}
+\begin{enumerate}
+    \item 对于任意一棵高度为5且有10个结点的二叉树,若采用顺序存储结构保存,每个结点占一个存储单元,则存放该二叉树
+    至少需要多少存储单元? 
+    \begin{solution}
+    对应顺序存储,应该按照满二叉树存储,故需要的存储空间为$2^h-1=2^5-1=31$个
+    \end{solution}
+    \item 在下列关于二叉树遍历的说法中, 正确的是 (   ).
+    \begin{enumerate}
+        \item[(A)]若有一个结点是二叉树中某个子树的中序遍历结果序列的最后一个结点, 则它一定
+        是该子树的前序遍历结果序列的最后一个结点
+        \item[(B)] 若有一个结点是二叉树中某个子树的前序遍历结果序列的最后一个结点, 则它一定
+        是该子树的中序遍历结果序列的最后一个结点
+        \item[(C)]若有一个叶结点是二叉树中某个子树的中序遍历结果序列的最后一个结点, 则它一
+        定是该子树的前序遍历结果序列的最后一个结点
+        \item[(D)] 若有一个叶结点是二叉树中某个子树的前序遍历结果序列的最后一个结点, 则它一
+        定是该子树的中序遍历结果序列的最后一个结点
+    \end{enumerate}
+    \begin{solution}
+        二叉树中序遍历的最后一个结点必然是从根开始沿着起右指针走到底的结点,记其为$p$. 
+        
+        若其不是叶子结点,不妨假设其左子树非空,则在先序遍历中最后的结点必然在其左子树中,故ABD都不对.  
+
+        若其是叶子结点,则前序遍历和中序遍历的最后一个结点都会是它,故C正确.
+    \end{solution}
+\end{enumerate}
+\section{计算机网络}
+
+\section{计算机组成原理}
+
+\section{操作系统}
+\ifx\allfiles\undefined
+\end{document}
+\fi
