@@ -3,7 +3,7 @@ tags: [数据结构]
 ---
 # 图与图算法
 
-## 图
+## 图的基本概念,存储与遍历
 图是一个二元组$G=(V,E)$其中$V$为顶点的集合,$E$是两个顶点间边(弧)的集合
 ### 图的基本术语
 ^^有向图^^ 弧(边)具有方向性的图,用$<V_1,V_2>$表示一条由$A_1\rightarrow A_2$有向弧,其中$A_1$被称为弧尾,$A_2$被称为弧头.
@@ -67,37 +67,37 @@ tags: [数据结构]
 简单来说深度优先遍历就是一路走到黑,不撞南墙不回头;而宽度优先遍历则是优先遍历最近的点.
 
 在代码实现上dfs通常用递归实现,代码比较简单;bfs通过队列实现,代码比较长.
+??? success "算法实现"
+    ```cpp
+    // dfs 模板
+    int dfs(int u) {
+        st[u] = true; // 标记该点被访问过了
 
-```cpp
-// dfs 模板
-int dfs(int u) {
-    st[u] = true; // 标记该点被访问过了
-
-    // 用的临接表
-    for (int i = h[u]; i != -1; i = ne[i]) {
-        int j = e[i];
-        if (!st[j]) dfs(j);
-    }
-}
-
-// bfs 模板
-std::queue<int> q; // 初始化一个队列
-st[1] = true; // 选择1号点为起始点 
-q.push(1); // 将1号点加入队列
-
-while (q.size()) {
-    int t = q.front(); 
-    q.pop(); // 取队头元素
-
-    for (int i = h[t]; i != -1; i = ne[i]) {
-        int j = e[i];
-        if (!st[j]) {
-            st[j] = true;
-            q.push(j); // 插入队尾
+        // 用的临接表
+        for (int i = h[u]; i != -1; i = ne[i]) {
+            int j = e[i];
+            if (!st[j]) dfs(j);
         }
     }
-}
-```
+
+    // bfs 模板
+    std::queue<int> q; // 初始化一个队列
+    st[1] = true; // 选择1号点为起始点 
+    q.push(1); // 将1号点加入队列
+
+    while (q.size()) {
+        int t = q.front(); 
+        q.pop(); // 取队头元素
+
+        for (int i = h[t]; i != -1; i = ne[i]) {
+            int j = e[i];
+            if (!st[j]) {
+                st[j] = true;
+                q.push(j); // 插入队尾
+            }
+        }
+    }
+    ```
 ## 图算法 
 
 ### Dijkstra算法(单源无负权重最短路问题)
@@ -123,52 +123,54 @@ while (q.size()) {
     - 当所有顶点都加入S时，算法结束
 
 ![alt text](./images/Dijkstra.png)
-```cpp
-// 未使用堆优化的版本
+??? success "算法实现"
+    ```cpp
+    // 未使用堆优化的版本
 
-int n, m;           // n 表示顶点数，m 表示边数
-int g[N][N];        // 邻接矩阵，用于存储图的边权
-int dist[N];        // dist[i] 表示从起点到顶点 i 的最短距离
-bool st[N];         // st[i] 表示顶点 i 的最短距离是否已经确定
+    int n, m;           // n 表示顶点数，m 表示边数
+    int g[N][N];        // 邻接矩阵，用于存储图的边权
+    int dist[N];        // dist[i] 表示从起点到顶点 i 的最短距离
+    bool st[N];         // st[i] 表示顶点 i 的最短距离是否已经确定
 
-int dijkstra() {
-    memset(dist, 0x3f, sizeof dist);  // 初始化所有顶点的距离为无穷大
-    dist[1] = 0;                      // 起点到自身的距离为 0
+    int dijkstra() {
+        memset(dist, 0x3f, sizeof dist);  // 初始化所有顶点的距离为无穷大
+        dist[1] = 0;                      // 起点到自身的距离为 0
 
-    // 进行 n-1 次迭代，每次确定一个顶点的最短距离
-    for (int i = 0; i < n - 1; i ++) {
-        int t = -1;  // t 用于存储当前未确定最短距离的顶点中距离起点最近的顶点
+        // 进行 n-1 次迭代，每次确定一个顶点的最短距离
+        for (int i = 0; i < n - 1; i ++) {
+            int t = -1;  // t 用于存储当前未确定最短距离的顶点中距离起点最近的顶点
 
-        // 遍历所有顶点，找到未确定最短距离且距离起点最近的顶点 t
-        for (int j = 1; j <= n; j ++) {
-            if (!st[j] && (t == -1 || dist[t] > dist[j]))
-                t = j;
+            // 遍历所有顶点，找到未确定最短距离且距离起点最近的顶点 t
+            for (int j = 1; j <= n; j ++) {
+                if (!st[j] && (t == -1 || dist[t] > dist[j]))
+                    t = j;
+            }
+
+            // 通过顶点 t 更新其他顶点的最短距离
+            for (int j = 1; j <= n; j ++) {
+                dist[j] = min(dist[j], dist[t] + g[t][j]);
+            }
+
+            st[t] = true;  // 标记顶点 t 的最短距离已经确定
         }
 
-        // 通过顶点 t 更新其他顶点的最短距离
-        for (int j = 1; j <= n; j ++) {
-            dist[j] = min(dist[j], dist[t] + g[t][j]);
-        }
-
-        st[t] = true;  // 标记顶点 t 的最短距离已经确定
+        // 如果终点的最短距离仍然是无穷大，说明不可达，返回 -1
+        if (dist[n] == 0x3f3f3f3f) return -1;
+        return dist[n];  // 返回起点到终点的最短距离
     }
-
-    // 如果终点的最短距离仍然是无穷大，说明不可达，返回 -1
-    if (dist[n] == 0x3f3f3f3f) return -1;
-    return dist[n];  // 返回起点到终点的最短距离
-}
-```
+    ```
 ### Floyd算法 (三重循环--DP)
 {++解决所有顶点到其他顶点最短路问题++}
 
 这个很少考察,本质是基于DP的但DP不属于考研内容.
-```cpp
-// 只需要注意k在最外层即可
-for (int k = 0; k < n; i++)
-    for (int i = 0; i < n; j++)
-        for (int j = 0; j < n; k ++) 
-            dist[i][j] = min(dist[i][k]+dist[k][j], dist[i][j]);
-```
+??? success "算法实现"
+    ```cpp
+    // 只需要注意k在最外层即可
+    for (int k = 0; k < n; i++)
+        for (int i = 0; i < n; j++)
+            for (int j = 0; j < n; k ++) 
+                dist[i][j] = min(dist[i][k]+dist[k][j], dist[i][j]);
+    ```
 ### Prim算法(选点)
 ^^算法描述^^ 
 
@@ -181,41 +183,42 @@ for (int k = 0; k < n; i++)
 ![alt text](./images/Prim.png)
 
 [测试连接](https://www.acwing.com/problem/content/860/)
-```cpp
-int prim() {
-    // 初始化dist数组为INF，表示所有节点还没有被包含到MST中
-    memset(dist, 0x3f, sizeof dist);
+??? success "算法实现"
+    ```cpp
+    int prim() {
+        // 初始化dist数组为INF，表示所有节点还没有被包含到MST中
+        memset(dist, 0x3f, sizeof dist);
 
-    int res = 0;  // res存储MST的总权重
+        int res = 0;  // res存储MST的总权重
 
-    // 循环n次，依次选择每个节点加入MST
-    for (int i = 0; i < n; i++) {
-        int t = -1;  // t表示当前选择的最短边对应的节点
-        // 遍历所有节点，选择距离已选节点集（MST）最近的节点t
-        for (int j = 1; j <= n; j++) {
-            if (!st[j] && (t == -1 || dist[t] > dist[j]))  // 如果节点j没有被包含在MST中，且dist[j]更小，则更新t
-                t = j;
+        // 循环n次，依次选择每个节点加入MST
+        for (int i = 0; i < n; i++) {
+            int t = -1;  // t表示当前选择的最短边对应的节点
+            // 遍历所有节点，选择距离已选节点集（MST）最近的节点t
+            for (int j = 1; j <= n; j++) {
+                if (!st[j] && (t == -1 || dist[t] > dist[j]))  // 如果节点j没有被包含在MST中，且dist[j]更小，则更新t
+                    t = j;
+            }
+
+            // 如果dist[t]是INF，说明当前节点无法连接到MST（即图不是连通的），返回INF表示无法构成MST
+            if (i && dist[t] == INF) return INF;
+
+            // 第一次加入节点时不加权，之后每次都累加dist[t]（即选定节点t到MST的边的权重）
+            if (i) res += dist[t];
+
+            // 将节点t加入MST
+            st[t] = true;
+
+            // 更新dist数组，更新所有节点到MST的最短边权
+            for (int j = 1; j <= n; j++) {
+                dist[j] = min(dist[j], g[t][j]);  // 更新dist[j]为节点t到节点j的最小边权
+            }
         }
 
-        // 如果dist[t]是INF，说明当前节点无法连接到MST（即图不是连通的），返回INF表示无法构成MST
-        if (i && dist[t] == INF) return INF;
-
-        // 第一次加入节点时不加权，之后每次都累加dist[t]（即选定节点t到MST的边的权重）
-        if (i) res += dist[t];
-
-        // 将节点t加入MST
-        st[t] = true;
-
-        // 更新dist数组，更新所有节点到MST的最短边权
-        for (int j = 1; j <= n; j++) {
-            dist[j] = min(dist[j], g[t][j]);  // 更新dist[j]为节点t到节点j的最小边权
-        }
+        return res;  // 返回MST的总权重
     }
 
-    return res;  // 返回MST的总权重
-}
-
-```
+    ```
 ### Kruskal算法(选边)
 ^^算法描述^^ 
 
@@ -230,33 +233,33 @@ int prim() {
 - 当边集包含(n-1)条边的时候算法结束.
 
 [测试连接](https://www.acwing.com/problem/content/861/)
+??? success "算法实现"
+    ```cpp
+    int kruskal() {
+        // 按照边的权重升序排序
+        sort(edges, edges + m);
 
-```cpp
-int kruskal() {
-    // 按照边的权重升序排序
-    sort(edges, edges + m);
+        // 初始化并查集，父节点指向自己
+        for (int i = 1; i <= n; i++) p[i] = i;
 
-    // 初始化并查集，父节点指向自己
-    for (int i = 1; i <= n; i++) p[i] = i;
+        int res = 0, cnt = 0;  // res用于累加MST的权重，cnt用于统计加入MST的边数
+        // 遍历所有边，按照权重从小到大
+        for (int i = 0; i < m; i++) {
+            int a = edges[i].a, b = edges[i].b, w = edges[i].w;
 
-    int res = 0, cnt = 0;  // res用于累加MST的权重，cnt用于统计加入MST的边数
-    // 遍历所有边，按照权重从小到大
-    for (int i = 0; i < m; i++) {
-        int a = edges[i].a, b = edges[i].b, w = edges[i].w;
-
-        a = find(a), b = find(b);  // 查找a和b的根节点
-        if (a != b) {  // 如果a和b不在同一个集合中，说明这条边不会形成环
-            p[a] = b;  // 将a的父节点指向b，合并两个集合
-            res += w;  // 将边的权重加入到最小生成树的权重中
-            cnt++;  // 增加加入的边数
+            a = find(a), b = find(b);  // 查找a和b的根节点
+            if (a != b) {  // 如果a和b不在同一个集合中，说明这条边不会形成环
+                p[a] = b;  // 将a的父节点指向b，合并两个集合
+                res += w;  // 将边的权重加入到最小生成树的权重中
+                cnt++;  // 增加加入的边数
+            }
         }
-    }
 
-    // 如果加入的边数少于n-1，说明图不是连通的，无法构成MST
-    if (cnt < n - 1) return INF;
-    return res;  // 返回最小生成树的权重
-}
-```
+        // 如果加入的边数少于n-1，说明图不是连通的，无法构成MST
+        if (cnt < n - 1) return INF;
+        return res;  // 返回最小生成树的权重
+    }
+    ```
 
 ### 拓扑排序与关键路径(AOE)
 拓扑排序本质是描述一种前驱关系,只有有向无环图(DAG)才有拓扑序列.
@@ -275,26 +278,28 @@ int kruskal() {
 - 如果输出顶点树不等于图中顶点数则说明图存在环
 - 若在算法过程中队列中最大元素大于1,则说明拓扑序列不唯一
 ![alt text](./images/topsort.png)
-```cpp
-bool topsort() {
-    int hh = 0, tt = -1;
-    // d[i] 存储顶点i的入度
-    for (int i = 1; i <= n; i ++)
-        if (!d[i]) q[++ tt] = i; // 将入度为0的点全部加入队列
-    
-    while (hh <= tt) {
-        int t = q[hh++];
+??? success "算法实现"
+    ```cpp
+    bool topsort() {
+        int hh = 0, tt = -1;
+        // d[i] 存储顶点i的入度
+        for (int i = 1; i <= n; i ++)
+            if (!d[i]) q[++ tt] = i; // 将入度为0的点全部加入队列
+        
+        while (hh <= tt) {
+            int t = q[hh++];
 
-        for (int i = h[t]; i != -1; i= ne[i]) {
-            int j = e[i];
-            if (--d[j]) == 0
-                q[++ tt] = j; 
+            for (int i = h[t]; i != -1; i= ne[i]) {
+                int j = e[i];
+                if (--d[j]) == 0
+                    q[++ tt] = j; 
+            }
         }
-    }
 
-    return tt == n - 1;
-}
-```
+        return tt == n - 1;
+    }
+    ```
+
 ^^算法描述(基于DFS实现)^^
 - 对图进行深度优先遍历
 - 当一个顶点完成对其所有邻接顶点的访问后,将该顶点加入列表头
@@ -314,6 +319,38 @@ bool topsort() {
     - 对于顶点v,其最早开始时间等于其所有前驱结点的最早开始时间与对应活动时间之和的最大值
 - 事件最迟开始时间
     - 汇点的最迟开始时间为关键路径权值之和,从汇点开始按照逆拓扑排序计算
-    - 对于顶点v,其最迟开始的事件等于其所有后继结点的最迟开始时间与对应活动之差的最大值
+    - 对于顶点v,其最迟开始的事件等于其所有后继结点的最迟开始时间与对应活动之差的最小值
 
 对于活动 $E<i,j>$ 其最早开始时间为 $EST[i]$ ,最晚开始时间为 $LST[j]-duration(i,j)$ 其中duration表示活动$<i,j>$的持续时间
+
+以下面这个例题说明具体计算过程
+
+![](images/AOE网络.png)
+
+首先确定事件(顶点的)最早开始时间,从源点`1`开始,其最早开始时间为0
+
+接着按照拓扑序,应该确定`2`和`3`的`最早开始时间,显然为2和5 
+
+其他类似....,可以得到
+
+| 1 | 2 | 3 | 4 | 5 | 6 |
+|-----|-----|-----|-----|-----|-----|
+| 0 | 2 | 5 | 8 | 9 | 12 |
+
+再确定事件的最迟发生时间,从汇点`6`开始,其最迟发生事件为12
+
+接着按照逆拓扑序确定,所谓逆拓扑序就是每次寻找出度为0的结点
+
+例如再`6`确定后,只有`5`的出度为0故确定结点5的最迟发生事件,等于其所有后继结点与活动持续时间之差的最小值,由于`5`只有`6`一个后继结点,故其最晚发生时间为11
+
+接着发现只有`4`的出度为0,而其后继结点为`5`和`6`分别减去其对应活动的持续时间为`10,8`取最小值,结果为`8`
+
+其余结点类似,最终有
+
+| 1 | 2 | 3 | 4 | 5 | 6 |
+|-----|-----|-----|-----|-----|-----|
+| 0 | 4 | 5 | 8 | 11 | 12 |
+
+确定了事件后通过活动与时间的关系可以很容易的确定活动的最早开始时间和最晚开始时间.
+
+例如活动`a`其最早开始时间与弧尾`1`的最早开始时间一致,而最迟开始时间为弧头`2`的最迟开始-活动`a`的持续时间=4-2=2,其余结点类似.
