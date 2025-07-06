@@ -924,11 +924,11 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      图
+      图的基本概念,存储与遍历
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="图">
+    <nav class="md-nav" aria-label="图的基本概念,存储与遍历">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1812,11 +1812,11 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      图
+      图的基本概念,存储与遍历
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="图">
+    <nav class="md-nav" aria-label="图的基本概念,存储与遍历">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1954,7 +1954,7 @@
 
 
 <h1 id="_1">图与图算法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<h2 id="_2">图<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_2">图的基本概念,存储与遍历<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>图是一个二元组<span class="arithmatex">\(G=(V,E)\)</span>其中<span class="arithmatex">\(V\)</span>为顶点的集合,<span class="arithmatex">\(E\)</span>是两个顶点间边(弧)的集合</p>
 <h3 id="_3">图的基本术语<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p><ins>有向图</ins> 弧(边)具有方向性的图,用<span class="arithmatex">\(&lt;V_1,V_2&gt;\)</span>表示一条由<span class="arithmatex">\(A_1\rightarrow A_2\)</span>有向弧,其中<span class="arithmatex">\(A_1\)</span>被称为弧尾,<span class="arithmatex">\(A_2\)</span>被称为弧头.</p>
@@ -1997,6 +1997,8 @@
 <p>主要有dfs和bfs两种,需要掌握手动模拟和代码.</p>
 <p>简单来说深度优先遍历就是一路走到黑,不撞南墙不回头;而宽度优先遍历则是优先遍历最近的点.</p>
 <p>在代码实现上dfs通常用递归实现,代码比较简单;bfs通过队列实现,代码比较长.</p>
+<details class="success">
+<summary>算法实现</summary>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
@@ -2053,6 +2055,7 @@
 <a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
+</details>
 <h2 id="_6">图算法<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <h3 id="dijkstra">Dijkstra算法(单源无负权重最短路问题)<a class="headerlink" href="#dijkstra" title="Permanent link">&para;</a></h3>
 <p><ins class="critic">解决从一个顶点到其他顶点间的最短路问题</ins></p>
@@ -2076,7 +2079,9 @@
 </ul>
 </li>
 </ul>
-<p><img alt="alt text" src="../images/Dijkstra.png" />
+<p><img alt="alt text" src="../images/Dijkstra.png" /></p>
+<details class="success">
+<summary>算法实现</summary>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
@@ -2142,10 +2147,13 @@
 <a id="__codelineno-1-31" name="__codelineno-1-31"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dist</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x3f3f3f3f</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
 <a id="__codelineno-1-32" name="__codelineno-1-32"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">n</span><span class="p">];</span><span class="w">  </span><span class="c1">// 返回起点到终点的最短距离</span>
 <a id="__codelineno-1-33" name="__codelineno-1-33"></a><span class="p">}</span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
+</details>
 <h3 id="floyd-dp">Floyd算法 (三重循环--DP)<a class="headerlink" href="#floyd-dp" title="Permanent link">&para;</a></h3>
 <p><ins class="critic">解决所有顶点到其他顶点最短路问题</ins></p>
-<p>这个很少考察,本质是基于DP的但DP不属于考研内容.
+<p>这个很少考察,本质是基于DP的但DP不属于考研内容.</p>
+<details class="success">
+<summary>算法实现</summary>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span>
 <span class="normal"><a href="#__codelineno-2-3">3</a></span>
@@ -2155,7 +2163,8 @@
 <a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">++</span><span class="p">)</span><span class="w"> </span>
 <a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">            </span><span class="n">dist</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">min</span><span class="p">(</span><span class="n">dist</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">+</span><span class="n">dist</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">],</span><span class="w"> </span><span class="n">dist</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
+</details>
 <h3 id="prim">Prim算法(选点)<a class="headerlink" href="#prim" title="Permanent link">&para;</a></h3>
 <p><ins>算法描述</ins> </p>
 <ul>
@@ -2166,7 +2175,9 @@
 <li>重复直到 U 包含所有顶点</li>
 </ul>
 <p><img alt="alt text" src="../images/Prim.png" /></p>
-<p><a href="https://www.acwing.com/problem/content/860/">测试连接</a>
+<p><a href="https://www.acwing.com/problem/content/860/">测试连接</a></p>
+<details class="success">
+<summary>算法实现</summary>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
@@ -2230,7 +2241,8 @@
 <a id="__codelineno-3-30" name="__codelineno-3-30"></a>
 <a id="__codelineno-3-31" name="__codelineno-3-31"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span><span class="w">  </span><span class="c1">// 返回MST的总权重</span>
 <a id="__codelineno-3-32" name="__codelineno-3-32"></a><span class="p">}</span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
+</details>
 <h3 id="kruskal">Kruskal算法(选边)<a class="headerlink" href="#kruskal" title="Permanent link">&para;</a></h3>
 <p><ins>算法描述</ins> </p>
 <ul>
@@ -2249,6 +2261,8 @@
 <li>当边集包含(n-1)条边的时候算法结束.</li>
 </ul>
 <p><a href="https://www.acwing.com/problem/content/861/">测试连接</a></p>
+<details class="success">
+<summary>算法实现</summary>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
@@ -2297,6 +2311,7 @@
 <a id="__codelineno-4-23" name="__codelineno-4-23"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span><span class="w">  </span><span class="c1">// 返回最小生成树的权重</span>
 <a id="__codelineno-4-24" name="__codelineno-4-24"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
+</details>
 <h3 id="aoe">拓扑排序与关键路径(AOE)<a class="headerlink" href="#aoe" title="Permanent link">&para;</a></h3>
 <p>拓扑排序本质是描述一种前驱关系,只有有向无环图(DAG)才有拓扑序列.</p>
 <p><a href="https://www.acwing.com/problem/content/850/">测试连接</a></p>
@@ -2315,7 +2330,10 @@
 </li>
 <li>如果输出顶点树不等于图中顶点数则说明图存在环</li>
 <li>若在算法过程中队列中最大元素大于1,则说明拓扑序列不唯一
-<img alt="alt text" src="../images/topsort.png" />
+<img alt="alt text" src="../images/topsort.png" /></li>
+</ul>
+<details class="success">
+<summary>算法实现</summary>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
@@ -2352,11 +2370,11 @@
 <a id="__codelineno-5-17" name="__codelineno-5-17"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">tt</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <a id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<ins>算法描述(基于DFS实现)</ins></li>
-<li>对图进行深度优先遍历</li>
-<li>当一个顶点完成对其所有邻接顶点的访问后,将该顶点加入列表头</li>
-<li>最终的结果即为拓扑排序</li>
-</ul>
+</details>
+<p><ins>算法描述(基于DFS实现)</ins>
+- 对图进行深度优先遍历
+- 当一个顶点完成对其所有邻接顶点的访问后,将该顶点加入列表头
+- 最终的结果即为拓扑排序</p>
 <p>如果不加入头,而是加入列表尾则输出的是逆拓扑序列</p>
 <p><ins>AOE网相关内容</ins>
 - 活动 (activity-&gt; A) 弧(edge-&gt;E)表示活动,弧的权值表示活动时间
@@ -2371,11 +2389,67 @@
 </li>
 <li>事件最迟开始时间<ul>
 <li>汇点的最迟开始时间为关键路径权值之和,从汇点开始按照逆拓扑排序计算</li>
-<li>对于顶点v,其最迟开始的事件等于其所有后继结点的最迟开始时间与对应活动之差的最大值</li>
+<li>对于顶点v,其最迟开始的事件等于其所有后继结点的最迟开始时间与对应活动之差的最小值</li>
 </ul>
 </li>
 </ul>
 <p>对于活动 <span class="arithmatex">\(E&lt;i,j&gt;\)</span> 其最早开始时间为 <span class="arithmatex">\(EST[i]\)</span> ,最晚开始时间为 <span class="arithmatex">\(LST[j]-duration(i,j)\)</span> 其中duration表示活动<span class="arithmatex">\(&lt;i,j&gt;\)</span>的持续时间</p>
+<p>以下面这个例题说明具体计算过程</p>
+<p><img alt="" src="../images/AOE%E7%BD%91%E7%BB%9C.png" /></p>
+<p>首先确定事件(顶点的)最早开始时间,从源点<code>1</code>开始,其最早开始时间为0</p>
+<p>接着按照拓扑序,应该确定<code>2</code>和<code>3</code>的`最早开始时间,显然为2和5 </p>
+<p>其他类似....,可以得到</p>
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2</td>
+<td>5</td>
+<td>8</td>
+<td>9</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<p>再确定事件的最迟发生时间,从汇点<code>6</code>开始,其最迟发生事件为12</p>
+<p>接着按照逆拓扑序确定,所谓逆拓扑序就是每次寻找出度为0的结点</p>
+<p>例如再<code>6</code>确定后,只有<code>5</code>的出度为0故确定结点5的最迟发生事件,等于其所有后继结点与活动持续时间之差的最小值,由于<code>5</code>只有<code>6</code>一个后继结点,故其最晚发生时间为11</p>
+<p>接着发现只有<code>4</code>的出度为0,而其后继结点为<code>5</code>和<code>6</code>分别减去其对应活动的持续时间为<code>10,8</code>取最小值,结果为<code>8</code></p>
+<p>其余结点类似,最终有</p>
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>4</td>
+<td>5</td>
+<td>8</td>
+<td>11</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<p>确定了事件后通过活动与时间的关系可以很容易的确定活动的最早开始时间和最晚开始时间.</p>
+<p>例如活动<code>a</code>其最早开始时间与弧尾<code>1</code>的最早开始时间一致,而最迟开始时间为弧头<code>2</code>的最迟开始-活动<code>a</code>的持续时间=4-2=2,其余结点类似.</p>
 
 
 
