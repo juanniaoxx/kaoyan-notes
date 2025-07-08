@@ -9,31 +9,74 @@
 \fi
 
 \chapter{向量}
+\section{知识体系}
+\[
+\fbox{\text{向量}}=
+\begin{cases}
+    \fbox{\text{基本运算}} \begin{cases}
+        \alpha + \beta \\
+        k\alpha \\
+        [\alpha, \beta]
+    \end{cases} \\
+    \fbox{\text{线性表示}} \begin{cases}
+        \fbox{\text{定义}}\quad\beta=k_1\alpha_1+k_2\alpha_2+\ldots+k_s\alpha_s \\
+        \fbox{\text{充要条件}} \begin{cases}
+            \text{非其次线性方程组}(\alpha_1,\alpha_2,\ldots,\alpha_s)(x_1,x_2,\ldots,x_s)^{T}=\beta\text{有解} \\
+            r(\alpha_1,\alpha_2,\ldots,alpha_s)=r(\alpha_1,\alpha_2,\ldots,\alpha_s\mid \beta)
+        \end{cases} \\
+        \fbox{\text{求法}} \left(\alpha_1,\alpha_2,\ldots,\alpha_s\mid\beta\right) \xrightarrow{\text{初等行变换}}\text{行最简形矩阵}
+    \end{cases} \\
+    \fbox{\text{线性相关}} \begin{cases}
+        \fbox{\text{定义}} \\
+        \fbox{\text{充要条件}} \begin{cases}
+            \text{至少有一个向量可以由其余向量线性表示} \\
+            \text{齐次线性方程组} (\alpha_1,\alpha_2,\ldots,\alpha_s)(x_1,x_2,\ldots,x_s)^{T}=0 \text{有非零解} \\
+            r(\alpha_1,\alpha_2,\ldots,\alpha_s) < s
+        \end{cases}\\
+        \fbox{\text{充分条件}}
+    \end{cases} \\
+    \fbox{\text{线性无关}} \begin{cases}
+        \fbox{\text{定义}} \\
+        \fbox{\text{充要条件}}  \begin{cases}
+            \text{任意向量都不可以由其余向量线性表示} \\
+            \text{齐次线性方程组} (\alpha_1,\alpha_2,\ldots,\alpha_s)(x_1,x_2,\ldots,x_s)^{T}=0 \text{只有零解} \\
+            r(\alpha_1,\alpha_2,\ldots,\alpha_s) = s
+        \end{cases}\\
+        \fbox{\text{充分条件}} \\
+    \end{cases} \\
+    \fbox{\text{极大无关组与向量组的秩}} \begin{cases}
+        \fbox{\text{定义}} \\
+        \fbox{\text{求法}} (\alpha_1,\alpha_2,\ldots,\alpha_s)\xrightarrow{\text{初等行变换}}\text{行阶梯形}
+    \end{cases}
+\end{cases}
+\]
+
 
 \section{线性表示的判定与计算}
 
 \begin{enumerate}[label=\arabic*.]
     \item 设向量组 $\alpha, \beta, \gamma$ 与数 $k, l, m$ 满足 $k\alpha + l\beta + m\gamma = 0$ ($km \neq 0$)，则
     \begin{enumerate}
-        \item (A) $\alpha, \beta$ 与 $\alpha, \gamma$ 等价
-        \item (B) $\alpha, \beta$ 与 $\beta, \gamma$ 等价
-        \item (C) $\alpha, \gamma$ 与 $\beta, \gamma$ 等价
-        \item (D) $\alpha$ 与 $\gamma$ 等价
+        \item [(A)] $\alpha, \beta$ 与 $\alpha, \gamma$ 等价
+        \item [(B)] $\alpha, \beta$ 与 $\beta, \gamma$ 等价
+        \item [(C)] $\alpha, \gamma$ 与 $\beta, \gamma$ 等价
+        \item [(D)] $\alpha$ 与 $\gamma$ 等价
     \end{enumerate}
     
     \begin{solution}
-    【详解】
+    \newpage
     \end{solution}
     
     \item (2004, 数三) 设 $\alpha_1 = (1,2,0)^T$, $\alpha_2 = (1, a+2, -3a)^T$, $\alpha_3 = (-1, -b-2, a+2b)^T$,
     $\beta = (1,3,-3)^T$。当 $a, b$ 为何值时，
     \begin{enumerate}
-        \item (II) $\beta$ 可由 $\alpha_1, \alpha_2, \alpha_3$ 唯一地线性表示，并求出表示式；
-        \item (III) $\beta$ 可由 $\alpha_1, \alpha_2, \alpha_3$ 线性表示，但表示式不唯一，并求出表示式。
+        \item [(I)] $\beta$不能由$\alpha_1, \alpha_2, \alpha_3$线性表示
+        \item [(II)] $\beta$ 可由 $\alpha_1, \alpha_2, \alpha_3$ 唯一地线性表示，并求出表示式；
+        \item [(III)] $\beta$ 可由 $\alpha_1, \alpha_2, \alpha_3$ 线性表示，但表示式不唯一，并求出表示式。
     \end{enumerate}
     
     \begin{solution}
-    【详解】
+    \newpage
     \end{solution}
     
     \item (2019, 数二、三) 设向量组 (I) $\alpha_1 = (1,1,4)^T$, $\alpha_2 = (1,0,4)^T$, $\alpha_3 = (1,2, a^2+3)^T$；
@@ -41,65 +84,73 @@
     并将 $\beta_3$ 由 $\alpha_1, \alpha_2, \alpha_3$ 线性表示。
     
     \begin{solution}
-    【详解】
+    \newpage
     \end{solution}
 \end{enumerate}
 
 \section{线性相关与线性无关的判定}
 
-\begin{enumerate}[label=\arabic*.,start=3]
+\begin{enumerate}[label=\arabic*.,start=4]
     \item (2014, 数一、二、三) 设 $\alpha_1, \alpha_2, \alpha_3$ 均为 3 维列向量，则对任意常数 $k, l$，$\alpha_1 + k\alpha_3$, $\alpha_2 + l\alpha_3$ 线性无关是 $\alpha_1, \alpha_2, \alpha_3$ 线性无关的
     \begin{enumerate}
-        \item (A) 必要非充分条件
-        \item (B) 充分非必要条件
-        \item (C) 充分必要条件
-        \item (D) 既非充分又非必要条件
+        \item [(A)] 必要非充分条件
+        \item [(B)] 充分非必要条件
+        \item [(C)] 充分必要条件
+        \item [(D)] 既非充分又非必要条件
     \end{enumerate}
     
     \begin{solution}
-    【详解】
+    \newpage
     \end{solution}
     
     \item 设 $A$ 为 $n$ 阶矩阵，$\alpha_1, \alpha_2, \alpha_3$ 均为 $n$ 维列向量，满足 $A^2\alpha_1 = A\alpha_1 \neq 0$, $A^2\alpha_2 = \alpha_1 + A\alpha_2$,
     $A^2\alpha_3 = \alpha_2 + A\alpha_3$，证明 $\alpha_1, \alpha_2, \alpha_3$ 线性无关。
     
     \begin{solution}
-    【详解】
+    \newpage
     \end{solution}
     
     \item 设 4 维列向量 $\alpha_1, \alpha_2, \alpha_3$ 线性无关，与 4 维列向量 $\beta_1, \beta_2$ 两两正交，证明 $\beta_1, \beta_2$ 线性相关。
     
     \begin{solution}
-    【详解】
+    \newpage
     \end{solution}
 \end{enumerate}
 
 \section{极大线性无关组的判定与计算}
 
-\begin{enumerate}[label=\arabic*.,start=6]
+\begin{enumerate}[label=\arabic*.,start=7]
     \item 设 $\alpha_1 = (1,1,1,3)^T$, $\alpha_2 = (-1,-3,5,1)^T$, $\alpha_3 = (3,2,-1, a+2)^T$, $\alpha_4 = (-2,-6,10, a)^T$。
     \begin{enumerate}
-        \item (I) 当 $a$ 为何值时，该向量组线性相关，并求其一个极大线性无关组；
-        \item (II) 当 $a$ 为何值时，该向量组线性无关，并将 $\alpha = (4,1,6,10)^T$ 由其线性表示。
+        \item [(I)] 当 $a$ 为何值时，该向量组线性相关，并求其一个极大线性无关组；
+        \item [(II)] 当 $a$ 为何值时，该向量组线性无关，并将 $\alpha = (4,1,6,10)^T$ 由其线性表示。
     \end{enumerate}
     
     \begin{solution}
-    【详解】
+    \newpage
     \end{solution}
     
     \item 证明:
     \begin{enumerate}
-        \item (I) 设 $A, B$ 为 $m \times n$ 矩阵，则 $r(A+B) \leq r(A) + r(B)$；
-        \item (II) 设 $A$ 为 $m \times n$ 矩阵，$B$ 为 $n \times s$ 矩阵，则 $r(AB) \leq \min\{r(A), r(B)\}$。
+        \item [(I)] 设 $A, B$ 为 $m \times n$ 矩阵，则 $r(A+B) \leq r(A) + r(B)$；
+        \item [(II)] 设 $A$ 为 $m \times n$ 矩阵，$B$ 为 $n \times s$ 矩阵，则 $r(AB) \leq \min\{r(A), r(B)\}$。
     \end{enumerate}
     
     \begin{solution}
-    【详解】
+    \newpage
     \end{solution}
 \end{enumerate}
 
 \section{向量空间(数一专题)}
-
+\begin{remark}
+    向量空间 \\
+    \textbf{过度矩阵} \\
+    由基$\alpha_1,\alpha_2,\ldots,\alpha_n$到基$\beta_1,\beta_2,\ldots,\beta_n$的过渡矩阵为$(\beta_1,\beta_2,\ldots,\beta_n)
+    =(\alpha_1,\alpha_2,\ldots,\alpha_n)C$即$C=(\alpha_1,\alpha_2,\ldots,\alpha_n)^{-1}(\beta_1,\beta_2,\ldots,\beta_n)$ \\
+    \textbf{坐标转换公式} \\
+    设向量$\gamma$在基$\alpha_1,\alpha_2,\ldots,\alpha_n$中的坐标为$x=(x_1,x_2,\ldots,x_n)^{T}$,在基$\beta_1,\beta_2,\ldots,\beta_n$
+    中的坐标为$y=(y_1,y_2,\ldots,y_n)^{T}$则坐标转换公式为$x=Cy$
+\end{remark}
 \begin{enumerate}[label=\arabic*.,start=8]
     \item (2015, 数一) 设向量组 $\alpha_1, \alpha_2, \alpha_3$ 为 $R^3$ 的一个基，$\beta_1 = 2\alpha_1 + 2k\alpha_3$, $\beta_2 = 2\alpha_2$,
     $\beta_3 = \alpha_1 + (k+1)\alpha_3$。
@@ -109,7 +160,7 @@
     \end{enumerate}
     
     \begin{solution}
-    【详解】
+    \newpage
     \end{solution}
 \end{enumerate}
 

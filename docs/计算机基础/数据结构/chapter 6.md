@@ -219,7 +219,9 @@ tags: [数据结构]
     }
 
     ```
+
 ### Kruskal算法(选边)
+
 ^^算法描述^^ 
 
 - 初始化 
@@ -231,6 +233,8 @@ tags: [数据结构]
       - 如果不在,则将该边加入边集,并在并查集中合并u和v
       - 如果存在,则跳过这条边
 - 当边集包含(n-1)条边的时候算法结束.
+
+![alt text](./images/Kruskal.png)
 
 [测试连接](https://www.acwing.com/problem/content/861/)
 ??? success "算法实现"

@@ -12,6 +12,13 @@ hide:
 柔情似水，佳期如梦，忍顾鹊桥归路。两情若是久长时，又岂在朝朝暮暮。
 
 ![](考研时间轴.png)
+
+笔记参考书
+
+DS: 俞勇-数据结构, CLRS - Introduction to Algorithm 
+计算机网络: 胡亮-计算机网络, cs168-textbooks 
+计算机组成原理: 高小鹏-计算机组成与实现, 袁春风-计算机系统, Computer System A Programmer's Perspective 
+操作系统: 操作系统-精髓与实现, Operating Systems: Three Easy Pieces
 <!-- material/tags -->
 
 
