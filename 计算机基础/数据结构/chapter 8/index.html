@@ -1182,6 +1182,8 @@
       
         
       
+        
+      
     
     
     
@@ -1258,7 +1260,7 @@
   
   
   <span class="md-ellipsis">
-    物理层
+    数据通信基础
     
   </span>
   
@@ -1281,7 +1283,7 @@
   
   
   <span class="md-ellipsis">
-    数据链路层
+    物理层
     
   </span>
   
@@ -1304,7 +1306,7 @@
   
   
   <span class="md-ellipsis">
-    网络层
+    数据链路层
     
   </span>
   
@@ -1327,7 +1329,7 @@
   
   
   <span class="md-ellipsis">
-    运输层
+    网络层
     
   </span>
   
@@ -1346,6 +1348,29 @@
   
     <li class="md-nav__item">
       <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/chapter%206/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    传输层
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/chapter%207/" class="md-nav__link">
         
   
   
@@ -2302,8 +2327,8 @@
 <p>快速排序有两个版本 <ins>Hoare分区版本</ins> 和 <ins>Lomuto分区版本</ins></p>
 <p><img alt="alt text" src="../images/quick_sort.png" /></p>
 <h4 id="lomutoclrs">Lomuto分区版本(CLRS介绍的)<a class="headerlink" href="#lomutoclrs" title="Permanent link">&para;</a></h4>
-<p><img alt="" src="https://pic1.zhimg.com/v2-71c0f1c0ceb0e053c423426e7f343602_b.webp" />
-<ins>算法描述</ins> </p>
+<p><img alt="" src="https://pic1.zhimg.com/v2-71c0f1c0ceb0e053c423426e7f343602_b.webp" /></p>
+<p><ins>算法描述</ins></p>
 <ol>
 <li>​选择主元(pivot)​​：通常选择最后一个元素作为分区点</li>
 </ol>
@@ -2608,9 +2633,9 @@
 </table>
 <h2 id="_10">外部排序<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <h3 id="_11">二路归并外排序<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<p>与内排序的基本思想一致,举例说明二路归并外排序的基本步骤.
-<ins>算法描述</ins>
-​1. 分割阶段​</p>
+<p>与内排序的基本思想一致,举例说明二路归并外排序的基本步骤.</p>
+<p><ins>算法描述</ins></p>
+<p>​1. 分割阶段​</p>
 <p>​分块读入​：将大文件划分为若干小块，每次读取内存能容纳的数据量（如1GB内存则分块≤1GB）。</p>
 <p>​内部排序​：在内存中对每个小块使用快速排序等算法排序，完成后写回磁盘。此时磁盘上有多个有序的子文件​（称为“归并段”）。</p>
 <p>​2. 归并阶段​</p>
@@ -2654,8 +2679,10 @@
 <p>建立最佳归并树的过程即huffman算法具体看chapter 4 - huffman算法</p>
 <p>其中普通归并树需要的访外总次数(读/写块次数)为 <span class="arithmatex">\((6+13+25+8+9+2+14+7+10)\times 2\times 2=376\)</span> </p>
 <p>而最佳归并树的次数为 <span class="arithmatex">\((2+6+7)\times 3\times 2 + (13+14)\times 2\times 2 + (8+9+10)\times 2\times 2 + 25\times 2 = 356\)</span></p>
+<p><ins>虚拟结点</ins> 最佳归并树一定要是m叉树,若结点数目不够则需要补充虚拟结点使得树的所有非叶结点的度都为m</p>
 <h3 id="_16">置换选择外排序<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
-<p>是对外部排序的预处理-&gt;生成顺串,关键在于引入一个长度为<code>M</code>条记录的RAM(数组,支持随机存取),在输入缓冲区中维护一个堆</p>
+<p>是对<ins class="critic">外部排序的预处理-&gt;生成顺串(归并段)</ins></p>
+<p>关键在于引入一个长度为<code>M</code>条记录的RAM(数组,支持随机存取),在输入缓冲区中维护一个堆</p>
 <p><img alt="" src="../images/%E7%BD%AE%E6%8D%A2%E9%80%89%E6%8B%A9%E7%AE%97%E6%B3%95.png" /></p>
 <p>举例说明 假设RAM可以存储3条记录,输入数据为 {5, 11, 7, 2, 9, 8, 6} 要求按升序排列</p>
 <p>第一步初始化堆 首先加入三条记录 {5, 11, 7}, 此时堆顶元素为5 </p>
