@@ -2,10 +2,21 @@
     "cSpell.words": [
         "CDMA",
         "Cramer",
+        "CSMA",
+        "Erhernet",
+        "HDLC",
         "Hoare",
+        "kbps",
         "Lomuto",
         "SDTM",
         "TSAP",
         "xlongequal"
+    ],
+    "cSpell.ignoreWords": [
+        "DIFS",
+        "DSAP",
+        "PIFS",
+        "SIFS",
+        "SSAP"
     ]
 }

@@ -40,6 +40,13 @@
         虽然一直讲物理层-数据链路层-网络层-传输层-应用层,TCP/IP五层结构;但如果问层次,其实物理层和数据链路层做的
         事情可以被概况的,通常称为网络接口层.
     \end{solution}
+    \item 二进制信号在信噪比为127:1的4kHz的信道上传输,最大数据传输速率可达到() \\
+    A.28000bps\qquad B.8000bps\qquad C.4000bps\qquad D.无限大
+    \begin{solution}
+        考虑奈氏定理,有 $B=2W=8kBand$ 此时最大数据传输速率为 $$R_{N-max}= B\times\log_{2}(n)=8kbps$$ 
+        考虑香农定理,有 $$R_{S-max}=W\times\log_{2}(1+S/N)=4kHz\times\log_{2}(1+127)=28kbps$$ 
+        最终的传输速率有二者的{\textbf{最小值}}限制,故$R_{max}=\min{(R_{Nmax},R_{Smax})}=8kpbs$
+    \end{solution}
 \end{enumerate}
 
 \section{计算机组成原理}
