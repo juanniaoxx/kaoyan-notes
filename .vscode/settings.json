@@ -6,9 +6,12 @@
         "Erhernet",
         "HDLC",
         "Hoare",
+        "IGMP",
         "kbps",
         "Lomuto",
+        "OSPF",
         "SDTM",
+        "tracert",
         "TSAP",
         "xlongequal"
     ],
