@@ -2,6 +2,23 @@
 \documentclass[12pt, a4paper, oneside, UTF8]{ctexbook}
 \def\path{../config}
 \input{../config/_config}
+\usepackage{listings} % 用于插入代码
+
+% 定义代码高亮风格
+\lstset{
+    basicstyle=\ttfamily\small,        % 基本字体样式（等宽小字体）
+    keywordstyle=\color{blue},         % 关键字颜色
+    commentstyle=\color{green},        % 注释颜色
+    stringstyle=\color{red},           % 字符串颜色
+    numbers=right,
+    breaklines=true,                   % 自动换行
+    frame=single,                      % 代码框边框
+    rulecolor=\color{black},           % 边框颜色
+    captionpos=b,                      % 标题位置（底部）
+    showspaces=false,                  % 不显示空格标记
+    showstringspaces=false,            % 不显示字符串中的空格标记
+    language=C                         % 设置语言为 C
+}
 \begin{document}
 % \input{../config/cover}
 \else
@@ -9,6 +26,85 @@
 \chapter{计算机基础}
 \section{数据结构}
 \begin{enumerate}
+    \item  评估下面这段代码的时间复杂度()
+    \begin{lstlisting}[language=C]
+        int func(int n) {
+            int i = 0, sum = 0;
+            while(sum < n) sum += ++i;
+            return i;
+        }
+    \end{lstlisting}
+    \begin{solution}
+        
+    \end{solution}
+
+    \item 评估下面这段代码的时间复杂度()
+    \begin{lstlisting}[language=C]
+        int sum = 0;
+            for(int i = 1; i < n; i *= 2)
+                for (int j = 0; j < i; j++)
+                    sum++;
+    \end{lstlisting}
+
+    \begin{solution}
+        
+    \end{solution}
+
+    \item 一个栈的入栈序列为\underline{$1,2,3,\ldots,n$},出栈序列是\underline{$P_1,P_2,P_3,\ldots,P_n$}.若
+    $P_2=3$,则$P_3$的可能取值的个数可能是() \\
+    A.n-1\qquad B.n-2\qquad C.n-3\qquad D.无法确认 
+
+    \item 已知\underline{循环队列}存储在一维数组$A[0,\ldots,n-1]$中,且队列非空的时候front和rear分别指向队头和队尾.若初始时
+    队列为空,且要求第一个进入队列的元素存储在$A[0]$,则初始时front和rear的值分别为() \\
+    A.0,0\qquad\qquad B.0,n-1\qquad\qquad C.n-1,0\qquad\qquad D.n-1,n-1
+
+    \item \underline{循环队列}放在一维数组$A[0,\ldots,M-1]$中,end1指向队头元素,end2指向队尾元素的后一个位置.
+    假设队列两端都可以进行入队和出队操作,队列中最多能容纳$M-1$个元素.初始队列不为空.下列判断对空和队满的条件中,正确的是() \\
+    A. 对空:end1\ ==\ end2; \qquad\qquad\qquad\qquad\quad 队满:end1\ ==\ (end2+1)mod\ M\\
+    B. 对空:end1\ ==\ end2; \qquad\qquad\qquad\qquad\quad 队满:end2\ ==\ (end1+1)mod\ M-1\\
+    C. 对空:end2\ ==\ (end1+1)mod\ M; \qquad\qquad 队满:end1\ ==\ (end2+1)mod\ M\\
+    D. 对空:end1\ ==\ (end2+1)mod\ M; \qquad\qquad 队满:end2\ ==\ (end1+1)mod\ (M-1)
+    
+    \item \underline{火车重排问题}\\
+    假设火车入口和出口之间有n条轨道,列车驶入的顺序为\underline{$8,4,2,5,3,9,1,6,7$}若希望
+    得到的驶出顺序为 \underline{$1\sim 9$}则n至少为()\\
+    A.2\qquad\qquad B.3\qquad\qquad C.4\qquad\qquad D.5
+
+    \item 在一颗度为4的树T中,若有20个度为4的结点,10个度为3的结点,1个度为2的结点,10个度为1的结点,则树T
+    的叶结点个数为() \\
+    A.41\qquad\qquad B.82\qquad\qquad C.113\qquad\qquad D.122
+
+    \item 已知一颗完全二叉树的第六层(设根为第一层)由8个叶结点,则该完全二叉树的结点个数\underline{最多为}() \\
+    A.39\qquad\qquad B.52\qquad\qquad C.111\qquad\qquad D.119
+    
+    \item 若一颗完全二叉树有786个结点,则该二叉树中叶结点的个数为() \\
+    A.257\qquad\qquad B.258\qquad\qquad C.384\qquad\qquad D.385
+
+    \item 先序序列为\underline{$a,b,c,d$}的不同二叉树的个数为() \\
+    A.13 \qquad\qquad B.14 \qquad\qquad C.15\qquad\qquad D.16
+
+    \item 将森林转换为对应的二叉树,若在二叉树中,结点u是结点v的父结点的父结点,则在原来的森林中,u和v可能的关系是()
+    \begin{enumerate}
+        \item [(I)] 父子关系
+        \item [(II)] 兄弟关系
+        \item [(III)] u的父结点与v的父结点是兄弟关系
+    \end{enumerate}
+
+    \item 已知一颗有2011个结点的树,其叶结点的个数为116,该树对应的二叉树中\underline{无右孩子}的结点个数为()
+    
+    \item 已知森林F及与之对应的二叉树T,若F的先根遍历序列为\underline{$a,b,c,d,e,f$},中根遍历序列为\underline{$b,a,d,f,e,c$},则T的后根
+    遍历序列为()
+
+    \item 对任意给定的含n(n>2)个字符的有限集合S,用二叉树表示S的哈夫曼编码集与定长编码集,分别得到二叉树
+    $T_1,T_2$.下列叙述中,正确的是() \\
+    A. $T_1$和$T_2$的结点个数相同 \\
+    B. $T_1$的高度大于$T_2$的高度 \\
+    C. 出现频次不同的字符在$T_1$中处于不同的层 \\
+    D. 出现频次不同的字符在$T_2$中处于相同的层
+
+    \item 在由6个字符构成的字符集S中,各字符出现的频次为\underline{$3,4,5,6,8,10$},为S构造的哈夫曼树的
+    加权平均长度为() \\
+    A.2.4\qquad\qquad B.2.5\qquad\qquad C.2.67\qquad\qquad D.2.75
     \item 对于任意一棵高度为5且有10个结点的二叉树,若采用顺序存储结构保存,每个结点占一个存储单元,则存放该二叉树
     至少需要多少存储单元? 
     \begin{solution}

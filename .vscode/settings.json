@@ -1,23 +1,32 @@
 {
     "cSpell.words": [
+        "behaviour",
         "CDMA",
         "Cramer",
         "CSMA",
         "Erhernet",
         "HDLC",
         "Hoare",
+        "Iberts",
         "IGMP",
+        "Karn",
         "kbps",
         "Lomuto",
+        "mathrm",
+        "NSAP",
         "OSPF",
         "SDTM",
+        "ssthresh",
         "tracert",
         "TSAP",
         "xlongequal"
     ],
     "cSpell.ignoreWords": [
+        "Alberts",
+        "Brosnan",
         "DIFS",
         "DSAP",
+        "Frans",
         "PIFS",
         "SIFS",
         "SSAP"
