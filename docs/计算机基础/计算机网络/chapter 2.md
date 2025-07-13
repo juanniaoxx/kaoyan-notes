@@ -4,6 +4,8 @@ tags: [计算机网络]
 
 # 数据通信基础
 
+![](./images/数据通信基础.png)
+
 ## 通信系统的组成
 
 ![alt text](./images/通信系统.png)
