@@ -1271,6 +1271,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    绪论
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1282,6 +1295,61 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      计算机系统的组成部分
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      程序的编译过程
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      计算机系统的层次系统
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      计算机性能指标和评价
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2456,6 +2524,50 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      计算机系统的组成部分
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      程序的编译过程
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      计算机系统的层次系统
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      计算机性能指标和评价
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2497,6 +2609,83 @@
 
 
 <h1 id="_1">计算机系统概述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">计算机系统的组成部分<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>一台完整的计算机由<ins class="critic">软件与硬件</ins>组成,有一部分固化的软件称为<ins class="critic">固件</ins>.</p>
+<p><ins>冯 诺依曼体系结构</ins> 计算机的硬件系统包含 <ins class="critic">运算器,控制器,存储器,输入输出设备</ins>五部分. 其中运算器和控制器合称中央处理器(CPU),CPU和存储系统合称主机.</p>
+<p><img alt="alt text" src="../images/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.png" /></p>
+<p><ins>冯 诺依曼体系结构</ins> 的核心思想 </p>
+<ul>
+<li>
+<p><ins class="critic">存储程序</ins> 将程序和运行程序所需要的数据以<ins class="critic">二进制</ins>的形式存放在存储器中</p>
+</li>
+<li>
+<p><ins class="critic">程序控制</ins> 计算机中的控制器<ins class="critic">逐条</ins>取出存储器中的指令并按顺序执行</p>
+</li>
+</ul>
+<p>软件通常分为 <ins class="critic">系统软件</ins>和<ins class="critic">应用软件</ins>, 常见的系统软件有: <ins class="critic">操作系统</ins>, 程序设计语言及语言处理程序, 数据库管理系统.</p>
+<h2 id="_3">程序的编译过程<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>常见的高级语言有两种 <ins class="critic">编译型</ins>如CPP,C等, <ins class="critic">解释型</ins>如Python. 其中编译型需要通过如下编译步骤生成可执行文件(如.exe文件)才能执行;而解释型语言只需要通过解释器<ins class="critic">逐条</ins>翻译并执行而不需要生成可执行文件.</p>
+<p><img alt="alt text" src="../images/%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B.png" /></p>
+<p><ins class="critic">编译过程</ins></p>
+<ul>
+<li>预处理程序<ul>
+<li>展开头文件(#include),宏定义(#define)等</li>
+</ul>
+</li>
+<li>编译程序<ul>
+<li>将高级语言程序转换边汇编语言程序</li>
+</ul>
+</li>
+<li>汇编程序 <ul>
+<li>将汇编语言程序转换会<ins class="critic">可重定位</ins>的二进制文件</li>
+</ul>
+</li>
+<li>链接器<ul>
+<li>将多个.o文件链接在一起生成可执行的二进制文件</li>
+</ul>
+</li>
+</ul>
+<h2 id="_4">计算机系统的层次系统<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p><img alt="alt text" src="../images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%B1%82%E6%AC%A1%E7%B3%BB%E7%BB%9F.png" /></p>
+<p><ins class="critic">ISA(系统指令集架构)</ins> 是计算机体系结构中与程序设计有关的部分，包含了处理器能够执行的所有指令的集合，以及这些指令的操作数类型、寻址方式等。</p>
+<p>各层之间的关系 <ins class="critic">高层是低层功能的拓展,低层是高层的基础</ins></p>
+<p><ins>软件和硬件逻辑功能的等价性</ins> 在功能层面，硬件和软件可以实现相同或相似的计算或控制逻辑. 通常来说用硬件实现速度更快.</p>
+<h2 id="_5">计算机性能指标和评价<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p><ins class="critic">字长</ins> 指CPU一次能处理的数据位数. <ins class="critic">字长一般和计算机内部存储器,运算器,数据总线</ins>的位宽相同.</p>
+<ul>
+<li>字长越长计算精度越高,反之越低</li>
+<li>字长越长定点数表示范围越大,浮点数表示范围越大,精度越高</li>
+</ul>
+<p><ins class="critic">主存容量</ins> 通常用 MxN表示,其中 M表示存储单元数,也称<ins class="critic">字容量</ins>;N表示每个存储单元存储二进制数,也称<ins class="critic">位容量</ins>.</p>
+<p><ins class="critic">时钟周期</ins> 计算机中的最基本,最小的时间单位. 在一个时钟周期内,CPU仅完成一个最基本的动作.</p>
+<ul>
+<li>时钟周期是时钟频率的倒数, 也称<ins class="critic">节拍周期(T周期)</ins></li>
+</ul>
+<p><ins class="critic">CPI(Clock Cycles Per Instruction)</ins> 执行每条指令所需要的平均时钟周期数.</p>
+<div class="arithmatex">\[
+CPI=\frac{m}{IC}
+\]</div>
+<ul>
+<li>m 表示程序执行所有指令所需要的时钟周期数</li>
+<li>IC 表示总指令条数</li>
+</ul>
+<p><ins class="critic">CPU时间</ins> 又称CPU执行时间.</p>
+<div class="arithmatex">\[
+T_{cpu}=m\times T = \frac{m}{f} = CPI\times IC\times T = \frac{CPI\times IC}{f}
+\]</div>
+<ul>
+<li>T 机器时钟周期</li>
+<li>f 机器的时钟频率</li>
+</ul>
+<p><ins class="critic">IPC(Instruction Per Cycle)</ins> 每个时钟周期CPU能执行的指令条数. 是CPI的倒数.</p>
+<p><ins class="critic">MIPS(Million INstructions Per Second)</ins>  每秒百万条指令. </p>
+<div class="arithmatex">\[
+MIPS=\frac{IC}{T_{cpu}\times 10^6} = \frac{f}{CPI} = IPC\times f
+\]</div>
+<ul>
+<li>f的单位为MHz</li>
+</ul>
+<p><ins class="critic">MFLOPS</ins> 计算机每秒执行浮点数的次数(以M为单位),更大的单位有 GFLOPS(10<sup>9),TFLOPS(10</sup>12),PFLOPS(10<sup>15),EFLOPS(10</sup>18),ZFLOPS(10^21).</p>
 
 
 

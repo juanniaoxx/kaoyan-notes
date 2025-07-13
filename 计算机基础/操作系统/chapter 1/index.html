@@ -1500,6 +1500,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    绪论
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1511,6 +1524,79 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作系统的发展流程
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作系统的基本特征
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      程序运行环境
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作系统结构
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作系统的引导
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      虚拟机
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2456,6 +2542,68 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作系统的发展流程
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作系统的基本特征
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      程序运行环境
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作系统结构
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作系统的引导
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      虚拟机
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2497,6 +2645,196 @@
 
 
 <h1 id="_1">绪论<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p><ins class="critic">操作系统(Operating System, OS)</ins> 是配置在计算机硬件上的第一层<ins class="critic">软件</ins>,是对硬件系统的首次拓充; 是一组能够有效的组织和管理计算机硬件和软件资源,合理地对各类作业进行调度,以及方便用户使用的程序集合.</p>
+<ul>
+<li>OS作为用户和计算机硬件系统之间的接口</li>
+<li>OS作为计算机中资源的管理者<ul>
+<li>处理器,存储器,I/O设备以及信息</li>
+<li>分别对应了本科的后面四大章节</li>
+</ul>
+</li>
+<li>OS实现了对计算机资源的抽象</li>
+</ul>
+<h2 id="_2">操作系统的发展流程<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><ins>人工操作方式</ins> 打孔</p>
+<ul>
+<li>用户独占全机</li>
+<li>CPU等待人工操作</li>
+</ul>
+<p><ins>假脱机I/O方式</ins> 实现将装有用户程序和数据的纸带装入输入机,在一台<ins class="critic">外围机</ins>的控制下,把纸带上的程序和数据输入磁带.</p>
+<p><img alt="alt text" src="../images/%E5%81%87%E8%84%B1%E6%9C%BAI%5CO.png" /></p>
+<ul>
+<li>减少了CPU空闲时间</li>
+<li>提高了I/O速度</li>
+</ul>
+<p><ins class="critic">单道批处理程序</ins></p>
+<p><img alt="alt text" src="../images/%E5%8D%95%E9%81%93%E6%89%B9%E5%A4%84%E7%90%86.png" /></p>
+<ul>
+<li>通过监督程序控制一批作业一个接一个被处理</li>
+<li>在内存中<ins class="critic">仅仅有一道程序</ins></li>
+<li>不支持I/O中断,每遇I/O请求后,cpu就会进入等待状态,等待I/O完成后才会继续执行</li>
+</ul>
+<p><ins class="critic">多道批处理程序</ins></p>
+<p><img alt="alt text" src="../images/%E5%A4%9A%E9%81%93%E6%89%B9%E5%A4%84%E7%90%86.png" /></p>
+<ul>
+<li>有调度程序,可以在I/O的时候调用其他程序上CPU执行 <ul>
+<li>引入了 <ins class="critic">中断</ins> 机制</li>
+</ul>
+</li>
+<li>作业会被先保存在外存上</li>
+<li>平均周转时间长</li>
+<li>无交互能力</li>
+</ul>
+<p><ins class="critic">分时系统</ins></p>
+<ul>
+<li>将作业导入<ins class="critic">内存</ins></li>
+<li>为每一个作业设置<ins class="critic">时间片</ins>,当时间片耗尽则需要放弃CPU</li>
+</ul>
+<p>特点为 <ins class="critic">多路性</ins> <ins class="critic">独立性</ins> <ins class="critic">及时性</ins> <ins class="critic">交互性</ins></p>
+<p><img alt="" src="../images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%86%E7%A8%8B.png" /></p>
+<h2 id="_3">操作系统的基本特征<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p><ins class="critic">操作系统内核</ins>常驻在内存中</p>
+<p><ins class="critic">并发VS并行</ins></p>
+<ul>
+<li>并行 两个及以上的事件在<ins class="critic">同一时刻</ins>发生</li>
+<li>并发 两个及以上时间在<ins class="critic">同一时间间隔</ins>发生<ul>
+<li>并发是宏观上的同时发生,并行是实打实的同时发生</li>
+</ul>
+</li>
+</ul>
+<p><ins class="critic">共享</ins> 系统中的资源可供内存中多个<ins class="critic">并发</ins>执行的程序共同使用.</p>
+<ul>
+<li>互斥共享 对临接资源的(某一时间内只能由单一进程持有的资源, 如打印机等)共享 </li>
+<li>同时共享 对允许一段时间内有多个进程"同时"(宏观)对其进行访问</li>
+</ul>
+<p><ins class="critic">并发和共享</ins> 是多用户(多任务)OS的两个最基本的特性. 并发与共享互为对方存在的条件</p>
+<ul>
+<li>一方面, 资源共享是以进程的并发为前提的</li>
+<li>另一方面,若没有资源共享,则必然会影响到进程并发执行</li>
+</ul>
+<p><ins class="critic">虚拟</ins> 通过某种技术将一个物理实体变成若干逻辑上的对应物的功能</p>
+<ul>
+<li>时分复用技术<ul>
+<li>虚拟CPU</li>
+<li>虚拟设备</li>
+</ul>
+</li>
+<li>空分复用技术<ul>
+<li>虚拟存储</li>
+</ul>
+</li>
+</ul>
+<p><ins class="critic">异步</ins> 对于内存中的每个进程,其在何时获得处理机并运行,何时又因提出某种资源请求而暂停.以及进程以何种速度向前推进,总共需要多少时间完成都是不可知的. 简单来说, <ins class="critic">进程以人们不可知的速度向前推进</ins></p>
+<p><ins class="critic">原语</ins> 由若干条指令组成,其特点为"原子性",在执行过程中<ins class="critic">不可以被时钟中断</ins></p>
+<p><img alt="alt text" src="../images/%E5%86%85%E6%A0%B8%E4%B8%8E%E7%94%A8%E6%88%B7.png" /></p>
+<h2 id="_4">程序运行环境<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p><ins class="critic">用户接口</ins> </p>
+<ul>
+<li>联机用户接口 命令行(CLI)</li>
+<li>脱机用户接口 批处理命令</li>
+<li>图形用户接口</li>
+</ul>
+<p><ins class="critic">程序接口</ins> 由一系列 <ins>系统调用</ins> 组成.</p>
+<p><ins class="critic">内核模式与用户模式</ins> 用以保护系统的安全,用户在用户态无法执行可能损害系统执行的指令(特权指令)</p>
+<ul>
+<li>内核态也称为管态\系统态</li>
+<li>用户态也称目态</li>
+</ul>
+<p><ins class="critic">特权指令与非特权指令</ins> </p>
+<ul>
+<li>特权指令 例如启动外部设备,设置<ins class="critic">系统时钟时间</ins>, <ins class="critic">关中断</ins>, <ins class="critic">切换状态</ins><ul>
+<li>特别注意,切换状态是特权指令</li>
+</ul>
+</li>
+<li>特权指令与非特权指令由<ins class="critic">硬件</ins>实现.</li>
+<li>若发现某进程违规使用特权指令(异常),则会触发异常处理程序</li>
+<li>一般用户通过调用<ins class="critic">系统调用(system cell)</ins> <ins class="critic">陷入</ins> 内核态</li>
+</ul>
+<p><ins class="critic">系统调用</ins> 提供用户程序和OS内核之间的接口</p>
+<p><img alt="alt text" src="../images/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8.png" /></p>
+<ul>
+<li>系统调用通过<ins class="critic">中断</ins>机制来实现</li>
+<li>系统调用可能涉及用户态到内核态的转换</li>
+<li>系统调用结束后也需要重新参与调度</li>
+</ul>
+<p><ins class="critic">程序的链接与装入</ins></p>
+<p><img alt="alt text" src="../images/%E5%A4%84%E7%90%86%E7%94%A8%E6%88%B7%E7%A8%8B%E5%BA%8F.png" /></p>
+<p><ins class="critic">程序装入方式</ins> 绝对装入方式,可重定位装入方式,动态运行时候装入.</p>
+<ul>
+<li>绝对装入, 直接给出要装入的绝对位置</li>
+<li>可重定位装入 <ul>
+<li>重定位 把在装入时对目标程序中的指令和数据的逻辑地址变换为物理地址的过程</li>
+<li>一次性装入后续不在更改称为 <ins class="critic">精态重定位</ins></li>
+</ul>
+</li>
+</ul>
+<p><img alt="alt text" src="../images/%E5%8F%AF%E9%87%8D%E5%AE%9A%E4%BD%8D%E8%A3%85%E5%85%A5.png" /></p>
+<ul>
+<li>动态运行时装入 <ul>
+<li>将地址变换推迟到程序运行时候才进行</li>
+<li>需要<ins class="critic">重定位寄存器</ins>的支持</li>
+</ul>
+</li>
+</ul>
+<p><ins class="critic">程序的链接</ins> 静态链接,装入时动态链接,运行时动态链接.</p>
+<ul>
+<li>静态链接 在程序运行前,将各目标模块及它们所需要的库函数链接成一个完整的装配模块,以后不在拆开<ul>
+<li>需要修改不同模块之间的相对地址</li>
+<li>变换外部调用符号</li>
+</ul>
+</li>
+</ul>
+<p><img alt="alt text" src="../images/%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5.png" /></p>
+<ul>
+<li>
+<p>装入时动态链接 边装入边链接</p>
+<ul>
+<li>便于修改和更新</li>
+<li>便于实现对<ins class="critic">目标模块</ins>的共享</li>
+</ul>
+</li>
+<li>
+<p>运行时候动态链接 将某些模块的连接推迟到运行时在链接</p>
+</li>
+</ul>
+<h2 id="_5">操作系统结构<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p><img alt="alt text" src="../images/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84.png" /></p>
+<h2 id="_6">操作系统的引导<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p><img alt="alt text" src="../images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BC%95%E5%AF%BC%E8%BF%87%E7%A8%8B.png" /></p>
+<ul>
+<li>CPU从一个特定的主存地址开始,取指令,执行ROM中的引导程序<ul>
+<li>先进行<ins class="critic">硬件自检</ins>,再开机</li>
+<li>即ROM的BIOS固件<ul>
+<li>包含ROM引导程序,即自举程序</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>将磁盘的第一块 -- 主引导块(MBR)读入内存,执行磁盘引导程序,扫描分区表<ul>
+<li>MBR内包含磁盘引导程序和分区表</li>
+</ul>
+</li>
+<li>从活动分区(主分区,按照了操作系统的分区)读入分区引导记录,执行其中的程序</li>
+<li>从根目录下找到完整的操作系统初始化程序并执行,完成"开机" </li>
+</ul>
+<h2 id="_7">虚拟机<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p><ins class="critic">虚拟机</ins> 使用虚拟化计算,将一台物理机器虚拟化成多台虚拟机器(VM),每个虚拟机器都可以独立运行一个操作系统</p>
+<p><ins class="critic">第一类虚拟机器</ins> 直接运行在机器上</p>
+<p><img alt="alt text" src="../images/%E7%AC%AC%E4%B8%80%E7%B1%BB%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%99%A8.png" /></p>
+<ul>
+<li>直接运行在硬件之上,能直接控制和分配物理资源</li>
+<li>性能更好</li>
+<li>迁移性更差</li>
+<li>可以执行最高特权的指令</li>
+</ul>
+<p><ins class="critic">第二类虚拟机器</ins> 运行在宿主操作系统之上</p>
+<p><img alt="alt text" src="../images/%E7%AC%AC%E4%BA%8C%E7%B1%BB%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%99%A8.png" /></p>
+<ul>
+<li>运行在宿主操作系统上,依赖于宿主系统为其分配的物理资源</li>
+<li>性能更差</li>
+<li>可迁移好</li>
+<li>部分运行在用户态,部分运行在内核态. 虚拟操作系统的系统调用会被VMM截获,转换为VMM对宿主操作系统的系统调用.</li>
+</ul>
 
 
 
