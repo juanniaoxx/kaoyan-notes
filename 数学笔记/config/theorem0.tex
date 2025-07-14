@@ -1,15 +1,16 @@
-% English theorem environment
-\theoremstyle{definition}
-\newtheorem{definition}{\indent Definition}[section]
+\newtcbtheorem[number within=section]{defn}%
+{定义}{colback=OliveGreen!10,colframe=Green!70,fonttitle=\bfseries}{def}
 
-\newtheorem{lemma}{\indent Lemma}[section]
-\newtheorem{theorem}[lemma]{\indent Theorem}
-\newtheorem{corollary}[lemma]{\indent Corollary}
-\newtheorem{criterion}[lemma]{\indent Criterion}
+\newtcbtheorem[number within=section]{lemma}%
+{引理}{colback=Salmon!20,colframe=Salmon!90!Black,fonttitle=\bfseries}{lem}
 
-\newtheorem{proposition}{\indent Proposition}[section]
-\newtheorem{example}{\indent \color{SeaGreen}{Example}}[section]
-\theoremstyle{plain}
-\newtheorem*{remark}{\indent Remark}
-\renewenvironment{proof}{\indent\textcolor{SkyBlue}{\textbf{Proof.}}\;}{\qed\par}
-\newenvironment{solution}{\indent\textcolor{SkyBlue}{\textbf{Solution.}}\;}{\qed\par}
+% 使用另一个计数器 use counter from=lemma
+\newtcbtheorem[use counter from=lemma, number within=section]{them}%
+{定理}{colback=SeaGreen!10!CornflowerBlue!10,colframe=RoyalPurple!55!Aquamarine!100!,fonttitle=\bfseries}{them}
+
+\newtcbtheorem[use counter from=lemma, number within=section]{criterion}%
+{准则}{colback=green!5,colframe=green!35!black,fonttitle=\bfseries}{cri}
+
+\newtcbtheorem[use counter from=lemma, number within=section]{corollary}%
+{推论}{colback=Emerald!10,colframe=cyan!40!black,fonttitle=\bfseries}{cor}
+% colback=red!5,colframe=red!75!black

@@ -10,20 +10,28 @@
 \chapter{函数 极限 连续}
 \section{函数的性态}
 \begin{remark}(有界性的判定)
-    \item 连续函数在闭区间$[a,b]$上必然有界 
+    \item[(1)] 连续函数在闭区间$[a,b]$上必然有界 
 
-    \item 连续函数在开区间$(a,b)$上只需要判断端点处的左右极限,若$\lim_{x\to a^{+}}\neq \infty$ 且
+    \item[(2)] 连续函数在开区间$(a,b)$上只需要判断端点处的左右极限,若$\lim_{x\to a^{+}}\neq \infty$ 且
     $\lim_{x\to b^{-}}\neq \infty$,则连续函数在该区间内有界.
+
+    \item[(3)] $f'(x)$在{\color{red} 有限}区间(a,b)内有界.
+
+    \underline{Proof:}
+    $\forall x\in (a,b),\text{由拉格朗日中值定理},\exists\xi$ 
+    \begin{align*}
+        f(x)-f(\frac{a+b}{2}) &=f'(\xi)(x-\frac{a+b}{2}) \\
+        \left|f(x)\right| &\leq \left|f'(\xi)\right|\left|x-\frac{a+b}{2}\right|+\left|f(\frac{a+b}{2})\right| \\
+        \left|f(x)\right| &\leq \frac{b-a}{2}\left|f'(\xi)\right|+\left|f(\frac{a+b}{2})\right| \leq M
+    \end{align*}
 \end{remark}
 
 \begin{enumerate}[label=\arabic*.]
-    \item  下列函数无界的是
-    \begin{align*}
-        (\text{A})&\quad f(x)=\frac{1}{x}\sin x, x\in(0,+\infty) \\
-        (\text{B})&\quad f(x)=x\sin\frac{1}{x}, x\in(0,+\infty) \\
-        (\text{C})&\quad f(x)=\frac{1}{x}\sin\frac{1}{x}, x\in(0,+\infty) \\
-        (\text{D})&\quad f(x)=\int_0^x\frac{\sin t}{t} dt, x\in(0,2022)
-    \end{align*}
+    \item  下列函数无界的是 \\
+    A\quad $f(x)=\frac{1}{x}\sin x, x\in(0,+\infty)$\qquad
+    B\quad $f(x)=x\sin\frac{1}{x}, x\in(0,+\infty)$ \\
+    C\quad $f(x)=\frac{1}{x}\sin\frac{1}{x}, x\in(0,+\infty)$ \qquad
+    D\quad $f(x)=\int_0^x\frac{\sin t}{t} dt, x\in(0,2022)$
     
     \begin{solution}
     \item[(A)] $\lim_{x\to 0^{+}}f(x)=1$, $\lim_{x\to +\infty}=0$均为有限值,故A在区间$(0, +\infty)$有界
@@ -34,20 +42,27 @@
     \end{solution}
 \end{enumerate}
 
+\begin{tcolorbox}[title=无穷VS无界]
+    \underline{无界} 只有有一个子列趋于无穷即可 \\
+    \underline{无穷} 任意子列均趋于无穷.  \\
+    例如A选项,当 $x_n=\frac{1}{2n\pi+\pi/2},f(x_n)=2n\pi+\pi/2$,$n\to\infty,f(x_n)\to\infty$;当
+    $x_n=\frac{1}{2n\pi},f(x_n)=0$, $n\to\infty,f(x_n)\to 0$不为无穷大,仅仅是无界.
+\end{tcolorbox}
 \begin{remark}(导函数与原函数的奇偶性与周期性)
     \item 连续奇函数的所有原函数$\int_{0}^{x}f(t)dt+C$都是偶函数 
 
     \item 连续偶函数仅有一个原函数$\int_{0}^{x}f(t)\d t$为奇函数
+    
+    \item 连续周期函数的原函数为周期函数 $\iff\int_{0}^{T}f(x)\d x=0$
 \end{remark}
 
 \begin{enumerate}[label=\arabic*.,start=2]
-    \item  (2002,数二)设函数$f(x)$连续,则下列函数中,必为偶函数的是
-    \begin{align*}
-        (\text{A})&\quad \int_0^x f(t^2) dt \\
-        (\text{B})&\quad \int_0^x f^2(t) dt \\
-        (\text{C})&\quad \int_0^x t[f(t)-f(-t)] dt \\
-        (\text{D})&\quad \int_0^x t[f(t)+f(-t)] dt
-    \end{align*}
+    \item  (2002,数二)设函数$f(x)$连续,则下列函数中,必为偶函数的是 \\
+    A\quad $\int_0^x f(t^2) dt$ \qquad\qquad
+    B\quad $\int_0^x f^2(t) dt$ \\
+    C\quad $\int_0^x t[f(t)-f(-t)] dt$ \qquad
+    D\quad $\int_0^x t[f(t)+f(-t)] dt$
+
     
     \begin{solution}
     这种题可以采用奇偶性的定义直接去做,如下面选项A,B的解法,也可以按照上述的函数奇偶性的性质判断
@@ -95,9 +110,13 @@
     \end{align*}
     
     \begin{solution}
-    由数列极限的定义可知当n充分大的时候有$\left|a_n-a\right|<\epsilon$
-    \newline 考虑选项C,D,令$\epsilon=\frac{1}{n}$
-    则$\left|a_n-a\right|<\frac{1}{n} \implies a-\frac{1}{n}<a_n<a+\frac{1}{n}$
+    令$\epsilon = \left|a\right|/2$, 则$\left|a_n-a\right|< |a|/2 \geq \left| |a_n| - |a|\right|$ 
+    即
+    $$
+        |a|/2 < |a_n| < \frac{ 3|a| }{2}
+    $$
+    对于CD考虑当 \\
+    $a_n=a-\frac{2}{n}$ 和 $a_n=a+\frac{2}{n}$ 简单来说$\forall\epsilon$这里面的$\epsilon$与$n$是无关的.
     \end{solution}
 \end{enumerate}
 
@@ -173,7 +192,7 @@ $\frac{\cdot}{\infty}$模型上面靠,辅助以Taylor公式,拉格朗日中值�
     \item  求极限$\lim_{x\to\infty}\left(x^3\ln\frac{x+1}{x-1}-2x^2\right)$
     
     \begin{solution}
-    【详解】
+    \newpage
     \end{solution}
 \end{enumerate}
 
@@ -184,7 +203,7 @@ $\frac{\cdot}{\infty}$模型上面靠,辅助以Taylor公式,拉格朗日中值�
     \item  (2010,数三)求极限$\lim_{x\to+\infty}\left(x^{1/x}-1\right)^{1/\ln x}$
     
     \begin{solution}
-    【详解】
+    \newpage
     \end{solution}
 \end{enumerate}
 
@@ -208,7 +227,7 @@ $\frac{\cdot}{\infty}$模型上面靠,辅助以Taylor公式,拉格朗日中值�
     \item  (1998,数二)确定常数$a,b,c$的值,使$\lim_{x\to0}\frac{ax-\sin x}{\int_b^x\frac{\ln(1+t^3)}{t}dt}=c\ (c\neq0)$
     
     \begin{solution}
-    【详解】
+    \newpage
     \end{solution}
 \end{enumerate}
 
@@ -219,24 +238,31 @@ $\frac{\cdot}{\infty}$模型上面靠,辅助以Taylor公式,拉格朗日中值�
     \item  (2002,数二)设函数$f(x)$在$x=0$的某邻域内具有二阶连续导数,且$f(0)\neq0$,$f'(0)\neq0$,$f''(0)\neq0$。证明：存在唯一的一组实数$\lambda_1,\lambda_2,\lambda_3$,使得当$h\to0$时,$\lambda_1f(h)+\lambda_2f(2h)+\lambda_3f(3h)-f(0)$是比$h^2$高阶的无穷小。
     
     \begin{solution}
-    【详解】
+    \newpage
     \end{solution}
     
     \item  (2006,数二)试确定$A,B,C$的值,使得$e^x(1+Bx+Cx^2)=1+Ax+o(x^3)$,其中$o(x^3)$是当$x\to0$时比$x^3$高阶的无穷小量。
     
     \begin{solution}
-    【详解】
+    \newpage
     \end{solution}
     
     \item  (2013,数二、数三)当$x\to0$时,$1-\cos x\cdot\cos2x\cdot\cos3x$与$ax^n$为等价无穷小,求$n$与$a$的值。
     
     \begin{solution}
-    【详解】
+    \newpage
     \end{solution}
 \end{enumerate}
 
 \section{数列极限的计算}
 \begin{remark}(方法)
+    \begin{enumerate}
+        \item [(1)] 单调有界准则 (三步走,先确定单调性,在确定有界性,最后解方程求极限) \\
+        确定单调性,可以考虑作差/做商/求导
+        \item [(2)] 压缩映射原理
+        \item [(3)] 夹逼准则
+        \item [(4)] 定积分的定义 (n项和/n项积)
+    \end{enumerate}
 \end{remark}
 \begin{enumerate}[label=\arabic*.,start=15]
     \item  (2011,数一、数二)
@@ -246,15 +272,44 @@ $\frac{\cdot}{\infty}$模型上面靠,辅助以Taylor公式,拉格朗日中值�
     \end{enumerate}
     
     \begin{solution}
-    【详解】
+    \begin{enumerate}
+        \item [(1)] 是基本不等式的证明,考虑拉格朗日中值即可
+        \item [(2)] 考研大题,特别是分成几个小问的题目,都需要合理利用前面的结论 \\
+        考虑$a_{n+1}-a_{n}$有 
+        \begin{align*}
+            a_{n+1}-a_{n}=\frac{1}{n+1}-\ln(n+1)+\ln(n) = \frac{1}{n+1}-\ln(1+n/1) < 0
+        \end{align*}
+        即$\{a_n\}$单调递减,考虑其有界性
+        \begin{align*}
+            a_n &= 1 + 1/2 + 1/3 +\ldots + 1/n - \ln(n) \\
+            & < \ln(1+1) + \ln(1+1/2) + \ldots + \ln(1+n/1) - \ln(n) \\
+            & =  \ln (n+1) - \ln(n) > 0 
+        \end{align*}
+        即$\{a_n\}$有上界,故由单调有界定理知数列$\{a_n\}$收敛.
+    \end{enumerate}
     \end{solution}
     
     \item  (2018,数一、数二、数三)设数列$\{x_n\}$满足：$x_1>0$,$x_ne^{x_{n+1}}=e^{x_n}-1\ (n=1,2,\cdots)$。证明$\{x_n\}$收敛,并求$\lim_{n\to\infty}x_n$。
     
     \begin{solution}
-    【详解】
+    这道题的难度在于如何处理条件.考虑\underline{1}的妙用. 有
+    \begin{align*}
+        e^{x_{n+1}}=\frac{e^{x_n}-1}{x} &=\frac{e^{x_n}-e^{0}}{1} \\
+        &= e^{\xi}, \xi\in(0,x_n)
+    \end{align*}
+    而由于$e^x$是单调递增的函数则必然有$\xi=x_{n+1}$即 $0<x_{n+1}<x_n$从而单调递减有下界.此时$\{x_n\}$极限存在. \\
+    不妨设$\lim_{n\to\infty}x_n=a$问题转换为求方程 $ae^a=e^a-1$的解的问题.显然$a=0$是其一个根.考虑函数$f(x)=e^{x}(1-x)-1$其
+    导数为$-xe^x$在$(0,\infty)$上单调递减故$x=a$是$f(x)$唯一零点,即$a=0$是唯一解.故
+    $$
+    \fbox{$\lim_{n\to\infty}x_n=0$}
+    $$
     \end{solution}
     
+    \begin{tcolorbox}
+        常见的等价代换有 \\
+        \underline{1}: $e^{0},\sin(\pi/2),\cos(0),\ln(e)$ 具体情况还得看题目,题目有啥用啥替换 \\
+        \underline{0}: $\sin(0),\cos(pi/2),\ln(1)$ 
+    \end{tcolorbox}
     \item  (2019,数一、数三)设$a_n=\int_0^1 x^n\sqrt{1-x^2}dx\ (n=0,1,2,\cdots)$。
     \begin{enumerate}[label=(\roman*)]
         \item 证明数列$\{a_n\}$单调减少,且$a_n=\frac{n-1}{n+2}a_{n-2}\ (n=2,3,\cdots)$
@@ -262,27 +317,57 @@ $\frac{\cdot}{\infty}$模型上面靠,辅助以Taylor公式,拉格朗日中值�
     \end{enumerate}
     
     \begin{solution}
-    【详解】
+        这道题第一问比较重要,第二问比较简单 \\
+        (1)\ 方法一: \\ 
+        可以直接求出$a_n$的值,令$x=\sin(t)$
+        \begin{align*}
+            a_n &=\int_{0}^{\pi/2}\sin^n(t)\cos^2(t)\d t \\
+            &=\int_{0}^{\pi/2}\sin^{n}(t)-\int_{0}^{\pi/2}\sin^{n+2}(t)\d t \\
+            &\xlongequal{\text{华里士公式}} \frac{1}{n+2}\frac{n-1}{n}\ldots\frac{1}{2}\frac{\pi}{2}, \text{当n时偶数的时候} \\
+            a_{n-2} &=\frac{1}{n-1}\frac{n-1}{n}\ldots\frac{1}{2}\frac{\pi/2}{2} \\
+            a_n &= \frac{n-1}{n+2}a_{n-2} \\
+        \end{align*}
+        当n为奇数的时候同理可得 \\
+        (1)\ 方法二: \\
+        也可以考虑分部积分法 
+        \begin{align*}
+            a_n &=\int_{0}^{1}x^n(1-x^2)^{1/2}\d x \\
+            &= -\frac{1}{3}\left[x^{n-1}(1-x^2)^{3/2}\mid^{1}_0-\int_{0}^{1}(1-x^2)^\frac{3}{2}\d x^{n-1}\right] \\
+            &= \frac{n-1}{3}\int_{0}^{1}\sqrt{1-x^2}(1-x^2)x^{n-2}\d x \\
+            &= \frac{n-1}{3}a_{n-2}-\frac{n-1}{3}a_n \\
+            &\implies a_n=\frac{n-1}{n+2}a_{n-2}
+        \end{align*}
+        (2) \\
+        由(1)可知
+        $$
+        \frac{n-1}{n+2}<\frac{a_n}{a_{n-1}}=\frac{n-1}{n-2}\frac{a_{n-2}}{a_{n-1}}<1
+        $$
+        当$n\to\infty$由夹逼准则可知$\lim_{n\to\infty}\frac{a_n}{a_{n-1}}=1$
     \end{solution}
     
     \item  (2017,数一、数二、数三)求$\lim_{n\to\infty}\sum_{k=1}^n\frac{k}{n^2}\ln\left(1+\frac{k}{n}\right)$
     
     \begin{solution}
-    【详解】
+    这是最普通的定积分的定义的应用
+    \begin{align*}
+        \text{原式} &= \lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^{n}\frac{k}{n}\ln(1+\frac{k}{n}) \\
+        &\xlongequal{\text{定积分定义}}\int_{0}^{1}x\ln(1+x)\d x \\
+        &=\frac{1}{2}\int_{0}^{1}\ln(1+x)\d x^2 \\
+        &= \frac{1}{4}
+    \end{align*}
     \end{solution}
 \end{enumerate}
 
 \section{间断点的判定}
 
 \begin{enumerate}[label=\arabic*.,start=19]
-    \item  (2000,数二)设函数$f(x)=\frac{x}{a+e^{bx}}$在$(-\infty,+\infty)$内连续,且$\lim_{x\to-\infty}f(x)=0$,则常数$a,b$满足
-    \begin{align*}
-        (\text{A})&\ a<0,b<0 \quad (\text{B})\ a>0,b>0 \\
-        (\text{C})&\ a\leq0,b>0 \quad (\text{D})\ a\geq0,b<0
-    \end{align*}
+    \item  (2000,数二)设函数$f(x)=\frac{x}{a+e^{bx}}$在$(-\infty,+\infty)$内连续,且$\lim_{x\to-\infty}f(x)=0$,
+    则常数$a,b$满足 \\
+        A\quad $a<0,b<0$ \qquad B\quad $a>0,b>0$ \qquad
+        C\quad $a\leq0,b>0$ \qquad D\quad $a\geq0,b<0$
     
     \begin{solution}
-    【详解】
+    \newpage
     \end{solution}
 \end{enumerate}
 

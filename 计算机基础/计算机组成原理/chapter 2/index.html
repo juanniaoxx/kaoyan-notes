@@ -1389,7 +1389,7 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      位运算 (&amp;,|,~,^)
+      常见运算符
     </span>
   </a>
   
@@ -1398,25 +1398,58 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      逻辑运算 (&amp;&amp;, || , !)
+      定点数的加减运算
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="定点数的加减运算">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      移位运算 (&gt;&gt; 和 &lt;&lt;)
+      加减电路
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      定点数乘法运算
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#-" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
-      算术运算 (+ - * /)
+      定点数的除法运算
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮点数的加减运算
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alu" class="md-nav__link">
+    <span class="md-ellipsis">
+      算术逻辑部件 ALU
     </span>
   </a>
   
@@ -2642,7 +2675,7 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      位运算 (&amp;,|,~,^)
+      常见运算符
     </span>
   </a>
   
@@ -2651,25 +2684,58 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      逻辑运算 (&amp;&amp;, || , !)
+      定点数的加减运算
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="定点数的加减运算">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      移位运算 (&gt;&gt; 和 &lt;&lt;)
+      加减电路
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      定点数乘法运算
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#-" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
-      算术运算 (+ - * /)
+      定点数的除法运算
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮点数的加减运算
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alu" class="md-nav__link">
+    <span class="md-ellipsis">
+      算术逻辑部件 ALU
     </span>
   </a>
   
@@ -2723,6 +2789,7 @@
 
 
 <h1 id="_1">数据表示和运算<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p><img alt="" src="../images/%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%BF%90%E7%AE%97.png" /></p>
 <h2 id="_2">数的机器码表示<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>由符号和数值一起编码表示的二进制数,称为<sup>^机器数</sup><sup>或</sup><sup>机器码</sup>^</p>
 <h3 id="_3">定点数的四种编码方式(原码,反码,补码与移码)<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
@@ -2762,7 +2829,7 @@
 <li>移码可以<ins class="critic">直接参加比较</ins></li>
 <li>移码的<ins class="critic">符号位<code>0</code>表示负数,<code>1</code>表示正数</ins></li>
 <li>同一数值时,移码除符号位与补码相反外,其余完全一致</li>
-<li>存在唯一<code>0</code> 0000...0</li>
+<li>存在唯一<code>0</code> 1000...0</li>
 </ul>
 <p><img alt="alt text" src="../images/%E7%A7%BB%E7%A0%81.png" /></p>
 <p><ins>四种编码方式的总结</ins></p>
@@ -2801,21 +2868,31 @@
 <p><ins class="critic">单精度浮点数与真值的转换</ins></p>
 <p><img alt="alt text" src="../images/%E5%8D%95%E7%B2%BE%E5%BA%A6%E6%B5%AE%E7%82%B9%E6%95%B0%E4%B8%8E%E7%9C%9F%E5%80%BC%E7%9A%84%E8%BD%AC%E6%8D%A2.png" /></p>
 <h3 id="_4">计算机中的数据表示<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>在64位机器和32位机器上,部分类型所占的字节并不相同.</p>
+<p><img alt="alt text" src="../images/C%E8%AF%AD%E8%A8%80%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AD%97%E9%95%BF.png" /></p>
+<ul>
+<li><code>short</code>是 2B</li>
+<li><code>int</code> 是 4B </li>
+<li><code>char</code>是 1B</li>
+<li><code>double</code>是 8B</li>
+<li><code>float</code>是 4B</li>
+</ul>
 <h2 id="_5">运算方法和运算器<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<h3 id="_6">位运算 (&amp;,|,~,^)<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h3 id="_6">常见运算符<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p><ins class="critic">位运算</ins></p>
 <ul>
 <li>&amp; 按位与 </li>
 <li>| 按位或</li>
 <li>~ 按位取反</li>
 <li>^ 按位异或</li>
 </ul>
-<h3 id="_7">逻辑运算 (&amp;&amp;, || , !)<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><ins class="critic">逻辑运算</ins></p>
 <ul>
 <li>&amp;&amp; 逻辑与</li>
 <li>|| 逻辑或</li>
 <li>! 逻辑非</li>
 </ul>
-<h3 id="_8">移位运算 (&gt;&gt; 和 &lt;&lt;)<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p><ins class="critic">移位运算</ins></p>
 <ul>
 <li><code>&gt;&gt;</code> 右移操作 <ul>
 <li>等价于除2</li>
@@ -2827,7 +2904,143 @@
 </ul>
 </li>
 </ul>
-<h3 id="-">算术运算 (+ - * /)<a class="headerlink" href="#-" title="Permanent link">&para;</a></h3>
+<h3 id="_7">定点数的加减运算<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><ins class="critic">补码加法</ins></p>
+<div class="arithmatex">\[
+[X]_{补}+[Y]_{补}=[X+Y]_{补}\ (mod\ M)
+\]</div>
+<p><ins class="critic">补码减法</ins></p>
+<div class="arithmatex">\[
+[X-Y]_{补}=[X]_补+[-Y]_{补}=[X]_{补}-[Y]_{补}\ (mod\ M)
+\]</div>
+<ul>
+<li>其中M为 <span class="arithmatex">\(2^{n+1}\)</span>, n不含符号位</li>
+</ul>
+<p><ins class="critic">溢出</ins> 由于机器字长是有限的,表示数据的范围是有限的,当两个大整数相加的时候结果得到一个负数或者一个正数减去一个负数结果得到负数.</p>
+<p><ins class="critic">溢出检测</ins></p>
+<ul>
+<li>根据操作数与运算结果的符号是否一致进行检测<ul>
+<li>假设 <span class="arithmatex">\(X_f, Y_f\)</span> 为操作数的符号位, <span class="arithmatex">\(S_f\)</span> 为运算结果的符号位, <span class="arithmatex">\(V\)</span> 为溢出标志</li>
+<li><span class="arithmatex">\(V=X_fY_f\bar{S_f}+\bar{X_f}\bar{Y_f}S_f\)</span></li>
+<li>V=1的时候表示发生了溢出</li>
+<li>加法出现<ins class="critic">正正得负,负负得正</ins>发生溢出</li>
+<li>减法可以转换为加法处理</li>
+</ul>
+</li>
+<li>根据运算过程中最高数据位的进位和符号位的进位是否一致进行检测<ul>
+<li>设运算时最高有效位产生的进位信号为 <span class="arithmatex">\(C_d\)</span>, 符号位产生的进位信息为 <span class="arithmatex">\(C_f\)</span>, <span class="arithmatex">\(V\)</span> 为溢出标志</li>
+<li><span class="arithmatex">\(V=C_d\oplus C_f\)</span>  </li>
+<li><img alt="" src="../images/%E6%BA%A2%E5%87%BA%E6%A3%80%E6%B5%8B1.png" /><ul>
+<li>假设 <span class="arithmatex">\(x=-111\)</span> <span class="arithmatex">\(y=110\)</span> 计算 <span class="arithmatex">\([x-y]_{补}\)</span></li>
+<li>如上图所示,结果 <span class="arithmatex">\(C_f=1\)</span> <span class="arithmatex">\(C_d=0\)</span> 故发生了溢出</li>
+</ul>
+</li>
+<li><img alt="" src="../images/%E6%BA%A2%E5%87%BA%E6%A3%80%E6%B5%8B2.png" /><ul>
+<li>假设 <span class="arithmatex">\(x=-011, y = 100\)</span> 计算 <span class="arithmatex">\([x-y]_{补}\)</span></li>
+<li>如上图所示,结果 <span class="arithmatex">\(C_f=1\)</span> <span class="arithmatex">\(C_d=1\)</span> 故没有发生溢出</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>利用<ins class="critic">变形补码</ins>的符号位进行检测 <ul>
+<li>使用双符号位 <code>00</code>表示正数 <code>11</code>表示负数. 若结果为 <code>10</code> 或者 <code>01</code> 表面发生溢出</li>
+<li>左边的符号为第一符号位,右边的符号为第二符号付<ul>
+<li>第一符号位是正确符号位 例如 <code>01</code>表示发生正溢出 <code>10</code>表示发生负溢出</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="_8">加减电路<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p><ins class="critic">全加器</ins></p>
+<p><img alt="alt text" src="../images/%E5%85%A8%E5%8A%A0%E5%99%A8.png" /></p>
+<ul>
+<li>具有三个输入 <span class="arithmatex">\(X_i\)</span> <span class="arithmatex">\(Y_i\)</span>:输入的对应 <span class="arithmatex">\(i\)</span> 位; <span class="arithmatex">\(C_{i}\)</span> 低位的进位信号</li>
+<li>输出有两个 <span class="arithmatex">\(S_i\)</span> 对应第 <span class="arithmatex">\(i\)</span> 位的运算结果; <span class="arithmatex">\(C_{i+1}\)</span> 给高位的进位信号<ul>
+<li><span class="arithmatex">\(C_{i+1} = X_iY_i + (X_i\oplus Y_i)C_i \)</span> 或者  <span class="arithmatex">\(C_{i+1} = X_iY_i + (X_i+Y_i)C_i \)</span></li>
+<li><span class="arithmatex">\(S_i=X_i\oplus Y_i\oplus C_i\)</span></li>
+</ul>
+</li>
+</ul>
+<p><ins class="critic">半加器</ins> 不包含进位信息</p>
+<p><ins class="critic">加法电路</ins> 将n个全加器串联在一起即可</p>
+<p><img alt="alt text" src="../images/%E5%8A%A0%E6%B3%95%E7%94%B5%E8%B7%AF.png" /></p>
+<ul>
+<li>对于无符号数, 溢出标志即 <span class="arithmatex">\(C_n\)</span></li>
+<li>对于有符号数, 溢出标志即 <span class="arithmatex">\(C_{n}\oplus C_{n-1}\)</span></li>
+</ul>
+<p><ins class="critic">加减法电路</ins> 对于减法可以将其转换为加法,如下所示</p>
+<p><img alt="alt text" src="../images/%E5%8A%A0%E5%87%8F%E6%B3%95%E7%94%B5%E8%B7%AF.png" /></p>
+<ul>
+<li>增加一条 <code>Sub</code> 信号线,当计算为加法的时候置0;否则置1</li>
+<li>将其与所有 <span class="arithmatex">\(y_i\)</span> 进行异或操作</li>
+<li>连接到全加器的尾端 <span class="arithmatex">\(FA_0\)</span> 实现取反+1的效果</li>
+<li>减法的溢出和加法一致<ul>
+<li>无符号数检测 <span class="arithmatex">\(\bar{C_n}\)</span></li>
+<li>有符号检测 <span class="arithmatex">\(C_{n}\oplus C_{n-1}\)</span></li>
+</ul>
+</li>
+</ul>
+<h3 id="_9">定点数乘法运算<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p><ins class="critic">原码一位乘法</ins> 先考虑比较简单的原码乘法,其数值部分和真值一致.符号位可以最后加上</p>
+<p><img alt="" src="../images/%E4%B8%80%E4%BD%8D%E5%8E%9F%E7%A0%81%E4%B9%98%E6%B3%95%E9%80%BB%E8%BE%91.png" /></p>
+<p>举例来说明上述流程图的具体操作步骤 </p>
+<p><img alt="alt text" src="../images/%E4%B8%80%E4%BD%8D%E5%8E%9F%E7%A0%81%E4%B9%98%E6%B3%95%E7%9A%84%E5%85%B7%E4%BD%93%E4%BE%8B%E9%A2%98.png" /></p>
+<ul>
+<li>在中间过程可能发生溢出,但无须处理,直接右移动即可.</li>
+</ul>
+<p><ins class="critic">原码一位乘法的电路</ins></p>
+<p><img alt="alt text" src="../images/%E5%8E%9F%E7%A0%81%E4%B8%80%E4%BD%8D%E4%B9%98%E6%B3%95%E7%94%B5%E8%B7%AF.png" /></p>
+<ul>
+<li>注意这是一个时序控制电路 <code>CLK</code>为时钟信号</li>
+<li>两个寄存器分别存放部分积 <span class="arithmatex">\(P\)</span> 和 乘数 <span class="arithmatex">\(y\)</span></li>
+<li>多路选择器MUX,其控制信号为 <span class="arithmatex">\(y_n\)</span> 来决定是加 <code>0</code> 还是 加 <code>|x|</code>  </li>
+</ul>
+<p><ins class="critic">补码一位乘法(Booth算法)</ins> </p>
+<p><img alt="" src="../images/Booth.png" /></p>
+<p>举个例子来解释Booth算法</p>
+<p><img alt="alt text" src="../images/Booth%E4%BE%8B%E5%AD%90.png" /></p>
+<ul>
+<li>在<ins class="critic">末尾</ins>引入额外位 <span class="arithmatex">\(y_{n+1}=0\)</span></li>
+<li>按照 <span class="arithmatex">\(y_{n}y_{n+1}\)</span> 的结果判断P应该加啥</li>
+<li>符号位参与计算,不需要单独计算</li>
+</ul>
+<p><img alt="alt text" src="../images/Booth%E7%AE%97%E6%B3%95%E7%94%B5%E8%B7%AF.png" /></p>
+<ul>
+<li>中间结果有<ins class="critic">n+2</ins>位</li>
+</ul>
+<h3 id="_10">定点数的除法运算<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p><ins class="critic">原码一位除法</ins></p>
+<h3 id="_11">浮点数的加减运算<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>计算机要求浮点数<ins class="critic">以规格化</ins>参加运算,首先考虑<ins class="critic">补码形式</ins>的浮点数运算.</p>
+<div class="arithmatex">\[
+X=2^m\times M, Y=2^n\times N
+\]</div>
+<ol>
+<li><ins class="critic">对阶</ins> 将 <ins class="critic">阶码小</ins>的向<ins class="critic">阶码大</ins>的数对齐.<ol>
+<li>由于小阶码增大只是舍弃尾数的低位,对结果影响较小;而大阶码向小阶码移动则舍弃的是尾数的高位,对结果影响较大</li>
+<li>分成两步 <ins class="critic">求阶差</ins> 和 <ins class="critic">阶码\尾数调整</ins>, 在尾数右移过程中,通常将最低位的移出位暂时保留,称为<ins class="critic">保留附加位</ins>, 参与中间结果,用于保持精度. IEEE 754通常会保留3个附件位 <ins class="critic">保护为,舍入位,粘位</ins>; 舍入位右测数据有非0则粘位为1,否则为0</li>
+</ol>
+</li>
+<li><ins class="critic">尾数运算</ins> 按照定点数的加减运算法则对尾数进行加减操作</li>
+<li><ins class="critic">结果规格化</ins> 将结果转换为规格化浮点数</li>
+<li><ins class="critic">舍入</ins> </li>
+<li><ins class="critic">溢出判断</ins> 只有阶码发生溢出的时候浮点数才会溢出</li>
+</ol>
+<p><ins class="critic">IEEE 754</ins> 浮点数的运算,和上述大体类似 </p>
+<ul>
+<li>对阶和格式化过程中, 阶码运算采用<ins class="critic">移码</ins>运算规则,而非补码</li>
+<li>尾数运算采用<ins class="critic">原码</ins>运算规格,且隐藏位要参与运算</li>
+<li>尾数的规格化过程中,要求满足 1.xxxx 的格式</li>
+<li>舍入处理 有四种舍入方式<ul>
+<li>朝 <span class="arithmatex">\(+\infty\)</span> 舍入, 总是取右侧最近可表示的数</li>
+<li>朝 <span class="arithmatex">\(-\infty\)</span> 舍入, 总是取左侧最近的可表示数</li>
+<li>就近舍入 取最近可表示数,若处于中间则取<ins class="critic">偶数</ins></li>
+<li>朝 <span class="arithmatex">\(0\)</span> 舍入, 直接丢弃多余位,即截断法.</li>
+</ul>
+</li>
+</ul>
+<h3 id="alu">算术逻辑部件 ALU<a class="headerlink" href="#alu" title="Permanent link">&para;</a></h3>
 
 
 
