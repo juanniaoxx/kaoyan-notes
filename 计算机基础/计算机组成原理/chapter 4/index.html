@@ -1340,6 +1340,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    指令系统
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1351,6 +1364,85 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      指令系统的基本概念
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="指令系统的基本概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      指令格式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      寻址方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据的对齐和大/小段存储
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ciscrisc" class="md-nav__link">
+    <span class="md-ellipsis">
+      CISC和RISC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x86-64" class="md-nav__link">
+    <span class="md-ellipsis">
+      x86-64 程序的机器表示
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2456,6 +2548,74 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      指令系统的基本概念
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="指令系统的基本概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      指令格式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      寻址方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据的对齐和大/小段存储
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ciscrisc" class="md-nav__link">
+    <span class="md-ellipsis">
+      CISC和RISC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x86-64" class="md-nav__link">
+    <span class="md-ellipsis">
+      x86-64 程序的机器表示
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2497,6 +2657,146 @@
 
 
 <h1 id="_1">指令系统<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p><img alt="" src="../images/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F.png" /></p>
+<h2 id="_2">指令系统的基本概念<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>计算机内有许多中指令,其中<ins class="critic">高级语言指令</ins>和<ins class="critic">汇编语言指令</ins>是软件层指令,需要转换为<ins class="critic">机器语言指令</ins>才能被计算机硬件识别.除此之外还有<ins class="critic">微指令</ins>也是硬件指令.</p>
+<p><ins class="critic">机器指令</ins>是软硬件的界面,也是用户操作和使用计算机硬件的接口.</p>
+<p><img alt="alt text" src="../images/%E6%8C%87%E4%BB%A4%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB.png" /></p>
+<h3 id="_3">指令格式<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><img alt="alt text" src="../images/%E6%8C%87%E4%BB%A4%E7%9A%84%E4%B8%80%E8%88%AC%E6%A0%BC%E5%BC%8F.png" /></p>
+<p><ins class="critic">指令字长度</ins> 一条指令中所包含的二进制位数,也称为 <ins class="critic">指令字长</ins></p>
+<ul>
+<li>变长指令系统 指令长度可变,结构灵活,冗余少.</li>
+<li>定长指令系统 指令长度固定,结构简单. 平均长度长,冗余状态较多,不容易拓展</li>
+</ul>
+<p>指令最终要进入存储器,必须是<ins class="critic">字节</ins>的整数倍,且根据与机器字长的关系.指令字长可以为<ins class="critic">半字长</ins>, <ins class="critic">单字长</ins>和<ins class="critic">多字长</ins> 3类.</p>
+<ul>
+<li>通常越常用的指令,指令字长越短;</li>
+</ul>
+<p><ins class="critic">指令地址码</ins> 根据一个指令其地址码部分有几个地址分为如下几类指令</p>
+<p><img alt="alt text" src="../images/%E6%8C%87%E4%BB%A4%E5%9C%B0%E5%9D%80%E7%A0%81.png" /></p>
+<ul>
+<li>三地址指令 <span class="arithmatex">\((A_1)OP(A_2)\rightarrow A_3\)</span><ul>
+<li>通常来说三地址指令的三个地址均为 <ins>寄存器</ins> 地址</li>
+</ul>
+</li>
+<li>二地址指令 <span class="arithmatex">\((A_1)OP(A_2)\rightarrow A_1\)</span><ul>
+<li><span class="arithmatex">\(A_1\)</span> 即使第一个操作数的源地址也是目的地址</li>
+<li>通常有 <span class="arithmatex">\(RR,RS,SS\)</span> 三种(S-存储器,R-寄存器) </li>
+</ul>
+</li>
+<li>单地址指令 <ul>
+<li>单目运算,如取反操作 <span class="arithmatex">\(OP(A_1)\rightarrow A_1\)</span></li>
+<li>隐藏地址的双目运算,例如 <span class="arithmatex">\((AC)OP(A_1)\rightarrow AC\)</span> (AC表示累加寄存器)</li>
+</ul>
+</li>
+<li>零地址指令<ul>
+<li>指令本身不需要操作数,如空操作指令NOP(用于处理流水线冒险),等待指令,停机指令等</li>
+<li>指令隐藏了一个操作数地址,如累加寄存器等寄存器地址</li>
+</ul>
+</li>
+</ul>
+<p><ins class="critic">指令操作码</ins> 表面指令的具体操作</p>
+<ul>
+<li>定长操作码 指令码长度固定且位置固定,利于硬件设计.</li>
+<li>变长操作码 指令吗长度可变且位置可变,利于指令拓展    </li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><img alt="alt text" src="../images/%E5%8F%98%E9%95%BF%E6%93%8D%E4%BD%9C%E7%A0%81.png" /> </p>
+<p>如图所示的变长操作码,需要满足前缀码的特性.即三地址的操作码不能是双地址地址码的前缀;双地址码的操作码不能是单地址操作码的前缀 </p>
+<p><img alt="alt text" src="../images/%E6%8C%87%E4%BB%A4%E8%AE%BE%E8%AE%A1%E8%AE%A1%E7%AE%97.png" /></p>
+</div>
+<h3 id="_4">寻址方式<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><ins class="critic">寻址方式</ins> 寻找指令或操作数有效地址的方法</p>
+<p><ins class="critic">指令寻址</ins></p>
+<ul>
+<li>顺序寻址 通过(PC+1)来实现<ul>
+<li>1为指令字长</li>
+</ul>
+</li>
+<li>跳跃寻址 程序出现分支或者转移</li>
+</ul>
+<p><img alt="alt text" src="../images/%E6%8C%87%E4%BB%A4%E5%AF%BB%E5%9D%80.png" /></p>
+<p><ins class="critic">操作数寻址</ins> 操作数寻址方式有很多种,可以在地址码字段划分出一个寻址方式字段,用此字段指明具体的寻址方式.</p>
+<p><img alt="alt text" src="../images/%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F%E5%AD%97%E6%AE%B5.png" /></p>
+<p><ins class="critic">立即寻址</ins> 在地址字段使用<ins class="critic">立即数</ins>直接指明操作数. 即S=D</p>
+<p><img alt="alt text" src="../images/%E7%AB%8B%E5%8D%B3%E5%AF%BB%E5%9D%80.png" /></p>
+<p>由于地址码字宽有限,一般只用于赋值操作.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">GAS</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nf">MOV</span><span class="w"> </span><span class="no">EAX</span><span class="p">,</span><span class="w"> </span><span class="mi">2008</span><span class="no">H</span><span class="w"> </span><span class="c1">// 为寄存器EAX赋值2008H</span>
+</code></pre></div></td></tr></table></div>
+<p><ins class="critic">直接寻址</ins> 操作存存储于主存中,在地址字段直接给出内存地址即(D=EA, S=(EA))</p>
+<p><img alt="alt text" src="../images/%E7%9B%B4%E6%8E%A5%E5%AF%BB%E5%9D%80.png" /></p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">GAS</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nf">MOV</span><span class="w"> </span><span class="no">EAX</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">2008</span><span class="no">H</span><span class="p">]</span><span class="w"> </span><span class="c1">//将2008H主存单元的内容送入寄存器EAX</span>
+</code></pre></div></td></tr></table></div>
+<p><ins class="critic">寄存器寻址</ins> 操作数存于寄存器中,在地址字段给出寄存器编号</p>
+<p><img alt="alt text" src="../images/%E5%AF%84%E5%AD%98%E5%99%A8%E5%AF%BB%E5%9D%80.png" /></p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">GAS</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nf">MOV</span><span class="w"> </span><span class="no">EAX</span><span class="p">,</span><span class="w"> </span><span class="no">ECX</span><span class="w"> </span><span class="c1">// 将寄存器ECX的内容送入寄存器EAX</span>
+</code></pre></div></td></tr></table></div>
+<p><ins class="critic">间接寻址</ins> 操作数存在内存值,地址码字段给出的并不是操作数的有效地址,而是指向操作数的有效地址的某一内存单元.</p>
+<p><img alt="alt text" src="../images/%E9%97%B4%E6%8E%A5%E5%AF%BB%E5%9D%80.png" /></p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">GAS</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nf">MOV</span><span class="w"> </span><span class="no">EAX</span><span class="p">,</span><span class="w"> </span><span class="err">@</span><span class="mi">2008</span><span class="no">H</span><span class="w"> </span><span class="err">\\</span><span class="w"> </span><span class="err">将主存</span><span class="mi">2008</span><span class="no">H对应的内容对应的内存中的内容送入EAX</span>
+</code></pre></div></td></tr></table></div>
+<p><ins class="critic">寄存器间接寻址</ins> 操作数存在于主存,但使用寄存器拓展寻址空间.</p>
+<p><img alt="alt text" src="../images/%E5%AF%84%E5%AD%98%E5%99%A8%E9%97%B4%E6%8E%A5%E5%AF%BB%E5%9D%80.png" /></p>
+<p><ins class="critic">相对寻址</ins> 一般用于跳转/转移指令 通过PC(本质也是一种寄存器间接寻址)</p>
+<p><img alt="alt text" src="../images/%E7%9B%B8%E5%AF%B9%E5%AF%BB%E5%9D%80.png" /></p>
+<p>需要注意 <span class="arithmatex">\(EA=PC+D+1\)</span> 这是由于计算机操作数的有效地址在指令译码分析或者执行阶段.而计算PC+1在取指令阶段就会执行.</p>
+<p><ins class="critic">变址寻址\基址寻址</ins> 基本设计理念都是寄存器间接寻址.选定一个特殊的寄存器(变址寄存器\基址寄存器)在操作码字段指明一个形式地址段D </p>
+<ul>
+<li>变址寻址中, X中的内容可以修改,D的内容不可修改.EA = R[X] + D<ul>
+<li>适合实现迭代过程</li>
+</ul>
+</li>
+<li>基址寻址中, B中的内容不可变,D的内容可以修改. EA = R[B] + D<ul>
+<li>通常情况下基址寄存器是特设的,此时就不需要指明基址寄存器的寄存器编号</li>
+<li>面向系统,主要用于程序的重定位(多道程序环境)</li>
+<li>拓展寻址空间,通过拓展基址寄存器的字长从而拓展寻址空间</li>
+</ul>
+</li>
+</ul>
+<p><img alt="alt text" src="../images/%E5%8F%98%E5%9D%80-%E5%9F%BA%E5%9D%80%E5%AF%BB%E5%9D%80.png" /></p>
+<p><ins class="critic">堆栈寻址</ins> 使用一个寄存器(堆栈寄存器SP)指明栈顶元素,一般用子程序调用.</p>
+<p><img alt="alt text" src="../images/%E5%A0%86%E6%A0%88%E5%AF%BB%E5%9D%80.png" /></p>
+<h3 id="_5">数据的对齐和大/小段存储<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><img alt="alt text" src="../images/%E6%95%B0%E6%8D%AE%E5%AF%B9%E9%BD%900.png" /></p>
+<p><ins class="critic">数据对齐</ins> 对基本类型的地址做出了一定的限制,某种类型的<ins class="critic">地址</ins>必须是某个值K的倍数.</p>
+<p>考虑如下结构体
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">S1</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="p">;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="p">};</span>
+</code></pre></div></td></tr></table></div></p>
+<p><img alt="" src="../images/%E6%95%B0%E6%8D%AE%E5%AF%B9%E9%BD%90.png" /></p>
+<p>考虑如下结构体</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">S</span><span class="err">@</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">    </span><span class="kt">short</span><span class="w"> </span><span class="n">j</span><span class="p">;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p><img alt="" src="../images/%E6%95%B0%E6%8D%AE%E5%AF%B9%E9%BD%901.png" /></p>
+<ul>
+<li>注意 <code>j</code>不是紧挨着<code>c</code>而是空开一个,是为了让j的地址满足2的倍数</li>
+</ul>
+<p><ins class="critic">大端存储与小端存储</ins> </p>
+<p><img alt="alt text" src="../images/%E5%A4%A7%E7%AB%AF-%E5%B0%8F%E7%AB%AF%E5%AD%98%E5%82%A8.png" /></p>
+<h3 id="ciscrisc">CISC和RISC<a class="headerlink" href="#ciscrisc" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../images/CISC-vs-RISC.png" /></p>
+<h3 id="x86-64">x86-64 程序的机器表示<a class="headerlink" href="#x86-64" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>主要参考 CSAPP-chapter 3 程序的机器级表示</p>
+</div>
 
 
 

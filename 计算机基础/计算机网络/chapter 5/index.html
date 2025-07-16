@@ -3186,7 +3186,11 @@
 <li>广播标志为等</li>
 </ul>
 </li>
-<li>DHCP服务器根据DISCOVER接口的IP地址处于同一网段的地址池中选择一个可用的IP地址;然后发送 <code>DHCP OFFER</code>报文发送给DHCP客户端</li>
+<li>DHCP服务器根据DISCOVER接口的IP地址处于同一网段的地址池中选择一个可用的IP地址;然后发送 <code>DHCP OFFER</code>报文发送给DHCP客户端<ul>
+<li>DHCP服务器用<ins class="critic">ARP协议</ins>判断给出的IP地址是否可行</li>
+<li>DHCP客户端用<ins class="critic">ARP协议</ins>判断收到的IP地址是否可行</li>
+</ul>
+</li>
 <li>DHCP客户端通常只会接受第一个收到的DHCP OFFER报文,然后以 <ins class="critic">广播</ins>的方式发送 DHCP REQUEST报文<ul>
 <li>REQUEST报文携带客户端想要选择的服务器标识符和客户端IP地址</li>
 <li>正确的DHCP服务器发送 DHCP ACK报文表示确认分配</li>

@@ -2771,13 +2771,29 @@
 </ul>
 <h2 id="_3">数据通信系统的主要性能指标<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p><ins class="critic">码元</ins>是指使用时域表示数字信号时,用固定时长的信号波形(数字脉冲)来代表不同离散值的基本波形.</p>
-<p><ins>码元速率(波特率)</ins> 表示单位时间内信号波形的变化次数,即通过信道传输的码元个数. 若信号的码元宽度为 <span class="arithmatex">\(T\)</span>, 单位为 <span class="arithmatex">\(s\)</span>, 则其码元速率 <span class="arithmatex">\(B=1/T\)</span> ,单位为波特(baud) </p>
+<p><ins>码元速率(波特率,调制速率)</ins> 表示单位时间内信号波形的变化次数,即通过信道传输的码元个数. 若信号的码元宽度为 <span class="arithmatex">\(T\)</span>, 单位为 <span class="arithmatex">\(s\)</span>, 则其码元速率 <span class="arithmatex">\(B=1/T\)</span> ,单位为波特(baud) </p>
 <p><ins>数据传输速率</ins> 单位时间内信道上传送的信息量(比特数), 单位为比特每秒(bps).<ins class="critic">由于二进制信号中每个码元只包含一个比特,故码元速率在数值上与数据传输率相等.</ins>, 但对于 <span class="arithmatex">\(n\)</span> 进制信号,则数据传输率为</p>
 <div class="arithmatex">\[
 R=B\times\log_{2}(n) &gt; B
 \]</div>
 <p><ins>误码率</ins> 错误接受的码元数在传输的总码元数的占比 </p>
 <p><ins>误比特率</ins> 错误接受的比特数在传输的总比特数的占比 </p>
+<p><ins>时延带宽积</ins> 单向传播时延与带宽(数据传输速率)的乘积</p>
+<p><ins class="critic">发送时延(传播时延)</ins> 主机或路由器发送分组所需要耗费的时间</p>
+<div class="arithmatex">\[
+发送时延=\frac{分组长度(b)}{发送速率\ (b/s)}
+\]</div>
+<p><ins class="critic">传播时延</ins> 电磁波在连输(传输介质)上传播一定的距离所耗费的时间</p>
+<div class="arithmatex">\[
+传播时延 = \frac{链路长度(m)}{电磁波在连输上的传播速度\ (m/s)}
+\]</div>
+<ul>
+<li>电磁波在自由空间的传播速度约为 <span class="arithmatex">\(3\times 10^8 m/s\)</span></li>
+<li>电磁波在铜线电缆中的传播速率约为 <span class="arithmatex">\(2.3\times 10^8 m/s\)</span></li>
+<li>电磁波在光纤中的传播速率约为 <span class="arithmatex">\(2\times 10^8 m/s\)</span></li>
+</ul>
+<p><ins class="critic">排队时延和处理时延</ins> 分组在路由器进行排队等待处理和路由器处理报文的时间.</p>
+<p><img alt="alt text" src="../images/%E6%97%B6%E5%BB%B6.png" /></p>
 <h2 id="_4">信号和数据编码<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p><ins>模拟信号和数字信号</ins> 模拟信号时随时间变化的电磁波形式,模拟信号时连续的;数字信号,方波信号.</p>
 <p><img alt="alt text" src="../images/%E4%BF%A1%E5%8F%B7%E7%B1%BB%E5%9E%8B.png" /></p>
@@ -2911,14 +2927,14 @@ R_{max}=W\times\log_{2}(1+S/N)
 <p><ins>编码效率</ins> 数据信息在全部数据中所占的比率 </p>
 <h3 id="_11">检测码<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p><ins>奇偶校验码</ins> 计算数据码中<code>1</code>的个数,然后增加一个附加比特位,使得包含<code>1</code>的总个数变为偶数(奇数)则该附加比特位被称为偶(奇)校验码</p>
-<p><mark class="critic">垂直奇偶校验</mark> 将大的数据分成一个一个小的数据块,并为每一个数据块都增加一个奇偶校验码,使得每一个数据块中所含<code>1</code>个个数为偶(奇),以偶校验举例说明.</p>
+<p><ins class="critic">垂直奇偶校验</ins> 将大的数据分成一个一个小的数据块,并为每一个数据块都增加一个奇偶校验码,使得每一个数据块中所含<code>1</code>个个数为偶(奇),以偶校验举例说明.</p>
 <p><img alt="alt text" src="../images/%E5%9E%82%E7%9B%B4%E5%81%B6%E6%A0%A1%E9%AA%8C.png" /></p>
 <p>垂直奇偶检验可以检测出单比特错误,只有错误比特数是<ins class="critic">奇数</ins>是才能检测出多比特错误.</p>
-<p><ins class="critic">水平奇偶检验} 将大的数据块分为一个一个小的数据块,为每一个小数据块相同位单独设置一个奇偶检验位,并把最终的奇偶校验码加在数据码的后面传送.</p>
+<p><ins class="critic">水平奇偶检验</ins> 将大的数据块分为一个一个小的数据块,为每一个小数据块相同位单独设置一个奇偶检验位,并把最终的奇偶校验码加在数据码的后面传送.</p>
 <p><img alt="alt text" src="../images/%E6%B0%B4%E5%B9%B3%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C.png" /></p>
-<p>{++水平垂直奇偶校验</ins> 同时进行水平/垂直奇偶校验</p>
+<p><ins class="critic">水平垂直奇偶校验</ins> 同时进行水平/垂直奇偶校验</p>
 <p><img alt="alt text" src="../images/%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C.png" /></p>
-<p><ins>循环冗余校验码(CRC)</ins></p>
+<p>{≠≠循环冗余校验码(CRC)++}</p>
 <ul>
 <li>双方规定一个最高接为m的生成多项式,假设为 <span class="arithmatex">\(G(x)=x^4+x^3+1\rightarrow 11001\)</span>, m = 4</li>
 <li>假设待发送信息为 <span class="arithmatex">\(1101011\)</span></li>
