@@ -176,3 +176,19 @@ n层PDU由n层SDU该层的协议控制信息(PCI,通常就是各层加上的头(
 ### IP报文格式
 
 ![](./images/IP报文格式.png)
+
+### IPv6报文头
+
+![](./images/IPv6报文头.png)
+
+### TCP首部
+
+![](./images/TCP报文格式.png)
+
+### UDP首部
+
+![](./images/UDP报文格式.png)
+
+### 伪首部
+
+![](./images/UDP校验和计算.png)

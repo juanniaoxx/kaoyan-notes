@@ -27,24 +27,24 @@
 \section{数据结构}
 \begin{enumerate}
     \item  评估下面这段代码的时间复杂度()
-    \begin{lstlisting}[language=C]
-        int func(int n) {
-            int i = 0, sum = 0;
-            while(sum < n) sum += ++i;
-            return i;
-        }
-    \end{lstlisting}
+\begin{lstlisting}[language=C]
+    int func(int n) {
+        int i = 0, sum = 0;
+        while(sum < n) sum += ++i;
+        return i;
+    }
+\end{lstlisting}
     \begin{solution}
         
     \end{solution}
 
     \item 评估下面这段代码的时间复杂度()
-    \begin{lstlisting}[language=C]
-        int sum = 0;
-            for(int i = 1; i < n; i *= 2)
-                for (int j = 0; j < i; j++)
-                    sum++;
-    \end{lstlisting}
+\begin{lstlisting}[language=C]
+    int sum = 0;
+        for(int i = 1; i < n; i *= 2)
+            for (int j = 0; j < i; j++)
+                sum++;
+\end{lstlisting}
 
     \begin{solution}
         
@@ -147,6 +147,31 @@
 
 \section{计算机组成原理}
 
+\begin{enumerate}
+    \item 某计算机字长为8位,CPU中有一个8位加法器.已知无符号数x=69,y=38,如果在该加法器中计算x-y,则加法
+    器的两个输入端入端信息和低位进位信息分别是() \\
+    A.0100\ 0101,0010\ 0110, 0 \qquad B.0100\ 0101,1101\ 1001, 1 \\
+    C.A.0100\ 0101,1101\ 10110, 0 \qquad D.0100\ 0101,1101\ 1010, 1
+    \item 某计算机存储器按字节编制,采用小端方式存放数据.假定编译器规定int型和short型长度分别为32位和16位
+    并且数据按边界对齐存储.某C语言程序段如下
+\begin{lstlisting}[language=C]
+    struct {
+        int a;
+        char b;
+        short c;
+    }record;
+    record.a = 273;
+\end{lstlisting}
+    若record变量的首地址为0xC008地址0xC008中的内容及record.c的地址分别是()
+    A.0x00, 0xC00D\qquad B.0x00,0xC00E\qquad C.0x11,0xC00D \qquad D.0x11,0xC00E 
+
+    \item 有如下C语言序段:
+\begin{lstlisting}[language=C]
+    short si = -32767;
+    unsigned short usi = si;
+\end{lstlisting}
+    这执行上述两条语句后,usi的值是\_\_\_\_ 
+\end{enumerate}
 \section{操作系统}
 \ifx\allfiles\undefined
 \end{document}
