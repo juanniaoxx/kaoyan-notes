@@ -3187,6 +3187,10 @@ T_{周转时间} = T_{完成时间} - T_{到达时间}
 <div class="arithmatex">\[
 T_{响应时间} = T_{首次执行时间} - T_{到达时间}
 \]</div>
+<p><ins class="critic">响应比</ins> 作业等待时间+要求服务时间与要求服务时间</p>
+<div class="arithmatex">\[
+响应比 = \frac{作业等待时间+要求服务时间}{要求服务时间} = \frac{响应时间}{要求服务时间}
+\]</div>
 <h3 id="_10">调度算法<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p><ins class="critic">先来先服务调度算法(FCFS\FIFO)</ins> 不管作业的时间长度,按照作业到达的顺序依次执行.</p>
 <p><img alt="alt text" src="../images/%E5%85%88%E6%9D%A5%E5%85%88%E6%9C%8D%E5%8A%A1.png" /></p>
@@ -3240,7 +3244,7 @@ T_{响应时间} = T_{首次执行时间} - T_{到达时间}
 <p><ins class="critic">死锁</ins> 两个进程双方都希望对方能释放出自己所需要的资源,但它们都会因为不能获取自己所需要的资源去继续运行而无法释放自己当下的资源,并且一直处于这种僵持状态.</p>
 <p><img alt="" src="../images/%E7%B3%BB%E7%BB%9F%E8%B5%84%E6%BA%90.png" /></p>
 <p><ins class="critic">竞争不可抢占资源导致的死锁</ins> </p>
-<p><div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span>
 <span class="normal"><a href="#__codelineno-0-3">3</a></span>
 <span class="normal"><a href="#__codelineno-0-4">4</a></span>
@@ -3250,8 +3254,7 @@ T_{响应时间} = T_{首次执行时间} - T_{到达时间}
 <a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="n">open</span><span class="p">(</span><span class="n">F1</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">);</span><span class="w">                    </span><span class="n">open</span><span class="p">(</span><span class="n">F2</span><span class="p">,</span><span class="n">w</span><span class="p">);</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="n">open</span><span class="p">(</span><span class="n">F2</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">);</span><span class="w">                    </span><span class="n">open</span><span class="p">(</span><span class="n">F1</span><span class="p">,</span><span class="n">w</span><span class="p">);</span>
 </code></pre></div></td></tr></table></div>
-www
-上述并不一定会导致死锁,例如P1率先打开F1,F2,此时P2就会因为无法打开F2而导致阻塞;此时等待P1释放资源即可. </p>
+<p>上述并不一定会导致死锁,例如P1率先打开F1,F2,此时P2就会因为无法打开F2而导致阻塞;此时等待P1释放资源即可. </p>
 <p>但上述也可能导致死锁,例如P1,P2先后执行一条open;此时P1打开F1,P2打开F2,此时P1希望P2释放F2,而P2希望P1释放F1,导致死锁. 可以用如下图所示的资源图描述.</p>
 <p><img alt="" src="../images/%E6%AD%BB%E9%94%811.png" /></p>
 <p><ins class="critic">竞争可消耗资源导致死锁</ins></p>
@@ -3913,13 +3916,16 @@ www
 <p><img alt="" src="../images/%E7%94%9F%E4%BA%A7%E8%80%85-%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98.png" /></p>
 <h4 id="-_1">读者-写者问题<a class="headerlink" href="#-_1" title="Permanent link">&para;</a></h4>
 <p><ins>问题描述</ins> 一个数据文件或者记录可以被多个进程共享,其中某些线程仅仅是读取其中的内容而不做更改,称为读者线程;另一些不仅要求读还要求更改数据中的内容,称为写者线程. 允许多个读者同时访问数据,但不允许写者和读者\写者共同访问数据.</p>
-<p>通常有三类读者-写者问题</p>
 <ul>
-<li><ins class="critic">读写公平</ins> 读写进程一起排队,谁先到写执行谁</li>
-<li><ins class="critic">写者优先</ins> 如果有写者在等待访问对象,则不允许有新的读者开始读操作</li>
-<li><ins class="critic">读者优先</ins> 如果有读者在访问读者,则不管有没有写者,后续读者都可以进行读操作</li>
+<li><ins class="critic">写者优先(读\写公平)</ins> 如果有写者在等待访问对象,则不允许有新的读者开始读操作</li>
+<li><ins class="critic">读者优先</ins> 如果有读者在访问进程,则不管有没有写者,后续读者都可以进行读操作</li>
 </ul>
-<p><ins>关于读写公平问题的解法</ins></p>
+<p><ins>关于读者优先问题的解法</ins></p>
+<ul>
+<li>设置互斥型信号量<code>w_mutex</code>来控制读\写互斥;设置<code>reader_number</code>来记录当前有多少个读者在读数据;设置互斥变量<code>r_mutex</code>来控制多个读者互斥访问<code>reader_number</code></li>
+<li>写者只有在没有读者要读数据的时候才能写数据</li>
+</ul>
+<p><img alt="" src="../images/%E8%AF%BB%E8%80%85%E4%BC%98%E5%85%88%E9%97%AE%E9%A2%98.png" /></p>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-19-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-19-3"> 3</a></span>
@@ -3948,41 +3954,37 @@ www
 <span class="normal"><a href="#__codelineno-19-26">26</a></span>
 <span class="normal"><a href="#__codelineno-19-27">27</a></span>
 <span class="normal"><a href="#__codelineno-19-28">28</a></span>
-<span class="normal"><a href="#__codelineno-19-29">29</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="n">semaphore</span><span class="w"> </span><span class="n">c_mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<a id="__codelineno-19-3" name="__codelineno-19-3"></a><span class="c1">// 读进程</span>
-<a id="__codelineno-19-4" name="__codelineno-19-4"></a><span class="kt">void</span><span class="w"> </span><span class="nf">reader</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-19-5" name="__codelineno-19-5"></a><span class="w">    </span><span class="n">wait</span><span class="p">(</span><span class="n">queue</span><span class="p">);</span>
-<a id="__codelineno-19-6" name="__codelineno-19-6"></a><span class="w">    </span><span class="n">wait</span><span class="p">(</span><span class="n">c_mutex</span><span class="p">);</span>
-<a id="__codelineno-19-7" name="__codelineno-19-7"></a><span class="w">    </span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
-<a id="__codelineno-19-8" name="__codelineno-19-8"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
-<a id="__codelineno-19-9" name="__codelineno-19-9"></a><span class="w">    </span><span class="n">signal</span><span class="p">(</span><span class="n">c_mutex</span><span class="p">);</span>
-<a id="__codelineno-19-10" name="__codelineno-19-10"></a><span class="w">    </span><span class="n">signal</span><span class="p">(</span><span class="n">queue</span><span class="p">);</span>
-<a id="__codelineno-19-11" name="__codelineno-19-11"></a>
-<a id="__codelineno-19-12" name="__codelineno-19-12"></a><span class="w">    </span><span class="c1">// 读文件</span>
-<a id="__codelineno-19-13" name="__codelineno-19-13"></a>
-<a id="__codelineno-19-14" name="__codelineno-19-14"></a><span class="w">    </span><span class="n">wait</span><span class="p">(</span><span class="n">c_mutex</span><span class="p">);</span>
-<a id="__codelineno-19-15" name="__codelineno-19-15"></a><span class="w">    </span><span class="n">count</span><span class="o">--</span><span class="p">;</span>
-<a id="__codelineno-19-16" name="__codelineno-19-16"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="n">signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
-<a id="__codelineno-19-17" name="__codelineno-19-17"></a><span class="w">    </span><span class="n">signal</span><span class="p">(</span><span class="n">c_mutex</span><span class="p">);</span>
-<a id="__codelineno-19-18" name="__codelineno-19-18"></a><span class="p">}</span>
-<a id="__codelineno-19-19" name="__codelineno-19-19"></a>
-<a id="__codelineno-19-20" name="__codelineno-19-20"></a><span class="c1">// 写进程</span>
-<a id="__codelineno-19-21" name="__codelineno-19-21"></a><span class="kt">void</span><span class="w"> </span><span class="nf">writer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-19-22" name="__codelineno-19-22"></a><span class="w">    </span><span class="n">wait</span><span class="p">(</span><span class="n">queue</span><span class="p">);</span>
-<a id="__codelineno-19-23" name="__codelineno-19-23"></a><span class="w">    </span><span class="n">wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
-<a id="__codelineno-19-24" name="__codelineno-19-24"></a>
-<a id="__codelineno-19-25" name="__codelineno-19-25"></a><span class="w">    </span><span class="c1">// 写操作</span>
-<a id="__codelineno-19-26" name="__codelineno-19-26"></a>
-<a id="__codelineno-19-27" name="__codelineno-19-27"></a><span class="w">    </span><span class="n">signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
-<a id="__codelineno-19-28" name="__codelineno-19-28"></a><span class="w">    </span><span class="n">signal</span><span class="p">(</span><span class="n">queue</span><span class="p">);</span>
+<span class="normal"><a href="#__codelineno-19-29">29</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="n">semaphore</span><span class="w"> </span><span class="n">r_mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">w_mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">reader_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3"></a>
+<a id="__codelineno-19-4" name="__codelineno-19-4"></a><span class="c1">// 读线程</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5"></a>
+<a id="__codelineno-19-6" name="__codelineno-19-6"></a><span class="kt">void</span><span class="w"> </span><span class="nf">reader</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7"></a><span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">r_mutex</span><span class="p">);</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reader_number</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">wait</span><span class="p">(</span><span class="n">w_mutex</span><span class="p">);</span><span class="w"> </span><span class="c1">// 等待写进程完成</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10"></a><span class="w">        </span><span class="n">reader_number</span><span class="o">++</span><span class="p">;</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">r_mutex</span><span class="p">);</span><span class="w"> </span><span class="c1">// 互斥夹紧</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12"></a><span class="w">        </span><span class="p">....</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13"></a><span class="w">        </span><span class="n">perform</span><span class="w"> </span><span class="n">read</span><span class="w"> </span><span class="n">operation</span><span class="w"> </span><span class="p">;</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14"></a><span class="w">        </span><span class="p">....</span>
+<a id="__codelineno-19-15" name="__codelineno-19-15"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">r_mutex</span><span class="p">);</span>
+<a id="__codelineno-19-16" name="__codelineno-19-16"></a><span class="w">        </span><span class="n">reader_number</span><span class="o">--</span><span class="p">;</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reader_number</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">signal</span><span class="p">(</span><span class="n">w_mutex</span><span class="p">);</span><span class="w"> </span><span class="c1">// 尝试唤醒写进程</span>
+<a id="__codelineno-19-18" name="__codelineno-19-18"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">r_mutex</span><span class="p">);</span><span class="w"> </span><span class="c1">// 互斥夹紧</span>
+<a id="__codelineno-19-19" name="__codelineno-19-19"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<a id="__codelineno-19-20" name="__codelineno-19-20"></a><span class="p">}</span>
+<a id="__codelineno-19-21" name="__codelineno-19-21"></a>
+<a id="__codelineno-19-22" name="__codelineno-19-22"></a><span class="c1">// 写线程</span>
+<a id="__codelineno-19-23" name="__codelineno-19-23"></a><span class="kt">void</span><span class="w"> </span><span class="nf">writer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-24" name="__codelineno-19-24"></a><span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-25" name="__codelineno-19-25"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">w_mutex</span><span class="p">);</span>
+<a id="__codelineno-19-26" name="__codelineno-19-26"></a><span class="w">        </span><span class="n">perform</span><span class="w"> </span><span class="n">write</span><span class="w"> </span><span class="n">operation</span><span class="p">;</span>
+<a id="__codelineno-19-27" name="__codelineno-19-27"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">w_mutex</span><span class="p">);</span><span class="w"> </span><span class="c1">// 互斥夹紧</span>
+<a id="__codelineno-19-28" name="__codelineno-19-28"></a><span class="w">    </span><span class="p">}</span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 <a id="__codelineno-19-29" name="__codelineno-19-29"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<p><ins>关于读者优先问题的解法</ins></p>
-<ul>
-<li>设置互斥型信号量<code>w_mutex</code>来控制读\写互斥;设置<code>reader_number</code>来记录当前有多少个读者在读数据;设置互斥变量<code>r_mutex</code>来控制多个读者互斥访问<code>reader_number</code></li>
-<li>写者只有在没有读者要读数据的时候才能写数据</li>
-</ul>
+<p><ins>关于写者优先问题的解法</ins></p>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-20-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-20-3"> 3</a></span>
@@ -4011,38 +4013,77 @@ www
 <span class="normal"><a href="#__codelineno-20-26">26</a></span>
 <span class="normal"><a href="#__codelineno-20-27">27</a></span>
 <span class="normal"><a href="#__codelineno-20-28">28</a></span>
-<span class="normal"><a href="#__codelineno-20-29">29</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="n">semaphore</span><span class="w"> </span><span class="n">r_mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">w_mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="normal"><a href="#__codelineno-20-29">29</a></span>
+<span class="normal"><a href="#__codelineno-20-30">30</a></span>
+<span class="normal"><a href="#__codelineno-20-31">31</a></span>
+<span class="normal"><a href="#__codelineno-20-32">32</a></span>
+<span class="normal"><a href="#__codelineno-20-33">33</a></span>
+<span class="normal"><a href="#__codelineno-20-34">34</a></span>
+<span class="normal"><a href="#__codelineno-20-35">35</a></span>
+<span class="normal"><a href="#__codelineno-20-36">36</a></span>
+<span class="normal"><a href="#__codelineno-20-37">37</a></span>
+<span class="normal"><a href="#__codelineno-20-38">38</a></span>
+<span class="normal"><a href="#__codelineno-20-39">39</a></span>
+<span class="normal"><a href="#__codelineno-20-40">40</a></span>
+<span class="normal"><a href="#__codelineno-20-41">41</a></span>
+<span class="normal"><a href="#__codelineno-20-42">42</a></span>
+<span class="normal"><a href="#__codelineno-20-43">43</a></span>
+<span class="normal"><a href="#__codelineno-20-44">44</a></span>
+<span class="normal"><a href="#__codelineno-20-45">45</a></span>
+<span class="normal"><a href="#__codelineno-20-46">46</a></span>
+<span class="normal"><a href="#__codelineno-20-47">47</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="n">semaphore</span><span class="w"> </span><span class="n">r_mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">w_mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">read_try</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">  </span><span class="c1">// 新增 read_try 信号量</span>
 <a id="__codelineno-20-2" name="__codelineno-20-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">reader_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<a id="__codelineno-20-3" name="__codelineno-20-3"></a>
-<a id="__codelineno-20-4" name="__codelineno-20-4"></a><span class="c1">// 读线程</span>
-<a id="__codelineno-20-5" name="__codelineno-20-5"></a>
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a><span class="kt">int</span><span class="w"> </span><span class="n">writer_waiting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span><span class="c1">// 记录是否有写者在等待</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4"></a>
+<a id="__codelineno-20-5" name="__codelineno-20-5"></a><span class="c1">// 读线程</span>
 <a id="__codelineno-20-6" name="__codelineno-20-6"></a><span class="kt">void</span><span class="w"> </span><span class="nf">reader</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-20-7" name="__codelineno-20-7"></a><span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-20-8" name="__codelineno-20-8"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">r_mutex</span><span class="p">);</span>
-<a id="__codelineno-20-9" name="__codelineno-20-9"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reader_number</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">wait</span><span class="p">(</span><span class="n">w_mutex</span><span class="p">);</span><span class="w"> </span><span class="c1">// 等待写进程完成</span>
-<a id="__codelineno-20-10" name="__codelineno-20-10"></a><span class="w">        </span><span class="n">reader_number</span><span class="o">++</span><span class="p">;</span>
-<a id="__codelineno-20-11" name="__codelineno-20-11"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">r_mutex</span><span class="p">);</span><span class="w"> </span><span class="c1">// 互斥夹紧</span>
-<a id="__codelineno-20-12" name="__codelineno-20-12"></a><span class="w">        </span><span class="p">....</span>
-<a id="__codelineno-20-13" name="__codelineno-20-13"></a><span class="w">        </span><span class="n">perform</span><span class="w"> </span><span class="n">read</span><span class="w"> </span><span class="n">operation</span><span class="w"> </span><span class="p">;</span>
-<a id="__codelineno-20-14" name="__codelineno-20-14"></a><span class="w">        </span><span class="p">....</span>
-<a id="__codelineno-20-15" name="__codelineno-20-15"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">r_mutex</span><span class="p">);</span>
-<a id="__codelineno-20-16" name="__codelineno-20-16"></a><span class="w">        </span><span class="n">reader_number</span><span class="o">--</span><span class="p">;</span>
-<a id="__codelineno-20-17" name="__codelineno-20-17"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reader_number</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">signal</span><span class="p">(</span><span class="n">w_mutex</span><span class="p">);</span><span class="w"> </span><span class="c1">// 尝试唤醒写进程</span>
-<a id="__codelineno-20-18" name="__codelineno-20-18"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">r_mutex</span><span class="p">);</span><span class="w"> </span><span class="c1">// 互斥夹紧</span>
-<a id="__codelineno-20-19" name="__codelineno-20-19"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
-<a id="__codelineno-20-20" name="__codelineno-20-20"></a><span class="p">}</span>
-<a id="__codelineno-20-21" name="__codelineno-20-21"></a>
-<a id="__codelineno-20-22" name="__codelineno-20-22"></a><span class="c1">// 写线程</span>
-<a id="__codelineno-20-23" name="__codelineno-20-23"></a><span class="kt">void</span><span class="w"> </span><span class="nf">writer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-20-24" name="__codelineno-20-24"></a><span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-20-25" name="__codelineno-20-25"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">w_mutex</span><span class="p">);</span>
-<a id="__codelineno-20-26" name="__codelineno-20-26"></a><span class="w">        </span><span class="n">perform</span><span class="w"> </span><span class="n">write</span><span class="w"> </span><span class="n">operation</span><span class="p">;</span>
-<a id="__codelineno-20-27" name="__codelineno-20-27"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">w_mutex</span><span class="p">);</span><span class="w"> </span><span class="c1">// 互斥夹紧</span>
-<a id="__codelineno-20-28" name="__codelineno-20-28"></a><span class="w">    </span><span class="p">}</span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<a id="__codelineno-20-29" name="__codelineno-20-29"></a><span class="p">}</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">read_try</span><span class="p">);</span><span class="w">           </span><span class="c1">// 尝试进入读区域，如果写者在等待则阻塞</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">r_mutex</span><span class="p">);</span><span class="w">            </span><span class="c1">// 保护 reader_number 的访问</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reader_number</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">wait</span><span class="p">(</span><span class="n">w_mutex</span><span class="p">);</span><span class="w">  </span><span class="c1">// 如果是第一个读者，等待写者完成</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11"></a><span class="w">        </span><span class="n">reader_number</span><span class="o">++</span><span class="p">;</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">r_mutex</span><span class="p">);</span><span class="w">          </span><span class="c1">// 释放对 reader_number 的互斥访问</span>
+<a id="__codelineno-20-13" name="__codelineno-20-13"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">read_try</span><span class="p">);</span><span class="w">         </span><span class="c1">// 允许其他读者尝试进入</span>
+<a id="__codelineno-20-14" name="__codelineno-20-14"></a>
+<a id="__codelineno-20-15" name="__codelineno-20-15"></a><span class="w">        </span><span class="c1">// ....</span>
+<a id="__codelineno-20-16" name="__codelineno-20-16"></a><span class="w">        </span><span class="n">perform</span><span class="w"> </span><span class="n">read</span><span class="w"> </span><span class="n">operation</span><span class="p">;</span><span class="w">   </span><span class="c1">// 执行读操作</span>
+<a id="__codelineno-20-17" name="__codelineno-20-17"></a><span class="w">        </span><span class="c1">// ....</span>
+<a id="__codelineno-20-18" name="__codelineno-20-18"></a>
+<a id="__codelineno-20-19" name="__codelineno-20-19"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">r_mutex</span><span class="p">);</span><span class="w">            </span><span class="c1">// 再次进入临界区，准备减少读者数</span>
+<a id="__codelineno-20-20" name="__codelineno-20-20"></a><span class="w">        </span><span class="n">reader_number</span><span class="o">--</span><span class="p">;</span>
+<a id="__codelineno-20-21" name="__codelineno-20-21"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reader_number</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">signal</span><span class="p">(</span><span class="n">w_mutex</span><span class="p">);</span><span class="w">  </span><span class="c1">// 如果是最后一个读者，释放 w_mutex</span>
+<a id="__codelineno-20-22" name="__codelineno-20-22"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">r_mutex</span><span class="p">);</span><span class="w">          </span><span class="c1">// 释放互斥锁</span>
+<a id="__codelineno-20-23" name="__codelineno-20-23"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<a id="__codelineno-20-24" name="__codelineno-20-24"></a><span class="p">}</span>
+<a id="__codelineno-20-25" name="__codelineno-20-25"></a>
+<a id="__codelineno-20-26" name="__codelineno-20-26"></a><span class="c1">// 写线程</span>
+<a id="__codelineno-20-27" name="__codelineno-20-27"></a><span class="kt">void</span><span class="w"> </span><span class="nf">writer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-20-28" name="__codelineno-20-28"></a><span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-20-29" name="__codelineno-20-29"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">w_mutex</span><span class="p">);</span><span class="w">            </span><span class="c1">// 确保写操作的互斥</span>
+<a id="__codelineno-20-30" name="__codelineno-20-30"></a><span class="w">        </span><span class="n">writer_waiting</span><span class="o">++</span><span class="p">;</span><span class="w">         </span><span class="c1">// 标记有写者在等待</span>
+<a id="__codelineno-20-31" name="__codelineno-20-31"></a>
+<a id="__codelineno-20-32" name="__codelineno-20-32"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">r_mutex</span><span class="p">);</span><span class="w">            </span><span class="c1">// 保护 reader_number 的访问</span>
+<a id="__codelineno-20-33" name="__codelineno-20-33"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reader_number</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">wait</span><span class="p">(</span><span class="n">read_try</span><span class="p">);</span><span class="w">  </span><span class="c1">// 如果有读者正在读，阻止新读者进入</span>
+<a id="__codelineno-20-34" name="__codelineno-20-34"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">r_mutex</span><span class="p">);</span><span class="w">          </span><span class="c1">// 释放对 reader_number 的访问</span>
+<a id="__codelineno-20-35" name="__codelineno-20-35"></a>
+<a id="__codelineno-20-36" name="__codelineno-20-36"></a><span class="w">        </span><span class="c1">// ....</span>
+<a id="__codelineno-20-37" name="__codelineno-20-37"></a><span class="w">        </span><span class="n">perform</span><span class="w"> </span><span class="n">write</span><span class="w"> </span><span class="n">operation</span><span class="p">;</span><span class="w">  </span><span class="c1">// 执行写操作</span>
+<a id="__codelineno-20-38" name="__codelineno-20-38"></a><span class="w">        </span><span class="c1">// ....</span>
+<a id="__codelineno-20-39" name="__codelineno-20-39"></a>
+<a id="__codelineno-20-40" name="__codelineno-20-40"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">r_mutex</span><span class="p">);</span><span class="w">            </span><span class="c1">// 再次进入临界区</span>
+<a id="__codelineno-20-41" name="__codelineno-20-41"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reader_number</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">signal</span><span class="p">(</span><span class="n">read_try</span><span class="p">);</span><span class="w">  </span><span class="c1">// 允许新读者进入（如果之前阻止了）</span>
+<a id="__codelineno-20-42" name="__codelineno-20-42"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">r_mutex</span><span class="p">);</span><span class="w">          </span><span class="c1">// 释放互斥锁</span>
+<a id="__codelineno-20-43" name="__codelineno-20-43"></a>
+<a id="__codelineno-20-44" name="__codelineno-20-44"></a><span class="w">        </span><span class="n">writer_waiting</span><span class="o">--</span><span class="p">;</span><span class="w">         </span><span class="c1">// 标记写者已完成等待</span>
+<a id="__codelineno-20-45" name="__codelineno-20-45"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">w_mutex</span><span class="p">);</span><span class="w">          </span><span class="c1">// 释放写互斥锁</span>
+<a id="__codelineno-20-46" name="__codelineno-20-46"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-20-47" name="__codelineno-20-47"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<p><ins>关于写者优先问题的解法</ins></p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1"> 1</a></span>
+<h4 id="_21">哲学家进餐问题<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<p><ins>问题描述</ins> 有5个哲学家共用1张圆桌,它们分别坐在圆桌周围的5把椅子上,在圆桌上有5个碗和5根筷子,它们的生活方式是交替思考和吃法;平时,一个哲学家进行思考,在饥饿的时候便会试图取用左/右边最靠近自己的筷子来进餐,只有在持有两个筷子的时候才会进餐;进餐完毕,放下筷子思考.</p>
+<p><img alt="alt text" src="../images/%E5%93%B2%E5%AD%A6%E5%AE%B6%E8%BF%9B%E9%A4%90.png" /></p>
+<p>简单思考,如果所有哲学家都先拿左边筷子再拿右边筷子;当所有哲学家一起想吃饭的时候就或导致死锁.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-21-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-21-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-21-4"> 4</a></span>
@@ -4054,93 +4095,25 @@ www
 <span class="normal"><a href="#__codelineno-21-10">10</a></span>
 <span class="normal"><a href="#__codelineno-21-11">11</a></span>
 <span class="normal"><a href="#__codelineno-21-12">12</a></span>
-<span class="normal"><a href="#__codelineno-21-13">13</a></span>
-<span class="normal"><a href="#__codelineno-21-14">14</a></span>
-<span class="normal"><a href="#__codelineno-21-15">15</a></span>
-<span class="normal"><a href="#__codelineno-21-16">16</a></span>
-<span class="normal"><a href="#__codelineno-21-17">17</a></span>
-<span class="normal"><a href="#__codelineno-21-18">18</a></span>
-<span class="normal"><a href="#__codelineno-21-19">19</a></span>
-<span class="normal"><a href="#__codelineno-21-20">20</a></span>
-<span class="normal"><a href="#__codelineno-21-21">21</a></span>
-<span class="normal"><a href="#__codelineno-21-22">22</a></span>
-<span class="normal"><a href="#__codelineno-21-23">23</a></span>
-<span class="normal"><a href="#__codelineno-21-24">24</a></span>
-<span class="normal"><a href="#__codelineno-21-25">25</a></span>
-<span class="normal"><a href="#__codelineno-21-26">26</a></span>
-<span class="normal"><a href="#__codelineno-21-27">27</a></span>
-<span class="normal"><a href="#__codelineno-21-28">28</a></span>
-<span class="normal"><a href="#__codelineno-21-29">29</a></span>
-<span class="normal"><a href="#__codelineno-21-30">30</a></span>
-<span class="normal"><a href="#__codelineno-21-31">31</a></span>
-<span class="normal"><a href="#__codelineno-21-32">32</a></span>
-<span class="normal"><a href="#__codelineno-21-33">33</a></span>
-<span class="normal"><a href="#__codelineno-21-34">34</a></span>
-<span class="normal"><a href="#__codelineno-21-35">35</a></span>
-<span class="normal"><a href="#__codelineno-21-36">36</a></span>
-<span class="normal"><a href="#__codelineno-21-37">37</a></span>
-<span class="normal"><a href="#__codelineno-21-38">38</a></span>
-<span class="normal"><a href="#__codelineno-21-39">39</a></span>
-<span class="normal"><a href="#__codelineno-21-40">40</a></span>
-<span class="normal"><a href="#__codelineno-21-41">41</a></span>
-<span class="normal"><a href="#__codelineno-21-42">42</a></span>
-<span class="normal"><a href="#__codelineno-21-43">43</a></span>
-<span class="normal"><a href="#__codelineno-21-44">44</a></span>
-<span class="normal"><a href="#__codelineno-21-45">45</a></span>
-<span class="normal"><a href="#__codelineno-21-46">46</a></span>
-<span class="normal"><a href="#__codelineno-21-47">47</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="n">semaphore</span><span class="w"> </span><span class="n">r_mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">w_mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">read_try</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">  </span><span class="c1">// 新增 read_try 信号量</span>
-<a id="__codelineno-21-2" name="__codelineno-21-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">reader_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<a id="__codelineno-21-3" name="__codelineno-21-3"></a><span class="kt">int</span><span class="w"> </span><span class="n">writer_waiting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span><span class="c1">// 记录是否有写者在等待</span>
-<a id="__codelineno-21-4" name="__codelineno-21-4"></a>
-<a id="__codelineno-21-5" name="__codelineno-21-5"></a><span class="c1">// 读线程</span>
-<a id="__codelineno-21-6" name="__codelineno-21-6"></a><span class="kt">void</span><span class="w"> </span><span class="nf">reader</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-21-7" name="__codelineno-21-7"></a><span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-21-8" name="__codelineno-21-8"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">read_try</span><span class="p">);</span><span class="w">           </span><span class="c1">// 尝试进入读区域，如果写者在等待则阻塞</span>
-<a id="__codelineno-21-9" name="__codelineno-21-9"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">r_mutex</span><span class="p">);</span><span class="w">            </span><span class="c1">// 保护 reader_number 的访问</span>
-<a id="__codelineno-21-10" name="__codelineno-21-10"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reader_number</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">wait</span><span class="p">(</span><span class="n">w_mutex</span><span class="p">);</span><span class="w">  </span><span class="c1">// 如果是第一个读者，等待写者完成</span>
-<a id="__codelineno-21-11" name="__codelineno-21-11"></a><span class="w">        </span><span class="n">reader_number</span><span class="o">++</span><span class="p">;</span>
-<a id="__codelineno-21-12" name="__codelineno-21-12"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">r_mutex</span><span class="p">);</span><span class="w">          </span><span class="c1">// 释放对 reader_number 的互斥访问</span>
-<a id="__codelineno-21-13" name="__codelineno-21-13"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">read_try</span><span class="p">);</span><span class="w">         </span><span class="c1">// 允许其他读者尝试进入</span>
-<a id="__codelineno-21-14" name="__codelineno-21-14"></a>
-<a id="__codelineno-21-15" name="__codelineno-21-15"></a><span class="w">        </span><span class="c1">// ....</span>
-<a id="__codelineno-21-16" name="__codelineno-21-16"></a><span class="w">        </span><span class="n">perform</span><span class="w"> </span><span class="n">read</span><span class="w"> </span><span class="n">operation</span><span class="p">;</span><span class="w">   </span><span class="c1">// 执行读操作</span>
-<a id="__codelineno-21-17" name="__codelineno-21-17"></a><span class="w">        </span><span class="c1">// ....</span>
-<a id="__codelineno-21-18" name="__codelineno-21-18"></a>
-<a id="__codelineno-21-19" name="__codelineno-21-19"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">r_mutex</span><span class="p">);</span><span class="w">            </span><span class="c1">// 再次进入临界区，准备减少读者数</span>
-<a id="__codelineno-21-20" name="__codelineno-21-20"></a><span class="w">        </span><span class="n">reader_number</span><span class="o">--</span><span class="p">;</span>
-<a id="__codelineno-21-21" name="__codelineno-21-21"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reader_number</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">signal</span><span class="p">(</span><span class="n">w_mutex</span><span class="p">);</span><span class="w">  </span><span class="c1">// 如果是最后一个读者，释放 w_mutex</span>
-<a id="__codelineno-21-22" name="__codelineno-21-22"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">r_mutex</span><span class="p">);</span><span class="w">          </span><span class="c1">// 释放互斥锁</span>
-<a id="__codelineno-21-23" name="__codelineno-21-23"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
-<a id="__codelineno-21-24" name="__codelineno-21-24"></a><span class="p">}</span>
-<a id="__codelineno-21-25" name="__codelineno-21-25"></a>
-<a id="__codelineno-21-26" name="__codelineno-21-26"></a><span class="c1">// 写线程</span>
-<a id="__codelineno-21-27" name="__codelineno-21-27"></a><span class="kt">void</span><span class="w"> </span><span class="nf">writer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-21-28" name="__codelineno-21-28"></a><span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-21-29" name="__codelineno-21-29"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">w_mutex</span><span class="p">);</span><span class="w">            </span><span class="c1">// 确保写操作的互斥</span>
-<a id="__codelineno-21-30" name="__codelineno-21-30"></a><span class="w">        </span><span class="n">writer_waiting</span><span class="o">++</span><span class="p">;</span><span class="w">         </span><span class="c1">// 标记有写者在等待</span>
-<a id="__codelineno-21-31" name="__codelineno-21-31"></a>
-<a id="__codelineno-21-32" name="__codelineno-21-32"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">r_mutex</span><span class="p">);</span><span class="w">            </span><span class="c1">// 保护 reader_number 的访问</span>
-<a id="__codelineno-21-33" name="__codelineno-21-33"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reader_number</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">wait</span><span class="p">(</span><span class="n">read_try</span><span class="p">);</span><span class="w">  </span><span class="c1">// 如果有读者正在读，阻止新读者进入</span>
-<a id="__codelineno-21-34" name="__codelineno-21-34"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">r_mutex</span><span class="p">);</span><span class="w">          </span><span class="c1">// 释放对 reader_number 的访问</span>
-<a id="__codelineno-21-35" name="__codelineno-21-35"></a>
-<a id="__codelineno-21-36" name="__codelineno-21-36"></a><span class="w">        </span><span class="c1">// ....</span>
-<a id="__codelineno-21-37" name="__codelineno-21-37"></a><span class="w">        </span><span class="n">perform</span><span class="w"> </span><span class="n">write</span><span class="w"> </span><span class="n">operation</span><span class="p">;</span><span class="w">  </span><span class="c1">// 执行写操作</span>
-<a id="__codelineno-21-38" name="__codelineno-21-38"></a><span class="w">        </span><span class="c1">// ....</span>
-<a id="__codelineno-21-39" name="__codelineno-21-39"></a>
-<a id="__codelineno-21-40" name="__codelineno-21-40"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">r_mutex</span><span class="p">);</span><span class="w">            </span><span class="c1">// 再次进入临界区</span>
-<a id="__codelineno-21-41" name="__codelineno-21-41"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reader_number</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">signal</span><span class="p">(</span><span class="n">read_try</span><span class="p">);</span><span class="w">  </span><span class="c1">// 允许新读者进入（如果之前阻止了）</span>
-<a id="__codelineno-21-42" name="__codelineno-21-42"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">r_mutex</span><span class="p">);</span><span class="w">          </span><span class="c1">// 释放互斥锁</span>
-<a id="__codelineno-21-43" name="__codelineno-21-43"></a>
-<a id="__codelineno-21-44" name="__codelineno-21-44"></a><span class="w">        </span><span class="n">writer_waiting</span><span class="o">--</span><span class="p">;</span><span class="w">         </span><span class="c1">// 标记写者已完成等待</span>
-<a id="__codelineno-21-45" name="__codelineno-21-45"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">w_mutex</span><span class="p">);</span><span class="w">          </span><span class="c1">// 释放写互斥锁</span>
-<a id="__codelineno-21-46" name="__codelineno-21-46"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<a id="__codelineno-21-47" name="__codelineno-21-47"></a><span class="p">}</span>
+<span class="normal"><a href="#__codelineno-21-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="n">mutex</span> <span class="o">=</span> <span class="n">Mutex</span><span class="p">()</span>  <span class="c1"># 用于保护共享资源（筷子）</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2"></a><span class="n">chopsticks</span> <span class="o">=</span> <span class="p">[</span><span class="n">Mutex</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>  <span class="c1"># 5 根筷子，每根一个互斥锁</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3"></a>
+<a id="__codelineno-21-4" name="__codelineno-21-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">philosopher</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5"></a>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6"></a>        <span class="n">think</span><span class="p">()</span>  <span class="c1"># 思考</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7"></a>        <span class="c1"># 拿筷子</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8"></a>        <span class="n">chopsticks</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span><span class="o">.</span><span class="n">lock</span><span class="p">()</span>      <span class="c1"># 拿左边的筷子</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9"></a>        <span class="n">chopsticks</span><span class="p">[(</span><span class="nb">id</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">lock</span><span class="p">()</span>  <span class="c1"># 拿右边的筷子</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10"></a>        <span class="n">eat</span><span class="p">()</span>  <span class="c1"># 进餐</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11"></a>        <span class="c1"># 放筷子</span>
+<a id="__codelineno-21-12" name="__codelineno-21-12"></a>        <span class="n">chopsticks</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span><span class="o">.</span><span class="n">unlock</span><span class="p">()</span>         <span class="c1"># 放左边的筷子</span>
+<a id="__codelineno-21-13" name="__codelineno-21-13"></a>        <span class="n">chopsticks</span><span class="p">[(</span><span class="nb">id</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">unlock</span><span class="p">()</span>  <span class="c1"># 放右边的筷子</span>
 </code></pre></div></td></tr></table></div>
-<h4 id="_21">哲学家进餐问题<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p><ins>问题描述</ins> 有5个哲学家共用1张圆桌,它们分别坐在圆桌周围的5把椅子上,在圆桌上有5个碗和5根筷子,它们的生活方式是交替思考和吃法;平时,一个哲学家进行思考,在饥饿的时候便会试图取用左/右边最靠近自己的筷子来进餐,只有在持有两个筷子的时候才会进餐;进餐完毕,放下筷子思考.</p>
-<p><img alt="alt text" src="../images/%E5%93%B2%E5%AD%A6%E5%AE%B6%E8%BF%9B%E9%A4%90.png" /></p>
-<p>简单思考,如果所有哲学家都先拿左边筷子再拿右边筷子;当所有哲学家一起想吃饭的时候就或导致死锁.</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1"> 1</a></span>
+<p>解决办法有三种</p>
+<ul>
+<li>只有当哲学家左右两边都有筷子的时候才拿起左边的筷子</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-22-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-22-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-22-4"> 4</a></span>
@@ -4152,23 +4125,32 @@ www
 <span class="normal"><a href="#__codelineno-22-10">10</a></span>
 <span class="normal"><a href="#__codelineno-22-11">11</a></span>
 <span class="normal"><a href="#__codelineno-22-12">12</a></span>
-<span class="normal"><a href="#__codelineno-22-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="n">mutex</span> <span class="o">=</span> <span class="n">Mutex</span><span class="p">()</span>  <span class="c1"># 用于保护共享资源（筷子）</span>
-<a id="__codelineno-22-2" name="__codelineno-22-2"></a><span class="n">chopsticks</span> <span class="o">=</span> <span class="p">[</span><span class="n">Mutex</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>  <span class="c1"># 5 根筷子，每根一个互斥锁</span>
+<span class="normal"><a href="#__codelineno-22-13">13</a></span>
+<span class="normal"><a href="#__codelineno-22-14">14</a></span>
+<span class="normal"><a href="#__codelineno-22-15">15</a></span>
+<span class="normal"><a href="#__codelineno-22-16">16</a></span>
+<span class="normal"><a href="#__codelineno-22-17">17</a></span>
+<span class="normal"><a href="#__codelineno-22-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="n">semaphore</span><span class="w"> </span><span class="n">chopstick</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">};</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a><span class="n">semaphore</span><span class="w"> </span><span class="n">mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <a id="__codelineno-22-3" name="__codelineno-22-3"></a>
-<a id="__codelineno-22-4" name="__codelineno-22-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">philosopher</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
-<a id="__codelineno-22-5" name="__codelineno-22-5"></a>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-<a id="__codelineno-22-6" name="__codelineno-22-6"></a>        <span class="n">think</span><span class="p">()</span>  <span class="c1"># 思考</span>
-<a id="__codelineno-22-7" name="__codelineno-22-7"></a>        <span class="c1"># 拿筷子</span>
-<a id="__codelineno-22-8" name="__codelineno-22-8"></a>        <span class="n">chopsticks</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span><span class="o">.</span><span class="n">lock</span><span class="p">()</span>      <span class="c1"># 拿左边的筷子</span>
-<a id="__codelineno-22-9" name="__codelineno-22-9"></a>        <span class="n">chopsticks</span><span class="p">[(</span><span class="nb">id</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">lock</span><span class="p">()</span>  <span class="c1"># 拿右边的筷子</span>
-<a id="__codelineno-22-10" name="__codelineno-22-10"></a>        <span class="n">eat</span><span class="p">()</span>  <span class="c1"># 进餐</span>
-<a id="__codelineno-22-11" name="__codelineno-22-11"></a>        <span class="c1"># 放筷子</span>
-<a id="__codelineno-22-12" name="__codelineno-22-12"></a>        <span class="n">chopsticks</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span><span class="o">.</span><span class="n">unlock</span><span class="p">()</span>         <span class="c1"># 放左边的筷子</span>
-<a id="__codelineno-22-13" name="__codelineno-22-13"></a>        <span class="n">chopsticks</span><span class="p">[(</span><span class="nb">id</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">unlock</span><span class="p">()</span>  <span class="c1"># 放右边的筷子</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4"></a><span class="n">Pi</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5"></a><span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="p">]);</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10"></a>
+<a id="__codelineno-22-11" name="__codelineno-22-11"></a><span class="w">        </span><span class="n">eat</span><span class="p">();</span>
+<a id="__codelineno-22-12" name="__codelineno-22-12"></a>
+<a id="__codelineno-22-13" name="__codelineno-22-13"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<a id="__codelineno-22-14" name="__codelineno-22-14"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="p">]);</span>
+<a id="__codelineno-22-15" name="__codelineno-22-15"></a>
+<a id="__codelineno-22-16" name="__codelineno-22-16"></a><span class="w">        </span><span class="n">think</span><span class="p">();</span>
+<a id="__codelineno-22-17" name="__codelineno-22-17"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-22-18" name="__codelineno-22-18"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<p>解决办法有三种</p>
 <ul>
-<li>只有当哲学家左右两边都有筷子的时候才拿起左边的筷子</li>
+<li>奇数序号的哲学家先拿左边,偶数序号的哲学家先拿右边</li>
 </ul>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-23-2"> 2</a></span>
@@ -4187,27 +4169,35 @@ www
 <span class="normal"><a href="#__codelineno-23-15">15</a></span>
 <span class="normal"><a href="#__codelineno-23-16">16</a></span>
 <span class="normal"><a href="#__codelineno-23-17">17</a></span>
-<span class="normal"><a href="#__codelineno-23-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="n">semaphore</span><span class="w"> </span><span class="n">chopstick</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">};</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2"></a><span class="n">semaphore</span><span class="w"> </span><span class="n">mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="normal"><a href="#__codelineno-23-18">18</a></span>
+<span class="normal"><a href="#__codelineno-23-19">19</a></span>
+<span class="normal"><a href="#__codelineno-23-20">20</a></span>
+<span class="normal"><a href="#__codelineno-23-21">21</a></span>
+<span class="normal"><a href="#__codelineno-23-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="c1">// 定义5根筷子的互斥锁</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2"></a><span class="n">semaphore</span><span class="w"> </span><span class="n">chopstick</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">};</span>
 <a id="__codelineno-23-3" name="__codelineno-23-3"></a>
-<a id="__codelineno-23-4" name="__codelineno-23-4"></a><span class="n">Pi</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-23-5" name="__codelineno-23-5"></a><span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-23-6" name="__codelineno-23-6"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
-<a id="__codelineno-23-7" name="__codelineno-23-7"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
-<a id="__codelineno-23-8" name="__codelineno-23-8"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="p">]);</span>
-<a id="__codelineno-23-9" name="__codelineno-23-9"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
-<a id="__codelineno-23-10" name="__codelineno-23-10"></a>
-<a id="__codelineno-23-11" name="__codelineno-23-11"></a><span class="w">        </span><span class="n">eat</span><span class="p">();</span>
-<a id="__codelineno-23-12" name="__codelineno-23-12"></a>
-<a id="__codelineno-23-13" name="__codelineno-23-13"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
-<a id="__codelineno-23-14" name="__codelineno-23-14"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="p">]);</span>
-<a id="__codelineno-23-15" name="__codelineno-23-15"></a>
-<a id="__codelineno-23-16" name="__codelineno-23-16"></a><span class="w">        </span><span class="n">think</span><span class="p">();</span>
-<a id="__codelineno-23-17" name="__codelineno-23-17"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<a id="__codelineno-23-18" name="__codelineno-23-18"></a><span class="p">}</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4"></a><span class="c1">// 哲学家线程</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5"></a><span class="kt">void</span><span class="w"> </span><span class="nf">philosopher</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6"></a><span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7"></a><span class="w">        </span><span class="n">think</span><span class="p">();</span><span class="w">  </span><span class="c1">// 思考</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8"></a>
+<a id="__codelineno-23-9" name="__codelineno-23-9"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// 奇数编号哲学家</span>
+<a id="__codelineno-23-10" name="__codelineno-23-10"></a><span class="w">            </span><span class="n">wait</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[</span><span class="n">id</span><span class="p">]);</span><span class="w">      </span><span class="c1">// 先拿左边的筷子</span>
+<a id="__codelineno-23-11" name="__codelineno-23-11"></a><span class="w">            </span><span class="n">wait</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[(</span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="p">]);</span><span class="w">  </span><span class="c1">// 再拿右边的筷子</span>
+<a id="__codelineno-23-12" name="__codelineno-23-12"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// 偶数编号哲学家</span>
+<a id="__codelineno-23-13" name="__codelineno-23-13"></a><span class="w">            </span><span class="n">wait</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[(</span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="p">]);</span><span class="w">  </span><span class="c1">// 先拿右边的筷子</span>
+<a id="__codelineno-23-14" name="__codelineno-23-14"></a><span class="w">            </span><span class="n">wait</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[</span><span class="n">id</span><span class="p">]);</span><span class="w">      </span><span class="c1">// 再拿左边的筷子</span>
+<a id="__codelineno-23-15" name="__codelineno-23-15"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-23-16" name="__codelineno-23-16"></a>
+<a id="__codelineno-23-17" name="__codelineno-23-17"></a><span class="w">        </span><span class="n">eat</span><span class="p">();</span><span class="w">  </span><span class="c1">// 进餐</span>
+<a id="__codelineno-23-18" name="__codelineno-23-18"></a>
+<a id="__codelineno-23-19" name="__codelineno-23-19"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[</span><span class="n">id</span><span class="p">]);</span><span class="w">      </span><span class="c1">// 放左边的筷子</span>
+<a id="__codelineno-23-20" name="__codelineno-23-20"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[(</span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="p">]);</span><span class="w">  </span><span class="c1">// 放右边的筷子</span>
+<a id="__codelineno-23-21" name="__codelineno-23-21"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<a id="__codelineno-23-22" name="__codelineno-23-22"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <ul>
-<li>奇数序号的哲学家先拿左边,偶数序号的哲学家先拿右边</li>
+<li>至多允许4名哲学家同时取拿其左边的筷子</li>
 </ul>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-24-2"> 2</a></span>
@@ -4229,74 +4219,27 @@ www
 <span class="normal"><a href="#__codelineno-24-18">18</a></span>
 <span class="normal"><a href="#__codelineno-24-19">19</a></span>
 <span class="normal"><a href="#__codelineno-24-20">20</a></span>
-<span class="normal"><a href="#__codelineno-24-21">21</a></span>
-<span class="normal"><a href="#__codelineno-24-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="c1">// 定义5根筷子的互斥锁</span>
+<span class="normal"><a href="#__codelineno-24-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="c1">// 定义5根筷子的互斥锁</span>
 <a id="__codelineno-24-2" name="__codelineno-24-2"></a><span class="n">semaphore</span><span class="w"> </span><span class="n">chopstick</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">};</span>
-<a id="__codelineno-24-3" name="__codelineno-24-3"></a>
-<a id="__codelineno-24-4" name="__codelineno-24-4"></a><span class="c1">// 哲学家线程</span>
-<a id="__codelineno-24-5" name="__codelineno-24-5"></a><span class="kt">void</span><span class="w"> </span><span class="nf">philosopher</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-24-6" name="__codelineno-24-6"></a><span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-24-7" name="__codelineno-24-7"></a><span class="w">        </span><span class="n">think</span><span class="p">();</span><span class="w">  </span><span class="c1">// 思考</span>
-<a id="__codelineno-24-8" name="__codelineno-24-8"></a>
-<a id="__codelineno-24-9" name="__codelineno-24-9"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// 奇数编号哲学家</span>
-<a id="__codelineno-24-10" name="__codelineno-24-10"></a><span class="w">            </span><span class="n">wait</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[</span><span class="n">id</span><span class="p">]);</span><span class="w">      </span><span class="c1">// 先拿左边的筷子</span>
-<a id="__codelineno-24-11" name="__codelineno-24-11"></a><span class="w">            </span><span class="n">wait</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[(</span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="p">]);</span><span class="w">  </span><span class="c1">// 再拿右边的筷子</span>
-<a id="__codelineno-24-12" name="__codelineno-24-12"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// 偶数编号哲学家</span>
-<a id="__codelineno-24-13" name="__codelineno-24-13"></a><span class="w">            </span><span class="n">wait</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[(</span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="p">]);</span><span class="w">  </span><span class="c1">// 先拿右边的筷子</span>
-<a id="__codelineno-24-14" name="__codelineno-24-14"></a><span class="w">            </span><span class="n">wait</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[</span><span class="n">id</span><span class="p">]);</span><span class="w">      </span><span class="c1">// 再拿左边的筷子</span>
-<a id="__codelineno-24-15" name="__codelineno-24-15"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3"></a><span class="c1">// 限制同时拿筷子的哲学家数量</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4"></a><span class="n">semaphore</span><span class="w"> </span><span class="n">limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5"></a>
+<a id="__codelineno-24-6" name="__codelineno-24-6"></a><span class="c1">// 哲学家线程</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7"></a><span class="kt">void</span><span class="w"> </span><span class="nf">philosopher</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8"></a><span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9"></a><span class="w">        </span><span class="n">think</span><span class="p">();</span><span class="w">  </span><span class="c1">// 思考</span>
+<a id="__codelineno-24-10" name="__codelineno-24-10"></a>
+<a id="__codelineno-24-11" name="__codelineno-24-11"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">limit</span><span class="p">);</span><span class="w">  </span><span class="c1">// 限制同时拿筷子的哲学家数量</span>
+<a id="__codelineno-24-12" name="__codelineno-24-12"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[</span><span class="n">id</span><span class="p">]);</span><span class="w">      </span><span class="c1">// 拿左边的筷子</span>
+<a id="__codelineno-24-13" name="__codelineno-24-13"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[(</span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="p">]);</span><span class="w">  </span><span class="c1">// 拿右边的筷子</span>
+<a id="__codelineno-24-14" name="__codelineno-24-14"></a>
+<a id="__codelineno-24-15" name="__codelineno-24-15"></a><span class="w">        </span><span class="n">eat</span><span class="p">();</span><span class="w">  </span><span class="c1">// 进餐</span>
 <a id="__codelineno-24-16" name="__codelineno-24-16"></a>
-<a id="__codelineno-24-17" name="__codelineno-24-17"></a><span class="w">        </span><span class="n">eat</span><span class="p">();</span><span class="w">  </span><span class="c1">// 进餐</span>
-<a id="__codelineno-24-18" name="__codelineno-24-18"></a>
-<a id="__codelineno-24-19" name="__codelineno-24-19"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[</span><span class="n">id</span><span class="p">]);</span><span class="w">      </span><span class="c1">// 放左边的筷子</span>
-<a id="__codelineno-24-20" name="__codelineno-24-20"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[(</span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="p">]);</span><span class="w">  </span><span class="c1">// 放右边的筷子</span>
-<a id="__codelineno-24-21" name="__codelineno-24-21"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
-<a id="__codelineno-24-22" name="__codelineno-24-22"></a><span class="p">}</span>
-</code></pre></div></td></tr></table></div>
-<ul>
-<li>至多允许4名哲学家同时取拿其左边的筷子</li>
-</ul>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-25-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-25-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-25-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-25-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-25-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-25-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-25-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-25-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-25-10">10</a></span>
-<span class="normal"><a href="#__codelineno-25-11">11</a></span>
-<span class="normal"><a href="#__codelineno-25-12">12</a></span>
-<span class="normal"><a href="#__codelineno-25-13">13</a></span>
-<span class="normal"><a href="#__codelineno-25-14">14</a></span>
-<span class="normal"><a href="#__codelineno-25-15">15</a></span>
-<span class="normal"><a href="#__codelineno-25-16">16</a></span>
-<span class="normal"><a href="#__codelineno-25-17">17</a></span>
-<span class="normal"><a href="#__codelineno-25-18">18</a></span>
-<span class="normal"><a href="#__codelineno-25-19">19</a></span>
-<span class="normal"><a href="#__codelineno-25-20">20</a></span>
-<span class="normal"><a href="#__codelineno-25-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="c1">// 定义5根筷子的互斥锁</span>
-<a id="__codelineno-25-2" name="__codelineno-25-2"></a><span class="n">semaphore</span><span class="w"> </span><span class="n">chopstick</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">};</span>
-<a id="__codelineno-25-3" name="__codelineno-25-3"></a><span class="c1">// 限制同时拿筷子的哲学家数量</span>
-<a id="__codelineno-25-4" name="__codelineno-25-4"></a><span class="n">semaphore</span><span class="w"> </span><span class="n">limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
-<a id="__codelineno-25-5" name="__codelineno-25-5"></a>
-<a id="__codelineno-25-6" name="__codelineno-25-6"></a><span class="c1">// 哲学家线程</span>
-<a id="__codelineno-25-7" name="__codelineno-25-7"></a><span class="kt">void</span><span class="w"> </span><span class="nf">philosopher</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-25-8" name="__codelineno-25-8"></a><span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-25-9" name="__codelineno-25-9"></a><span class="w">        </span><span class="n">think</span><span class="p">();</span><span class="w">  </span><span class="c1">// 思考</span>
-<a id="__codelineno-25-10" name="__codelineno-25-10"></a>
-<a id="__codelineno-25-11" name="__codelineno-25-11"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">limit</span><span class="p">);</span><span class="w">  </span><span class="c1">// 限制同时拿筷子的哲学家数量</span>
-<a id="__codelineno-25-12" name="__codelineno-25-12"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[</span><span class="n">id</span><span class="p">]);</span><span class="w">      </span><span class="c1">// 拿左边的筷子</span>
-<a id="__codelineno-25-13" name="__codelineno-25-13"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[(</span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="p">]);</span><span class="w">  </span><span class="c1">// 拿右边的筷子</span>
-<a id="__codelineno-25-14" name="__codelineno-25-14"></a>
-<a id="__codelineno-25-15" name="__codelineno-25-15"></a><span class="w">        </span><span class="n">eat</span><span class="p">();</span><span class="w">  </span><span class="c1">// 进餐</span>
-<a id="__codelineno-25-16" name="__codelineno-25-16"></a>
-<a id="__codelineno-25-17" name="__codelineno-25-17"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[</span><span class="n">id</span><span class="p">]);</span><span class="w">      </span><span class="c1">// 放左边的筷子</span>
-<a id="__codelineno-25-18" name="__codelineno-25-18"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[(</span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="p">]);</span><span class="w">  </span><span class="c1">// 放右边的筷子</span>
-<a id="__codelineno-25-19" name="__codelineno-25-19"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">limit</span><span class="p">);</span><span class="w">  </span><span class="c1">// 释放限制</span>
-<a id="__codelineno-25-20" name="__codelineno-25-20"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
-<a id="__codelineno-25-21" name="__codelineno-25-21"></a><span class="p">}</span>
+<a id="__codelineno-24-17" name="__codelineno-24-17"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[</span><span class="n">id</span><span class="p">]);</span><span class="w">      </span><span class="c1">// 放左边的筷子</span>
+<a id="__codelineno-24-18" name="__codelineno-24-18"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[(</span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="p">]);</span><span class="w">  </span><span class="c1">// 放右边的筷子</span>
+<a id="__codelineno-24-19" name="__codelineno-24-19"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">limit</span><span class="p">);</span><span class="w">  </span><span class="c1">// 释放限制</span>
+<a id="__codelineno-24-20" name="__codelineno-24-20"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<a id="__codelineno-24-21" name="__codelineno-24-21"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="new">(new) 多处理机调度<a class="headerlink" href="#new" title="Permanent link">&para;</a></h2>
 <p><ins>非对称多处理机(AMP)</ins> </p>
