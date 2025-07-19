@@ -45,4 +45,5 @@ int PatternMathBF(const std::string& S, const std::string& P) {
 }
 ```
 时间复杂度$O(nm)$,由于指针会后退所以最坏的情况要遍历主串(n-m)次,遍历模式串(m)次,最大次数为(nm-m^2),所以时间复杂度的上界为$O(nm)$
+
 ## KMP算法

@@ -3,12 +3,7 @@ tags: [计算机网络]
 ---
 # 传输层
 
-$$主要内容
-\begin{cases}
-    UDP协议 \\
-    TCP协议 \\
-\end{cases}
-$$
+![](./images/传输层.png)
 
 {++传输层的功能++} 
 
