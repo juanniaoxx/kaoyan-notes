@@ -3105,6 +3105,70 @@ X=2^m\times M, Y=2^n\times N
 </li>
 </ul>
 <h3 id="alu">算术逻辑部件 ALU<a class="headerlink" href="#alu" title="Permanent link">&para;</a></h3>
+<p>考研主要考察定点运算部件(算术逻辑单元)ALU,而不考察浮点运算部件(FPU). 早期的FPU大多单独设置,如今一般和ALU一样集成在CPU中.</p>
+<p><img alt="alt text" src="../images/ALU.png" /></p>
+<ul>
+<li>ALU是纯组合逻辑电路</li>
+<li>功能包括<ins class="critic">算术运算</ins>和<ins class="critic">逻辑运输</ins>,由ALUop选择信号来控制ALU执行的操作是啥</li>
+<li>ALU的输出除了运输结果外通常还包括状态标志位<ul>
+<li>CF 表示加法进位输出,减法结为输出或逻辑左移的溢出位</li>
+<li>ZF 结果是否为0</li>
+<li>SF 结果是否是负数(符号)</li>
+<li>OF 结果表示有符号数是否溢出</li>
+<li>通常上状态标志保存在PSW(状态字寄存器)中</li>
+</ul>
+</li>
+<li>ALU内部没有寄存器,不具有保存数据的能力</li>
+</ul>
+<p><ins class="critic">ALU的基本组成单元</ins></p>
+<p><img alt="alt text" src="../images/ALU%E5%9F%BA%E6%9C%AC%E5%8D%95%E5%85%83.png" /></p>
+<p><img alt="alt text" src="../images/n%E4%BD%8DALU.png" /></p>
+<ul>
+<li>n位ALU的组成办法和n位全加器的组成基本一致</li>
+<li>注意<ins class="critic">Sub</ins>信号</li>
+</ul>
+<p><ins class="critic">单总线结构运算器</ins> </p>
+<p><img alt="alt text" src="../images/%E5%8D%95%E6%80%BB%E7%BA%BFALU.png" /></p>
+<ul>
+<li>由于是单总线结构,同一时刻总线上只能传输一个数据</li>
+<li>为ALU的两个输入端<ins class="critic">同时设置LA\LB两个输入缓存</ins><ul>
+<li>解决单总线周期同一时刻只能传输一个数据的缺陷</li>
+<li>也可以将一个输入缓存转移到ALU的输出端</li>
+</ul>
+</li>
+<li>单总线ALU的时钟周期操作如下<ul>
+<li>第一个时钟周期, 将通用寄存器组中的数据送入LA缓冲, Ri-&gt;IBI-&gt;LA</li>
+<li>第二个时钟周期, 将通用寄存器组中的数据送入LB缓冲, Rj-&gt;IBI-&gt;LB</li>
+<li>第三个时钟周期, 给出运算选择信号ALUop已经将数据写回寄存器组 IBI-&gt;Rs</li>
+</ul>
+</li>
+</ul>
+<p><ins class="critic">双总线结构运算器</ins></p>
+<p><img alt="alt text" src="../images/%E5%8F%8C%E6%80%BB%E7%BA%BFALU.png" /></p>
+<ul>
+<li>由于是双总线,此时可以在一个总线周期内将两个数据同时送入ALU的两个输入端</li>
+<li>但仍然需要一个缓冲<ul>
+<li>防止ALU直接将数据输入到总线上,导致数据错误</li>
+<li>通过该寄存器还拥有移位的能力</li>
+</ul>
+</li>
+<li>双总线ALU的时钟周期操作如下<ul>
+<li>第一个时钟周期 将两个操作数通过两条总线输入到ALU,并且输入ALUop</li>
+<li>第二个时钟周期 将ALU的输出结果传输到寄存器组</li>
+</ul>
+</li>
+</ul>
+<p><ins class="critic">三总线结构运算器</ins> </p>
+<p><img alt="alt text" src="../images/%E4%B8%89%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84.png" /></p>
+<ul>
+<li>三总线结构的ALU可以在一个时钟周期内完成运算</li>
+<li>旁路器的作用是 实现不通过ALU实现寄存器间的数据传输</li>
+</ul>
+<p><ins>浮点运算器(FPU)</ins> </p>
+<p><img alt="alt text" src="../images/%E6%B5%AE%E7%82%B9%E8%BF%90%E7%AE%97%E5%99%A8%E6%B5%81%E6%B0%B4%E7%BA%BF.png" /></p>
+<ul>
+<li>FPU通常采用流水线设计</li>
+</ul>
 
 
 

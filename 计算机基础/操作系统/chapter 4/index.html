@@ -1666,7 +1666,16 @@
         <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      磁盘存储管理
+      虚拟文件系统与文件系统挂载
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux文件系统举例
     </span>
   </a>
   
@@ -2668,7 +2677,16 @@
         <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      磁盘存储管理
+      虚拟文件系统与文件系统挂载
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux文件系统举例
     </span>
   </a>
   
@@ -2738,7 +2756,7 @@
 <p><img alt="" src="../images/%E6%96%87%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.png" /></p>
 <h3 id="_3">文件的逻辑结构<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p><img alt="" src="../images/%E6%96%87%E4%BB%B6%E7%9A%84%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84.png" /></p>
-<p>^^ 顺序文件 ^^ </p>
+<p><ins>顺序文件</ins> </p>
 <ul>
 <li>隐式寻址方式 通过读\写指针查询对应的记录</li>
 </ul>
@@ -2746,7 +2764,7 @@
 <ul>
 <li>显示寻址方式 定长记录可以通过记录的下标直接计算出起始地址(类比于数组的随机访问);但变长记录则无法做到</li>
 </ul>
-<p>^^ 索引文件 ^^</p>
+<p><ins>索引文件</ins></p>
 <p><img alt="alt text" src="../images/%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6.png" /></p>
 <ul>
 <li>为 <ins class="critic">所有关键字</ins> 建立一张索引表(这张表本身是定长记录的顺序文件),此时可以通过定长记录的随机查找快速查找对应记录的首地址</li>
@@ -2760,6 +2778,75 @@
 <li>可以建立多级索引来降低查找次数(类比于多级页表)</li>
 </ul>
 <h3 id="_4">文件物理结构<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>文件物理结构是对磁盘空间的组织方式</p>
+<p><ins class="critic">连续组织方式</ins></p>
+<p><img alt="alt text" src="../images/%E8%BF%9E%E7%BB%AD%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F.png" /></p>
+<ul>
+<li>在连续组织方式的文件目录项中,应该设置物理起始地址域总长度</li>
+<li>需要为每一个文件分配<ins class="critic">连续</ins>空间的磁盘,此容量有时候并非总能得到满足;且不适合动态增长(需要整体移动)</li>
+<li>会产生 <ins>外部碎片</ins> </li>
+</ul>
+<p><ins class="critic">隐式链接组织方式</ins></p>
+<p><img alt="alt text" src="../images/%E9%9A%90%E5%BC%8F%E8%BF%9E%E6%8E%A5%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F.png" /></p>
+<ul>
+<li>在文件目录中应该设置物理块的起始地址和终止地址,每个块中包含指向下一个块的指针</li>
+<li>可以分配多个不连续的盘块,消除了外部碎片</li>
+<li>只能顺序访问 </li>
+</ul>
+<p><ins class="critic">簇</ins> 一组磁盘盘块</p>
+<p><ins class="critic">显示链接组织方式</ins> 引入FAT(文件分配表)来保持盘块间的指针</p>
+<p><img alt="alt text" src="../images/%E6%98%BE%E7%A4%BA%E9%93%BE%E6%8E%A5%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F.png" /></p>
+<ul>
+<li>在以簇为单位的FAT文件系统中, 簇成为了分配单位</li>
+</ul>
+<p><ins class="critic">索引组织方法</ins></p>
+<p><img alt="alt text" src="../images/%E7%B4%A2%E5%BC%95%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F.png" /></p>
+<ul>
+<li>在文件目录中,仅记录索引块号,索引块中存放对应盘块的盘块号</li>
+<li>支持直接存却</li>
+<li>相较于FAT系统, 无须将大FAT表调入内存, 只需要将索引块加入内存即可</li>
+<li>不会产生外部碎片</li>
+</ul>
+<p><ins class="critic">多级索引组织方式</ins></p>
+<p><img alt="alt text" src="../images/%E5%A4%9A%E7%BA%A7%E7%B4%A2%E5%BC%95%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F.png" /></p>
+<p><ins class="critic">Unix 混合索引方式</ins></p>
+<p><img alt="alt text" src="../images/%E6%B7%B7%E5%90%88%E7%B4%A2%E5%BC%95%E6%96%B9%E5%BC%8F.png" /></p>
+<ul>
+<li>将索引区划分为直接索引\一级间接索引\二级间接索引等等 </li>
+<li>可以很好的配合不同大小的作业要求</li>
+</ul>
+<p><ins class="critic">空闲区表示法和空闲链表</ins></p>
+<p><img alt="alt text" src="../images/%E7%A9%BA%E9%97%B2%E5%8C%BA%E8%A1%A8%E7%A4%BA%E6%B3%95.png" /></p>
+<ul>
+<li>空闲区表示法,将连续空闲的空闲盘块分配一个表项,其中记录第一个空闲盘块号和空闲盘块数目</li>
+<li>起始盘号按递增的次序排列</li>
+<li>其分配和回收操作与动态分区基本一致</li>
+<li>通常<ins class="critic">对换空间</ins>采取连续组织方式</li>
+</ul>
+<p><ins class="critic">位示图表示法</ins></p>
+<p><img alt="alt text" src="../images/%E4%BD%8D%E7%A4%BA%E5%9B%BE.png" /></p>
+<ul>
+<li>通过将某一个盘块的没一个比特位作为某一个盘块是否使用的标志</li>
+<li>例如 [2, 3] 位置的 1 表示序号为16 * 2 + 3 = 35的盘块已被使用<ul>
+<li>将二维矩阵映射为一维数据 <span class="arithmatex">\(b = n \times (i - 1) + j\)</span></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">磁盘物理地址(盘块号)与逻辑地址的转换(三维地址)</p>
+</div>
+<p><ins class="critic">成组链接法</ins></p>
+<p><img alt="alt text" src="../images/%E6%88%90%E7%BB%84%E9%93%BE%E6%8E%A5%E6%B3%95.png" /></p>
+<ul>
+<li>栈指针S.free()执向存有当前空白盘块栈含有的空闲盘块的总数<ul>
+<li>除最后一个空闲盘块栈,<ins class="critic">其包含的空闲盘块要减1</ins>,用0表示结束不是真实的空闲盘块</li>
+</ul>
+</li>
+<li>S.free() - 1 指向下一个空闲盘块号栈的首盘块号<ul>
+<li>若为0则表示这是最后一个空闲盘块栈</li>
+</ul>
+</li>
+</ul>
 <h3 id="_5">文件目录<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p><ins class="critic">文件控制块(FCB)</ins> 为文件设置用于描述和控制文件的<ins class="critic">数据结构</ins>,文件与FCB <ins class="critic">一一对应</ins>. FCB的有序集合被称为 <ins>文件目录</ins>, 一个FCB即是一个文件目录项.一个文件目录也是一个文件即 <ins>目录文件</ins>.</p>
 <p><img alt="" src="../images/%E6%96%87%E4%BB%B6%E6%8E%A7%E5%88%B6%E5%9D%97FCB.png" /></p>
@@ -2770,8 +2857,68 @@
 <li>查询的时候仅需将由iNode组成的文件目录载入内存即可</li>
 </ul>
 <p><img alt="alt text" src="../images/inodes.png" /></p>
+<p><ins>单级文件目录和两级文件目录</ins></p>
+<p><img alt="alt text" src="../images/%E4%B8%80%E7%BA%A7%E7%9B%AE%E5%BD%95.png" /></p>
+<p><img alt="alt text" src="../images/%E4%BA%8C%E7%BA%A7%E7%9B%AE%E5%BD%95.png" /></p>
+<ul>
+<li>单级目录的缺点在于文件名不允许重复,且查找速度较慢,不便于实现用户文件的共享</li>
+<li>二级目录能在一定程度上改善单级目录的缺陷,但同样不便于实现用户文件的共享</li>
+</ul>
+<p><ins class="critic">树形目录</ins> </p>
+<p><img alt="alt text" src="../images/%E6%A0%91%E5%BD%A2%E7%9B%AE%E5%BD%95.png" /></p>
+<ul>
+<li>从根目录到目的文件的FCB的路径称为绝对路径</li>
+<li>从当前目录到目的文件的FCB的路径称为相对路径</li>
+<li>树形目录删除一个目录需要注意<ul>
+<li>若目录下的不含其他目录和文件,则直接删除</li>
+<li>否则, 要么<ins class="critic">递归</ins>的删除其下的所有文件与目录;要么 <ins class="critic">同时</ins> 删除所有子目录与文件.</li>
+</ul>
+</li>
+</ul>
+<p><ins class="critic">无环有向图目录</ins> 对树形目录的自然拓展,便于文件共享.</p>
+<p><img alt="alt text" src="../images/%E6%97%A0%E7%8E%AF%E6%9C%89%E5%90%91%E5%9B%BE%E7%9B%AE%E5%BD%95.png" /></p>
 <h3 id="_6">文件共享与保护<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<h2 id="_7">磁盘存储管理<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p><ins class="critic">硬链接</ins> 利用索引节点解决共享问题</p>
+<p><img alt="alt text" src="../images/%E7%A1%AC%E8%BF%9E%E6%8E%A5.png" /></p>
+<ul>
+<li>count 表示当前有多少个目录共享该文件</li>
+<li>当count != 0 的时候不可以对共享文件进行删除,会导致空指针问题,必须等待所有共享该文件的目录释放了这个链接才可以.</li>
+</ul>
+<p><img alt="alt text" src="../images/%E7%A1%AC%E8%BF%9E%E6%8E%A5%E5%88%A0%E9%99%A4.png" /></p>
+<p><ins class="critic">符号连接(软连接)</ins> 本质是从当前目录出发到目的地址路径的别名</p>
+<p><img alt="alt text" src="../images/%E8%BD%AF%E8%BF%9E%E6%8E%A5.png" /></p>
+<ul>
+<li>只有文件的拥有者才拥有为指向其索引节点的指针</li>
+<li>其他共享该文件的目录,都是通过OS查询相对路径后对该文件间接操作的</li>
+<li>系统会为软连接创建 <ins class="critic">LINK类型文件</ins>, 该文件也需要配置索引节点</li>
+</ul>
+<p><ins class="critic">访问权</ins> 进程对某对象的进行操作,通常包括读\写\打开\删除等等</p>
+<p><ins class="critic">保护域(域)</ins> 进程对一组对象的访问权的集合</p>
+<ul>
+<li>进程保护域可以使静态的,在运行区间都不能发现改变</li>
+<li>也可以是动态的,在运行直接能在不同域间进行切换 </li>
+</ul>
+<h2 id="_7">虚拟文件系统与文件系统挂载<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p><ins class="critic">虚拟文件系统</ins> 屏蔽不同文件系统的差异与操作细节,向上为用户提供了文件操作的统一接口,当用户访问文件的时候,通过VFS提供的统一调用函数来操作不同文件系统的文件.</p>
+<p><img alt="alt text" src="../images/%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F.png" /></p>
+<p><ins class="critic">文件系统的挂在(mounting)</ins> 文件系统在使用前都<ins class="critic">需要先进行挂载</ins>,将设备的文件系统挂载到某个目录后,就可以通过这个目录来访问设备(逻辑设备)上的文件.</p>
+<h2 id="linux">Linux文件系统举例<a class="headerlink" href="#linux" title="Permanent link">&para;</a></h2>
+<p><img alt="alt text" src="../images/Linux%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F.png" /></p>
+<p>Linux默认支持虚拟文件系统,通过<ins class="critic">系统调用</ins>实现应用程序与内核中不同文件系统的交互</p>
+<p><img alt="alt text" src="../images/ext2%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E9%80%BB%E8%BE%91%E5%88%86%E5%8C%BA%E7%A4%BA%E6%84%8F%E5%9B%BE.png" /></p>
+<ul>
+<li>文件系统最前面有一个<ins class="critic">启动扇区</ins>,这个启动扇区安装引导装载程序<ul>
+<li>便于挂载</li>
+<li>不用去覆盖硬盘的主引导记录(MBR)扇区</li>
+</ul>
+</li>
+<li>超级块 记录整个文件系统的信息</li>
+<li>组描述符 描述每个组块的开始和结束的数据块号</li>
+<li>块位图 数据位示图</li>
+<li>索引节点位图(iNode bitmap) 表示索引节点是否被使用</li>
+<li>索引节点表(iNode table) 内个文件仅占用一个索引节点,文件系统能创建的文件数量与索引节点有关</li>
+<li>数据块 ext2仅支持 1KB, 2KB, 4KB三种,每个数据块中<ins class="critic">仅能放一个文件的数据</ins></li>
+</ul>
 
 
 
