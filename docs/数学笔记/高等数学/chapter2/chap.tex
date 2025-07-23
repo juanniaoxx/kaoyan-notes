@@ -198,7 +198,28 @@
 \end{enumerate}
 
 \section{导数应用-极值与最值}
-
+\begin{remark} 
+    函数的极值的充分条件
+    \begin{enumerate}
+        \item [(充分1)] $f(x)$连续,且$f'(x)$在$x=x_0$的左右\underline{去心邻域内}异号
+        \item [(充分2)] $f'(x_0)=0,f''(x_0)\neq 0$ 则有
+        $$f''(x)
+        \begin{cases}
+            >0 & x_0\text{是极小值} \\
+            <0 & x_0\text{是极大值}
+        \end{cases}
+        $$
+        \item [(充分3)] 若$f'(x_0)=f''(x_0)=\ldots=f^{(n-1)(x_0)=0,f^{(n)}}(x_0)\neq 0$,且n是大于2的偶数
+        则有
+        $$
+        f^{(n)}(x_0)
+        \begin{cases}
+            >0 & x_0\text{是极小值} \\
+            <0 & x_0\text{是极大值}
+        \end{cases}
+        $$
+    \end{enumerate}
+\end{remark}
 \begin{enumerate}[label=\arabic*.,start=17]
     \item  (2000,数二)设函数$f(x)$满足关系式$f''(x)+[f'(x)]^2=x$,且$f'(0)=0$,则 \\
     $(A)\ f(0)\ \text{是}\ f(x)\ \text{的极大值}$ \\
@@ -207,70 +228,100 @@
     $(D)\ f(0)\ \text{不是}\ f(x)\ \text{的极值,点}(0,f(0))\ \text{也不是曲线}\ y=f(x)\ \text{的拐点}$
     
     \begin{solution}
-    \newpage
+    有题设知$f''(0)=0$,对等式两边求导有$f^{(3)}(0)=1\neq 0$ 由拐点充分条件可知,$(0,f(0))$为函数的拐点
     \end{solution}
     
     \item  (2010,数一、数二)求函数$f(x)=\int_1^{x^2}(x^2-t)e^{-t^2}dt$的单调区间与极值
     
     \begin{solution}
-    \newpage
+    求导有
+    $$
+    f'(x)=2x\int_{1}^{x^2}e^{-t^2}\d t 
+    $$
+    令$f'(x)=0$有$x=0$或$x=\pm 1$ 并且无其余根,带入可知 \\
+    $x=\pm 1,f(\pm 1)=0$为极小值点,$x=0,f(0)=-\frac{1}{2}(e^{-1}-1)$为极大值点
     \end{solution}
     
     \item  (2014,数二)已知函数$y=y(x)$满足微分方程$x^2+y^2y'=1-y'$,且$y(2)=0$,求$y(x)$的极大值与极小值
     
     \begin{solution}
-    \newpage
+    比较简单,答案为极小值为$y(-1)=0$,极大值为$y(1)=1$
     \end{solution}
 \end{enumerate}
 
 \section{导数应用-凹凸性与拐点}
-
+\begin{remark}
+    拐点也有三个充分条件
+    \begin{enumerate}
+        \item [(充分1)] $f(x)$连续,且$f''(x)$在$x=x_0$的左右\underline{去心邻域内}异号
+        \item [(充分2)] $f''(x_0)=0,f'''(x_0)\neq 0$ 则有 $(x_0,f(x_0))$为函数拐点
+        \item [(充分3)] 若$f'(x_0)=f''(x_0)=\ldots=f^{(n-1)(x_0)=0,f^{(n)}}(x_0)\neq 0$,且n是大于3的奇数
+        则有$(x_0,f(x_0))$为函数的拐点
+    \end{enumerate}
+\end{remark}
 \begin{enumerate}[label=\arabic*.,start=20]
     \item  (2011,数一)曲线$y=(x-1)(x-2)^2(x-3)^3(x-4)^4$的拐点是 \\
     $(A)\ (1,0) \qquad (B)\ (2,0) \qquad (C)\ (3,0) \qquad (D)\ (4,0)$
     
     \begin{solution}
-    \newpage
+    直接用高中的穿针引线法画图就可以
     \end{solution}
 \end{enumerate}
 
 \section{导数应用-证明不等式}
 
+\begin{remark}
+    通常优先考虑单调性,较难的题会结合微分中值定理(通常是拉格朗日/柯西/泰勒) 
+\end{remark}
 \begin{enumerate}[label=\arabic*.,start=21]
     \item  (2017,数一、数三)设函数$f(x)$可导,且$f(x)f'(x)>0$,则 \\
         $(A)\ f(1)>f(-1) \quad (B)\ f(1)<f(-1) \qquad
         (C)\ |f(1)| >|f(-1)| \quad (D)\ |f(1)|<|f(-1)| $
     
     \begin{solution}
-    \newpage
+    这道题的辅助函数比较好想,显然$F(x)=\frac{1}{2}f^{2}(x)$,由题设知$F'(x)>0$恒成立,故$F(x)$单调递增
+    即$F(1)>F(-1)\implies f^(2)(1)>f^(2)(-1)\implies \left|f(1)\right|>\left|f(-1)\right|$
     \end{solution}
     
     \item  (2015,数二)已知函数$f(x)$在区间$[a,+\infty)$上具有二阶导数,$f(a)=0$,$f'(x)>0$,$f''(x)>0$。设$b>a$,曲线$y=f(x)$在点$(b,f(b))$处的切线与$x$轴的交点是$(x_0,0)$,证明$a<x_0<b$。
     
     \begin{solution}
-    \newpage
+    这道题的几何直观非常明显,证明也不算很难. \\
+    由题可知切线方程为 $y=f'(b)(x-b)+f(b)$ 令 $y=0$ 有 $x_0=b-\frac{f(b)}{f'(b)}$ 
+
+    \begin{align*}
+        & a < b - \frac{f(b)}{f'(b)} < b \\
+        & \Leftarrow 0 < \frac{f(b)}{f'(b)} < b - a \\
+        & \Leftarrow 0 < f(b) < f'(b)(b - a) \\
+    \end{align*}
+    由$f(a)=0$和拉格朗日中值定理有 $f(b) = f(b)-f(a) = f'(\xi)(b-a), a < \xi < b$,又$f''(x)>0$故
+    $f'(\xi)<f'(b)$ 故 $f(b) < f'(b)(b-a)$ 从而原不等式成立
     \end{solution}
 \end{enumerate}
 
 \section{导数应用-求方程的根}
 
 \begin{enumerate}[label=\arabic*.,start=23]
-    \item  (2003,数二)讨论曲线$y=4\ln x+k$与$y=4x+\ln^4 x$的交点个数。
-    
-    \begin{solution}
-    \newpage
-    \end{solution}
-    
+
     \item  (2015,数二)已知函数$f(x)=\int_x^1\sqrt{1+t^2}dt+\int_1^{x^2}\sqrt{1+t}dt$,求$f(x)$零点的个数。
     
     \begin{solution}
-    \newpage
+    这道题也比较简单,感觉是高中题现在考研已经不太可能出了 \\
+    $f'(x)=(2x-1)\sqrt{1+x^2}$,显然只有唯一根$f'(1/2)=0$又$f(1)=0$故$f(1/2)<0$又$f(-1)>0$故f(x)在
+    $(-1,1/2)$上必然还有唯一根,故$f(x)$在R上仅有两根
     \end{solution}
 \end{enumerate}
 
 \section{微分中值定理证明题}
 
-\begin{remark}[类型一 证明含有一个$\xi$的等式]
+\begin{remark}证明含有一个$\xi$的等式 \\
+    如果不含导数,通常使用单调性+零点存在定理 \\
+    如果包含导数,通常需要构建辅助函数并使用费马引理/罗尔定理 \\
+    构建辅助函数中比较困难的题目,可以采用积分还原法做,其基本思路为 
+    \begin{enumerate}
+        \item [(1)] 将$\xi$都改写成$x$,变形做不定积分去掉导数
+        \item [(2)] 改写$C=0$,移项构建辅助函数
+    \end{enumerate}
 \end{remark}
 
 \begin{enumerate}[label=\arabic*.,start=25]
@@ -281,43 +332,125 @@
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    \begin{enumerate}
+        \item [(1)] 显然构建$F(x)=f(x)-x$,有$F(1)=F(0)=0$由roller Th可知$\exists\xi\in(0,1),F'(\xi)=0$
+        即$f'(\xi)=1$ 
+
+        \item [(2)] 由$f(x)$是可导的奇函数容易得知$f'(x)$偶函数 
+        \begin{enumerate}
+            \item [(方法一)] 构建 $G(x)=f'(x)+f(x)-x$, 则$G(-1)=f'(1)=G(1)$ 由roller Th有...
+            \item [(方法二)] 构建 $G(x)=e^x(f'(x)-1)$, 则由第一问有$f'(-\xi)=f'(\xi)=1$带入$G(x)$,再由roller Th也可以得到答案
+        \end{enumerate}
+    \end{enumerate}
     \end{solution}
     
     \item  设函数$f(x)$在$[0,1]$上连续,在$(0,1)$内可导,$f(1)=0$,证明：存在$\xi\in(0,1)$,使得$(2\xi+1)f(\xi)+\xi f'(\xi)=0$。
     
     \begin{solution}
-    \newpage
+    这道题很难通过观察法得到辅助函数,考虑使用积分还原法 
+    \begin{align*}
+        \frac{f'(x)}{f(x)}  &= -(2+\frac{1}{x}) \\
+        \int\frac{f'(x)}{f(x)}\d x &= \int -(2+\frac{1}{x})\d x \\
+    \end{align*}
+    即
+    $$
+    \ln{\left|f(x)\right|} +\ln{x}+\ln e^{2x}-\ln\left|C\right| = 0
+    $$
+    化简且令C=0后有 
+    $$
+    xe^{2x}f(x) = 0
+    $$
+    故辅助函数$G(x)=xe^{2x}f(x)$,又$G(1)=G(0)$由roller Th可知原等式成立
     \end{solution}
 \end{enumerate}
 
-\begin{remark}[类型二 证明含有两个点的等式]
+\begin{remark}类型二 证明含有两个点的等式 \\
+若要求的是两个相异的点,则分区间讨论(具体看下题1) \\
+若并不要求两个相异的点,则可能需要一次拉格朗日一次柯西(具体见下题2) 
 \end{remark}
 
 \begin{enumerate}[label=\arabic*.,start=27]
     \item  设$f(x)$在$[0,1]$上连续,在$(0,1)$内可导,且$f(0)=0$,$f(1)=1$。证明:
     \begin{enumerate}[label=(\roman*)]
-        \item 存在两个不同的点$\xi_1,\xi_2\in(0,1)$,使得$f'(\xi_1)+f'(\xi_2)=2$；
+        \item 存在两个不同的点$\xi_1,\xi_2\in(0,1)$,使得$f'(\xi_1)+f'(\xi_2)=2$;
         \item 存在$\xi,\eta\in(0,1)$,使得$\eta f'(\xi)=f(\eta)f'(\eta)$。
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    对于(1)这种题目不应该从正面突破,而应该先假设.
+    \\ 假设$\exists\xi_1\in(0,c),\xi_2(c,1)$有
+    $$
+    f'(\xi_1)=\frac{f(c)-f(0)}{f}
+    $$
+    $$
+    f'(\xi_2)=\frac{f(1)-f(c)}{1-c}
+    $$
+
+    带入题设条件 $f'(\xi_1)+f'(\xi_2)=2 \implies c = \frac{1}{2}$  \\
+    \underline{以上分析均不需要写在试卷上} \\
+    由lagrange Th$\exists\xi_1\in(0,1/2),\xi_2(1/2,1)$有.... \\
+    (2) 由lagrange Th可知 $\exists\xi\in(0,1),f'(\xi)=f(1)-f(0)=1$ 题目要求的为 
+    $$
+        f'(\xi)=\frac{f(\eta)f'(\eta)}{\eta}
+    $$
+    考虑柯西中值定理,左侧分式实际是 
+    $$
+        \frac{f^{2}(1)-f^{2}(0)}{1^2-0^2}=\frac{f'(\eta)f(\eta)}{\eta} = 1 = f'(\xi)
+    $$
     \end{solution}
 \end{enumerate}
 
-\begin{remark}[类型三 证明含有高阶导数的等式或不等式]
+\begin{remark}类型三 证明含有高阶导数的等式或不等式 \\
+    基本就是Taylor的题,当然有时也可以通过多次拉格朗日求出来. \\
+    这种问题的关键点在于如何寻找展开点,基本思路就是谁信息多展开谁,例如端点,极值点,最值点,零点等等 
 \end{remark}
 
 \begin{enumerate}[label=\arabic*.,start=28]
     \item  (2019,数二)已知函数$f(x)$在$[0,1]$上具有二阶导数,且$f(0)=0$,$f(1)=1$,$\int_0^1 f(x)dx=1$。证明:
     \begin{enumerate}[label=(\roman*)]
-        \item 存在$\xi\in(0,1)$,使得$f'(\xi)=0$；
-        \item 存在$\eta\in(0,1)$,使得$f''(\eta)<-2$。
+        \item 存在$\xi\in(0,1)$,使得$f'(\xi)=0$;
+        \item 存在$\eta\in(0,1)$,使得$f''(\eta)<-2$.
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    这道题算是比较难的题目,当然不是最难的最难的那道比较像数学分析的题
+    \begin{enumerate}
+        \item [(方法一)]
+        \begin{enumerate}
+            \item [(1)] 由积分中值定理可知$\exists f(c)=1$ 又 $f(1)=f(c)=1$ 由roller Th可知
+            $\exists\xi,f'(\xi) = 0$ 
+            \item [(2)]  
+            要证明$f''(\eta)< -2$ 只需证明对于$F(x)=f(x)+x^2,\exists\eta, F''(x)<0$ 分别在区间(0,c)(c,1)上
+            使用lagrange Th有
+            $$
+            F(c)-F(0)=F'(\xi_1)c =1+c^2,\xi_1\in(0,c)
+            $$
+            $$
+            F(1)-F(c)=F'(\xi_2)(1-c)=1-c^2,\xi_2\in(c,1)
+            $$
+            再在区间$(\xi_1,\xi_2)$使用lagrange Th有
+            $$
+            F'(\xi_2)-F'(\xi_1) = F''(\eta)(\xi_2-\xi_1), \eta\in(\xi_1,\xi_2)
+            $$
+            将$F'(\xi_1),F'(\xi_2)$带入上式,有 
+            $$
+            F''(\eta)=\frac{c-1}{c(\xi_2-\xi_1)} < 0
+            $$
+            故原不等式成立
+        \end{enumerate}
+        \item[(方法二)]
+        \begin{enumerate}
+            \item [(1)] 由题设知在区间(0,1)内必然存在最值,且$f(\xi)>1$,由费马引理可知$f'(\xi) = 0$
+            \item [(2)] 在$x=\xi$处进行Taylor展开有
+            $$
+            f(x)=f(\xi)+f'(\xi)(x-\xi)+\frac{f''(\eta)}{2}(x-\xi)^2
+            $$
+            带入$x=0$点有
+            $$
+            0 = f(\xi)+\frac{f''(\eta)}{2}\xi^2  \implies f''(\eta)=-\frac{2f(\xi)}{\xi^2} < -2 
+            $$
+        \end{enumerate}
+    \end{enumerate}
     \end{solution}
 \end{enumerate}
 
