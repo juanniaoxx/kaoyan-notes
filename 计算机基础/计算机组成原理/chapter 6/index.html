@@ -1389,6 +1389,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    总线
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1400,6 +1413,61 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      总线功能与概述
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      总线的组成
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      总线传输机制
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      总线定时
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2598,6 +2666,50 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      总线功能与概述
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      总线的组成
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      总线传输机制
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      总线定时
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2639,6 +2751,107 @@
 
 
 <h1 id="_1">总线<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">总线功能与概述<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><img alt="alt text" src="../images/%E4%B8%89%E6%80%81%E9%97%A8%E6%8E%A7%E5%88%B6.png" /></p>
+<p><ins class="critic">总线</ins> 在连接的功能部件之间进行数据传输,同一时刻仅允许一个功能部件向总线发送数据(通过三态门控制),允许多个功能部件同时接收数据. 各功能部件<ins class="critic">分时</ins>共享总线.</p>
+<p><ins class="critic">双向总线与单向总线</ins> 通过三态门控制可以实现总线传输方向的控制</p>
+<p><img alt="alt text" src="../images/%E5%8D%95%E5%90%91-%E5%8F%8C%E5%90%91%E6%80%BB%E7%BA%BF.png" /></p>
+<ul>
+<li>(a)中 <code>EN=1</code>的时候A可向B发送数据,而B不可以向A发送数据</li>
+<li>(b)中 <span class="arithmatex">\(EN_{AB}=1\)</span> 的时候A可向B发送数据, <span class="arithmatex">\(EN_{BA}=1\)</span> 的时候B可以向A发送数据<ul>
+<li>半双工传输</li>
+</ul>
+</li>
+</ul>
+<p><ins class="critic">总线的分类</ins></p>
+<ul>
+<li>按传输方向 <ins class="critic">单向和双向</ins>传输总线</li>
+<li>按时序控制方式 <ins class="critic">同步与异步</ins>总线<ul>
+<li>同步总线采用公共时钟进行同步</li>
+<li>异步总线采用应答机制进行同步</li>
+</ul>
+</li>
+<li>按信息线的功能 <ins class="critic">数据总线,地址总线,控制总线</ins></li>
+<li>按信息的传输模式 <ins class="critic">串行总线与并行总线</ins></li>
+<li>按在计算机系统中的位置 <ins class="critic">片内总线,系统总线,I/O总线,外部总线</ins></li>
+</ul>
+<p><ins class="critic">总线的性能指标</ins> </p>
+<ul>
+<li>总线宽度 数据总线的根数,用bit为单位,在并行总线中总线宽度直接觉得了可以并行传输的数据位数</li>
+<li>总线时钟频率 总线时钟周期的倒数. 同步传输总线,时钟频率越快,传输速率越快</li>
+<li>总线传输周期 一次总线操作完成所需要的时间. 包含<ins class="critic">申请阶段,寻址阶段,传输阶段和结束阶段</ins><ul>
+<li>如果采用地址复用技术,会<ins class="critic">增加</ins>总线周期</li>
+<li>通常一个总线周期只能传输一个总线宽度的数据</li>
+</ul>
+</li>
+<li>单时钟传输次数 一个总线时钟周期内传输数据的次数,通常该值为1<ul>
+<li>DRR技术在时钟上升\下降沿分别传输一次,则该值为2</li>
+<li>QDR技术该值为4,AGPx8该值为8</li>
+<li>总线工作的实际频率=总线时钟频率 x 单次时钟传输次数</li>
+</ul>
+</li>
+<li>总线带宽 总线上的<ins class="critic">最大</ins>数据传输速率 单位为(<span class="arithmatex">\(MBps,GBps\)</span>)<ul>
+<li>同步总线带宽 = 总线宽度 x 总线时钟频率 x 单次时钟传输次数</li>
+</ul>
+</li>
+<li>总线负载能力 总线上能够同时连接的设备总数</li>
+</ul>
+<h2 id="_3">总线的组成<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p><img alt="alt text" src="../images/%E6%80%BB%E7%BA%BF%E7%9A%84%E7%BB%84%E6%88%90.png" /></p>
+<ul>
+<li><ins class="critic">总线控制器</ins> 负载总线控制权的仲裁以及总线资源的分配与管理</li>
+<li><ins class="critic">总线接口</ins> 总线与各个连接的功能部件之间的物理与逻辑界面,负责各项功能</li>
+</ul>
+<p><ins class="critic">总线复用技术</ins> 一组传输线具有多种作用,典型的案例为地址总线与数据总线共用\DRAM的行列复用技术. <ins class="critic">分时传输</ins>不同类型的信息.</p>
+<p><ins class="critic">总线设备分类</ins> 按照是否拥有总线控制权可以分为<ins class="critic">主设备</ins>与<ins class="critic">从设备</ins></p>
+<ul>
+<li>主设备 拥有总线控制权并主动进行总线传输控制的设备<ul>
+<li>主设备是主动发起总线传输,而从设备只能被动响应</li>
+<li>主从设备间的数据传输是<ins class="critic">双向</ins>的</li>
+<li>同一时刻<ins class="critic">只允许一个</ins>主设备控制总线</li>
+</ul>
+</li>
+<li>从设备 被主设备寻址访问的设备</li>
+</ul>
+<h2 id="_4">总线传输机制<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p><ins>总线传输过程</ins>  请求阶段,寻址阶段,传输阶段和结束阶段</p>
+<p><img alt="" src="../images/%E6%80%BB%E7%BA%BF%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B.png" /></p>
+<p><ins class="critic">总线事务</ins> 总线上一对主从设备之间的一次信息交换过程 典型的总线事务有 <ins class="critic">存储器读,存储器写,I/O读,I/O写,中断响应,DMA响应</ins>, 通常包含一个寻址阶段和一个传输阶段.</p>
+<p><ins class="critic">突发(猝发)传送事务</ins> 由一个寻址阶段与<ins class="critic">多个</ins>传输阶段组成,在数据传输阶段传输<ins class="critic">多个连续单元</ins>的数据. 每个总线周期<ins class="critic">仍然</ins>只能传输一个计算机字长的信息,但不释放总线,直到一组消息全部发送完毕后才释放总线.</p>
+<p><img alt="alt text" src="../images/%E6%99%AE%E9%80%9A%E6%A8%A1%E5%BC%8FVS%E7%AA%81%E5%8F%91%E6%A8%A1%E5%BC%8F.png" /></p>
+<h2 id="_5">总线定时<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p><ins class="critic">总线定时问题</ins> 规定具体总线事务的每一个步骤,总线上的每一个信息,何时开始何时结束.</p>
+<p><ins class="critic">同步定时</ins> 主从设备在<ins class="critic">统一的总线时钟控制下</ins>进行信息传输</p>
+<ul>
+<li>主从设备的操作在时间点上是固定的,不同的总线事务在不同的节拍进行什么操作都是<ins class="critic">事先协商好的</ins>. - 优点为 主从设备协调简单,传输速率高</li>
+<li>缺点 传输速率取决于最慢的设备;存在同步误差,总线不能太长;可靠性不高</li>
+</ul>
+<p><ins class="critic">异步定时</ins> 主从设备不需要统一的时钟信号,而是采用<ins class="critic">握手协议</ins>来进行异步通信. </p>
+<p><img alt="alt text" src="../images/%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1.png" /></p>
+<p>按照请求和应答信号的建立与撤销是否相互依赖分为三种</p>
+<ul>
+<li>非互锁方式 请求信号与应答信号均自动撤销,只有一次握手.<ul>
+<li>存在可靠性问题</li>
+</ul>
+</li>
+<li>半互锁方式 请求信号的撤销依赖于应答信号,应答信号则是自动撤销<ul>
+<li>可靠性较高</li>
+</ul>
+</li>
+<li>全互锁方式 需要3次握手(类似于TCP)<ul>
+<li>可靠性最高</li>
+</ul>
+</li>
+</ul>
+<p><ins class="critic">半同步定时</ins> 在异步总线中引入时钟信号,规定握手信号<ins class="critic">总在时钟触发时采样</ins></p>
+<p><ins class="critic">分离事务通信方式</ins> 利用从设备准备数据的时间处理其他总线事务</p>
+<ul>
+<li>主设备从设备发出读请求信好,给出地址和请求命令</li>
+<li>从设备进行应答,主设备<ins class="critic">立刻</ins>释放总线控制权</li>
+<li>从设备准备数据,总线用于处处理其余总线事务</li>
+<li>从设备准备好数据后, 作为<ins class="critic">主设备</ins>重新申请使用总线</li>
+<li>源主设备从总线接受数据</li>
+</ul>
 
 
 

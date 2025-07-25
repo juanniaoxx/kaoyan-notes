@@ -9,23 +9,79 @@
 
 \chapter{常微分方程}
 \section{一阶微分方程}
-
+\begin{remark}
+    一阶微分方程 \\
+    (一)可分离变量类型: 形如$\displaystyle\frac{\d y}{\d x}=f(x)g(y)$ 可以转换为 $\displaystyle \frac{\d y}{g(y)}=f(x)\d x$ \\
+    (二)一阶线性非齐次: 形如$y'+p(x)y=q(x)$ 其通解公式为
+    $$
+    \color{red}
+    y=e^{-\int p(x)\d x}\left[\int e^{\int p(x)\d x}q(x)\d x + C\right]
+    $$
+    特殊的,一阶线性齐次$y'+p(x)y=0$其通解公式为
+    $$
+    \color{red}
+    y=Ce^{-\int p(x)\d x}
+    $$
+    (三)一阶齐次方程: 形如$\displaystyle y' = f(\frac{y}{x})$ 则可以通过${\displaystyle\color{red}u=\frac{y}{x}}$为可分离变量类型 \\
+    (四)全微分方程: 形如$P(x,y)\d x + Q(x,y)\d y = 0,$且$\displaystyle \frac{\d Q}{\d x}=\frac{\d P}{\d y}$ 则其解法本质都是求原函数 
+    \begin{enumerate}
+        \item [(I)] 特殊路径积分法 $\displaystyle u(x,y)=\int_{x_0}^{x}P(x,y_0)\d x + \int_{y_0}^{y}Q(x,y)\d y$ 
+        \item [(II)] {\color{red} 偏积分, 一般考虑直接偏积分}
+        \item [(III)] 凑微分
+    \end{enumerate}
+    (五)伯努利方程: 形如$y'(x)+p(x)y=q(x)y^{\alpha},\alpha\neq (0, 1)$ 其解法如下 
+    \begin{enumerate}
+        \item [(I)] 同除$y^{\alpha}$,转换为$y^{-\alpha}y'+p(x)y^{1-\alpha}=q(x)$
+        \item [(II)] 做$\color{red}z=y^{1-\alpha}$的换元,则原微分方程转换为 
+        \item [(III)] $\displaystyle \frac{\d z}{\d x} + (1-\alpha)p(x)z=(1-\alpha)q(x)$ 
+        \item [(IV)] 转换为一阶线性方程可以用公式法直接求
+    \end{enumerate}
+    (六)需要考虑变量互换: 形如
+    $$
+    \frac{\d y}{\d x} = \frac{h(y)}{p(y)x + q(y)}, \frac{\d y}{\d x}=\frac{h(y)}{p(y)x+q(y)x^{\alpha}}
+    $$
+    交换后可以转换为一阶线性/一阶伯努利 即
+    $$
+    \frac{\d x}{\d y} = \frac{p(y)}{h(y)} + \frac{q(y)}{h(y)}, \frac{\d x}{\d y} = \frac{p(y)}{h(y)} + \frac{q(y)}{h(y)}x^{\alpha}
+    $$
+\end{remark}
 \begin{enumerate}[label=\arabic*.]
     \item (1998,数一、数二)已知函数$y=y(x)$在任意点$x$处的增量$\Delta y=\frac{y\Delta x}{1+x^2}+\alpha$,其中$\alpha$是$\Delta x$的高阶无穷小,$y(0)=\pi$,则$y(1)$等于 \\
     $(A)\ 2\pi \quad (B)\ \pi \quad (C)\ e^{\frac{\pi}{4}} \quad (D)\ \pi e^{\frac{\pi}{4}}$
 
     \begin{solution}
-    \newpage
+    两边同除$\Delta x$且当$\Delta x\to 0$,有$\displaystyle y'=\frac{y}{1+x^2}$ 原问题转换为求初值问题的解
+    $$
+    \begin{cases}
+        \displaystyle y' - \frac{y}{1+x^2} = 0 \\
+        y(0)=\pi
+    \end{cases}
+    $$
+    由公式有$\displaystyle y=\pi e^{\frac{\pi}{4}}$ 
     \end{solution}
     
-    \item (2002,数二)已知函数$f(x)$在$(0,+\infty)$内可导,$f(x)>0$,$\lim_{x\to+\infty}f(x)=1$,且满足
+    \item (2002,数二)已知函数$f(x)$在$(0,+\infty)$内可导,$f(x)>0$,$\displaystyle\lim_{x\to+\infty}f(x)=1$,且满足
     \begin{align*}
         \lim_{h\to0}\left(\frac{f(x+hx)}{f(x)}\right)^{\frac{1}{h}}=e^{\frac{1}{x}}
     \end{align*}
     求$f(x)$。
     
     \begin{solution}
-    \newpage
+    由题设有
+    \begin{align*}
+        \text{原式} &= e^{\displaystyle\lim_{h\to 0}\frac{f(x+hx)-f(x)}{hf(x)}} \\
+        &=e^{\frac{f'(x)\cdot x}{x}} = e^{\frac{1}{x}} \implies \frac{f'(x)\cdot x}{f(x)}=\frac{1}{x}
+    \end{align*}
+    即原问题转换为如下初值问题的解
+    $$
+    \begin{cases}
+        \displaystyle 
+        f'(x) - \frac{1}{x^2}\cdot f(x) = 0 \\
+        \displaystyle
+        \lim_{x\to\infty}f(x) = 1
+    \end{cases}
+    $$
+    带入公式有$\displaystyle f(x)=e^{-\frac{1}{x}}$
     \end{solution}
 \end{enumerate}
 
@@ -39,7 +95,22 @@
     \end{align*}
     
     \begin{solution}
-    \newpage
+    等式两边同时除以x,原式化为
+    $$
+    \left[\frac{y}{x}+\sqrt{1+(\frac{y}{x})^2}\right]\d x = \d y 
+    $$
+    令$u=\frac{y}{x}$,则$\frac{\d y}{\d x} = u + x\frac{\d u}{\d x}$ 原式化为
+    $$
+    \frac{\d u}{\sqrt{1+u^2}} = \frac{\d x}{x}
+    $$
+    两边同时积分
+    $$
+    \begin{cases}
+        \displaystyle\frac{y}{x}+\sqrt{1+(\frac{y}{x})^2}=Cx \\
+        \displaystyle y(1) = 0
+    \end{cases} \implies y + \sqrt{x^2+y^2}=x^2
+    $$
+    {\color{red} 对于带有根式的结果特别需要注意化简,两边同时乘以 $y - \sqrt{x^2+y^2}$,可以解出$y=\frac{1}{2}(x^2+1)$}
     \end{solution}
 \end{enumerate}
 
@@ -52,8 +123,18 @@
 
     
     \begin{solution}
-    \newpage
+    由总结可知,选A
     \end{solution}
+
+    \begin{tcolorbox}[title={一阶,二阶线性微分方程(组)解的性质}]
+    若$y_1,y_2$分别为非齐次特解,则
+    $$
+    C_1y_1+C_2y_2 \begin{cases}
+        C_1 + C_1 = 0, & \text{齐次解} \\
+        C_1 + C_2 = 1, & \text{非齐次解}
+    \end{cases}
+    $$
+    \end{tcolorbox}
 \end{enumerate}
 
 \begin{enumerate}[label=\arabic*.,start=5]
@@ -64,7 +145,30 @@
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    (一)由一阶线性的求解公式有 
+    \begin{align*}
+        y &= e^{-x}\left[\int e^x\cdot x\d x + C\right] \\
+        &=e^{-x}\left[(x-1)e^{-x}+C\right]\\
+        &=Ce^{-x}+x-1
+    \end{align*}
+    (二)由一阶线性的求解公式有
+    $$
+    y=e^{-x}\left[\int f(x)e^{x}\d x + C\right] = {\color{red} e^{-x}\int_{0}^{x}e^{t}f(t)\d t+C}
+    $$
+    则
+    \begin{align*}
+        y(x+T)-y(x) &= e^{-x}\left[\frac{1}{e^T}\int_{0}^{x+T}e^{t}f(t)\d t - 
+        \int_{0}^{x}e^{t}f(t)\d t + (\frac{1}{e^{T}-1})C\right] \\
+        \int_{0}^{x+T}e^{t}f(t)\d t &=\int_{0}^{T}+\int_{T}^{x+T} \\
+        &=\frac{1}{e^{t}}\int_{0}^{T}e^{t}f(t)\d t + \frac{1}{e^T}\int_{T}^{x+T}e^{T}f(t)\d t \\
+        &=\ldots + \frac{1}{e^T}\int_{0}^{T}e^{t+T}f(t+T)\d t \\
+        y(x+T)-y(x) & = e^{-x}\left[\frac{1}{e^{T}}\int_{0}^{T}e^{t}f(t)\d t + (\frac{1}{e^{T}-1})C \right] 
+    \end{align*}
+    由周期函数的定义,只需要令$y(x+T)-y(x)=0$即
+    $$
+    C = -\frac{1}{1-e^T}\int_{0}^{T}e^tf(t)\d t
+    $$
+    的时候该方程的解是周期还是,且唯一.
     \end{solution}
 \end{enumerate}
 
@@ -73,7 +177,12 @@
     \item 求解微分方程$y'-\frac{4}{x}y=x^2\sqrt{y}$.
     
     \begin{solution}
-    \newpage
+    令$z=\sqrt{y}$,则$\displaystyle z'-\frac{2}{x}z=\frac{1}{2}x^2$,则到
+    $$\displaystyle
+    z = e^{\int\frac{2}{x}\d x}\left(\int\frac{1}{2}x^2e^{-\int\frac{2}{x}\d x}\d x + C\right) 
+    =x^2\left(\frac{1}{2}\cdot x + C\right)
+    $$
+    则该方程的通解为$\sqrt{y}=\frac{1}{2}x^3+Cx^2$
     \end{solution}
 \end{enumerate}
 
@@ -83,12 +192,48 @@
         $(2)\ \frac{2x}{y^3}dx+\frac{y^2-3x^2}{y^4}dy=0$.
     
     \begin{solution}
-    \newpage
+    (1) 偏积分法 
+    $$
+    u(x,y)=\int(2xe^y+3x^2-1)\d x = x^2e^y+x^3-x+\phi(y)
+    $$
+    由于$\displaystyle \frac{\partial u}{\partial y} = x^2e^y + \phi'(y)$对比题目可知
+    $\phi'(y)=-2y\implies\phi(y)=-y^2$,故原方程的解
+    $$
+    x^2e^y+x^3-x-y^2=C
+    $$
+    (2) 凑微分法
+    \begin{align*}
+    \text{原式} 
+    &=(2xe^y+3x^2-1)\d x + (x^2e^y-2y)\d y  \\
+    &= (2xe^y\d x + x^2e^y\d y)+(3x^2-1)\d x + (-2y)\d y \\
+    &=d(x^2e^y)+d(x^3-x)+d(-y^2) \\
+    &=d(x^2e^y+x^3-x-y^2) = 0
+    \end{align*}
+    即$x^2e^y+x^3-x-y^2=C$
     \end{solution}
 \end{enumerate}
 
 \section{二阶常系数线性微分方程}
-
+\begin{remark}
+    二阶齐次方程的通解,形如$y''+py'+qy=0$ \\
+    求解特征方程($r^2+pr+q=0$)
+    $$
+    \begin{cases}
+        r_1\neq r_2, & \text{通解为} C_1e^{r_1 x} + C_2e^{r_2 x} \\
+        r_1=r_2=r, & \text{通解为} (C_1 + C_2 x)e^{rx} \\
+        r_{1,2}=\alpha\pm\beta, &\text{通解为} e^{\alpha x}(C_1\cos{\beta x}+C_2\sin{\beta x})
+    \end{cases}
+    $$
+    二阶非齐次方程的通解,形如$y''+py'+qy=f(x)$,其解的结构为\underline{齐次特解 + 非齐次通解}
+    $$
+    \text{特解格式}
+    \begin{cases}
+        f(x)=P_ne^{\lambda x},y^{*}=x^kQ_n(x)e^{\lambda x} \\
+        f(x)=e^{\alpha x}[P_{m}(x)\cos{\beta x}+P_{n}(x)\sin{\beta x}] \\
+        y^{*}=x^ke^{\alpha}[Q_{l}(x)\cos{\beta x}+R_{l}(x)\sin{\beta x}], l = \min{\{m,n\}}
+    \end{cases}
+    $$
+\end{remark}
 \begin{enumerate}[label=\arabic*.,start=8]
     \item (2017,数二)微分方程$y''-4y'+8y=e^{2x}(1+\cos2x)$的特解可设为$y^*=$ \\
         $(A)\ Ae^{2x}+e^{2x}(B\cos2x+C\sin2x)$ \\
@@ -167,7 +312,6 @@
 \end{enumerate}
 
 \section{ 微分方程综合题}
-
 \begin{enumerate}[label=\arabic*.,start=18]
     \item (2001,数二)设$L$是一条平面曲线,其上任意一点$P(x,y)(x>0)$到坐标原点的距离,恒等于该点处的切线在$y$轴上的截距,且$L$经过点$(\frac{1}{2},0)$。求曲线$L$的方程。
     

@@ -1453,9 +1453,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#io-io" class="md-nav__link">
+  <a href="#io" class="md-nav__link">
     <span class="md-ellipsis">
-      I/O设备与特性 与 I/O接口
+      I/O接口
     </span>
   </a>
   
@@ -1489,6 +1489,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      中断响应
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      中断识别
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      中断的处理
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1497,7 +1524,7 @@
         <li class="md-nav__item">
   <a href="#dma" class="md-nav__link">
     <span class="md-ellipsis">
-      DMA方式
+      直接内存访问方式(DMA方式)
     </span>
   </a>
   
@@ -2688,9 +2715,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#io-io" class="md-nav__link">
+  <a href="#io" class="md-nav__link">
     <span class="md-ellipsis">
-      I/O设备与特性 与 I/O接口
+      I/O接口
     </span>
   </a>
   
@@ -2724,6 +2751,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      中断响应
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      中断识别
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      中断的处理
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2732,7 +2786,7 @@
         <li class="md-nav__item">
   <a href="#dma" class="md-nav__link">
     <span class="md-ellipsis">
-      DMA方式
+      直接内存访问方式(DMA方式)
     </span>
   </a>
   
@@ -2781,9 +2835,46 @@
 
 
 <h1 id="_1">输入输出系统<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<h2 id="io-io">I/O设备与特性 与 I/O接口<a class="headerlink" href="#io-io" title="Permanent link">&para;</a></h2>
+<h2 id="io">I/O接口<a class="headerlink" href="#io" title="Permanent link">&para;</a></h2>
+<p><ins class="critic">I/O接口的基本功能</ins> 设备寻址,数据交互,设备控制,状态检测,数据缓冲.格式转换,中断,时序控制和数据检错,纠错等功能(具体看课本)</p>
+<p><img alt="alt text" src="../images/I%5CO%E6%8E%A5%E5%8F%A3.png" /></p>
+<ul>
+<li>总线接口 按照总线标准进行设计</li>
+<li>内部接口 因设备的不同而不同,是非标准的</li>
+<li><ins class="critic">数据缓存寄存器(DBR)</ins> 用于缓冲数据,匹配CPU与外部设备之间的速度差异</li>
+<li><ins class="critic">设备状态寄存器(DSR)</ins> 用于反馈设备状态 在<ins class="critic">程序查询方式中</ins>,CPU通过读取状态寄存器来判断设备的状态</li>
+<li><ins class="critic">设备命令寄存器(DCR)</ins> 用于接收CPU发送的设备控制命令</li>
+<li><ins class="critic">设备存储器</ins> 常用于设备自身的运算和处理</li>
+</ul>
+<p><ins class="critic">I/O接口的编址</ins> I/O接口中的各种寄存器,存储器都由<ins class="critic">CPU</ins>进行统一分配设备地址,并通过对应的设备地址访问,通常可以分为统一编址和独立编址两类</p>
+<p><img alt="alt text" src="../images/%E7%BB%9F%E4%B8%80%E7%BC%96%E5%9D%80.png" /></p>
+<p><ins class="critic">统一编址</ins> 内存映射编址(Memory-mapped) <ins class="critic">外部设备与内存地址统一编址</ins>,二者在逻辑上属于同一地址空间,通过<ins class="critic">不同区域</ins>来区分访问内存还是访问外设. </p>
+<ul>
+<li>使用统一的访存指令访问内存与I/O设备</li>
+<li>通常不能使用<ins class="critic">Cache</ins>进行缓存</li>
+<li>系统I/O接口的地址是固定,而热插拔的I/O设备通常是在计算器启动过程中动态分配的</li>
+</ul>
+<p><ins class="critic">独立编址</ins> 端口映射编址(Port-mapped) I/O地址空间和主存地址空间相互独立, 此时I/O地址又称为<ins class="critic">I/O端口</ins></p>
+<ul>
+<li>必须使用特殊的I/O指令访问外部设备</li>
+<li>系统I/O端口号通常是固定,热插拔I/O的端口号是启动过程中动态分配的</li>
+</ul>
+<p><ins class="critic">I\O控制方式</ins> </p>
+<p><img alt="" src="../images/IO%E6%8E%A7%E5%88%B6%E6%96%B9%E5%BC%8F.png" /></p>
 <h2 id="_2">程序控制方式<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><ins class="critic">程序控制方式(PIO)</ins>  CPU直接执行一段输入输出的<ins class="critic">程序</ins>来实现CPU与外部设备的数据交换.</p>
+<ul>
+<li>分为程序查询(轮询方式) 每次传送前都要查询设备状态,只有设备准备就绪后才可进行后续操作(条件传送)</li>
+<li>直接传送 无须查询设备状态,直接进行数据交互(无条件传送)</li>
+</ul>
+<p><img alt="alt text" src="../images/%E7%A8%8B%E5%BA%8F%E6%9F%A5%E8%AF%A2.png" /></p>
+<p>程序查询有两种策略<ins class="critic">忙等待(独占式查询)</ins>和<ins class="critic">定时轮询</ins></p>
+<ul>
+<li>独占式查询策略中CPU在等待设备准备数据的过程中会<ins class="critic">不断</ins>查询设备的状态寄存器</li>
+<li>定时轮询策略中CPU会通过定时时钟中断,并调度其他进程上CPU执行</li>
+</ul>
 <h2 id="_3">程序中断控制方式<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p><img alt="alt text" src="../images/%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%96%AD%E6%8E%A7%E5%88%B6%E6%96%B9%E5%BC%8F.png" /></p>
 <p><img alt="" src="../images/%E4%B8%AD%E6%96%AD.png" /></p>
 <p><ins class="critic">中断优先级和中断屏蔽字</ins></p>
 <ul>
@@ -2833,7 +2924,119 @@
 <p class="admonition-title">中断优先级的示例</p>
 </div>
 <h3 id="_4">中断请求<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h2 id="dma">DMA方式<a class="headerlink" href="#dma" title="Permanent link">&para;</a></h2>
+<p><img alt="alt text" src="../images/%E4%B8%AD%E6%96%AD%E8%AF%B7%E6%B1%82%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E5%BC%8F.png" /></p>
+<ul>
+<li><ins>INTR 中断请求线缆</ins> <ins>INTA 中断响应线缆</ins></li>
+<li>独立请求方式 每个中断源独立请求独立响应,方便实现向量中断,可以快速找到中断入口地址;但系统拓展困难</li>
+<li>链式请求方式 所有中断源共享一条请求线缆,系统拓展容易<ul>
+<li>硬件查询法 CPU给出中断应答信号,通过串行电路<ins class="critic">从左往右</ins>顺序查询, <ins class="critic">离CPU越近中断响应优先级越高</ins></li>
+<li>软件查询法 通过公共中断服务程序轮询每个中断源,优先级与轮询方式有关,<ins class="critic">越早轮询优先级越高</ins></li>
+</ul>
+</li>
+<li>中断控制器方式 中断控制器负责实现<ins class="critic">外部</ins>中断的优先级仲裁逻辑与中断识别<ul>
+<li>支持中断屏蔽字技术</li>
+</ul>
+</li>
+<li>分组链式 独立请求与链式请求的折中办法</li>
+</ul>
+<p><img alt="alt text" src="../images/%E4%B8%AD%E6%96%AD%E8%AF%B7%E6%B1%82%E7%9A%84%E7%A1%AC%E4%BB%B6%E6%94%AF%E6%8C%81.png" /></p>
+<p><ins class="critic">中断请求的硬件支持</ins></p>
+<ul>
+<li>中断请求寄存器(IRR) IRR中的内容即<ins class="critic">中断字</ins>,通过中断字确定中断源,并转入对应中断服务</li>
+<li>中断屏蔽寄存器(IMR) 用于动态改变中断处理优先级<ul>
+<li>其内的每一位<ins class="critic">取反</ins>后与IRR中的位进行<ins class="critic">逻辑与</ins></li>
+<li>IMR中为<ins class="critic">1</ins>的中断源被屏蔽,为<ins class="critic">0</ins>的中断源不会被屏蔽</li>
+</ul>
+</li>
+<li>中断服务寄存器(ISR) 在多重中断中用于存放正在被服务的中断请求,包含以及得到中断响应但中断服务尚未结束的<ins class="critic">所有</ins>中断请求.<ul>
+<li>普通屏蔽模式 当新的中断请求比ISR中最高优先级的中断源还高的时候才会中断当前服务.</li>
+<li>特殊屏蔽模式 不判断ISR中的优先级,这样未被屏蔽的中断都可以打断当前中断</li>
+</ul>
+</li>
+<li>中断优先级排队电路(PR) </li>
+<li>中断允许触发器(IE/IF) 也称<ins class="critic">中断使能位</ins>,<ins class="critic">中断标志位</ins>,用于开,关中断控制.<ul>
+<li>仅能关闭可屏蔽中断的中断请求</li>
+</ul>
+</li>
+</ul>
+<h3 id="_5">中断响应<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><ins class="critic">中断响应的条件</ins> </p>
+<p><img alt="" src="../images/%E4%B8%AD%E6%96%AD%E5%93%8D%E5%BA%94%E7%9A%84%E6%9D%A1%E4%BB%B6.png" /></p>
+<p><ins class="critic">中断响应过程-CPU</ins></p>
+<p><img alt="" src="../images/%E4%B8%AD%E6%96%AD%E5%93%8D%E5%BA%94%E8%BF%87%E7%A8%8B-CPU%E6%93%8D%E4%BD%9C.png" /></p>
+<ul>
+<li>CPU在进行中断响应过程<ins class="critic">不能执行其他任务</ins></li>
+<li><ins class="critic">中断隐指令</ins> 是CPU在执行中断响应过程中这一系列操作的总称,并非真的指令</li>
+</ul>
+<h3 id="_6">中断识别<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>中断识别通常由两种<ins class="critic">非向量中断</ins>和<ins class="critic">向量中断</ins>, 其中非向量中断即链式请求的软件查询法,通过一个公共的中断服务程序<ins class="critic">轮询</ins>设备.</p>
+<p><ins class="critic">向量中断</ins> </p>
+<p><img alt="alt text" src="../images/%E4%B8%AD%E6%96%AD%E5%90%91%E9%87%8F%E8%A1%A8.png" /></p>
+<ul>
+<li>中断号 每个设备的中断源<ins class="critic">唯一</ins>的中断编号<ul>
+<li>中断号由计算机系统统一分配,通常是固定不变的</li>
+<li>可屏蔽的外部中断,其中断号在中断响应周期内从中断控制器获得</li>
+<li>系统调用等自陷指令的中断号由<ins class="critic">指令直接给出</ins></li>
+<li>不可屏蔽中断以及异常的中断号则有<ins class="critic">系统</ins>预先设置</li>
+</ul>
+</li>
+<li>中断向量 对应中断源的中断服务程序的<ins class="critic">入口地址</ins>(可能包括程序状态字)</li>
+<li>中断向量表 中断向量的集合<ul>
+<li>中断向量表通常常驻内存</li>
+<li>在<ins class="critic">计算机启动初期</ins>,OS内核引导阶段由<ins class="critic">硬件</ins>初始化中断向量表</li>
+<li><ins class="critic">当OS内核启动后</ins>,交给OS管理中断向量表</li>
+</ul>
+</li>
+<li>向量地址(中断指针) 用于访问中断向量表的某一表项的地址</li>
+</ul>
+<h3 id="_7">中断的处理<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><ins class="critic">中断VS子程序调用</ins></p>
+<p><img alt="" src="../images/%E4%B8%AD%E6%96%ADVS%E5%AD%90%E7%A8%8B%E5%BA%8F%E8%B0%83%E7%94%A8.png" /></p>
+<p><ins class="critic">中断处理的流程</ins></p>
+<p><img alt="alt text" src="../images/%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86%E7%9A%84%E6%B5%81%E7%A8%8B.png" /></p>
+<ul>
+<li><ins class="critic">顶半(Top half)和底半(Bottom Half)</ins> Linux中为了解决中断服务需要长期关中断的策略<ul>
+<li>Top half 由实际中断服务程序完成,关中断执行,只完成简单的寄存器交互</li>
+<li>Bottom half 开中断运行,负责完成耗时较大的任务,如实际数据传输工作</li>
+</ul>
+</li>
+<li>关中断由<ins class="critic">硬件(中断隐指令)</ins>完成,而开中断则是由<ins class="critic">软件(指令)</ins>时间的</li>
+</ul>
+<h2 id="dma">直接内存访问方式(DMA方式)<a class="headerlink" href="#dma" title="Permanent link">&para;</a></h2>
+<p><img alt="alt text" src="../images/DMA.png" /></p>
+<p><ins class="critic">DMA方式</ins> 减少I/O过程中CPU用于实际传输的开销而引入的</p>
+<ul>
+<li>由DMAC(DMA控制器)暂时接管总线控制<ins class="critic">外部设备与内存间的直接数据交换</ins>,数据无须由CPU寄存器中转</li>
+<li>传输过程中CPU可以继续执行其他程序</li>
+<li>设备由DMAC向CPU申请总线控制权用于数据传输</li>
+<li>数据块传输结束后,使用<ins class="critic">中断</ins>请求CPU进行后处理</li>
+</ul>
+<p><ins class="critic">DMA VS 中断</ins> </p>
+<p><img alt="" src="../images/DMA%E4%B8%8E%E4%B8%AD%E6%96%AD.png" /></p>
+<p><ins class="critic">内存争用问题</ins> 虽然有Cache但CPU在DMA期间仍然可能要访问主存,此时就会产生冲突,通常由三种处理办法 <ins class="critic">停止CPU访问</ins>, <ins class="critic">DMAC与CPU交替访问</ins> <ins class="critic">周期挪用</ins></p>
+<p><img alt="alt text" src="../images/DMA%E5%86%85%E5%AD%98%E4%BA%89%E7%94%A8%E9%97%AE%E9%A2%98.png" /> </p>
+<ul>
+<li>停止CPU访问 在DMA期间由DMAC独占内存<ul>
+<li>适合高速外设</li>
+<li>需要进行总线控制权的申请,建立与交换过程</li>
+</ul>
+</li>
+<li>DMAC与CPU交替访问 <ul>
+<li>将存储周期分为两部分,一部分专用于CPU,一部分专用于DMA</li>
+<li>总线控制权分时控制,不需要进行总线控制权的申请,建立与交换过程</li>
+</ul>
+</li>
+<li>周期挪用 只有当DMAC需要访问主存的时候才暂停<ins class="critic">一个</ins>存储周期工DMAC访问内存,访存结束后将控制权交还CPU;若挪用周期内CPU要访问主存,则<ins class="critic">DMA优先访问主存</ins></li>
+</ul>
+<p><ins class="critic">DMA控制器</ins></p>
+<p><img alt="alt text" src="../images/DMAC%E7%BB%93%E6%9E%84.png" /></p>
+<ul>
+<li>地址寄存器 DMA预处理阶段由<ins class="critic">CPU设置</ins>,每次DMA传送后自增,指向下一个内存单元</li>
+<li>字计数器 用于记录数据块的长度, 为0的时候DMA传输结束,发出DMA中断请求信号</li>
+<li>上述DMAC被称为第三方DMA,若集成在I/O接口中,如CSAPP的那张图所示则被称为第一方DMA</li>
+</ul>
+<p><ins class="critic">DMA流程</ins> 以周期挪用方式的DMA为例</p>
+<p><img alt="alt text" src="../images/%E5%91%A8%E6%9C%9F%E6%8C%AA%E7%94%A8.png" /></p>
 
 
 

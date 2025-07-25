@@ -3114,8 +3114,12 @@
 <p><ins class="critic">加减法电路</ins> 对于减法可以将其转换为加法,如下所示</p>
 <p><img alt="alt text" src="../images/%E5%8A%A0%E5%87%8F%E6%B3%95%E7%94%B5%E8%B7%AF.png" /></p>
 <ul>
-<li>增加一条 <code>Sub</code> 信号线,当计算为加法的时候置0;否则置1</li>
-<li>将其与所有 <span class="arithmatex">\(y_i\)</span> 进行异或操作</li>
+<li>增加一条 <code>Sub</code> 信号线,当计算为加法的时候置0;否则置1<ul>
+<li>当Sub为0的时候,送入的加法器的是Y本身</li>
+<li>当Sub为1的时候,送入加法器的是Y的<ins class="critic">反码</ins></li>
+</ul>
+</li>
+<li>将其与所有 <span class="arithmatex">\(y_i\)</span> 进行<ins class="critic">异或</ins>操作</li>
 <li>连接到全加器的尾端 <span class="arithmatex">\(FA_0\)</span> 实现取反+1的效果</li>
 <li>减法的溢出和加法一致<ul>
 <li>无符号数检测 <span class="arithmatex">\(\bar{C_n}\)</span></li>
