@@ -122,15 +122,203 @@
     \end{enumerate}
 
 \end{enumerate}
+
+\newpage
 \section{计算机网络}
+
 \begin{enumerate}
     
     \item 二进制信号在信噪比为127:1的4kHz的信道上传输,最大数据传输速率可达到() \\
     A.28000bps\qquad B.8000bps\qquad C.4000bps\qquad D.无限大
 
+    \item 网络层的主要目的是() \\
+    A.在临接结点间进行数据报传输\qquad B.在临接结点间进行数据报的可靠传输 \\
+    C.在任意结点间进行数据报传输\qquad C.在任意结点间进行数据报的可靠传输
 
+    \item 路由器连接的异构网络是指() \\
+    A.网络的拓扑结构不同\qquad B.网络中的计算机操作系统不同\\
+    B.数据链路层和物理层均不同\qquad D.数据链路层协议相同,物理层协议不同 
+
+    \item 在距离-向量路由协议中,()最可能导致路由回路的问题. \\
+    A.由于网络带宽的限制,某些路由更新数据报被丢弃 \\
+    B.由于路由器不知道整个网络的拓扑结构信息,当收到一个路由更新消息时,又将该更新消息发回自己发送该路由信息的路由器 \\
+    C.当一个路由器发现自己的一条直接相邻链路断开时,未能将这个变化报告给其他路由器\\
+    D.慢收敛导致路由器接受了无效的路由信息
+
+    \item 以下关于IP分组分片基本方法的描述中,错误的是() \\
+    A. IP分组长度大于MTU时,就必须对其进行分片 \\
+    B. DF=1,分组长度又超过MTU时,则丢弃该分组,不需要向源主机报告 \\
+    C.分片的MF值为1表示接受到的分片不是最后一个分片 \\
+    D.属于同一原始IP分组的分片具有相同的标识
+
+    \item 路由器R0的路由表见下,若进入路由器R0的分组的目标地址为\underline{132.19.237.5},则该分组应该被转发到()下
+    一跳路由器.
+    $$
+    \begin{tabular}{lc} % @{} 去除首尾多余空白
+    \toprule
+    \text{目的网络} & \text{下一条} \\
+    \midrule
+    \underline{132.0.0.0/8}   & R1   \\
+    \underline{132.19.0.0/11}   & R2  \\
+    \underline{132.19.232.0/22} & R3 \\
+    \underline{0.0.0.0/0} & R4 \\
+    \bottomrule
+    \end{tabular}
+    $$
+    A. R1\qquad B.R2\qquad C.R3\qquad D.R4 
+
+    \item 下列地址中属于单播地址的是() \\
+    A.\underline{172.31.128.255/18}\qquad B.\underline{10.255.255.255}\qquad
+    C.\underline{192.168.24.59/30}\qquad D.\underline{224.105.5.211}
+
+    \item 访问因特网的每台主机都需要分配IP地址(假设采用默认子网掩码),下列可以分配给主机的IP地址是() \\
+    A.\underline{192.46.10.0}\qquad B.\underline{110.47.10.0}\qquad
+    C.\underline{127.10.10.17}\qquad D.\underline{211.60.256.21}
+
+    \item 一个网段的网络号为\underline{198.0.10.0/27}则最多可以分成()个子网,每个子网最多具有()个有效的IP地址 \\
+    A.8,\ 30\qquad B.4,\ 62\qquad C.16,\ 14\qquad D.32,\ 6 
+
+    \item 一个网络中有几个子网,其中一个已分配了子网号\underline{74.178.247.96/29},则下列网络前缀中不能再
+    分配给其他子网的是() \\
+    A.\underline{74.178.247.120/29}\quad B.\underline{74.178.247.64/29}\quad
+    C.\underline{74.178.247.96/28}\quad D.\underline{74.178.247.104/29}
+
+    \item 主机A和主机B的IP地址分别为\underline{216.12.31.20}何\underline{216.13.32.21},要想让A和B工作在
+    同一个IP子网内,应该给它们分配的子网掩码是() \\
+    A.\underline{255.255.255.0}\qquad B.\underline{255.255.0.0}\qquad C.\underline{255.255.255.255}\qquad D.\underline{255.0.0.0}
+
+    \item 某单位分配了一个B类地址,计划将内部网络划分为35个子网,将来可能增加16个子网,每个子网的主机数目将近800台
+    ,则可行的掩码方案是() \\
+    A.\underline{255.255.248.0}\qquad B.\underline{255.255.252.0}\qquad C.\underline{255.255.254.0}\qquad D.\underline{255.255.255.0}
+
+    \item 下列IP地址中,只能作为IP地址的源IP地址但不能作为目的IP地址的是() \\
+    A.\underline{0.0.0.0}\qquad B.\underline{127.0.0.1}\qquad C.\underline{200.10.10.3}\qquad D.\underline{255.255.255.255}
+
+    \item 若将\underline{101.200.16.0/20}划分为5个子网,则可能的最小子网的可分配IP地址数是() \\
+    A.126\qquad B.254\qquad C.510\qquad D.1022
+
+    \item 现将一个IP网络划分为3个子网,若其中一个子网是\underline{192.168.9.128/26},则下列网络中,不可能是另外两个子网之一的是() \\
+    A.\underline{192.168.9.0/25}\quad B.\underline{192.168.9.0/26}\quad C.\underline{192.168.9.192/26}\quad D.\underline{192.168.9.192/27}
+
+    \item 若某主机的IP地址是\underline{183.80.72.48},子网掩码是\underline{255.255.192.0}则该主机所在网络的网络地址是() \\
+    A.\underline{183.80.0.0}\qquad B.\underline{183.80.64.0}\qquad C.\underline{183.80.72.0}\qquad D.\underline{183.80.192.0}
+
+    \item BGP交换的网络可达性信息是() \\
+    A.到达某个网络所经过的路径\qquad B.到达某个网络的下一跳路由器 \\
+    C.到达某个网络的链路状态摘要信息\quad D.到达某个网络的最短距离及其下一跳路由器
+
+    \item 以下关于IP组播的概念描述中,错误的是() \\
+    A.在单播路由选择中,路由器只能从它的一个接口转发收到的分组 \\
+    B.在组播路由选择中,路由器可以从它的多个接口转收到的分组 \\
+    C.用多个单播仿真一个组播时需要更多的带宽 \\
+    D.在用多个单播仿真一个组播时,时延基本是相同的
+
+    \item 在设计组播路由时,为了避免路由环路,() \\
+    A.采用了水平分割技术\qquad B.构建组播转发树\\ 
+    C.采用了IGMP\qquad D.通过生存时间(TTL)字段 
+
+    \item 关于路由器的下列说法中,正确的是() \\
+    A.路由器处理的信息量比交换机少,因此转发速度比交换机快 \\
+    B.对于同一目标,路由器只提供延迟最小的最近路由 \\
+    C.通常的路由器可以支持多种网络层协议,并提供不同协议之间的分组转发 \\
+    D. 路由器不但能根据IP地址进行转发,而且可以根据物理地址进行转发
+
+    \item 下列网络设备中,传输延迟时间最大的是() \\
+    A.局域网交换机\qquad B.网桥\qquad C.路由器\qquad D.集线器 
+
+    \item 在采用TCP连接的数据传输阶段,如果发送端的发送窗口值有1000变成2000,那么发送端在收到一个
+    确认前可以发送() \\
+    A.2000个TCP报文段 \qquad B.2000B \qquad C.1000B\qquad D.1000个TCP报文段
+
+    \item TCP中滑动窗口的值设置太大,对主机的影响是() \\
+    A.由于传送的数据过多而使路由器变得拥挤,主机可能丢失分组 \\
+    B.产生过多ACK \\
+    C.由于接受的数据多,而使主机的工作速度加快 \\
+    D.由于接受的数据多,而使主机的工作速度变慢 
+
+    \item 以下关于TCP窗口与拥塞控制概念的描述中,错误的是() \\
+    A.接受端窗口(rwnd)通过TCP首部中的窗口字段通知数据的发送方 \\
+    B.发送窗口的依据是 : 发送窗口 $\min{\left[\text{接收端窗口},\text{拥塞窗口}\right]}$ \\
+    C.拥塞窗口是接收端根据网络拥塞情况确定的窗口值 \\
+    D.拥塞窗口大小在开始时可以按指数规律增长
+
+    \item 设TCP的拥塞窗口的慢开始门限值初始为8(单位为报文段),当拥塞窗口上升到12时发生超时,TCP开始慢启动
+    和拥塞避免,那么第13次传输时候的拥塞窗口大小为() \\
+    A.4\qquad B.6\qquad C.7\qquad D.8
+
+    \item 主机甲和主机乙之间建立一个TCP连接,主机甲向主机乙发送了两个连续的TCP报文段,分别包含300B和500B的有效载荷,第一个
+    段的序列号为200,主机乙正确接受到两个数据段后,发送给主机甲的确认序号是() \\
+    A.500\qquad B.700\qquad C.800\qquad D.1000
+
+    \item 若甲向乙发送一个TCP连接,最大段长MSS=1KB,RTT=5ms,乙开辟的接受缓存为64KB,则甲从建立成功至
+    发送窗口达到32KB,需要经过的时间至少是() \\
+    A.25ms\qquad B.30ms\qquad C.160ms\qquad D.165ms
+
+    \item 若用户首先向服务器发送FIN段请求断开TCP连接,则当客户收到服务器发送的FIN段并向服务器发送ACK段后,客户的TCP
+    状态转换为() \\
+    A.CLOSE\_WAIT \qquad B.TIME\_WAIT\qquad C.FIN\_WAIT\_1\qquad D.FIN\_WAIT\_2
+
+    \item 下列关于用户/服务器模型的说法中,不正确的是() \\
+    A.服务器专用于完成某些服务,而客户机则作为这些服务的使用者 \\
+    B.客户机通常位于前端,服务器通常位于后端 \\
+    C.客户机和服务器通过网络实现协同计算任务 \\
+    D.客户机是面向任务的,服务器是面向用户的
+
+    \item 域名与()具有一一定义的关系 \\
+    A.IP地址\qquad B.MAC地址\qquad C.主机\qquad D.以上都不是
+
+    \item 域名系统(DNS)的组成中不包括() \\
+    A.域名空间\qquad B.分布式数据库 \\
+    C.域名服务器\qquad D.从内部IP地址到外部IP地址的翻译程序
+
+    \item ()可以将其管辖的主机名转换为主机的IP地址 \\
+    A.本地域名服务器\qquad B.根域名服务器 \\
+    C.授权域名服务器\qquad D.代理域名服务器 
+
+    \item 若本地域名服务器无缓存,则在采用递归方法解析另一网络某主机域名时,用户主机和本地域名服务器发送的域名请求条数分别为() \\
+    A.1条,\ 1条\qquad B.1条,\ 多条\qquad C.多条,\ 1条\qquad D.多条,\ 多条
+
+    \item 假设所有域名服务器采用迭代查询进行域名解析,当主机访问规范域名\underline{www.abc.xyz.cn}的网站时,
+    本地域名服务器在完成该域名解析的过程中,可能发出的DNS查询的最少和最多次数分别是() \\
+    A.0,\ 3\qquad B.1,\ 3\qquad C.0,\ 4\qquad D.1, 4
+
+    \item 假设下列网络中的本地域名服务器只能提供递归查询服务,其他域名服务器均只提供迭代查询服务;局域网内主机
+    访问INternet上各服务器的往返时间RTT均为10ms,忽略其他各种时延.若主机H通过超连接\underline{http://www.abc.com/index.html}
+    请求浏览纯文本Web页index.html,则从单击超链接开始到浏览器收到index.html页面为止,所需的最短时间和最长时间为()  \\
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[scale=0.8]{计网图1.png}
+    \end{figure}
+    A.10ms,\ 40ms\qquad B.10ms,\ 50ms\qquad C.20ms,\ 40ms\qquad D.20ms,\ 50ms
+
+    \item 文件传输协议(FTP)的一个主要特征是() \\
+    A.允许客户指明文件的类型但不允许指明文件的格式 \\
+    B.不允许客户指明文件的类型但运行指明文件的格式 \\
+    C.允许客户指明文件的类型与格式 \\
+    D. 不允许客户指明文件的类型与格式 
+
+    \item 匿名FTP访问通常使用()作为用户名 \\
+    A.guest\qquad B.E-mail地址\qquad C.anonymous\qquad D.主机id
+
+    \item 下列关于POP3协议的说法,()是错误的 \\
+    A.由客户端而非服务器选择接收后是否将邮件保存在服务器上
+    B.登录到服务器后,发送的密码是加密的 \\
+    C.协议是基于ASCII码的,不能发送二进制数据 \\
+    D.一个账号在服务器上只能有一个邮件接收目录 
+
+    \item 下面的()协议中,客户机与服务器之间采用面向无连接的协议进行通信. \\
+    A.FTP\qquad B.SMTP\qquad C.DNS\qquad D.http
+
+    \item 仅需Web服务器对HTTP报文进行响应,但不需要返回请求对象时,HTTP请求报文应该使用的方法是() \\
+    A.GET\qquad B.PUT\qquad C.POST\qquad D.HEAD
+
+    \item 下列关于Cookie的说法中,错误的是() \\
+    A.Cookie存储在服务器端\qquad B.Cookie是服务器产生的\\
+    C.Cookie会威胁客户的隐私\qquad D.Cookie的作用是跟踪用户的访问和状态
 \end{enumerate}
 
+
+\newpage
 \section{计算机组成原理}
 
 \begin{enumerate}
@@ -158,6 +346,8 @@
 \end{lstlisting}
     这执行上述两条语句后,usi的值是\_\_\_\_ 
 \end{enumerate}
+
+\newpage
 \section{操作系统}
 
 \begin{enumerate}
@@ -423,6 +613,22 @@ P2() {
     C.需要在页表中标明特殊的页类型\qquad D.需要对所有页进行排序
 
 \end{enumerate}
+
+\section{答案速查} 
+\subsection{数据结构}
+\begin{tabular}{|*{10}{c|}}
+\hline
+1 & $O(\sqrt{n})$ & 2 & $O(n)$ & 3 & 格子6 & 4 & 格子8 & 5 & 格子10 \\
+\hline
+\end{tabular}
+\subsection{计算机网络}
+\begin{tabular}{|*{10}{c|}}
+\hline
+{\color {red} 1} & B & 2 & C & 3 & C & 4 & D & 5 & B \\
+\hline
+6 & B & 7 &A & 8 & A & 9 & A & 10 & A \\
+\hline
+\end{tabular}
 \ifx\allfiles\undefined
 \end{document}
 \fi

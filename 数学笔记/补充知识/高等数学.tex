@@ -33,6 +33,21 @@ F'(x) = \int_{a}^{b}\frac{\partial}{\partial x}f(x,t)\d t
 \[
 F'(x)=2x\int_{0}^{1}t^2e^{-x^2t^2}\d t
 \]
+
+\section{柯西不等式}
+(1)柯西不等式的\underline{实数形式},对于任意实数$a_1,a_2,\ldots,a_n$和$b_1,b_2\ldots,b_n$有
+$$
+\left(\sum_{i=0}^{n}a_ib_i\right)^2\geq\left(\sum_{i=1}^{n}a_i^2\right)\left(\sum_{i=1}^{n}b_i^2\right)
+$$
+(2)柯西不等式的\underline{向量形式},对于向量$\textbf{a}=(a_1,a_2,\ldots,a_n),\textbf{b}=(b_1,b_2,\ldots,b_n)$有
+$$
+\left|a\cdot b\right|\leq \left|\left|a\right|\right|\cdot\left|\left|b\right|\right|
+$$
+其中$\displaystyle \left|\left|a\right|\right|=\sqrt{\sum_{i}^{n}a^2_i}$
+(3)柯西不等式的\underline{积分形式},对于可积函数$f,g$有
+$$
+\left(\int f(x)g(x)\d x\right)^2\leq\left(\int f^2(x)\d x\right)\left(\int g^2(x)\d x\right)
+$$
 \ifx\allfiles\undefined
 \end{document}
 \fi
