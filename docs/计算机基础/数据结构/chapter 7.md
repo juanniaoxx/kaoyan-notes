@@ -281,7 +281,7 @@ $$\alpha=\frac{\text{装入记录总个数}}{\text{哈希表总长度}}$$
 
 ![alt text](./images/B+树.png)
 
-{++B+树++的定义}
+{++B+树的定义++}
 
 - 每个结点至多有m个子结点
 - 每个结点(除根结点外)至少有 $\left\lceil m/2 \right\rceil$ 个子结点

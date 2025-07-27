@@ -242,7 +242,24 @@
         $(D)\ Axe^{2x}+xe^{2x}(B\cos2x+C\sin2x)$
     
     \begin{solution}
-    \newpage
+    原方程可以转换为如下两式的和
+    \begin{align}
+        y'' - 4y' + 8y &= e^2x \\
+        y'' - 4y' + 8y &= e^2x\cdot\cos{2x}
+    \end{align}
+    解特征方程有
+    $$
+    r^2-4r+8=0 \implies r_{1,2}=\frac{4+\sqrt{-16}}{2}=2\pm 2i
+    $$
+    则上述两个方程的特解分别为
+    \begin{align*}
+        y_1^{*} &=Ae^{2x} \\
+        y_2^{*} &=xe^{2x}(B\sin{2x}+C\cos{2x}) 
+    \end{align*}
+    由\underline{叠加原理}可知,原方程的特解为
+    $$
+    y^{*}=Ae^{2x}+xe^{2x}(B\sin{2x}+C\cos{2x}) 
+    $$
     \end{solution}
     
     \item (2015,数一)设$y=\frac{1}{2}e^{2x}+(x-\frac{1}{3})e^x$是二阶常系数非齐次线性微分方程$y''+ay'+by=ce^x$的一个特解,则 \\
@@ -252,13 +269,63 @@
     $(D)\ a=3,b=2,c=1$ 
     
     \begin{solution}
-    \newpage
+    (方法一) 带入原方程求解a,b,c即 
+    $$
+    \begin{cases}
+        y=\frac{1}{2}e^{2x}+(x-\frac{1}{3})e^x \\
+        y'=e^{2x}+(x+\frac{2}{3})e^x \\
+        y''=2e^{2x}+(x+\frac{5}{3})e^x \\
+        y''+ay'+by=ce^x 
+    \end{cases} \implies \begin{cases}
+        2+a+\frac{b}{2} = 0 \\
+        1+a+b = 0 \\
+        \frac{5}{3}+\frac{2a}{3}-\frac{b}{3} = c 
+    \end{cases} \implies \begin{cases}
+        a = -3 \\
+        b = 2 \\
+        c = -1
+    \end{cases}
+    $$
+    (方法二)利用解的特性反推微分方程 
+    $$
+    y=\frac{1}{2}e^{2x}-\frac{1}{3}e^x+xe^x
+    $$
+    显然其齐次方程的解为$\displaystyle \frac{1}{2}e^{2x}-\frac{1}{3}e^x$,非齐次特解为 $xe^x$,故可以推导出该
+    微分方程的齐次通解为$C_1e^{2x}+C_2e^x$,则其特征方程为$(r-2)(r-1)=0$,从而可知$a=-3,b=2$,将非齐次特解带入可以求出$c=-1$
     \end{solution}
     
     \item (2016,数二)已知$y_1(x)=e^x$,$y_2(x)=u(x)e^x$是二阶微分方程$(2x-1)y''-(2x+1)y'+2y=0$的两个解。若$u(-1)=e$,$u(0)=-1$,求$u(x)$,并写出该微分方程的通解。
     
     \begin{solution}
-    \newpage
+    将$y_2(x)$以及如下带入原方程有
+    $$
+    \begin{cases}
+        y'_2(x) = e^x\left[u'(x)+u(x)\right] \\
+        y''_2(x) = e^x\left[u''(x)+2u'(x)+u(x)\right]
+    \end{cases}
+    $$
+    有
+    $$
+    (2x-1)u''(x)+(2x-3)u'(x) = 0
+    $$
+    (方法一)典型的可降阶方程,令$u'(x)=p$ 有
+    $$
+    (2x-1)p'+(2x-3)p = 0 \implies p = Ce^{-\int\frac{2x-3}{2x-1}\d x} = u'(x)
+    $$
+
+    (方法二)分离变量
+    $$
+    \int\frac{u''(x)}{u'(x)}\d x = \int -\frac{2x-3}{2x-1}\d x 
+    $$
+    即$\ln{\left|u'(x)\right|} = \ln{\left|2x-1\right|} - x + \ln{\left|C_1\right|}$
+
+    $$
+    u(x)=\int u'(x)\d x = -C_1(1+2x)e^{-x} + C_2 
+    $$
+    带入初值条件有
+    $$
+    \fbox{$u(x)=-(2x+1)e^{-x}$}
+    $$
     \end{solution}
     
     \item (2016,数一)设函数$y(x)$满足方程$y''+2y'+ky=0$,其中$0<k<1$。
@@ -268,7 +335,57 @@
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    (1)解特征方程$r^2+2r+k=0$又$0<k<1$故特征方程的解为
+    $$
+        r_{1,2}=-1\pm\sqrt{1-k}
+    $$
+    从而该方程的齐次通解为
+    $$
+        y=C_1e^{r_1x}+C_2^{r_2x}
+    $$
+    方法一:直接计算方常积分
+    \begin{align*}
+        \int_{0}^{\infty}\left(C_1e^{r_1x}+C_2e^{r_2x}\right)\d x 
+        &= \left(\frac{C_1}{r_1}e^{r_1 x}+\frac{C_2}{r_2}e^{r_2 x}\right)\bigg|^{+\infty}_{0} \\
+        &\xlongequal{r_{1,2}<0} -\left(\frac{C_1}{r_1}+\frac{C_2}{r_2}\right) 
+    \end{align*}
+    故原反常积分收敛  \\
+    方法二:用比较判别法
+    $$
+    \lim_{x\to\infty}x^p(C_1e^{r_1x}+C_2e^{r_2x})
+    $$
+    又$r_{1,2}<0$上式恒为0,又$p=2$的时候$\displaystyle\int_{1}^{+\infty}\frac{1}{x^2}\d x$收敛由比较判别法可知
+    原反常积分收敛 \\
+    (2)
+    方法一: 尝试求根并计算 由$y(0)=y'(0)=1$有
+    $$
+    \begin{cases}
+        C_1+C_2=1 \\
+        r_1C_1+r_2C_2 = 1
+    \end{cases} \implies \begin{cases}
+        C_1=\frac{r_2-1}{r_2-r_1} \\
+        C_2=\frac{1-r_1}{r_2-r_1}
+    \end{cases}
+    $$
+    此时$C_1r_1+C_2r_2=r_1+r_2-1$带入积分有
+    $$
+    \int_{0}^{+\infty}y(x)\d x = -\frac{C_1r_2+C_2r_1}{r_1r_2}=-\frac{r_1+r_2-1}{r_1r_2}
+    $$
+    则由韦达定理有
+    $\begin{cases}
+    r_1+r_2 = -2 \\
+    r_1r_2=k
+    \end{cases}
+    $
+    则原反常积分为$\displaystyle\frac{3}{k}$
+
+    方法二: 利用微分方程替换,
+    带入$\displaystyle y=\frac{-1}{k}(y''+2y')$此时反常积分转换为
+    \begin{align*}
+        \int_{0}^{+\infty}-\frac{1}{k}(y''+2y')\d x 
+        &= -\frac{1}{k}(y'+2y)\bigg|^{+\infty}_{0} \\
+        &= \frac{3}{k}
+    \end{align*}
     \end{solution}
 \end{enumerate}
 
@@ -278,26 +395,69 @@
     \item 求解微分方程$y^{(4)}-3y''-4y=0$。
     
     \begin{solution}
-    \newpage
+    高阶齐次的解法和二阶齐次的解法完全一致,解特征方程判断解的结构 \\
+    该微分方程的特征方程为
+    $$
+    r^4-3r^2-4=0 \implies (r-2)(r+2)(r^2+1)=0 \implies \begin{cases}
+        r_1 = 2 \\
+        r_2 = -2 \\
+        r_{3,4} = \pm i 
+    \end{cases}
+    $$
+    故原方程的通解为 
+    $$
+    y = C_1e^{2x}+C_2e^{-2x}+C_3\cos{x}+C_4\sin{x}
+    $$
     \end{solution}
 \end{enumerate}
 
 \section{ 二阶可降阶微分方程}
+\begin{remark}
+    有两种类型 \\
+    (一)缺$y$型 $y''=f(x,y')$ 令$y'=p$,则$p'=f(x,p)$ \\
+    (二)缺$x$型 $y''=f(y',y)$ 令$y'=p$ 则$\displaystyle y''=p\frac{\d p}{\d y}$
+\end{remark}
 \begin{enumerate}[label=\arabic*.,start=13]
     \item 求微分方程$y''(x+y'^2)=y'$满足初始条件$y(1)=y'(1)=1$的特解。
     
     \begin{solution}
-    
+    本题不含$y$,令$y'=p,y''=p'$则原方程化简为$p'(x+p^2)=p$转换为反函数即
+    $$
+    \frac{\d x}{\d p}-\frac{1}{p}\cdot x=p \implies x = p(p+C)
+    $$
+    又$p(1)=p'(1)=1$可知$C=0$,从而$x=p^2\implies y'=\sqrt{x}$,从而$\displaystyle y=\frac{2}{3}x^{\frac{3}{2}}+C_1$又$y(1)=1$
+    可知$\displaystyle y=\frac{2}{3}x^{\frac{3}{2}}+\frac{1}{3}$ 则 
     \end{solution}
 \end{enumerate}
 
+\newpage
 \section{ 欧拉方程}
-
+\begin{remark}
+    对于形如
+    $$
+    x^ny^{(n)}+P_1x^{n-2}y^{(n-1)}\ldots+P_{n-1}xy'+P_ny=f(x)
+    $$
+    {\color{red} 令$x=e^t$},记$\displaystyle D=\frac{\d}{\d t}$
+    $$
+    \begin{cases}
+        xy' = Dy \\
+        x^2y'' = D(D-1)y \\
+        \ldots \\
+        x^ny^{(n)} = D(D-1)(D-2)\ldots(D-n+1)y
+    \end{cases}
+    $$
+    一般只需要将$D\rightarrow r$求解特征方程即可,注意换元.
+\end{remark}
 \begin{enumerate}[label=\arabic*.,start=14]
     \item 求解微分方程$x^2y''+xy'+y=2\sin\ln x$。
     
     \begin{solution}
-    \newpage
+    {\color{red} 令$x=e^t$},则原方程转换为$D(D-1)y+Dy+y=2\sin{t}$ 特征方程为
+    $$
+    r(r-1)+r+1=0 \implies r_{1,2}=\pm i
+    $$
+    齐次方程的通解为$y=C_1\cos{t}+C_2\sin{t}$,令$y^{*}=t(A\cos{t}+B\sin{t})$,带入方程有$A=-1,B=0$故原方程的通解为
+    $y=C_1\cos{\ln{x}}+C_2\sin{\ln{x}}-\ln{x}\cdot\cos{\ln{x}}$
     \end{solution}
 \end{enumerate}
 
@@ -307,7 +467,18 @@
     \item (2005,数二)用变量代换$x=\cos t(0<t<\pi)$化简微分方程$(1-x^2)y''-xy'+y=0$,并求其满足$y|_{x=0}=1$,$y'|_{x=0}=2$的特解。
     
     \begin{solution}
-    \newpage
+    有题设可知
+    $$
+    \begin{cases}
+        \frac{\d y}{\d x}=\frac{\d y}{\d t}\frac{\d t}{\d x}=-\frac{1}{\sin{t}}\frac{\d y}{\d t} \\
+        \frac{\d^2 y}{\d x^2} = -\frac{1}{\sin{t}}\left(\frac{\cos{t}}{\sin^2{t}}\frac{\d y}{\d t}-\frac{1}{\sin{t}}\frac{\d^2 y}{\d t^2}\right)
+    \end{cases}
+    $$
+    代入方程有
+    $$
+    y''(t)+y(t) = 0 \implies y = C_1\cos{t}+C_2\sin{t} = C_1x+C_2\sqrt{1-x^2}
+    $$
+    带入题设初值条件,可知$y=2x+\sqrt{1-x^2}$
     \end{solution}
 \end{enumerate}
 
@@ -316,7 +487,18 @@
     \item (2001,数二)设$L$是一条平面曲线,其上任意一点$P(x,y)(x>0)$到坐标原点的距离,恒等于该点处的切线在$y$轴上的截距,且$L$经过点$(\frac{1}{2},0)$。求曲线$L$的方程。
     
     \begin{solution}
-    \newpage
+    由题可设切线方程为
+    $$
+    Y-y=y'(X-x)
+    $$
+    令$x=0$,则$Y=-xy'+y$ 由题设原问题转换为如下初值问题的解
+    $$
+        \begin{cases}
+        y-xy'=\sqrt{x^2+y^2} \\
+        y(\frac{1}{2})=0
+        \end{cases}
+    $$
+    可以解出$\displaystyle y=-x^2+\frac{1}{4}$
     \end{solution}
 \end{enumerate}
 
@@ -324,7 +506,22 @@
     \item (2009,数三)设曲线$y=f(x)$,其中$f(x)$是可导函数,且$f(x)>0$。已知曲线$y=f(x)$与直线$y=0$,$x=1$及$x=t(t>1)$所围成的曲边梯形绕$x$轴旋转一周所得的立体体积值是该曲边梯形面积值的$\pi t$倍,求该曲线的方程。
     
     \begin{solution}
-    \newpage
+    有题设可以得到
+    $$
+    \pi\int_{1}^{t}f^{2}(x)\d x = \pi t\int_{1}^{t}f(x)\d x
+    $$
+    两边同时求导有
+    $$
+    f^{2}(t)=\int_{1}^{t}f(x)\d x+tf(t)
+    $$
+    {\color{red} 变限积分要注意其可能隐藏初值条件} 由$f(x)>0$可知$f(1)=1$ 再求导,此时原问题转换为如下初值问题的解
+    $$
+        \begin{cases}
+            2f(t)f'(t)=tf'(t)+2f(t) \\
+            f(1) = 1
+        \end{cases}
+    $$
+    可以解出$\displaystyle x=\frac{2}{3}y+\frac{1}{3\sqrt{y}}$
     \end{solution}
 \end{enumerate}
 
@@ -332,7 +529,25 @@
     \item (2016,数三)设函数$f(x)$连续,且满足$\int_0^x f(x-t)dt=\int_0^x(x-t)f(t)dt+e^{-x}-1$,求$f(x)$。
     
     \begin{solution}
-    \newpage
+    \begin{align*}
+        \int_{0}^{x}f(x-t)\d t \xlongequal{u=x-t} \int_{0}^{x}f(u)\d u 
+    \end{align*}
+    故原式等于
+    $$
+    \int_{0}^{x}f(t)\d t=x\int_{0}^{x}f(t)\d t -\int_{0}^{x}tf(t)\d t + e^{-x} - 1
+    $$
+    两边同时求导有
+    $$
+    f(x)=\int_{0}^{x}f(t)\d t - e^{-x} \implies {\color{red} f(0)=-1}
+    $$
+    再求导则原题转换为如下初值问题的解
+    $$
+    \begin{cases}
+        f'(x)=f(x)+e^{-x} \\
+        f(0) = -1
+    \end{cases}
+    $$
+    可以解出$\displaystyle y=-\frac{1}{2}e^{-x}-\frac{1}{2}e^{x}$
     \end{solution}
 \end{enumerate}
 
@@ -344,7 +559,23 @@
     若$f(0)=0$,$f'(0)=0$,求$f(u)$的表达式。
     
     \begin{solution}
-    \newpage
+    有题设可知
+    $$
+    \begin{cases}
+        \frac{\partial z}{\partial x} = f'(u)e^x\cos{y} \\
+        \frac{\partial^2 z}{\partial x^2} = f''(u)e^{2x}\cos^2{y}+f'(u)e^x\cos{y} \\
+        \frac{\partial z}{\partial y} = f'(u)(-\sin{y}e^x) \\
+        \frac{\partial^2 z}{\partial y^2} = f''(u)e^{2x}\sin^2{y}+f'(u)(-\cos{y}e^x)
+    \end{cases}
+    $$
+    代入题设有 
+    $$
+    f''(u)-4f(u) = u
+    $$
+    带入题设初值条件,可以解出
+    $$
+    f(u)=\frac{1}{16}e^{2u}-\frac{1}{16}e^{-2u}-\frac{1}{4}u
+    $$
     \end{solution}
 \end{enumerate}
 
@@ -356,7 +587,34 @@
     其中$D_t=\{(x,y)|0\leq y\leq t-x,0\leq x\leq t\}(0<t\leq1)$,求$f(x)$的表达式。
     
     \begin{solution}
-    \newpage
+        积分区域如下所示
+        \begin{center}
+            \begin{tikzpicture}[scale=1.5] % 可以调整缩放比例以适应文档
+            \def\t{0.8}
+            \draw[->] (0,0) -- (1.2,0) node[right] {$x$};
+            \draw[->] (0,0) -- (0,1.2) node[above] {$y$};
+            \draw[blue, thick] (0,\t) -- (\t,0);
+            \fill[gray!30] (0,0) -- (0,\t) -- (\t,0) -- cycle;
+            \filldraw (0,\t) circle (1.5pt) node[above left] {$(0, t)$};
+            \filldraw (\t,0) circle (1.5pt) node[below right] {$(t, 0)$};
+            \end{tikzpicture}
+        \end{center}
+        \begin{align*}
+            \iint_{D_t}f(t)\d x\d y &= \frac{1}{2}t^2f(t) \\
+            \iint_{D_t}f'(x+y)\d x\d y 
+            &= \int_{0}^{t}\d x\int_{0}^{t-x}f'(x+y)\d y \\
+            &= \int_{0}^{t}f(x+y)\bigg|^{y=t-x}_{y=0}\d x \\
+            &= \int_{0}^{t}\left[f(t)-f(x)\right]\d x \\
+            &=tf(t)-\int_{0}^{t}f(x)\d x
+        \end{align*}
+        由题即转换为求解如下初值问题
+        $$
+        \begin{cases}
+            tf(t)-\int_{0}^{t}f(x)\d x = \frac{1}{2}t^2f(t) \\
+            f(0)= 1 
+        \end{cases}
+        $$
+        可以解出$\displaystyle f(x)=\frac{4}{(x-2)^2}$
     \end{solution}
 \end{enumerate}
 

@@ -32,6 +32,7 @@
         "OSPF",
         "PASV",
         "PFLOPS",
+        "rwnd",
         "SDTM",
         "SISD",
         "ssthresh",
