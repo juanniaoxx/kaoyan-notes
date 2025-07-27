@@ -1615,6 +1615,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ioio" class="md-nav__link">
+    <span class="md-ellipsis">
+      I/O通道(I/O处理机)
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2877,6 +2886,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ioio" class="md-nav__link">
+    <span class="md-ellipsis">
+      I/O通道(I/O处理机)
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3122,6 +3140,13 @@
 </ul>
 <p><ins class="critic">DMA流程</ins> 以周期挪用方式的DMA为例</p>
 <p><img alt="alt text" src="../images/%E5%91%A8%E6%9C%9F%E6%8C%AA%E7%94%A8.png" /></p>
+<h2 id="ioio">I/O通道(I/O处理机)<a class="headerlink" href="#ioio" title="Permanent link">&para;</a></h2>
+<p>把对一个数据块以读/写为单元进行干预(DMA方式),减少为对<ins class="critic">一组</ins>数据块以读/写及有关控制和管理为单位的干预. 可以实现 <ins class="critic">CPU, 通道和I/O设备</ins>的并行操作. </p>
+<p>通道通过执行<ins class="critic">通道程序</ins>与<ins class="critic">设备控制器</ins>共同工作来实现对I/O设备的控制.</p>
+<ul>
+<li>通道具有<ins class="critic">独立</ins>的通道指令系统,通道指令与一般机器指令不同</li>
+<li>当通道执行完响应的通道程序后,会发出<ins class="critic">中断</ins>请求来表示I/O管理结束,CPU响应请求,执行响应的中断服务程序进行处理</li>
+</ul>
 
 
 
