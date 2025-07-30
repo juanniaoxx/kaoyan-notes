@@ -8,6 +8,207 @@
 \fi
 
 \chapter{多元函数积分学}
+
+\begin{tcolorbox}[title=三维向量]
+$\vec{a}=(a_x,a_y,a_z), \vec{b}=(b_x,b_y,b_z)$ 
+\begin{enumerate}
+    \item [数量积] $\vec{a}\cdot\vec{b} = \left|\vec{a}\right|\left|\vec{b}\right|\cos{\theta}=
+    a_xb_x+a_yb_y+a_zb_z$ 
+    \begin{enumerate}
+        \item [性质1] 判断空间向量垂直\ $\vec{a}\cdot\vec{b}=0\iff a\perp b$ 
+        \item [性质2] 求空间两直线的夹角\ $\displaystyle \cos\theta = \frac{\vec{a}\cdot\vec{b}}{\left|\vec{a}\right|\left|\vec{b}\right|}$
+    \end{enumerate}
+    \item [向量积] $a\times b = |a||b|\sin\theta = \begin{vmatrix}
+        i & j & k\\
+        a_x & a_y & a_z \\
+        b_x & b_y & b_z
+    \end{vmatrix}$
+    \begin{enumerate}
+        \item [性质1] 判断空间直线平行 $\vec{a}\times\vec{b}=0\iff a\parallel b$
+        \item [性质2] 求平面四边形的面积 $S=\left|\vec{a}\times\vec{b}\right|$ 
+    \end{enumerate}
+    \item [混合积] $(\vec{a}\vec{b}\vec{c})=(\vec{a}\times\vec{b})\cdot\vec{c} = \left|\vec{a}\times\vec{b}\right|\cdot\left|\vec{c}\right|
+    =\begin{vmatrix}
+        a_x & a_y & a_z \\
+        b_x & b_y & b_z \\
+        c_x & c_y & c_z
+    \end{vmatrix}$ 
+    \begin{enumerate}
+        \item [性质1] 判断三个向量是否共面 $\text{共面}\iff (\vec{a}\vec{b}\vec{c})=0$
+        \item [性质2] 平行六面体的体积 $V=\left|(\vec{a}\vec{b}\vec{c})\right|$
+    \end{enumerate}
+\end{enumerate}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=直线与平面]
+(一)平面 \\
+平面的点法式\ 假设平面过点$(x_0,y_0,z_0)$且该平面的法向量为$\vec{n}=\left\{A,B,C\right\}$ 则平面
+方程为
+$$
+A(x-x_0)+B(y-y_0)+C(z-z_0) = 0
+$$
+平面的一般式\ 将点法式展开
+$$
+Ax+By+Cz+D = 0
+$$
+平面的截距式\  
+$$
+\frac{x}{a}+\frac{y}{b}+\frac{z}{c} = 1
+$$
+其中$a,b,c$分别是该平面与$x,y,z$轴的截距 \\
+{\color{red} 点到平面的距离公式} 假设平面外一点$(x_0,y_0,z_0)$到平面的距离
+$$
+d = \frac{\left|Ax_0+By_0+Cz_0+D\right|}{\sqrt{A^2+B^2+C^2}}
+$$
+(直线) \\
+直线的点向式\ 假设直线过点$(x_0,y_0,z_0)$且该直线的方向向量为$\vec{s}=\{l,m,n\}$ 则该直线的直线方程为
+$$
+\frac{x_0-x}{l}=\frac{y_0-y}{m}=\frac{z-z_0}{n}
+$$
+直线的参数式 
+$$
+\begin{cases}
+    x = x_0 + lt \\
+    y = y_0 + mt \\
+    z = z_0 + nt
+\end{cases}
+$$
+直线的一般式(两平面的交线)
+$$
+\begin{cases}
+    A_1x+B_1y+C_1z+D=0 \\
+    A_2x+B_2y+C_2z+D=0
+\end{cases}
+$$
+{\color{red} 平面束方程} 过某一直线的所有平面的方程 $\lambda(A_1x+B_1y+C_1z+D)+\mu(A_2x+B_2y+C_2z+D_2) = 0$
+其中$\lambda,\mu$不同时为0,$(\ldots)$即该直线一般式的两平面方程
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=曲面与曲线]
+    假设直线外一点$(x_0,y_0,z_0)$其到直线的距离为
+    $$
+    d = \frac{\left|(x_1-x_0,y_1-y_0,z_1-z_0)\times(l,m,n)\right|}{\sqrt{l^2+m^2+n^2}}
+    $$
+    平面与直线的关系基本只需要考察$\vec{n}$和$\vec{s}$的关系即可 \\
+    旋转曲面 \\
+    假设曲线$L=\begin{cases}
+        F(x,y,z) = 0 \\
+        G(x,y,z) = 0
+    \end{cases}\implies \begin{cases}
+        x = x(z) \\
+        y = y(z)
+    \end{cases}$ 则曲线L绕z轴旋转而来的旋转曲面方程为 
+    $$
+    {\color{red}x^2 + y ^2 = x^2(z) + y ^2(z)}
+    $$
+    求旋转曲面的问题,捉住旋转过程中的不变量进行处理,例如绕z轴旋转,则旋转曲面上的点到z轴的距离和z坐标都与原来曲线的点一致即
+    $$
+    P_0=\begin{cases}
+        x_0=x(z_0) \\
+        y_0=y(z_0)
+    \end{cases}; P=\begin{cases}
+        x^2+y^2=x^2_0+y^2_0 \\
+        z = z_0
+    \end{cases}
+    $$ 消去$z_0$即可得到答案 \\
+常见曲面的类型 
+$$
+\begin{cases}
+    \text{球面}&x^2+y^2+c^2=R^2 \\
+    \text{圆柱面} &x^2+y^2 = R^2 \\
+    \text{椭球面} &\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2} = 1 \\
+    \text{抛物面} &\frac{x^2}{2p}+\frac{y^2}{2p} = z (p > 0) \\
+    \text{圆锥面} &z=a\sqrt{x^2+y^2}\text{上圆锥面} \\
+    \text{单叶双曲面} &\frac{x^2}{a^2}+\frac{y^2}{b^2}-\frac{z^2}{c^2} = 1 \\
+    \text{双叶双曲面} &\frac{x^2}{a^2}+\frac{y^2}{b^2}-\frac{z^2}{c^2} = -1
+\end{cases}
+$$
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=曲面与曲线]
+    {\color{red} 与线代考点的综合题} 二次型的特征值的正负对应图像的情况 
+    $$
+    \begin{cases}
+        \text{三正}, &\text{球/椭球} \\
+        \text{两正}, &\text{圆锥} \\
+        \text{两正一负}, &\text{单叶双曲面} \\
+        \text{两负一正}, &\text{双叶双曲面}
+    \end{cases}
+    $$
+    投影曲线,往$xoy$面的投影曲线只需要消去$z$即可
+    $$
+    \begin{cases}
+        F(x,y,z) = 0\\
+        G(x,y,z) = 0
+    \end{cases} \xrightarrow{\text{消去z}} \begin{cases}
+        H(x,y) = 0 \\
+        {\color{red}} z = 0
+    \end{cases}
+    $$
+{\color{red} 曲面的法向量与切平面}  \\
+若曲面是显示给出的即$F(x,y,z)=0$则其法向量为
+$$
+\vec{n} = \{F'_x,F'_y,F'_z\}
+$$
+若曲面的是隐式给出的即$z=z(x,y)$则其法向量为 
+$$
+\vec{n} = \{-z'_x,-z'_y,1\}
+$$
+切平面方程为
+$$
+F'_x(x-x_0)+F'_y(y-y_0)+F'z(z-z_0) = 0
+$$
+{\color{red} 曲线的切向量} \\
+若曲线是以参数式给出即$\begin{cases}
+    x=x(t) \\
+    y=y(t) \\
+    z=z(t)
+\end{cases}$ 则其切向量为 
+$$
+\tau = (x'(t),y'(t),z'(t))
+$$
+若以两曲面的交线形式给出,即$\begin{cases}
+    F(x,y,z) =0 \\
+    G(x,y,z) = 0
+\end{cases}$ 此时切向量为
+$$
+\tau = \vec{n_1} \times \vec{n_2},\text{其中$n_1,n_2$分别为两曲面的法向量}
+$$
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=方向导数与三度]
+方向导数 
+$$
+\frac{\partial f}{\partial \vec{l}}\big|_{x_0,y_0} = \lim_{t\to 0^{+}}\frac{f(x_0+t\cos{\alpha},y_0+t\cos{\beta})-f(x_0,y_0)}{t}
+$$
+其中$\alpha$为与$x$轴正方向的夹角,$\beta$为与$y$轴正方向的夹角$t$是趋于$0^{+}$ \\
+若$f(x,y)$可微分,则
+$$
+\frac{\partial f}{\partial \vec{l}} = f'_x\cos\alpha + f'y\cos\beta = \vec{grad\ f} \cdot \vec{l_0}
+$$
+梯度,散度,旋度
+\begin{align*}
+    \vec{grad\ f} &= (\frac{\partial f}{\partial x},\frac{\partial f}{\partial y},\frac{\partial f}{\partial z})\cdot(\vec{i},\vec{j},\vec{k}) \\
+    div\vec{A} &= \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z} \\
+    \vec{rot\ A} &= \begin{vmatrix}
+        \vec{i} & \vec{j} & \vec{k} \\
+        \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+        P & Q & R
+    \end{vmatrix}
+\end{align*}
+
+{\color{red}方向导数沿梯度方向取得最大值,沿梯度反方向取得最小值},值为
+$$
+\pm\left|\vec{grad\ f}\right| = \pm\left|(\frac{\partial f}{\partial x},\frac{\partial f}{\partial y},\frac{\partial f}{\partial z})\right|
+$$
+{\color{red} 三度之间的关系,要求二阶偏导连续}
+\begin{align*}
+    div\ \vec{grad\ f} &= \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} + \frac{\partial^2 f}{\partial z^2} \\
+    \vec{rot}\vec{grad\ f} & = \vec{0} \\
+    div\vec{rot} = 0
+\end{align*}
+\end{tcolorbox}
 \section{三重积分的计算}
 
 \begin{enumerate}[label=\arabic*.]
@@ -112,6 +313,7 @@
     \newpage
     \end{solution}
 \end{enumerate}
+
 
 \ifx\allfiles\undefined
 \end{document}
