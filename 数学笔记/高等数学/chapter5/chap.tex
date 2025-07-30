@@ -144,8 +144,8 @@
     联立可以解出
     $$
     \begin{cases}
-        f'_1{1,1}=0 \\
-        f'_2{1,1}=1
+        f'_1{(1,1)}=0 \\
+        f'_2{(1,1)}=1
     \end{cases}
     $$
     故$\d f(1,1)=\d y$
@@ -155,12 +155,32 @@
     求$\displaystyle\left.\frac{\partial^2 z}{\partial x\partial y}\right|_{x=1,y=1}$。
     
     \begin{solution}
-    \newpage
+    由题设可知$g'(1)=0,g(1)=0$ 且
+    $$
+    \frac{\partial z}{\partial x} = f'_1\cdot y + f'_1\cdot y g'(x) 
+    $$
+    {\color{red}这种求值的题目先带入可以化简} 
+    $$
+    \frac{\partial z}{\partial x}\big|_{(x=1)} = f'_1\cdot y 
+    $$
+    $$
+    \frac{\partial^2 z}{\partial x\partial y}\big|_{(x=1)} = f''_{11}\cdot y + f'_1 + f''_{12}\cdot g(x) 
+    $$
+    带入$y=1$有
+    $$
+    \frac{\partial^2 z}{\partial x\partial y}\big|_{(x=1,y=1)} = f''_{11}(1,1)+f'_{1}(1,1)+f''_{12}(1,1)
+    $$
     \end{solution}
 \end{enumerate}
 
 \section{多元隐函数求偏导数与全微分}
-
+\begin{remark}
+    三个方法 \\
+    (方法一)代入求偏导$z=z(x,y)$ \\
+    {\color{red} (方法二)公式法} $\displaystyle \frac{\partial z}{\partial x} =-\frac{F'_x}{F'_z}$; 
+    $\displaystyle \frac{\partial z}{\partial y} =-\frac{F'_y}{F'_z}$ \\
+    (方法三)全微分
+\end{remark}
 \begin{enumerate}[label=\arabic*.,start=6]
     \item (2005,数一)设有三元方程$xy-z\ln y+e^{xz}=1$,根据隐函数存在定理,存在点$(0,1,1)$的一个邻域,在此邻域内该方程 \\
     (A)\ \text{只能确定一个具有连续偏导数的隐函数}$z=z(x,y)$ \\
@@ -169,14 +189,55 @@
     (D)\ \text{可确定两个具有连续偏导数的隐函数}$x=x(y,z)$\text{和}$y=y(x,z)$
 
     \begin{solution}
-    \newpage
+    由题设有$F(x,y,z)=xy-2\ln{y}+e^{xz}-1$ 分别对$x,y,z$求导有
+    $$
+    \begin{cases}
+        F'_x(0,1,1)=2\neq 0 \\
+        F'_y(0,1,1)=-2\neq 0 \\
+        F'_z(0,1,1)=0 
+    \end{cases}
+    $$
+    由隐函数存在定理可知仅$x,y$可以作为因变量
     \end{solution}
     
+    \begin{tcolorbox}[title=隐函数存在定理]
+        (隐函数存在定理)如果二元函数$F(x,y)=0$,满足如下三个条件
+        \begin{enumerate}
+            \item [(1)] 函数$F(x,y)$在点$(x_0,y_0)$某邻域内有连续偏导数
+            \item [(2)] $F(x_0,y_0)=0$ 
+            \item [(3)] $F;(x_0,y_0)\neq 0$
+        \end{enumerate}
+        则方程$F(x,y)=0$在点$(x_0,y_0)$某邻域内恒能{\color{red}唯一}确定一个连续函数$y=y(x)$,且
+        $$
+        y' = \frac{\d y}{\d x} = -\frac{F'_x}{F'_y}
+        $$
+        {\color{red} 简单来说对谁的偏导数不为零,谁能表示为其余变量的函数(作为因变量)}
+    \end{tcolorbox}
     \item (1999,数一)设$y=y(x),z=z(x)$是由方程$z=xf(x+y)$和$F(x,y,z)=0$所确定的函数,其中$f$和$F$分别具有一阶连续导数和一阶连续偏导数,求$\frac{dz}{dx}$。
     
     \begin{solution}
-    \newpage
+    记
+    \begin{align}
+        z=xf(x+y) \tag{1} \\
+        F(x,y,z)=0 \tag{2}
+    \end{align}
+    分别对(1)和(2)的两端对x/y求导有 
+    \begin{align*}
+        \frac{\d z}{\d x} = f(x+y) + xf'(1+\frac{\d y}{\d x}) \tag{3} \\
+        F'_1 + F'_2\frac{\d y}{\d x} + F'_3\frac{\d z}{\d x} = 0 \tag{4}
+    \end{align*}
+    联立(3)和(4)可以解出 
+    $$
+    \frac{\d z}{\d x} = \frac{(f+xf')F'_2-xf'F'_1}{F'_2+xf'\cdot F'_3}
+    $$
     \end{solution}
+
+    \begin{tcolorbox}[title=多元函数组确认函数的情况]
+        本质是方程组思想 \\
+        {\color{red}一个三元方程可以确定一个二元函数} \\
+        {\color{red}二个三元方程可以确定两个二元函数} \\
+        参考线性代数的方程组的解,就很容易明白
+    \end{tcolorbox}
 \end{enumerate}
 
 \section{变量代换化简偏微分方程}
@@ -189,10 +250,35 @@
     确定$a,b$的值,使等式在变换$\xi=x+ay,\eta=x+by$下简化为$\frac{\partial^2 u}{\partial \xi\partial \eta}=0$。
     
     \begin{solution}
-    \newpage
+    有题设有 
+    $$
+    \begin{cases}
+        \displaystyle 
+        \frac{\partial u}{\partial x} = \frac{\partial u}{\partial \xi} + \frac{\partial u}{\partial \eta} \\
+        \displaystyle
+        \frac{\partial^2 u}{\partial x^2} = \frac{\partial^2 u}{\partial \xi^2} + 2\frac{\partial^2 u}{\partial\xi\partial\eta}
+        +\frac{\partial^2 u}{\partial \eta^2} \\
+        \displaystyle
+        \frac{\partial^2 u}{\partial y^2} = a^2\frac{\partial^2 u}{\partial \xi^2} + 2ab\frac{\partial^2 u}{\partial\xi\partial\eta}
+        +b^2\frac{\partial^2 u}{\partial \eta^2} \\
+        \displaystyle 
+        \frac{\partial^2 u}{\partial x\partial y} = a\frac{\partial^2 u}{\partial \xi^2} + (a+b)\frac{\partial^2 u}{\partial\xi\partial\eta}
+        +b\frac{\partial^2 u}{\partial \eta^2} 
+    \end{cases}
+    $$
+    带入题设等式有
+    $$
+    \begin{cases}
+        a = 2 \\
+        b = -\frac{2}{5}
+    \end{cases} \text{或} 
+    \begin{cases}
+        a = -\frac{2}{5} \\
+        b = -2
+    \end{cases}
+    $$
     \end{solution}
 \end{enumerate}
-
 \section{求无条件极值}
 \begin{remark}
     两个方法 \\
@@ -231,29 +317,79 @@
     $(D)\ \text{根据所给条件无法判别点}(0,0)\text{是否为}f(x,y)\text{的极值点}$
     
     \begin{solution}
-    \newpage
+    有题设可知$f(0,0)=0$ \\
+    方法一: 选特殊路径证明,脱极限号有 $\displaystyle f(x,y)=xy+o(x^2+y^2)$ \\
+    令$y=x,f(x,x)=x^2+o(x^2) > 0$ \\
+    令$y=-x,f(x,-x)=-x^2+O(x^2) < 0$ \\
+    故点$(0,0)$不是$f(x,y)$的极值点 \\
+    方法二: 特殊值用判别法证明, 不妨假设$f(xy)=xy+(x^2+y^2)^2$ 且$\displaystyle \frac{\partial f}{\partial x}\big|_{(0,0)}
+    =\frac{\partial f}{\partial y}\big|_{(0,0)}=0$
+    而$A=0,B=1,C=0 \implies AC-B^2=-1<0$ 故$(0,0)$不是极值 
     \end{solution}
     
     \item (2004,数一)设$z=z(x,y)$是由$x^2-6xy+10y^2-2yz-z^2+18=0$确定的函数,求$z=z(x,y)$的极值点和极值。
     
     \begin{solution}
-    \newpage
+    对于这种题分两步,第一步求驻点,第二步求二阶偏导数并用判别法判断所有驻点.题目等式两边分别对{x,y}求导有 
+    \begin{align}
+        & \text{对}x\text{求导} 2x-6y-2y\frac{\partial z}{\partial x} - 2z\frac{\partial z}{\partial x} = 0 \tag{1} \label{eq1} \\
+        & \text{对}y\text{求导} -6x + 20y - 2z - 2y\frac{\partial z}{\partial y} - 2z\frac{\partial z}{\partial y} = 0 \tag{2} \label{eq2}
+    \end{align}
+    令$\displaystyle \frac{\partial z}{\partial y}=\frac{\partial z}{\partial x}=0$ 有$\begin{cases}
+        x = 3y \\
+        y = z
+    \end{cases}$ 带入题设等式有可以解出
+    $$
+    \begin{cases}
+        x = 9 \\
+        y = z = 3 
+    \end{cases} \text{或}
+    \begin{cases}
+        x = -9 \\
+        y = z = -3
+    \end{cases}
+    $$
+    对\eqref{eq1}两侧对$x,y$求导有,且带入$\displaystyle \frac{\partial z}{\partial y}=\frac{\partial z}{\partial x}=0$
+    \begin{align}
+        & 2 - 2y\frac{\partial^2 z}{\partial x^2} - 2z\frac{\partial^2 z}{\partial x^2} = 0 \tag{3} \\
+        & -6 - 2y\frac{\partial^2 z}{\partial x\partial y} - 2z\frac{\partial^2 z}{\partial x\partial y} = 0 \tag{4}
+    \end{align}
+    对\eqref{eq2}两测对$y$求导有,且带入$\displaystyle \frac{\partial z}{\partial y}=\frac{\partial z}{\partial x}=0$
+    \begin{align}
+        20 - 2y\frac{\partial^2 z}{\partial y^2}-2z\frac{\partial^2 z}{\partial x\partial y} = 0 \tag{5}
+    \end{align}
+    综上可以解出
+    $$
+    \begin{cases}
+        \displaystyle \frac{\partial^2 z}{\partial x^2} = \frac{1}{y+z} \\
+        \displaystyle \frac{\partial^2 z}{\partial x\partial y} = \frac{-3}{y+z} \\
+        \displaystyle \frac{\partial^2 z}{\partial y^2} = \frac{10}{y+z}
+    \end{cases}
+    $$
+    带入题设条件可知
+    $$
+    \begin{cases}
+        \text{对于点}(9,3,3) AC-B^2 > 0,\text{且} A > 0,\text{故}z(9,3)\text{为极小值} \\
+        \text{对于点}(-9,-3,-3) AC-B^2 > 0,\text{且} A < 0,\text{故}z(-9,-3)\text{为极大值}
+    \end{cases}
+    $$
     \end{solution}
 \end{enumerate}
 
 \section{求条件极值(边界最值)}
 \begin{remark}
     (方法一)lagrange乘数法 \\
-    构造辅助函数$L(x,y,\lambda)=f(x,y)+\lambda\cdot\phi(x,y)$ 然后求解 
+    构造辅助函数$L(x,y,\lambda)=f(x,y)+\lambda\cdot\varphi(x,y)$ 然后求解 
     $$
     \begin{cases}
-        L'_{x}= \frac{\partial f}{\partial x} + \lambda\cdot\frac{\partial\phi}{\partial x} = 0 \\
-        L'_{x}= \frac{\partial f}{\partial y} + \lambda\cdot\frac{\partial\phi}{\partial y} = 0 \\
-        L'_{\lambda} = \phi(x,y) = 0
+        L'_{x}= \frac{\partial f}{\partial x} + \lambda\cdot\frac{\partial\varphi}{\partial x} = 0 \\
+        L'_{x}= \frac{\partial f}{\partial y} + \lambda\cdot\frac{\partial\varphi}{\partial y} = 0 \\
+        L'_{\lambda} = \varphi(x,y) = 0
     \end{cases}
     $$
-    所有满足上述方程的解$(x,y,\lambda)$中的$(x,y)$都有可能是条件极值,{\color{red},对于不封闭曲线要和端点比较}. \\
-    (方法二)解$\phi(x,y)=0\implies y = y(x)$带入$f(x,y)$转换为一元函数 \\
+    拉格朗日乘数法的关键在于{\color{red}乘非零因子消去$\lambda$}
+    所有满足上述方程的解$(x,y,\lambda)$中的$(x,y)$都有可能是条件极值,{\color{red}对于不封闭曲线要和端点比较}. \\
+    (方法二)解$\varphi(x,y)=0\implies y = y(x)$带入$f(x,y)$转换为一元函数 \\
     (方法三)极坐标变化 \\
     (方法四)均值不等式,柯西不等式 \\
     对于两个整数a和b,均值不等式为 
@@ -273,21 +409,55 @@
     $(D)\ \text{若}f_x'(x_0,y_0)\neq 0\text{,则}f_y'(x_0,y_0)\neq 0$
     
     \begin{solution}
-    \newpage
+    使用拉格朗日乘数法,令$L(x,y,\lambda)=f(x,y)+\lambda\varphi(x,y)$ 则
+    \begin{align}
+        L'_x &= f'_x + \lambda\varphi'_x = 0 \tag{1} \\
+        L'_y &= f'_y + \lambda\varphi'_y = 0 \tag{2} \\
+        L'_\lambda &= \varphi = 0 \tag{3}
+    \end{align}
+    拉格朗日乘数法的关键在于{\color{red}乘非零因子消去$\lambda$},由题设可知$\varphi'_y\neq 0$通过(2)式可以求出
+    $\lambda = \displaystyle - \frac{f'_y}{\varphi'_y}$,代入(1)式有
+    $$
+    f'_x - \frac{f'_y}{\varphi'_y}\cdot\varphi'_x = 0
+    $$
+    考虑选项,只有当$f'_x\neq 0$的时候可以确定$f'_y\neq 0,\varphi_x\neq 0$
     \end{solution}
     
     \item (2013,数二)求曲线$x^3-xy+y^3=1(x\geq 0,y\geq 0)$上的点到坐标原点的最长距离与最短距离。
     
     \begin{solution}
-    \newpage
+    {\color{red} 这题的关键在于转换目标函数}若考虑题设其目标函数为$\sqrt{x^2+y^2}$显然根号不好做,
+    此时需要将目标函数做等价变化即求$x^2+y^2$的条件极值,则设拉格朗日函数为
+    $$
+    L(x,y,\lambda)=x^2+y^2+\lambda(x^3-xy+y^3-1)
+    $$
+    分别对$x,y,\lambda$求导有
+    \begin{align}
+        L'_x=2x+\lambda(3x^2-y)=0\tag{1} \\
+        L'_y=2y+\lambda(3y^2-x)=0\tag{2} \\
+        L'_\lambda=x^3-xy+y^3-1=0\tag{3}
+    \end{align}
+    $x\geq 0, y\geq 0$ 可知$3x^2 - y\neq 0, 3y^2 - x\neq 0$,将$(1)\times (3y^2-x) - (2)\times (3x^2 - y)$ 有
+    $$
+    -x^2 + 3xy^2 - 3x^2y+y^2 = 0 \implies (y+x+3xy)(y-x)=0
+    $$
+    即$y+x+3xy=0\text{或}y=x$ 由于$x\geq 0, y\geq 0$故$y+x+3xy=0$不合理舍去,将$y=x$带入(3)式有$2x^3-x^2-1=0\implies (1.1)$由于
+    曲线不封闭,需要考虑曲线端点即$(0,1)(1,0)$比较可知曲线上距离原点的最大/最小距离为
+    $$
+    \begin{cases}
+        \text{最大值} d\big|_{(1,1)}=\sqrt{2} \\
+        \text{最小值} d\big|_{(0,1)} = d\big|_{(1,0)} = 1
+    \end{cases}
+    $$
     \end{solution}
-
+\end{enumerate}
 \section{闭区域最值}
 \begin{remark}
     闭区域最值分两步做 \\
     (一)求内部驻点 \\
     (二)求边界的条件极值
 \end{remark}
+\begin{enumerate}[label=\arabic*.,start=12]
     \item (2014,数二)设函数$u(x,y)$在有界闭区域$D$上连续,在$D$的内部具有二阶连续偏导数,且满足$\frac{\partial^2 u}{\partial x\partial y}\neq 0$及$\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}=0$,则 \\
     $(A)\ u(x,y)\text{的最大值和最小值都在}D\text{的边界上取得}$ \\
     $(B)\ u(x,y)\text{的最大值和最小值都在}D\text{的内部取得}$ \\
@@ -296,14 +466,58 @@
 
     
     \begin{solution}
-    \newpage
+    $\text{若} A = \frac{\partial^2 u}{\partial^2 x} \geq 0 \implies C=\frac{\partial^2 u}{\partial^2 y} \leq 0$且仅当$A=0$时$C=0$,有$\frac{\partial^2 u}{\partial x\partial y}=B\neq 0$
+    由此可知$AC-B^2 < 0$, 同理当$A = \frac{\partial^2 u}{\partial^2 x} < 0$,亦有$AC-B^2 < 0$ 故$u(x,y)$在区域内部无极值点,有由于连续函数在有界闭区间必然有最大/最小值,此时$u(x,y)$的最值均在边界取得.
     \end{solution}
     
     \item (2005,数二)已知函数$z=f(x,y)$的全微分$dz=2xdx-2ydy$,且$f(1,1)=2$,求$f(x,y)$在椭圆域$D=\{(x,y)|x^2+\frac{y^2}{4}\leq 1\}$上的最大值和最小值。
     
     \begin{solution}
-    \newpage
-    \end{solution}
+    由题设全微分可以求出$z=x^2-y^2+2$,这种题第一步先求区域内最值,在求条件极值,区域图像如下所示
+    \begin{center}
+    \begin{tikzpicture}[scale=1]
+    \draw[thick, blue] (0,0) ellipse (1 and 2);
+    \fill[blue!20] (0,0) ellipse (1 and 2);
+    \draw[->, gray] (-1.5,0) -- (1.5,0) node[right] {$x$};
+    \draw[->, gray] (0,-2.5) -- (0,2.5) node[above] {$y$};
+    \end{tikzpicture}
+    \end{center}
+    令$\frac{\partial z}{\partial x} =\frac{\partial z}{\partial y} = 0$ 即$\begin{cases}
+        2x = 0\\
+        2y = 0
+    \end{cases} \implies x = y = 0$ 故在内部仅有唯一驻点$(0,0)$,且$z\big|_{(0,0)}=2$ \\
+    求条件极值 \\
+    (方法一) 设拉格朗日函数为$\displaystyle L(x,y,\lambda)=x^2-y^2+2+\lambda(x^2+\frac{y^2}{4}-1)$ 分别对$x,y,\lambda$求导有
+    \begin{align}
+        L'_x=2x+2x\lambda = 0\tag{1} \\
+        L'_y=2y+2y\lambda = 0\tag{2} \\
+        L'_\lambda = x^2+\frac{y^2}{4} - 1 = 0 
+    \end{align}
+    此时有
+    $$
+    \begin{cases}
+        x = 0, & y =\pm 2, f(0, \pm 2) = -2 \\
+        y = 0, & x = \pm 1 f(\pm 1, 0) = 3 
+    \end{cases}
+    $$
+    而当$x\neq 0\text{或}y\neq 0$时候与题设矛盾, 综上可知闭区间最值为
+    $$
+    \begin{cases}
+        \text{最小值} d\big|_{0,\pm 2} = -2 \\
+        \text{最大值} d\big|_{\pm 1, 0} = 3
+    \end{cases}
+    $$
+    (方法二)有题设可知$y^2=4(1-x^2)$ 带入$f(x,y)\implies f(x)=x^2-4(1-x^2)+2 = 
+    5x^2 - 2,x\in\left[-1,1\right]$ 显然当$x=0,f_{min}(x)=-2;x=\pm 1,f(x)=3$ \\
+    (方法三) 令
+    $
+    \begin{cases}
+        x = \cos{\theta} \\
+        y = 2\sin{\theta}
+    \end{cases}
+    $ 其中$\theta\in\left[0,2\pi\right]$,此时$f(\theta)=\cos^2{\theta}-4\sin^2{\theta}+2=3-5\cos^2{\theta}$
+    容易得出$f_{max}= 3;f_{min}=-2$
+\end{solution} 
 \end{enumerate}
 
 \ifx\allfiles\undefined

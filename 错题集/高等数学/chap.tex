@@ -9,11 +9,116 @@
 \chapter{高等数学}
 
 \section{极限与连续}
+\begin{enumerate}
+    \item $\star$ 设函数$f(x)=\cos{(\sin{x})},g(x)=\sin{(\cos{x})}$当$\displaystyle x\in\left(0,\frac{\pi}{2}\right)$时(  ) \\
+    A.$f(x)$单调递增,$g(x)$单调递减\qquad B.$f(x)$单调递减,$g(x)$单调递增 \\
+    C.$f(x),g(x)$均单调递减\qquad\qquad\quad D.$f(x),g(x)$均单调递增
 
-\section{一元函数微分学/积分学(除证明题)}
+    \item $\star\star$讨论函数$f(x)=\displaystyle \lim_{x\to\infty}\frac{x^{n+2}-x^{-n}}{x^n+x^{-n}}$的连续性
 
-\section{多元函数微分学/积分学}
+    \item $\star\star$设$f(x)$在$\left[a,b\right]$上连续,且$a<c<d<b$证明:在$\left(a,b\right)$内必定存在一点$\xi$使得
+    $mf(c)+nf(d)=(m+n)f(\xi)$,其中$m,n$为任意给定的自然数 
 
+    \item $\star\star$设$x_1=\sqrt{a}(a>0),x_{n+1}=\sqrt{a+x_n}$证明$\lim_{n\to\infty}x_n$存在,并求出其值. 
+    
+    \item $\star\star\star$设$x_1=a\geq 0,y_1=b\geq 0, a\leq b, x_{n+1}=\sqrt{x_ny_n},\displaystyle y_{n+1}=\frac{x_n+y_n}{2}(n=1,2,\ldots)$证明
+    $\displaystyle \lim_{n\to\infty}x_n=\lim_{n\to\infty}y_n$
+
+    \item $\star\star$设$\left\{x_n\right\}$为数列,则下列数据结论正确的是(  ) 
+    \begin{enumerate}
+        \item [\ding{172}] 若$\{\arctan{x_n}\}$收敛,则$\{x_n\}$收敛 
+        \item [\ding{173}] 若$\{\arctan{x_n}\}$单调,则$\{x_n\}$收敛 
+        \item [\ding{174}] 若$x_n\in\left[-1,1\right]$,且$\{x_n\}$收敛,则$\{\arctan{x_n}\}$收敛
+        \item [\ding{175}] 若$x_n\in\left[-1,1\right]$,且$\{x_n\}$单调,则$\{\arctan{x_n}\}$收敛
+    \end{enumerate}
+    A.\ding{172}\ding{173}\qquad B.\ding{174}\ding{175}\qquad C.\ding{172}\ding{174}\qquad D.\ding{173}\ding{175}
+
+    \item $\star$极限$\displaystyle \lim_{x\to 0}\frac{(\cos{x}-e^{x^2})\sin x^2}{\frac{x^2}{2}+1-\sqrt{1+x^2}}$=\_\_\_\_ 
+    
+    \item $\star$设$\displaystyle a_n=\frac{3}{2}\int_{0}^{\frac{n}{n+1}}x^{n-1}\sqrt{1+x^n}\d x,$则$\displaystyle \lim_{n\to\infty}na_n$=\_\_\_\_
+    
+    \item $\star\star$设$\displaystyle \lim_{x\to 0}\left\{a\left[x\right]+\frac{\ln\left(1+e^{\frac{2}{x}}\right)}{\ln\left(1+e^{\frac{1}{x}}\right)}\right\}=b$则$a$=\_\_\_,$b$=\_\_\_
+
+    \item $\star$ 设$x_1=1,x_2=2,x_{n+2}=\displaystyle \frac{1}{2}(x_n+x_{n+1})$,求$\displaystyle\lim_{n\to\infty}x_n$ 
+
+    \item $\star\star\star$设$f(x)$在$\left[0,1\right]$上连续,且$f(0)=f(1)$证明 
+    \begin{enumerate}
+        \item [(I)] 至少存在一点$\xi\in\left(0,1\right)$使得$f(\xi)=f(\xi+\displaystyle \frac{1}{2})$ 
+        \item [(II)] 至少存在一点$\xi\in\left(0,1\right)$使得$f(\xi)=f(\xi+\displaystyle \frac{1}{n})(n\geq 2, n\in\mathbb{N})$
+    \end{enumerate}
+
+    \item $\star\star\star\star$(2011.数一) 
+    \begin{enumerate}
+        \item[(I)] 证明$\displaystyle \frac{1}{n+1}<\ln{(1+\frac{1}{n})}<\frac{1}{n}$
+        \item[(II)] 证明极限$\displaystyle \lim_{n\to\infty}\left(1+\frac{1}{2}+\ldots+\frac{1}{n}-\ln{n}\right)$存在
+    \end{enumerate}
+\end{enumerate}
+
+\section{一元函数微分学/积分学(除证明题)/多元函数微分学}
+\begin{enumerate}
+    \item $\star$设$f'_x(x_0,y_0),f'_y(x_0,y_0)$均存在,则下列结论正确的是(  ) \\
+    A.$ \displaystyle \lim_{\substack{x\to x_0\\ y\to y_0}}f(x,y)$ 存在 \qquad
+    B.$f(x,y)$在$(x_0,y_0)$处连续 \\
+    C.$\lim_{x\to x_0}f(x,y_0)$存在 \qquad
+    D.$f(x,y)$在去心邻域$(x_0,y_0)$内有定义 
+
+    \item $\star$设$z=(1+xy)^y,$则$\d z\big|_{1,1}=\_\_\_$ 
+    
+    \item $\star\star$ 设$\begin{cases}
+        y = f(x, t) \\
+        F(x,y,t) = 0
+    \end{cases}f,F$有一阶连续偏导数,则$\displaystyle\frac{\d y}{\d x}=\_\_\_\_$ 
+
+    \item $\star\star$设$y=f(x,t),t=t(x,t)$由方程$G(x,y,t)=0$确定,$f,G$可微,则$\displaystyle\frac{\d y}{\d x}=\_\_\_\_$
+
+    \item $\star$设$z=z(x,y)$有方程$e^{2yz}+x+y^2+z=\frac{7}{4}$确定,则$\d z\big|_{\frac{1}{2},\frac{1}{2}}=\_\_\_\_$
+
+    \item $\star$曲面$z=x^2+y^2-1$在点$P(2,1,4)$处的且平面方程为$\_\_\_$法线方程$\_\_\_$ 
+
+    \item $\star$求$f(x,y)=(1+e^y)\cos{x}-ye^y$的极值 
+    
+    \item $\star\star$求双曲线$xy=4$与直线$2x+y=1$之间的最短距离
+\end{enumerate}
+\section{空间解析几何/多元函数积分学}
+\begin{enumerate}
+    \item $\star$设向量$\vec{a}=(1,2,1),\vec{b}=(-1,0,2),\vec{c}=(0,k,-3)$共面,则$k=\_\_\_$ 
+    
+    \item $\star\star$设非零向量$\vec{\alpha},\vec{\beta}$满足$\vec{\alpha}-\vec{\beta}$于$\vec{\alpha}+\vec{\beta}$的模相等,则必有(  ) \\
+    A.$\vec{\alpha}-\vec{\beta}=\vec{\alpha}+\vec{\beta}$ \qquad B.$\vec{\alpha}=\vec{\beta}$ \qquad
+    C.$\vec{\alpha}\times\vec{\beta}=\vec{0}$\qquad D.$\vec{\alpha}\cdot\vec{\beta}=0$
+
+    \item $\star\star$直线$L_1:\begin{cases}
+        x - 1 = 0 \\
+        y = z
+    \end{cases}$与$L_2:\begin{cases}
+        x+2y = 0 \\
+        z + 2 = 0
+    \end{cases}$的距离$d=\_\_\_$
+
+    \item $\star\star$设$\alpha,\beta$均为单位向量,其夹角为$\displaystyle \frac{\pi}{6}$则$\alpha+2\beta$与$3\alpha+\beta$为邻边的
+    平行四边形的面积为\_\_\_ 
+
+    \item $\star\star$设$\alpha,\beta$是非零常向量,夹角为$\displaystyle \frac{\pi}{3}$, 且$\left|\beta\right|=2$
+    求$\displaystyle \lim_{x\to 0}\frac{\left|\alpha+x\beta\right|-\left|\alpha\right|}{x}=\_\_\_$
+
+    \item $\star$求平行于平面$x+y+z=9$且与球面$x^2+y^2+z^2=4$相切的平面方程. 
+    
+    \item $\star$设平面$\pi$过直线$L:\begin{cases}
+        x + 5y + z = 0 \\
+        x - z + 4 = 0
+    \end{cases}$且与平面$\pi_1:x-4y-8z+12=0$的夹角为$\displaystyle\frac{\pi}{4}$求平面$\pi$的方程
+
+    \item $\star$求与直线$L_1:x+2=3-y=z+1$与$L_2:\displaystyle \frac{x+4}{2}=y=\frac{z-4}{3}$都垂直相交的直线方程
+    
+    \item $\star$求直线$L_1:\displaystyle\frac{x-3}{2}=y=\frac{z-1}{0}$与$L_2:\displaystyle \frac{x+1}{1}=\frac{y-2}{0}=z$的公垂线方程
+    
+    \item $\star\star$求直线$L:\displaystyle \frac{x-1}{3}=\frac{y-2}{4}=\frac{z+1}{1}$绕直线$\begin{cases}
+        x = 2\\
+        y = 3
+    \end{cases}$旋转一周所得到的曲面方程
+
+
+\end{enumerate}
 \section{常微分方程}
 
 \section{无穷级数}
