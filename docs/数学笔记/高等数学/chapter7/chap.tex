@@ -9,6 +9,37 @@
 
 \chapter{无穷级数}
 \section{数项级数敛散性的判定}
+\begin{remark}
+    正项级数敛散性的判断 \\
+    比较判别法\ (放缩/等价/Taylor展开) \\
+    比值判别法\ (当出现$n!$) \\
+    根值判别法\ (当出现$n^n$) \\
+    积分判别法\ (P级数/对数P级数) 
+    $$
+    \sum_{n=1}^{\infty}\frac{1}{n^p} \begin{cases}
+        \text{收敛}, & p > 1 \\
+        \text{发散}, & p \leq 1 
+    \end{cases}
+    $$
+    推广 
+    $$
+    \sum_{n=1}^{\infty}\frac{\ln^{\alpha}{n}}{n^p} \sim \sum_{n=1}^{\infty}\frac{1}{n^p}
+    $$
+    对数P级数
+    $$
+    \sum_{n=2}^{\infty}\frac{1}{n\ln^{p}{n}}\begin{cases}
+        \text{收敛}, & p > 1 \\
+        \text{发散}, & p \leq 1 
+    \end{cases} \leftarrow \int\frac{\d x}{x\ln^{p}{n}} = \int\frac{d \ln x}{\ln^{p}{x}}
+    $$
+    故其与$P$级数的敛散性与P的关系一致,推广
+    $$
+    \sum_{n=2}^{\infty}\frac{1}{n^{\alpha}\ln^{p}{n}} \sim \sum_{n=1}^{\infty}\frac{1}{n^{\alpha}}\begin{cases}
+        \alpha > 1, &\text{收敛} \\
+        \aleph \leq 1, &\text{发散}
+    \end{cases}
+    $$
+\end{remark}
 
 \begin{enumerate}[label=\arabic*.]
     \item (2015,数三)下列级数中发散的是 \\
@@ -16,31 +47,70 @@
         $\displaystyle (C)\sum_{n=2}^{\infty}\frac{(-1)^n+1}{\ln n} \qquad (D)\sum_{n=1}^{\infty}\frac{n!}{n^n}$
     
     \begin{solution}
-    \newpage
+    (A) 由根值判别法 $\displaystyle \lim_{n\to\infty}\sqrt[n]{\frac{n}{3^n}}=\frac{1}{3}<1$收敛 \\
+    (B) 由于$\displaystyle \frac{1}{\sqrt{n}}\ln{(1+\frac{1}{n})} \sim \frac{1}{n^{\frac{3}{2}}}$,而$\frac{3}{2} > 1$故原级数收敛 \\
+    (C) 原级数等于$\displaystyle \sum_{n=2}^{\infty}\frac{(-1)^n}{\ln{n}}+\sum_{n=2}^{\infty}\frac{1}{\ln{n}}$ 
+    前一个级数由莱布尼兹判别法知收敛,第二个级数由P级数的推广容易得知其发散,故原级数发散 \\
+    (D) 由比值判别法有$\displaystyle \lim_{n\to\infty}\frac{u_{n+1}}{u_n}=\lim_{n\to\infty}\left(\frac{n}{n+1}\right)^2=e^{-1}<1$故原级数收敛
     \end{solution}
+
     
     \item (2017,数三)若级数$\displaystyle \sum_{n=2}^{\infty}\left[\sin\frac{1}{n}-k\ln\left(1-\frac{1}{n}\right)\right]$收敛,则$k=$ \\
     $(A)\ 1 \qquad (B)\ 2 \qquad (C)\ -1 \qquad (D)\ -2$
     
     \begin{solution}
-    \newpage
+    \begin{align*}
+        \text{原式} &\xlongequal{Taylor} \frac{1}{n}-\frac{1}{6n^3}+o(\frac{1}{n^3}) - k\left[\frac{1}{n}-\frac{1}{2n^2}+O(\frac{1}{n^2})\right] \\
+        &= \frac{1+k}{n}+\frac{k}{2}\cdot\frac{1}{n^2}+o(\frac{1}{n^2}) 
+    \end{align*}
+    由P级数判别法可知,$1+k=0\implies k = -1$
     \end{solution}
 \end{enumerate}
 
 \section{交错级数}
-
+\begin{remark}
+    交错级数敛散性的判断 \\
+    莱布尼兹判别,\underline{通项单调递减趋于0}可以判断原级数收敛. \\
+    取绝对值,若其绝对收敛则原级数也收敛 
+\end{remark}
 \begin{enumerate}[label=\arabic*.,start=3]
-    \item 判定下列级数的敛散性:
-    \begin{align*}
-        (1)\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n-\ln n} \quad (2)\sum_{n=2}^{\infty}\frac{(-1)^n}{\sqrt{n}+(-1)^n}.
-    \end{align*}
+    \item 判定下列级数的敛散性: \\
+    $\displaystyle (1)\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n-\ln n}$ \\
+    $\displaystyle (2)\sum_{n=2}^{\infty}\frac{(-1)^n}{\sqrt{n}+(-1)^n}.$
     
     \begin{solution}
-    \newpage
+    (1) 记$f(x)=\frac{1}{x-\ln{x}},f'(x)=-\frac{1-\frac{1}{x}}{(x-\ln{x})^2} < 0$ 从而$u_n$单调递减,又$\lim_{n\to\infty}u_n=0$
+    故由莱布尼兹判别法可知$\sum_{i=1}^{n}\frac{(-1)^{n-1}}{n-\ln{n}}$收敛 \\
+    (2) 在一起不好判断的时候,把它们拆开了分别做 
+    \begin{align*}
+        \text{原式} = \sum_{n=2}^{\infty}\frac{(-1)^n\sqrt{n}}{n-1} - \sum_{n=1}^{\infty}\frac{1}{n-1}
+    \end{align*}
+    由莱布尼兹判别法易知第一个级数收敛,第二个级数由P级数可知其发散.故原级数发散
     \end{solution}
 \end{enumerate}
 
 \section{任意项级数}
+\begin{remark}
+    任意项级数 \\
+    收敛级数的定义(部分和极限存在) 
+    $$
+    S_n=u_1+u_2+\ldots u_n = \sum_{i=1}^{n}u_i, \text{若级数收敛} \iff \lim_{n\to\infty}S_n \exists
+    $$
+    级数的性质 - 线性组合 
+    $
+    \begin{cases}
+        \text{收敛} + \text{收敛} = \text{收敛} \\
+        \text{收敛} + \text{发散} = \text{发散} \\
+        \text{发散} + \text{发散} = ? 
+    \end{cases}
+    $  \\
+    级数的性质\ 改变有限项级数的敛散性不变 \\
+    级数的性质\ 结合律,若级数$\displaystyle \sum_{n=1}^{\infty}u_n$收敛,则\underline{不改变其项的次序间任意添加符号},并把每个括号
+    内的数作为一项,这样得到的新奇数\underline{仍然收敛},且其和不变. 反之不然. \\
+    结合律的推论1\ 若加括号后的级数发散,则原级数必然发散 \\
+    结合律的推论2\ 若$\displaystyle \lim_{n\to\infty} = 0$又其相继两项加括号后的级数收敛,则原级数也收敛,且和相等 \\
+    收敛级数的必要条件\ 若$\displaystyle \sum_{n=1}^{\infty}u_n$收敛,则$\displaystyle \lim_{n\to\infty} u_n = 0$
+\end{remark}
 
 \begin{enumerate}[label=\arabic*.,start=4]
     \item (2002,数一)设$u_n\neq 0(n=1,2,3,\cdots)$,且$\displaystyle\lim_{n\rightarrow\infty}\frac{n}{u_n}=1$ \\
@@ -48,7 +118,16 @@
     (A)\ 发散 \quad (B)\ 绝对收敛 \quad (C)\ 条件收敛 \quad (D)\ 敛散性根据所给条件不能判定
     
     \begin{solution}
-    \newpage
+    这种题首先判断是否绝对收敛,由$\displaystyle \lim_{n\to\infty}\frac{n}{u_n}=1$可知其一定不可能绝对收敛 \\
+    让后判断级数本身是否收敛,这种形式的题目大概率就是要使用定义,求其部分和
+    $$
+        \lim_{n\to\infty}S_n=\lim_{n\to\infty}\left(\frac{1}{u_1}+\frac{1}{u_2}-\frac{1}{u_2}-\frac{1}{u_3}+\ldots+(-1)^{n+1}(\frac{1}{u_n}+\frac{1}{u_{n+1}})\right) 
+    $$
+    故
+    $$
+        \lim_{n\to\infty}S_n = \frac{1}{n_1} 
+    $$
+    因此原级数条件收敛
     \end{solution}
     
     \item (2019,数三)若级数$\displaystyle\sum_{n=1}^{\infty}nu_n$绝对收敛,$\displaystyle\sum_{n=1}^{\infty}\frac{v_n}{n}$条件收敛,则 \\
@@ -57,11 +136,32 @@
     
     
     \begin{solution}
-    \newpage
+    这种题目比较好的解法是用特殊值筛选掉错误答案. 如令$u_n=0$则$A$错误,$v_n=(-1)^n$则$B$错误,$v_n=\frac{(-1)^n}{\ln{n}}$则$D$错误 \\
+    证明B选项正确,关键点考虑\underline{极限的有界性} 由$\sum\frac{v_n}{n}$收敛可知 
+    $$
+        \lim_{n\to\infty}\frac{v_n}{n}= 0
+    $$
+    由极限的有界性,可知 
+    $$
+    \exists M, \forall n, \left|\frac{v_n}{n}\right|\leq M 
+    $$
+    从而
+    $$
+    \left|u_nv_n\right| = \left|nu_n\cdot\frac{v_n}{n}\right| \leq M\left|n\u_n\right|
+    $$
+    故B选项正确
     \end{solution}
 \end{enumerate}
 
 \section{幂级数求收敛半径与收敛域}
+\begin{remark}
+    方法一:阿贝尔定理.收敛的幂级数在收敛区间内\underline{绝对收敛},在收敛域外\underline{发散},在边界点上\underline{可能收敛也可能发散,可能绝对收敛也可能条件收敛} \\
+    方法二:比值定理/根值定理 \\
+    方法三:\underline{柯西判别法} 最常用 \\
+    逐项求导/逐项积分,{\color{red}收敛区间不变},需要注意边界点,其敛散性可能发生改变.
+\end{remark}
+
+\newpage
 
 \begin{enumerate}[label=\arabic*.,start=6]
     \item (2015,数一)若级数$\displaystyle\sum_{n=1}^{\infty} a_n$条件收敛则$x=\sqrt{3}$与$x=3$依次为幂级数 \\
@@ -70,29 +170,101 @@
     (C)\ 发散点,收敛点 \qquad (D)\ 发散点,发散点
     
     \begin{solution}
-    \newpage
+    由题设条件可知级数$\displaystyle\sum_{n=1}^{\infty} a_nx^n$的收敛区间为$(-1,1)$ 
+    \begin{align*}
+        \sum_{n=1}^{\infty} n a_n(x-1)^n &= (x-1)\sum_{n=1}^{\infty} n a_n(x-1)^{n-1} \\
+        &=(x-1)\left[\sum_{n=1}^{\infty} n a_n(x-1)^n\right]' 
+    \end{align*}
+    故其收敛区间为$-1<x-1<1\implies x\in(0,2)$ 由阿贝尔定理可知$x=\sqrt{3}$为绝对收敛点,$x=3$为发散点  
     \end{solution}
     
     \item 求幂级数$\displaystyle\sum_{n=1}^{\infty}(-1)^n\frac{x^{2n+1}}{3^n(2n+1)}$的收敛域.
     
     \begin{solution}
-    \newpage
+    这种题目优先考虑柯西定理,即
+    $$
+    \lim_{n\to\infty}\sqrt[n]{\left|u_n(x)\right|} = \frac{x^2}{3} < 1
+    $$
+    即$x\in(-\sqrt{3},\sqrt{3})$(收敛区间).接着判断边界点的敛散性. 当$x=\pm\sqrt{3}$有
+    $$
+    \sum_{n=1}^{\infty}(-1)^n\frac{\pm\sqrt{3}}{2n+1}
+    $$
+    由莱布尼兹判别法可知其条件收敛,故原级数的收敛域为$\left[-\sqrt{3},\sqrt{3}\right]$
     \end{solution}
 \end{enumerate}
 
-\section{幂级数求和}
+\newpage
 
+\section{幂级数求和}
+\begin{remark}
+    关键就是六组公式
+    \begin{align*}
+        e^x &=\sum_{n=0}^{\infty}\frac{x^n}{n!}, x\in(-\infty,+\infty) \\
+        \sin{x} &=\sum_{n=0}^{\infty}\frac{(-1)^nx^{2n+1}}{(2n+1)!},, x\in(-\infty,+\infty) \\
+        \cos{x} &=\sum_{n=0}^{\infty}\frac{(-1)^nx^{2n}}{(2n)!},, x\in(-\infty,+\infty) \\
+        \arctan{x} &=\sum_{n=0}^{\infty}\frac{(-1)^nx^{2n+1}}{2n+1},, x\in(-\infty,+\infty) \\
+        \frac{1}{1-x} &=\sum_{n=0}^{\infty}x^n,x\in(-1,1) \\
+        \frac{1}{1+x} &=\sum_{n=0}^{\infty}(-1)^nx^n,x\in(-1,1) \\
+        \ln{(1+x)} &=\sum_{n=1}^{\infty}\frac{(-1)^{\color{red}n-1}}{n}x^n, x\in(-1,1] \\
+        \ln{(1-x)} &=-\sum_{n=1}^{\infty}\frac{x^n}{n}, x\in[-1,1) 
+    \end{align*}
+\end{remark}
 \begin{enumerate}[label=\arabic*.,start=8]
     \item (2005,数一)求幂级数$\displaystyle\sum_{n=1}^{\infty}(-1)^{n-1}\left[1+\frac{1}{n(2n-1)}\right] x^{2n}$的收敛区间与和函数$f(x)$.
     
     \begin{solution}
-    \newpage
+    这种题都可以说是套路题,第一步先求收敛域. 由柯西定理有
+    $$
+        \lim_{n\to\infty}\sqrt[n]{\left|(-1)^{n-1}\left[1+\frac{1}{n(2n-1)}\right]x^{2n}\right|} = x^2 < 1
+    $$
+    故收敛区间为$(-1,1)$ 
+    $$
+        S(x)=\sum_{n=1}^{\infty}(-1)^{n-1}x^{2n}+\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n(2n-1)}x^{2n} 
+    $$
+    其中
+    $$
+        S_1(x) = \sum_{n=1}^{\infty}(-1)^{n-1}x^{2n} = \frac{x^2}{1+x^2}, x\in(-1,1)
+    $$
+    \begin{align*}
+        S_2(x) & = \sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n(2n-1)}x^{2n} \\
+        &= 2x\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{2n-1}\cdot x^{2n-1}-\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n}x^{2n} \\
+        &=2x\sum_{n=0}^{\infty}\frac{(-1)^{n}}{2n+1}\cdot x^{2n+1} - \ln{(1+x^2)} \\
+        &=2x\arctan{x}-\ln{(1+x^2)}
+    \end{align*}
+    综上,和函数为$f(x)=\frac{x^2}{1+x^2}+2x\arctan{x}-\ln{(1+x^2)}$
     \end{solution}
     
     \item (2012,数一)求幂级数$\displaystyle\sum_{n=0}^{\infty}\frac{4n^2+4n+3}{2n+1} x^{2n}$的收敛域及和函数.
     
     \begin{solution}
-    \newpage
+    由柯西定理有
+    $$
+        \lim_{n\to\infty}\sqrt[n]{\left|\frac{4n^2+4n+3}{2n+1}\cdot x^{2n}\right|} = x^2 < 1 
+    $$
+    从而收敛区间为$x\in(-1,1)$当$x=\pm 1$时级数为
+    $$
+        \sum_{n=0}^{\infty}\frac{4n^2+4n+3}{2n+1}
+    $$
+    显然发散.故收敛域为$(-1,1)$,接下来求和函数. 
+    \begin{align*}
+        S(x)=\sum_{n=0}^{\infty}(2n+1)x^{2n} + \frac{2}{x}\sum_{n=0}^{\infty}\frac{x^{2n+1}}{2n+1}{\color{red},x\neq 0}
+    \end{align*}
+    其中
+    $$
+    S_1(x) = \sum_{n=0}^{\infty}(2n+1)x^{2n} = (x\sum_{n=0}^{\infty}x^{2n})' = \left(\frac{x}{1-x^2}\right)' = \frac{1+x^2}{(1-x^2)^2}
+    $$
+    $$
+    S'_2(x) = \sum_{n=0}^{\infty}x^{2n} = \frac{1}{1-x^2}
+    $$
+    故
+    $$
+    S_2(x)={\color{red}S_2(0)}+\int_{0}^{x}S'(t)\d t = \frac{1}{2}\ln{\frac{1+x}{1-x}}
+    $$ 
+    需要单独计算$S(0)=3$ \\
+    综上和函数为$S(x)\begin{cases}
+        \displaystyle \frac{1+x^2}{(1-x^2)^2}+\frac{1}{x}\ln{\frac{1+x}{1-x}}, &x\in(-1,0)\cup(0,1) \\
+        3, &x=0
+    \end{cases}$
     \end{solution}
     
     \item (2004,数三)设级数$\frac{x^4}{2\cdot 4}+\frac{x^6}{2\cdot 4\cdot 6}+\frac{x^8}{2\cdot 4\cdot 6\cdot 8}+\cdots\quad(-\infty<x<+\infty)$的和函数为$S(x)$。求:
@@ -102,52 +274,172 @@
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    (1)求上述级数求导
+    \begin{align*}
+        S'(x) &= \frac{x^3}{2} + \frac{x^5}{2\cdot 4} + \ldots \\
+        &= x\left(\frac{x^2}{2}+\frac{x^4}{2\cdot 4}+\ldots\right) \\
+        &=x\left[\frac{x^2}{2}+S(x)\right] 
+    \end{align*}
+    且有初值$S(0)=0$.
+    (2) 上述问题转换为如下初值问题 
+    $$
+    \begin{cases}
+        y' - xy = \frac{x^3}{2} \\
+        y(0) = 0
+    \end{cases}
+    $$
+    可以解出$S(x)=e^{\frac{x^2}{2}}-\frac{x^2}{2}-1$
     \end{solution}
 \end{enumerate}
 
 \section{幂级数展开}
 
 \begin{enumerate}[label=\arabic*.,start=11]
-    \item 例11 (2007,数三)将函数$f(x)=\frac{1}{x^2-3x-4}$展开成$x-1$的幂级数,并指出其收敛区间.
+    \item (2007,数三)将函数$f(x)=\frac{1}{x^2-3x-4}$展开成$x-1$的幂级数,并指出其收敛区间.
     
     \begin{solution}
-    \newpage
+    $$
+        f(x) =\frac{1}{(x-4)(x+1)} = \frac{1}{5}\left(\frac{1}{x-4}-\frac{1}{x+1}\right)
+    $$
+    其中
+    \begin{align*}
+        \frac{1}{x-4} &=\frac{1}{-3+x-1} \\ 
+        &= -\frac{1}{3}\frac{1}{1-\frac{x-1}{3}} \\ 
+        &=-\frac{1}{3}\sum_{n=0}^{\infty}\left(\frac{x-1}{3}\right)^n, x\in(-2,4) \\
+        &=\sum_{n=0}^{\infty}-\frac{1}{3^{n+1}}(x-1)^n
+    \end{align*}
+    同理另一部分为
+    $$
+    \frac{1}{x+1} = \sum_{n=0}^{\infty}\frac{(-1)^n}{2^{n+1}}(x-1)^n, x\in(-1,3)
+    $$
+    故
+    $$
+    f(x)=-\frac{1}{5}\sum_{n=0}^{\infty}\left[\frac{1}{3^{n+1}}+\frac{(-1)^n}{2^{n+1}}\right](x-1)^n, x\in(-1,3)
+    $$
+
     \end{solution}
     
-    \item 将函数$f(x)=\ln\frac{x}{x+1}$在$x=1$处展开成幂级数.
-    
-    \begin{solution}
-    \newpage
-    \end{solution}
 \end{enumerate}
 
 \section{无穷级数证明题}
 
-\begin{enumerate}[label=\arabic*.,start=13]
+\begin{enumerate}[label=\arabic*.,start=12]
+    \item  设$\displaystyle a_n=\int_{0}^{\frac{\pi}{4}}\tan^{n}x\d x$ 
+    \begin{enumerate}
+        \item [(I)] 求$\displaystyle \sum_{n=1}^{\infty}\frac{1}{n}(a_n+a_{n+2})$的值 
+        \item [(II)] 证明任意常数$\lambda>0$,级数$\displaystyle\sum_{n=1}^{\infty}\frac{a_n}{n^{\lambda}}$收敛
+    \end{enumerate}
+
+    \begin{solution}
+        (1)
+        $$
+        a_{n+2}=\int_{0}^{\frac{\pi}{4}}\tan^{n+2}x\d x 
+        $$
+        \begin{align*}
+            a_{n}+a_{n+2} &= \int_{0}^{\frac{\pi}{4}}\tan^{n}x(1+\tan^2{x})\d x \\
+            &=\frac{\tan^{n+1}x}{n+1}\bigg|^{\frac{\pi}{4}}_{0} \\
+            &=\frac{1}{n+1}
+        \end{align*}
+        故原级数等于
+        $$
+        \sum_{n=1}^{\infty}\frac{1}{n(n+1)} = \lim_{n\to\infty}\left(1-\frac{1}{2}+\frac{1}{2}-\ldots+\frac{1}{n}-\frac{1}{n+1}\right) = 1
+        $$
+        (2) 由一可知 
+        $$
+        a_n = \frac{1}{n+1} - a_{n+2} \implies a_n < \frac{1}{n+1}
+        $$
+        故要证级数的通项满足
+        $$
+        \frac{a_n}{n^{\lambda}} < \frac{1}{n^{\lambda}(n+1)} < \frac{1}{n^{(\lambda+1)}}
+        $$
+        当$\lambda>0$级数$\displaystyle \sum_{n=1}^{\infty}\frac{1}{n^{(\lambda+1)}}$收敛,由比较判别法可知原级数收敛
+    \end{solution}
+    \newpage
     \item (2016,数一)已知函数$f(x)$可导,且$f(0)=1$,$0<f'(x)<\frac{1}{2}$。设数列$\{x_n\}$满足$x_{n+1}=f(x_n)(n=1,2,\cdots)$。证明:
     \begin{enumerate}[label=(\roman*)]
-        \item 级数$\displaystyle\sum_{n=1}^{\infty}(x_{n+1}-x_n)$绝对收敛;
-        \item $\displaystyle\lim_{n\rightarrow\infty} x_n$存在,且$\displaystyle 0<\lim_{n\rightarrow\infty} x_n<2$.
+        \item[(I)] 级数$\displaystyle\sum_{n=1}^{\infty}(x_{n+1}-x_n)$绝对收敛;
+        \item[(II)] $\displaystyle\lim_{n\rightarrow\infty} x_n$存在,且$\displaystyle 0<\lim_{n\rightarrow\infty} x_n<2$.
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    (1)本质考察的为压缩映射的证明 
+    \begin{align*}
+        \left|x_{n+1}-x_n\right| &= \left|f(x_n)-f(x_{n-1})\right| \\
+        &=\left|f'(\xi)\right|\cdot\left|x_n-x_{n-1}\right| \\
+        &<\frac{1}{2}\left|x_n-x_{n-1}\right| \\
+        &\ldots \\
+        &<\frac{1}{2^{n-1}}\left|x_2-x_1\right|
+    \end{align*}
+    由级数$\displaystyle \sum_{n=1}^{\infty}\frac{1}{2^{n-1}}$收敛,故原级数收敛 \\
+    (2)由(1)级数的收敛有 
+    $$
+    \lim_{n\to\infty}S_n\exists \implies \lim_{n\to\infty}x_{n+1}=A+x_1=a
+    $$
+    故极限存在,有题设有$f(a) = a$记$g(x) = x - f(x)$ 有$g'(x)=1-f'(x) > 0$ 故$g(x)$单调递增,又$g(0)=-1<0$ 
+    $$
+    g(2) = 2 - f(2) = 1 - \left[f(2) - f(0)\right] = 1 - 2f'(\xi) > 0, \xi\in(0,2)
+    $$
+    由零点存在定理可知有且仅有唯一零点且$0<a<2$
     \end{solution}
     
-    \item (2014,数一)设数列$\{a_n\}$,$\{b_n\}$满足$0<a_n<\frac{\pi}{2}$,$0<b_n<\frac{\pi}{2}$,$\cos a_n-a_n=\cos b_n$,且级数$\sum_{n=1}^{\infty} b_n$收敛。
+    \item (2014,数一)设数列$\{a_n\}$,$\{b_n\}$满足$0<a_n<\frac{\pi}{2}$,$0<b_n<\frac{\pi}{2}$,$\cos a_n-a_n=\cos b_n$,且级数$\displaystyle \sum_{n=1}^{\infty} b_n$收敛。
     \begin{enumerate}[label=(\roman*)]
         \item[(1)] 证明$\displaystyle\lim_{n\rightarrow\infty} a_n=0$;
         \item[(2)] 证明级数$\displaystyle\sum_{n=1}^{\infty}\frac{a_n}{b_n}$收敛.
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    (1)由题设条件有
+    $$
+    \cos{b_n} > \cos{a_n} \implies 0 < a_n < b_n
+    $$ 
+    由于级数$\displaystyle\sum_{n=1}^{\infty}b_n$收敛,故$\displaystyle \lim_{n\to\infty}b_n=0$再由夹逼定理有 
+    $$
+    \lim_{n\to\infty}a_n=0
+    $$
+    (2)方法一:拉格朗日中值定理 
+    \begin{align*}
+        \frac{a_n}{b_n} &= \frac{\cos{a_n}-\cos{b_n}}{b_n}  \\
+        &= \frac{-\sin\xi(a_n-b_n)}{b_n}, \xi\in(a_n,b_n) \\
+        &= \frac{(b_n-a_n)\cdot\sin\xi}{a_n} < b_n - a_n < b_n
+    \end{align*}
+    方法二:等价代换 
+    $$
+    \frac{a_n}{b_n}=\frac{\cos{a_n}-\cos{b_n}}{b_n} < \frac{1-\cos{b_n}}{b_n} \sim \frac{1}{2}b_n
+    $$
+    级数$\displaystyle\sum_{n=1}^{\infty}b_n$收敛,故原级数收敛
     \end{solution}
 \end{enumerate}
 
 \section{傅里叶级数}
-
+\begin{remark}
+    傅里叶级数就两个考点 \\
+    (一)求傅里叶级数的展开式(以$2l$为周期)
+    $$
+    f(x)\sim\frac{a_0}{2}+\sum_{n=1}^{\infty}\left(a_n\cos\frac{n\pi}{l}x+b_n\sin\frac{n\pi}{l}x\right)
+    $$
+    其中系数为
+    $$
+    \begin{cases}
+        \displaystyle a_n = \frac{1}{l}\int_{-l}^{l}f(x)\cos\frac{n\pi}{l}x\d x, n = 0, 1, 2, \ldots \\
+        \displaystyle b_n = \frac{1}{l}\int_{-l}^{l}f(x)\sin\frac{n\pi}{l}x\d x, n = 1, 2, 3, \ldots \\
+    \end{cases}
+    $$
+    (二)狄利克雷收敛定理(充分条件)若函数在区间$[-1,1]$上满足 
+    \begin{enumerate}
+        \item [(1)] 连续,或只有有限个间断点,且都是第一类间断点 
+        \item [(2)] 只有有限个极值点
+    \end{enumerate}
+    则$f(x)$在区间$(-l,l)$上的傅里叶级数收敛,且满足 
+    $$
+    f(x)\text{对应傅里叶级数}=
+    \begin{cases}
+        f(x), &x\text{为连续点} \\
+        \frac{1}{2}\left[f(x+0)+f(x-0)\right], &x\text{为第一类间断点} \\
+        \frac{1}{2}\left[f(-l+0)+f(l-0)\right], &x\text{为区间端点}
+    \end{cases}
+    $$
+\end{remark}
 \begin{enumerate}[label=\arabic*.,start=15]
     \item 设函数
     \begin{align*}
@@ -168,7 +460,7 @@
     \end{align*}
     \end{solution}
     
-    \item 将$f(x)=1-x^2,0\leq x\leq\pi$,展开成余弦级数,并求级数$\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n^2}$的和.
+    \item 将$f(x)=1-x^2,0\leq x\leq\pi$,展开成余弦级数,并求级数$\displaystyle \sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n^2}$的和.
     
     \begin{solution}
     对$f(x)=1-x^2$进行偶延拓,由$f(x)=1-x^2$为偶函数,知$b_n=0$。

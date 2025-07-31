@@ -210,6 +210,48 @@ $$
 \end{align*}
 \end{tcolorbox}
 \section{三重积分的计算}
+\begin{remark}
+    三重积分 \\
+    (三重积分的定义) 三维物体的质量
+    $$
+    \iiint_{\Omega}f(x,y,z)\d V=\lim_{\lambda\to 0}\sum_{i=1}^{n}f(\xi_i,\eta_i,\zeta_i)\Delta V_i
+    $$
+    三重积分的性质(8条) \\
+    线性,区域可加性,比较定理,中值定理,估值定理,轮换对称性,奇偶性,形心公式 \\
+    若函数图像关于$xoy$平面对称
+    $$
+    \iiint_{\Omega}=\begin{cases}
+        \displaystyle 2\iiint_{\Omega'}f(x,y,z)\d V, &f(x,y,-z)=f(x,y,z) \\
+        0, &f(x,y,-z)=-f(x,y,z)
+    \end{cases}
+    $$
+    直接坐标计算(两种)
+    $$
+    \begin{cases}
+        \displaystyle \int_{a}^{b}\d z\iint_{D_z}f(x,y,z)\d x\d y, &\text{先二后一,截面法} \\
+        \displaystyle \iint_{D_{xy}}\d x\d y\int_{z_1(x)}^{z_2(x)}f(x,y,z)\d z, &\text{先一后二,投影法}
+    \end{cases}
+    $$
+    柱坐标($x,y$转换为极坐标) 
+    $$
+    \begin{cases}
+        x = r\cos\theta \\
+        y = r\sin\theta \\
+        z = z \\
+        \d V=r\d r\d x\d y 
+    \end{cases}
+    $$
+    球坐标 
+    $$
+    \begin{cases}
+        x = r\sin\varphi\cos\theta \\
+        y = r\sin\varphi\sin\theta \\
+        z = r\cos\varphi \\
+        \d V = r^2\sin\varphi\d r\d\varphi\d\theta
+    \end{cases}
+    $$
+    其中$\theta$是与$x$轴正方向的夹角,$\varphi$是与$z$轴正反向的夹角
+\end{remark}
 
 \begin{enumerate}[label=\arabic*.]
     \item (2013,数一)设直线$L$过$A(1,0,0)$,$B(0,1,1)$两点,将$L$绕$z$轴旋转一周得到曲面$\Sigma$,$\Sigma$与平面$z=0$,$z=2$所围成的立体为$\Omega$.
@@ -219,34 +261,156 @@ $$
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    (1) 有题设可知直线方程为$\begin{cases}
+        z = 1 - x \\
+        z = y
+    \end{cases}$ 原直线上一点$P_0$满足$\begin{cases}
+        x_0 = 1 - z_0 \\
+        y_0 = z_0 
+    \end{cases}$ 旋转曲面上一点$P$满足 $\begin{cases}
+        x^2+y^2=x^2_0+y^2_0 \\
+        z=z_0
+    \end{cases}$ 带入直线方程消去$(x_0,y_0,z_0)$有曲面方程为
+    $$
+    x^2+y^2=2z^2-2z+1
+    $$
+    (2) 对于三重积分以及后面的积分,最大的误区可能就是上来二话不说先画图,然后发现图画不出来就不会做.其实完全没必要画图
+    观察曲面方程,容易发现其关于$xoz,yoz$平面对称,故$\bar{x}=\bar{y}=0$ 由形心公式有
+    $$
+    \bar{z} = \frac{\iiint_{\Omega}z\d V}{\iiint_{\Omega}\d V}
+    $$
+    由题设条件$z\in[0,2]$已经提示了该用截面法喽,从而有
+    \begin{align*}
+        \iiint_{\Omega}\d V &= \int_{0}^{2}\d z\iint_{D_z}\d x\d y \\
+        &= \int_{0}^{2}\pi\cdot\left(2z^2-2z+1\right)\d z \\
+        &=\frac{10}{3}\pi \\
+        \iiint_{\Omega}z\d V &= \int_{0}^{2}\d z\iint_{D_z} z\d x\d y \\
+        &= \int_{0}^{2}\pi\cdot\left(2z^3-2z^2+z\right)\d z \\
+        &= \frac{14}{3}\pi
+    \end{align*}
+    综上形心坐标为
+    \begin{center}
+        \fbox{$(0,0,\frac{7}{5})$}
+    \end{center}
     \end{solution}
     
     \item (2019,数一)设$\Omega$是由锥面$x^{2}+(y-z)^{2}=(1-z)^{2}(0\leq z\leq 1)$与平面$z=0$围成的锥体，求$\Omega$的形心坐标.
     
     \begin{solution}
-    \newpage
+    这个图像张啥样,其实也一定都不重要.只要能把握其在某一二维平面的投影即可,观察曲面表达式,显然其关于$yoz$平面堆成故$\bar{x}=0$,而由形心公式可知要求3个三重积分,分别做吧 
+    \begin{align*}
+        \iiint_{\Omega}\d V &= \int_{0}^{1}\d z\iint_{D_z}\d x\d y \\
+        &=\int_{0}^{1}\pi(1-z)^2\d z \\
+        &=\frac{1}{3}\pi \\
+        \iiint_{\Omega}z\d V &= \int_{0}^{1}\d z\iint_{D_z}z\d x\d y \\
+        &=\int_{0}^{1}\pi z(1-z)^2\d z \\ 
+        &=\frac{1}{12}\pi \\
+        \iiint_{\Omega}y\d V &= \int_{0}^{1}\d z\iint_{D_z}y\d x\d y \\
+        &=\int_{0}^{1}\pi z(1-z)^2\d z \\
+        &=\frac{1}{12}\pi
+    \end{align*}
+    综上,该区域的形心为
+    \begin{center}
+        \fbox{$(0,\frac{1}{4},\frac{1}{4})$}
+    \end{center}
     \end{solution}
 \end{enumerate}
 
-\section{第一类曲线积分的计算}
+\newpage
 
+\section{第一类曲线积分的计算}
+\begin{remark}
+    一类线 \\
+    定义 
+    $$
+    \int_Lf(x,y)\d s=\lim_{\lambda\to 0}\sum_{i=1}^{n}f(\xi_i,\eta_i)\Delta s_i 
+    $$
+    其中$\d s$是弧微分 \\
+    一类线的性质(8条)\\
+    线性,区域可加性,比较定理,中值定理,估值定理,轮换对称性,奇偶性,形心公式 \\
+    计算公式, \underline{曲线方程带入}
+    $$
+    \int_{L}f(x,y)\d s
+    \begin{cases}
+        \displaystyle \int_{\alpha}^{\beta}f(x(t),y(t))\sqrt{(x'(t))^2+(y'(t))^2}\d t, &\text{参数方程} \\
+        \displaystyle \int_{a}^{b}f(x,y(x))\sqrt{1+(y'(x))^2}\d x, &\text{直接坐标} \\
+        \displaystyle \int_{\alpha}^{\beta}f(r(\theta)\cos\theta,r(\theta)\sin\theta)\sqrt{r^2(\theta)+(r'(\theta))^2}\d\theta, &\text{极坐标}
+    \end{cases}
+    $$
+\end{remark}
 \begin{enumerate}[label=\arabic*.,start=3]
     \item (2018,数一)设$L$为球面$x^2+y^2+z^2=1$与平面$x+y+z=0$的交线，则$\oint_L xy ds=$
     
     \begin{solution}
-    \newpage
+    这道题是比较显然的轮换对称性的题目
+    \begin{align*}
+        \text{原式}&=\frac{1}{3}\oint_{L}(xy+yz+xz)\d s \\
+        &=\frac{1}{6}\oint_{L}\left[(x+y+z)^2-(x^2+y^2+z^2)\right] \\
+        &\xlongequal{\text{曲线方程带入}} -\frac{1}{6}\oint_{L}\d s \\
+        &=-\frac{1}{3}\pi
+    \end{align*}
     \end{solution}
     
     \item 设连续函数$f(x,y)$满足$f(x,y)=(x+3y)^2+\int_L f(x,y) ds$，其中$L$为曲线$y=\sqrt{1-x^2}$，求曲线积分$\int_L f(x,y) ds$.
     
     \begin{solution}
-    \newpage
+    不妨设$A=\int_Lf(x,y)\d s$ 同时对等式两边同时求一类线有 
+    \begin{align*}
+        A &= \int_{L}\left[(x+3y)^2+A\right]\d s \\
+        &=A\pi + \int_{L}(x+3y)^2\d s \\
+        &=A\pi + \int_{L}(x^2+6xy+9y^2)\d s \\
+        &=(1+A)\pi + 8\int_{L}y^2\d s \\
+        &=(1+A)\pi + 8\int_{0}^{2\pi}\sin^2\theta\d \theta \\
+        &=(5+A)\pi \implies A = \frac{5\pi}{1-\pi}
+    \end{align*}
+    {\color{red} 计算过程中优先考虑使用性质化简,而非直接套公式}
     \end{solution}
+
+    \begin{tcolorbox}
+        对于曲线/曲面/定积分/二重积分/三重积分,它在某区域内积分后就是一个\underline{数},变限积分和不定积分仍然是一个\underline{函数}.
+    \end{tcolorbox}
 \end{enumerate}
 
 \section{第二类曲线积分的计算}
+\begin{remark}
+    二类线 \\
+    二类线的定义:沿曲线做功
+    $$
+    \int_{L}P(x,y)\d x+ Q(x,y)\d y = \lim_{\lambda\to 0}\sum_{i=1}^{n}\left[P(\xi_i,\eta_i)\Delta x_i + Q(\xi_i,\eta_i)\Delta y_i\right]
+    $$
+    其中$\d x =\d s\cdot\cos{\alpha},\d y=\d s\cdot\cos\beta$,其中$(\cos\alpha,\cos\beta)$为切向量的单位向量 \\
+    性质(3条) \\
+    线性,区域可加性,方向性 
+    $$
+    \int_L=-\int_L',L\text{和}L'\text{方向相反}
+    $$
+    计算方式(两种) 
+    $$
+    \int_{L}P(x,y)\d x+ Q(x,y)\d y =
+    \begin{cases}
+        \displaystyle \int_{\alpha}^{\beta}\left[P(x(t),y(t))x'(t)+Q(x(t),y(t))y'(t)\right]\d t, &\text{参数方程} \\
+        \displaystyle \int_{a}^{b}\left[P(x,f(x))+Q(x,f(x))f'(x)\right]\d x, &\text{直角坐标}
+    \end{cases}
+    $$
+    注意此时$\alpha\rightarrow\beta,a\rightarrow b$均为起点指向终点,和大小无关\\
+    {\color{red} 格林公式} 设闭区域$D$由分段光滑的曲线$L$围成,$L$取正向,$P(x,y),Q(x,y)$在$D$上有一阶连续偏导数,则 
+    $$
+    \oint_LP\d x + Q\d y = \iint_{D}\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)\d x\d y
+    $$
+    {\color{red} 积分与路径无关(四个充分条件)} 设$P(x,y),Q(x,y)$在单连通闭区域$D$上有一阶连续偏导数,则 
+    \begin{align*}
+        & \frac{\partial Q}{\partial x} = \frac{\partial P}{\partial y} \\
+        &\iff D\text{内任意曲线}L,\oint_LP\d x+Q\d y = 0 \\
+        &\iff D\text{任意两点}A,B,\int_{A}^{B}P\d x+ Q\d y\text{与路径无关} \\
+        &\iff \exists u(x,y),\d u= P(x,y)\d x + Q(x,y)\d y, \text{且}u(x,y)=\int_{(x_0,y_0)}^{(x,y)}P\d x + Q\d y
+    \end{align*}
+    \underline{曲线方程带入}
+\end{remark}
 
+\begin{tcolorbox}[title=曲线积分基本定理]
+    设$P(x,y),Q(x,y)$在区域$D$内连续,$u(x,y)$满足$\d u=P(x,y)\d x + Q(x,y)\d y$, 则区域$D$内任意两点$A,B$曲线积分
+    $\int_{A}^{B}P\d x+Q\d y$与路径无关,且$\int_{A}^{B}P\d x + Q\d y=u(B)-u(A)$
+\end{tcolorbox}
 \begin{enumerate}[label=\arabic*.,start=5]
     \item (2021,数一)设$D\subset \mathbb{R}^2$是有界单连通闭区域，$I(D)=\iint_D(4-x^2-y^2)dxdy$取得最大值的积分域记为$D_1$.
     \begin{enumerate}
@@ -255,7 +419,35 @@ $$
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    (1)由二重积分的几何意义,使得$4-x^2-y^2\geq 0$始终成立的区域即为积分最大的区域,即
+    $$
+    D_1=\left\{(x,y)\mid x^2+y^2\leq 4\right\} 
+    $$
+    此时积分为
+    \begin{align*}
+        I &= \int_{0}^{2\pi}\d\theta\int_{0}^{2}(4-r^2)r\d r = 8\pi
+    \end{align*}
+    (2) 显然$(0,0,0)$点是被积函数的奇点,此时考虑挖去该点,即设
+    $$
+    L':x^2+4y^2=1,\text{取顺时针}
+    $$
+    此时有
+    $$
+        I=\oint_{\partial D_1+L'}-\oint_{L'} 
+    $$
+    对于前一个积分,用Green公式有
+    $$
+    \oint_{\partial D_1+L'} = \iint_{D_1/D_{L'}}\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)\d x\d y = 0
+    $$
+    对于后一个积分,先将曲线方程带入表达式后有
+    \begin{align*}
+        \oint_{L'} &=\oint_{L'}\left(ex+y\right)\d x + \left(4ey-x\right)\d y \\
+        &\xlongequal{\text{格林公式}} - \iint_{D_{L'}}(-1-1) = 2S_{D_{L'}}=\pi
+    \end{align*}
+    故
+    $$
+    I = 0 - \pi = -\pi
+    $$
     \end{solution}
 \end{enumerate}
 
@@ -263,12 +455,54 @@ $$
     \item (2011,数一)设$L$是柱面$x^2+y^2=1$与平面$z=x+y$的交线，从$z$轴正向往$z$轴负向看去为逆时针方向，则曲线积分$\oint_L xz dx+xdy+\frac{y^2}{2}dz=$
     
     \begin{solution}
-    \newpage
+    这种问题仅有三种解法,推荐解法3,但三种解法都需要掌握. \\
+    (解法一\ 公式法) 设曲线的参数方程为
+    $\begin{cases}
+        x = \cos{t} \\
+        y = \sin{t} \\
+        z = \sin{t} + \cos{t}
+    \end{cases}$ 由于从$z$轴正向往$z$轴负向看去为逆时针方向,故$t:0\rightarrow 2\pi$,此时原积分等于 
+    \begin{align*}
+        I &= \int_{0}^{2\pi}\left\{\left[\cos{t}(\sin{t}+\cos{t})(-\sin{t})\right] + \cos^2{t} + \frac{\sin^2{t}}{2}(\cos{t}-\sin{t})\right\}\d t \\
+        &=\int_{0}^{2\pi}\cos^2{\theta} = \pi
+    \end{align*}
+    (解法二\ 斯托克斯公式) 注意斯托克斯公式一般转换为一类面来做(公式法) \\
+    曲面法向量为$\vec{n}=(-Z'_x,-Z'_y,1)=(-1,-1,1)$ 其单位向量为$\vec{n_0}=(-\frac{1}{\sqrt{3}},-\frac{1}{\sqrt{3}},\frac{1}{\sqrt{3}})$ 
+    此时由斯托克斯公式有 
+    \begin{align*}
+        \oint_{L} &=\iint_{\sum}\begin{vmatrix}
+            -\frac{1}{\sqrt{3}} & -\frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}} \\
+            \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+            xz & x & \frac{y^2}{2}
+        \end{vmatrix} \d S \\
+        &=-\frac{1}{\sqrt{3}}\iint_{\sum}(y-x-1)\d S \\
+        &\xlongequal{\text{公式法}}=-\frac{1}{\sqrt{3}}\iint_{D_{xy}}(y+x-1)\sqrt{1+1+1}\d x\d y \\
+        &=\pi
+    \end{align*}
+    (解法三\ 转换为平面二类型) 由$z=x+y$消去原曲线积分中的所有$z$,注意$\d z = \d x + \d y$ 此时积分转换为 
+    其中$L':x^2+y^2=1$取逆时针方向
+    \begin{align*}
+        I = &\oint_{L'}(x^2+xy+\frac{y^2}{2})\d x + (x+\frac{y^2}{2})\d y \\
+        &\xlongequal{\text{格林公式}} \iint_{D}(1-x-y)\d x\d y = \pi
+    \end{align*}
     \end{solution}
 \end{enumerate}
 
 \section{第一类曲面积分的计算}
-
+\begin{remark}
+    一类面 \\
+    一类面的定义 
+    $$
+    \iint_{\sum}f(x,y,z)\d S=\lim_{\lambda\to 0}\sum_{i=1}^{n}f(\xi_i,\eta_i,\zeta_i)\Delta S_i
+    $$
+    性质(8条) \\
+    线性,区域可加性,比较定理,中值定理,估值定理,轮换对称性,奇偶性,形心公式 \\
+    计算公式(一投,二代) 
+    $$
+    \iint_{\sum}f(x,y,z)\d S=\iint_{D_{xy}}f(x,y,z(x,y))\sqrt{1+(Z'_x)^2+(Z'_y)^2}\d x\d y 
+    $$
+    \underline{曲面方程带入}
+\end{remark}
 \begin{enumerate}[label=\arabic*.,start=7]
     \item (2010,数一)设$P$为椭球面$S:x^2+y^2+z^2-yz=1$上的动点，若$S$在点$P$的切平面与$xOy$面垂直，求$P$点的轨迹$C$，并计算曲面积分
     \begin{align*}
@@ -277,12 +511,65 @@ $$
     其中$\Sigma$是椭球面$S$位于曲线$C$上方的部分.
     
     \begin{solution}
-    \newpage
+    一类面的难点肯定在于如何求出该平面,计算都是小意思用公式就可以. \\
+    S在点P处的切平面,其法向量为$\vec{n_1}=(F'_x,F'_y,F'_z=2x,2y-z,2z-y)$ 而$xoy$面的法向量为$\vec{n_2}=(0,0,1)$由题设知
+    $\vec{n_1}\cdot\vec{n_2}=0$ 即$2z-y=0$ 带入S的方程化简有,曲线C的方程为
+    $$
+        \begin{cases}
+            x^2+\frac{3}{4}y^2 = 1 \\
+            y = 2z
+        \end{cases}
+    $$
+    即一个椭球柱与平面的交线,将曲线往$xoy$面投影,其区域为$D_{xy}:\{(x,y)\mid x^2+\frac{3}{4}y^2 \leq 1\}$ 
+    $$
+    \d S = \sqrt{1+(Z'_x)^2+(Z'_y)^2}\d x\d y = \frac{\sqrt{4+y^2+z^2-4yz}}{\left|y-2z\right|}\d x\d y
+    $$
+    原积分由公式法等于 
+    \begin{align*}
+        I = \iint_{D_{xy}} (x+\sqrt{3})\d x\d y = 2\pi
+    \end{align*}
     \end{solution}
 \end{enumerate}
 
 \section{第二类曲面积分的计算}
-
+\begin{remark}
+    二类面 \\
+    二类面的定义:流量
+    \begin{align*}
+        &\iint_{\sum}P(x,y,z)\d y\d z + Q(x,y,z)\d z\d x + R(x,y,z)\d x\d y \\
+        &=\lim_{\lambda\to 0} \sum_{i=1}^{n}[P(\xi_i,\eta_i,\zeta_i)(\Delta S_i)_{yz}+
+    Q(\xi_i,\eta_i,\zeta_i)(\Delta S_i)_{zx}+R(\xi_i,\eta_i,\zeta_i)(\Delta S_i)_{xy}]
+    \end{align*}
+    其中$\d y\d z = \d S\cdot\cos\alpha$ 其余类似,而$(\cos\alpha,\cos\beta,\cos\gamma)$为平面$\sum$的法向量的单位向量 \\
+    性质(3条) \\
+    线性,区域可加性,方向性 \\
+    计算公式(三合一投影法)
+    \begin{align*}
+    &\iint_{\sum}P(x,y,z)\d y\d z + Q(x,y,z)\d z\d x + R(x,y,z)\d x\d y \\
+    &=\pm (P(x,y),Q(x,y),R(x,y))\cdot (-Z'_x,-Z'_y,1) \\
+    &=\pm \iint_{D_{xy}}\left[P(x,y,z(x,y))(-Z'_x)+Q(x,y,z(x,y))(-Z'_y)+R(x,y,z(x,y))\right]\d x\d y
+    \end{align*}
+    上侧为正,下侧为负 \\
+    {\color{red} 高斯公式} 设闭区域$\Omega$由分片光滑的曲面$\sum$围成,$\sum$取{\color{red}外侧},$P,Q,R$在其上有{\color{red} 一阶连续偏导数},则
+    $$
+    \oiint_{\sum}P\d y\d z + Q\d z\d x + R\d x\d y=
+    \iiint_{\Omega}\left(\frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}\right)
+    $$
+    \underline{曲面方程带入} \\
+    {\color{red} 斯托克斯公式} 设$P,Q,R$在曲面$\sum$围成的区域$\Omega$内有一阶连续偏导数,$\sum$的边界曲线$L$的方向与$\sum$所取的法向量满足右手法则,则
+    $$
+    \oint_{L}P\d x + Q\d y + R\d z = \iint_{\sum}\begin{vmatrix}
+        \d y\d z & \d z\d x & \d x\d y \\
+        \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+        P & Q & R
+    \end{vmatrix} = \begin{vmatrix}
+        \cos\alpha & \cos\beta & \cos\gamma \\
+        \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+        P & Q & R
+    \end{vmatrix}\d S
+    $$
+    即将三维的二类线转换为一类面或者二类面来做
+\end{remark}
 \begin{enumerate}[label=\arabic*.,start=8]
     \item (2009,数一)计算曲面积分
     \begin{align*}
@@ -291,7 +578,35 @@ $$
     其中$\Sigma$是曲面$2x^2+2y^2+z^2=4$的外侧.
     
     \begin{solution}
-    \newpage
+    显然点$(0,0,0)$是被积函数的奇点,需要挖去这一个点,不妨设 
+    $$
+    \sum_1:x^2+y^2+z^2 = 1, \text{取外侧}
+    $$
+    记
+    \begin{align*}
+        &\Omega:\left\{(x,y,z)\mid x^2+y^2+z^2 \geq 1, 2x^2+2y^2+z^2\leq 4\right\} \\
+        &\Omega_1:\left\{(x,y,z)\mid x^2+y^2+z^2 \leq 1\right\}
+    \end{align*}
+    此时原积分等于 
+    $$
+    I = \iint_{\sum+\sum_1}-\iint_{\sum_1} 
+    $$
+    其中 
+    $$
+    \iint_{\sum+\sum_1} \xlongequal{\text{高斯定理}}
+    \iiint_{\Omega}\left(\frac{\partial P}{\partial x} + 
+    \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}\right) = 0
+    $$
+    对于第二个积分,先带入$\sum_1$的曲面方程此时有
+    \begin{align*}
+        \iint_{\sum_1} &= \iint_{\sum_1}x\d y\d z + y\d z\d x + z\d x\d y \\
+        &=-\iiint_{\Omega_1}3\d V \\
+        &=-4\pi 
+    \end{align*}
+    综上有
+    $$
+    I = 0 + 4\pi = 4\pi
+    $$
     \end{solution}
     
     \item 计算
@@ -301,7 +616,30 @@ $$
     其中$\Sigma$为下半球面$z=-\sqrt{a^2-x^2-y^2}$的上侧，$a$为大于零的常数.
     
     \begin{solution}
-    \newpage
+    发现这个曲面不是封闭的,立刻补上,即设
+    $$
+    \sum_1:\begin{cases}
+        x^2+y^2\leq a^2 \\
+        z = 0
+    \end{cases},\text{取下侧}
+    $$
+    注意,虽然被积函数在(0,0,0)处貌似是奇点,但注意到可以通过带入曲线方程消去分母,就不需要挖点了
+    \begin{align*}
+        I &= \frac{1}{a}\iint_{\sum}ax\d y\d z + (z+a)^2\d x\d y \\
+        &=\frac{1}{a}(\iint_{\sum+\sum_1}-\iint_{\sum_1})
+    \end{align*}
+    记$\sum_1,\sum$围成的区域为$\Omega$,则有
+    $$
+    \iint_{\sum+\sum_1} = -\iiint_{\Omega} = -\iiint_{\Omega}\left[a+2(z+a)\right]\d V = -\frac{3}{2}\pi a^4
+    $$
+    记$D_{xy}:\{(x,y)\mid x^2+y^2\leq a^2\}$ 则有
+    $$
+    \iint_{\sum_1} \xlongequal{\text{公式}}-\iint_{D_{xy}}a^2\d x\d y = -\pi a^4
+    $$
+    综上有
+    $$
+    I = -\frac{\pi a^3}{2}
+    $$
     \end{solution}
     
     \item (2020,数一)设$\Sigma$为曲面$z=\sqrt{x^2+y^2}(1\leq x^2+y^2\leq 4)$的下侧，$f(x)$为连续函数，计算
@@ -310,7 +648,15 @@ $$
     \end{align*}
     
     \begin{solution}
-    \newpage
+    因为$f(xy)$仅连续,高斯的条件为\underline{封闭外侧,偏导连续},只能使用三合一投影法 \\
+    记区域$D_{xy}:\{(x,y)\mid 1 \leq x^2 + y^2 \leq 4\}$
+    \begin{align*}
+        I &= -\iint_{D_{xy}}\left(\left[xf(xy)+2x-y\right]\left(-\frac{x}{\sqrt{x^2+y^2}}\right)\right. \\
+        &\quad + \left.\left[yf(xy)+2y+x\right]\left(-\frac{y}{\sqrt{x^2+y^2}}\right)\right. \\
+        &\quad + \left.\left[\sqrt{x^2+y^2}f(xy)+\sqrt{x^2+y^2}\right]\right)\,\mathrm{d}x\,\mathrm{d}y \\
+        &= \iint_{D_{xy}}\sqrt{x^2+y^2}\,\mathrm{d}x\,\mathrm{d}y \\
+        &= \int_{0}^{2\pi}\mathrm{d}\theta\int_{1}^{2}r^2\,\mathrm{d}r = \frac{14}{3}\pi
+    \end{align*}
     \end{solution}
 \end{enumerate}
 
