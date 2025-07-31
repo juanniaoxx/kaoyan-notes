@@ -121,16 +121,14 @@
 \end{enumerate}
 
 \section{函数极限的计算}
-这一个题型基本上是计算能力的考察,对于常见未定式其实也没必要区分的那么明显,目标都是往最简单$\frac{0}{0}$或者
+\begin{remark}
+    这一个题型基本上是计算能力的考察,对于常见未定式其实也没必要区分,目标都是往最简单$\frac{0}{0}$或者
 $\frac{\cdot}{\infty}$模型上面靠,辅助以Taylor公式,拉格朗日中值定理结合夹逼准则来做就可以.
-\begin{remark}(类型一 $\frac{0}{0}$型)
 \end{remark}
 
 \begin{enumerate}[label=\arabic*.,start=4]
-    \item  (2000,数二)若$\lim_{x\to0}\frac{\sin6x+xf(x)}{x^3}=0$,则$\lim_{x\to0}\frac{6+f(x)}{x^2}$为
-    \begin{align*}
-        (\text{A})&\ 0 \qquad (\text{B})\ 6 \qquad (\text{C})\ 36 \qquad (\text{D})\ \infty
-    \end{align*}
+    \item  (2000,数二)若$\displaystyle \lim_{x\to0}\frac{\sin6x+xf(x)}{x^3}=0$,则$\displaystyle \lim_{x\to0}\frac{6+f(x)}{x^2}$为 \\
+    $(\text{A}) \ 0 \qquad (\text{B})\ 6 \qquad (\text{C})\ 36 \qquad (\text{D})\ \infty$
     
     \begin{solution}
     这个题第一次见可能想不到,但做多了就一个套路用Taylor就是了.
@@ -155,9 +153,6 @@ $\frac{\cdot}{\infty}$模型上面靠,辅助以Taylor公式,拉格朗日中值�
     \end{solution}
 \end{enumerate}
 
-\begin{remark}(类型二 $\frac{\infty}{\infty}$型)
-\end{remark}
-
 \begin{enumerate}[label=\arabic*.,start=6]
     \item  (2014,数一、数二、数三)求极限
     \[
@@ -174,9 +169,6 @@ $\frac{\cdot}{\infty}$模型上面靠,辅助以Taylor公式,拉格朗日中值�
     \end{solution}
 \end{enumerate}
 
-\begin{remark}(类型三 $0\cdot\infty$型)
-\end{remark}
-
 \begin{enumerate}[label=\arabic*.,start=7]
     \item  求极限$\lim_{x\to0^+}\ln(1+x)\ln\left(1+e^{1/x}\right)$
     
@@ -184,9 +176,6 @@ $\frac{\cdot}{\infty}$模型上面靠,辅助以Taylor公式,拉格朗日中值�
     
     \end{solution}
 \end{enumerate}
-
-\begin{remark}(类型四 $\infty-\infty$型)
-\end{remark}
 
 \begin{enumerate}[label=\arabic*.,start=8]
     \item  求极限$\lim_{x\to\infty}\left(x^3\ln\frac{x+1}{x-1}-2x^2\right)$
@@ -196,9 +185,6 @@ $\frac{\cdot}{\infty}$模型上面靠,辅助以Taylor公式,拉格朗日中值�
     \end{solution}
 \end{enumerate}
 
-\begin{remark}(类型五 $0^0$与$\infty^0$型)
-\end{remark}
-
 \begin{enumerate}[label=\arabic*.,start=9]
     \item  (2010,数三)求极限$\lim_{x\to+\infty}\left(x^{1/x}-1\right)^{1/\ln x}$
     
@@ -206,9 +192,6 @@ $\frac{\cdot}{\infty}$模型上面靠,辅助以Taylor公式,拉格朗日中值�
     \newpage
     \end{solution}
 \end{enumerate}
-
-\begin{remark}(类型六 $1^\infty$型)
-\end{remark}
 
 \begin{enumerate}[label=\arabic*.,start=10]
     \item  求极限$\lim_{x\to0}\left(\frac{a^x+a^{2x}+\cdots+a^{nx}}{n}\right)^{1/x}\ (a>0,n\in\mathbb{N})$
@@ -219,9 +202,6 @@ $\frac{\cdot}{\infty}$模型上面靠,辅助以Taylor公式,拉格朗日中值�
 \end{enumerate}
 
 \section{已知极限反求参数}
-\begin{remark}(方法)
-
-\end{remark}
 
 \begin{enumerate}[label=\arabic*.,start=11]
     \item  (1998,数二)确定常数$a,b,c$的值,使$\lim_{x\to0}\frac{ax-\sin x}{\int_b^x\frac{\ln(1+t^3)}{t}dt}=c\ (c\neq0)$
@@ -232,8 +212,7 @@ $\frac{\cdot}{\infty}$模型上面靠,辅助以Taylor公式,拉格朗日中值�
 \end{enumerate}
 
 \section{无穷小阶的比较}
-\begin{remark}(方法)
-\end{remark}
+
 \begin{enumerate}[label=\arabic*.,start=12]
     \item  (2002,数二)设函数$f(x)$在$x=0$的某邻域内具有二阶连续导数,且$f(0)\neq0$,$f'(0)\neq0$,$f''(0)\neq0$。证明：存在唯一的一组实数$\lambda_1,\lambda_2,\lambda_3$,使得当$h\to0$时,$\lambda_1f(h)+\lambda_2f(2h)+\lambda_3f(3h)-f(0)$是比$h^2$高阶的无穷小。
     

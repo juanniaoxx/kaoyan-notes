@@ -9,6 +9,66 @@
 \fi
 
 \chapter{矩阵}
+$$
+\fbox{
+    \begin{tabular}{c}
+        矩 \\
+        阵
+    \end{tabular}
+}\begin{cases}
+    \fbox{基本运算}\qquad\qquad A+B\qquad kA\qquad AB\qquad A^T \\
+    \fbox{逆}\qquad\qquad \begin{cases}
+        \fbox{定义} \\
+        \fbox{性质} \\
+        \fbox{求法} \begin{cases}
+            \text{定义法} \\
+            \text{初等变换法} \\
+            \text{伴随矩阵法} \\
+            \text{分块矩阵法}
+        \end{cases} \\
+        \fbox{充要条件} \begin{cases}
+            \iff \left|A\right|\neq 0 \\
+            \iff r(A) = n \\
+            \iff A\text{的列(行)向量组线性无关} \\
+            \iff \text{齐次线性方程组}Ax=0\text{只有零解} \\
+            \iff \text{非齐次方程组}Ax=b\text{有唯一解} \\
+            \iff A\text{的特征值均不为零}
+        \end{cases}
+    \end{cases}\\
+    \fbox{秩} \begin{cases}
+        \fbox{定义} \\
+        \fbox{性质} \\
+        \fbox{求法}
+    \end{cases}
+\end{cases}
+$$
+
+$$
+\fbox{
+    \begin{tabular}{c}
+        矩 \\
+        阵
+    \end{tabular}
+}\begin{cases}
+    \fbox{伴随矩阵} \begin{cases}
+    \fbox{定义} \\
+    \fbox{性质}
+    \end{cases} \\
+    \fbox{初等变换与初等矩阵}\begin{cases}
+        \fbox{定义} \\
+        \fbox{性质} \\
+        \fbox{应用}\begin{cases}
+            \text{求矩阵的逆} \\
+            \text{求矩阵的秩} \\
+            \text{线性表示} \\
+            \text{求极大线性无关组} \\
+            \text{解线性方程组} \\
+            \text{求二次型的标准型}
+        \end{cases}
+    \end{cases} \\
+    \fbox{分块矩阵}
+\end{cases}
+$$
 \section{求高次幂}
 \begin{remark}
     基本方法 \\
@@ -96,7 +156,7 @@
     \[
     A^n=2^nE+2^{n-1}nB+2^{n-3}n(n-1)B^2
     \]
-    \end{solution},
+    \end{solution}
     
     % 例题2.3
     \item 设

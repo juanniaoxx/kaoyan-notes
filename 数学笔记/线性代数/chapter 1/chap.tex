@@ -10,40 +10,43 @@
 \chapter{行列式}
 
 $$
-\text{行列式的主要内容}\left\{\begin{matrix}
-    \text{行列式的概念}&\left\{\begin{matrix}
-    \text{定义}& n!\text{项不同行不同列元素乘积的代数和} \\
-    \text{性质}&
-    \end{matrix}\right. \\ 
-    \text{重要行列式}&\left\{\begin{matrix}
-    \text{上(或下)三角,主对角矩阵}\\
-    \text{副对角行列式}\\
-    \text{ab型行列式}\\
-    \text{拉普拉斯展开式}\\
-    \text{范德蒙行列式}\\
-
-\end{matrix}\right. \\
-    \text{展开定理}& \left\{\begin{matrix}
-    a_{i1}A_{j1}+a_{i2}A_{j2}+\ldots+a_{in}A_{jn} = & \left\{\begin{matrix}
-    \left | A \right |, &i=j \\
-    0,& i = j
-\end{matrix}\right. \\
-    a_{1i}A_{1j}+a_{2i}A_{2j}+\ldots+a_{ni}A_{nj} = & \left\{\begin{matrix}
-    \left | A \right |, &i=j \\
-    0,& i = j
-\end{matrix}\right. \\
-\end{matrix}\right.\\
-    \text{行列式的公式}& \left\{\begin{matrix}
-    \left | KA \right | = K^n\left | A \right | & \\
-    \left | AB \right | = \left | A \right | \left | B \right | &\\
-    \left | A^T \right |= \left | A \right |& \\
-    \left | A^{-1} \right | = \left | A \right | ^{-1}& \\
-    \left | A^{*} \right |=\left | A \right |^{n-1}& \\
-    \text{设A的特征值为}\lambda_1,\lambda _2,\ldots,\lambda_n,&\text{则}\left | A \right | =\prod_{i=1}^{n}\lambda_i  \\
-    \text{若A与B相似},&\text{则}\left | A \right | =\left | B \right | 
-\end{matrix}\right.\\
-    \text{Cramer法则}& x_1=\frac{D_1}{D},x_2=\frac{D_2}{D},\ldots,x_n\frac{D_n}{D}
-\end{matrix}\right.
+\fbox{
+    \begin{tabular}{c}
+        行 \\
+        列 \\
+        式
+    \end{tabular}
+}\begin{cases}
+    \fbox{行列式的概念} &\begin{cases}
+        \fbox{定义} & n!\text{项不同行不同列元素乘积的代数和} \\
+        \fbox{性质}
+    \end{cases}\\
+    \fbox{重要行列式} &\begin{cases}
+        \text{上(下)三角,主对角行列式} \\
+        \text{副对角行列式} \\
+        ab\text{型行列式} \\
+        \text{拉普拉斯展开式} \\
+        \text{范德蒙行列式}
+    \end{cases} \\
+    \fbox{展开定理} &\begin{cases}
+        a_{i1}A_{j1}+\ldots+a_{in}A_{jn}=\begin{cases}
+            \left|A\right| &i = j \\
+            0 &i\neq j 
+        \end{cases} \\
+        a_{1i}A_{1j}+\ldots+a_{ni}A_{nj}=\begin{cases}
+            \left|A\right| &i = j \\
+            0 &i\neq j
+        \end{cases}
+    \end{cases}\\
+    \fbox{行列式公式} &\begin{cases}
+        \left|kA\right|=k^n\left|A\right|\qquad\left|AB\right|=\left|A\right|\left|B\right| \\
+        \left|A^T\right|=\left|A\right|\qquad\left|A^{-1}\right|=\left|A\right|^{-1} \\
+        \left|A^{*}\right|=\left|A\right|^{n-1} \\
+        \text{设}A\text{的特征值为}\lambda_1\ldots\lambda_n,\text{则}\left|A\right|=\Pi_{i=1}^{n}\lambda_i \\
+        \text{若}A\text{与}B\text{相似,则}\left|A\right|=\left|B\right|
+    \end{cases} \\
+    \fbox{Grammer法则} & \displaystyle x_1=\frac{D_1}{D}, x_2 = \frac{D_2}{D},\ldots,x_n=\frac{D_n}{D}
+\end{cases}
 $$
 \newpage
 

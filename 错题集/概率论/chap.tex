@@ -240,14 +240,14 @@
     
     \begin{solution}
         这道题还真实蛮奇怪的,有题可知所求概率为
-        $$P\{a/\sigma < X < b/\sigma\}=\Phi(a/\sigma)=\Phi(b/\sigma)$$
+        $$P\{a/\sigma < X < b/\sigma\}=\Phi(b/\sigma)-\Phi(a/\sigma)$$
         不妨记
         \[
-        f(\sigma)=\Phi(a/\sigma)=\Phi(b/\sigma)
+        f(\sigma)=\Phi(b/\sigma) - \Phi(a/\sigma)
         \]
         问题等效为去上面函数的最值问题. 
         \[
-            f'(\sigma) = -\frac{a}{\sigma^2}\phi(a/\sigma)-\frac{b}{\sigma^2}\phi(a/\sigma)
+            f'(\sigma) = \frac{a}{\sigma^2}\phi(a/\sigma)-\frac{b}{\sigma^2}\phi(b/\sigma)
         \]
         令$f'(\sigma)=0$,则有$be^{-(b^2/(2\sigma^2))}=ae^{-(a^2/(2\sigma^2))}$
         两边取对数,可以得到 
