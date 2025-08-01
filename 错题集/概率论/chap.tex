@@ -14,6 +14,7 @@
     一件次品被误判为正品的概率为 10\%. 试求：
         \item[(I)]随机检验一箱产品,它能通过验收的概率$p$ ;
         \item[(II)]检验10箱产品通过率不低于90\%的概率$q$ .
+    \answer{
     \begin{solution}
         (1)设$B=\{\text{任取一件为正品}\}$,$A=\{\text{一箱产品能通过验收}\}$
         则由全概率公式有$$P(A)=P(A\mid B)P(B)+P(A\mid\bar{B})P(\bar{B})$$
@@ -22,11 +23,15 @@
         由全概率公式可以求出$$P(B)=\sum_{i=0}^{2}P(C_i)P(B\mid C_i)=0.9$$故$P(A)=0.892$ \\
         (2)$q=P\{X/10\geq 0.9\}=P\{X\geq 9\}=P\{X=9\}+P\{X=10\}\approx 0.705$
     \end{solution}
+    }
+
     \item 一条自动生产线生产 $n$ 件产品不出故障的概率为 
     $\frac{{\lambda }^{n}}{n!}{\mathrm{e}}^{-\lambda },n = 0,1,2,\cdots$ . 
     假设产品的优质品率为 $p\left( {0 < p < 1}\right)$ . 如果各件产品是否为优质品相互独立.
         \item[(I)]计算生产线在两次故障间共生产 $k$ 件 $\left( {k = 0,1,2,\cdots }\right)$ 优质品的概率；
         \item[(II)]若已知在某两次故障间该生产线生产了 $k$ 件优质品,求它共生产 $m$ 件产品的概率.
+    
+    \answer{
     \begin{solution}
         (1)不妨令\\
         $B_k=\{\text{两次故障公生产了k件优质品}\}$,$A_n=\{\text{两次故障间总共生产了n件产品}\}$,显然$A_0,A_1,\ldots$构成了
@@ -47,8 +52,12 @@
         关于全概率公式与贝叶斯公式的总结 \\
         这种问题的关键在于寻找一个合适的完备事件组,当问题涉及"原因推结果/结果推原因"大概率要用贝叶斯公式(条件概率是贝叶斯的特殊情况)
     \end{tcolorbox}
+    }
+
     \item 甲、乙二人轮流投篮,游戏规则规定为甲先开始,且甲每轮只投一次,而乙每轮连续投两次,先投中者为胜. 设甲、乙每次投篮的命中率分别是 $p$ 与 0.5,
     则 $p =$\_\_\_时,甲、乙胜负概率相同.
+    
+    \answer{
     \begin{solution}
         这道题和笔记中的交替射击模型一致,记$A=\{\text{甲获胜}\},B=\{\text{乙获胜}\}$,则由题意有 
         \[
@@ -56,8 +65,11 @@
         \]
         再由题意可知,要使得甲乙获胜概率一致,则$P(A)=P(B)=0.5\implies p = \frac{3}{7}$
     \end{solution}
+    }
+    
     \item (非离散非连续的概率)设随机变量X的绝对值不大于1,且$P\{X=0\}=\frac{1}{4}$,已知当$X\neq 0$的时候,X在其他取值范围内
     满足均匀分布,求X的分布函数$F_{X}(x)$.
+    \answer{
     \begin{solution}
         由题意有$P\{|X|\leq 1\}=1,P\{X=0\}=\frac{1}{4}\implies P\{X\neq = 0\}=\frac{3}{4}$,又因为区间长度为$2$,有
         \[F_{X}(x) =
@@ -69,11 +81,13 @@
         \end{cases}
         \]
     \end{solution}
+    }
     \item 设有四个编号分别为$1,2,3,4$的盒子和三只球，现将每个球随机地放入四个盒子，记$X$为至少有一只球的盒子的最小号码.
     \begin{enumerate}
         \item [(1)] 求X的分布律; 
         \item [(2)] 若当$X=k$的时候,随机变量在$\left[0,k\right]$上服从均匀分布,求$P\{Y\leq 2\}$;
     \end{enumerate}
+    \answer{
     \begin{solution}
         \item[(1)] 由题有$P\{X=1\}=\frac{C_{3}^{1}3^2+C_{3}^{2}3+C_{3}^{3}}{4^3}=\frac{37}{64}$
         解释:总共有$4^3$种方案,若1是最小的有球的盒子,则其中可以有$1,2,3$三种可能,$C_{3}^{1}3^2$表示选择一个球加入1号盒子,其余两个球可以从剩余
@@ -88,20 +102,33 @@
         \]
         \item[(2)] 由全概率公式$P\{Y\leq 2\}=\sum_{i=1}^{4}P\{Y\leq 2\mid X=k\}=\frac{367}{384}$
     \end{solution}
+    }
     \item 有一根长为$L$的木棒,将其任意折成三段,记事件$A=\{\text{中间一段为三段中的最长者}\}$,则$P(A)=\_\_\_\_$
+    \answer{
     \begin{solution}
     
     \end{solution}
+    }
+
     \item 设甲乙两人独立对同一目标进行一次设计,其命中率分别为0.5和0.4,已知目标被命中,则它是乙射中的概率为\_\_\_\_
+    
+    \answer{
     \begin{solution}
         
     \end{solution}
+    }
+
     \item 已知$10$部手机中有$7$个合格品和$3$个次品,每次任取一个作测试,测试后不放回,直到将$3$个次品都找到为止
     ,则需要测试$7$次的概率为\_\_\_\_
+    
+    \answer{
     \begin{solution}
         
     \end{solution}
+    }
+
     \item 在 \( n \) 重伯努利试验中,事件 \( A \) 发生的概率为 \( p \) ,则事件 \( A \) 发生奇数次的概率为\_\_\_\_ 
+    \answer{
     \begin{solution}
         \item [(方法一)]
         首先考虑第n次试验,A发生奇数次的情况有两种.(1)前n-1次成功率偶数次,第n次成功;(2)前n-1次成功了奇数次,第n次失败了.
@@ -160,6 +187,9 @@
         \end{align*}
         故$P(Y=0)=1-P(Y=1)=\frac{1-(1-2p)^n}{2}$
     \end{solution}
+    }
+
+
     \item 设甲盒中有 4 个红球和 2 个白球,乙盒中有 2 个红球和 4 个白球,掷一枚均匀的硬币,若正面出现,
     则从甲盒中任取一球,若反面出现,则从乙盒中任取一球,设每次取出的球观看颜色后放回原盒中.
     \begin{enumerate}
@@ -167,6 +197,7 @@
         \item [(II)]若前两次都取得红球,求红球都来自甲盒的概率.
     \end{enumerate}
 
+    \answer{
     \begin{solution}
         设$A_i=\{\text{第i次取得红球}\}(i=1,2,3),B_i=\{\text{第j次投掷银币出现正面}\}(j=1,2,3)$ 
         \begin{enumerate}
@@ -184,10 +215,12 @@
             \]
         \end{enumerate}
     \end{solution}
+    }
     \item (考的可能性比较低)设一批产品中有$15\%$的次品,进行独立重复抽样检验,若抽取 20 个样品,则抽出的20个样品中,
     可能性最大的次品数是多少?并求其概率.
 
-    \begin{solution}
+    \answer{
+        \begin{solution}
         设20次抽取其中出现次品的次数为X,其显然满足$X\sim B(20,0.15)$,不妨假设当$X=k$的时候物品的可能性最大,则有
         $P(X=k)\geq P(X=k-1),P(X=k)\geq P(X=k+1)$即
         \[
@@ -205,23 +238,29 @@
         \end{cases}
         \]
         即$2.15\leq k \leq 3.15$ 故$k=3$,其概率为$P(X=3)=C_{20}^{3}0.15^{3}0.85^{17}$
-    \end{solution}
+        \end{solution}
+    }
     
     \item 设自动机床在任意时长为$t$的时间间隔内发生故障的此时为$X$服从参数为$\lambda_t$的泊松分布,$Y$表示相继两次
     故障之间的时间间隔,则当$t>0$时,$P\{Y>t\}=\_\_\_\_$
-    \begin{solution}
+    \answer{
+        \begin{solution}
         是一个文字游戏,所谓$P\{Y>t\}$转换为$X$的话其实就是在$t$时间内没有发生故障,$P\{X=0\}=\frac{\lambda_t^0}{0!}e^{-\lambda_t}=e^{-\lambda_t}$
-    \end{solution}
+        \end{solution}
+    }
 
     \item 设随机变量$X\sim N(\mu,\sigma^2),\sigma>0,(x_0,y_0)$为分布函数曲线$y=F(x)$的拐点,则$x_0=\_\_\_,y_0=\_\_\_$ 
     
-    \begin{solution}
-        这道题本身并没啥,但要注意题目,$y_0$是$F(x_0)$而不是$f(x_0)$,答案是$\mu,\frac{1}{2}$
-    \end{solution}
+    \answer{
+        \begin{solution}
+            这道题本身并没啥,但要注意题目,$y_0$是$F(x_0)$而不是$f(x_0)$,答案是$\mu,\frac{1}{2}$
+        \end{solution}
+    }
 
     \item 设离散型随机变量X的分布律为$P\{X=k\}=\frac{a}{k!}e^{-2},k=0,1,2\ldots$则常数$a=\_\_\_\_$ 
     
-    \begin{solution}
+    \answer{
+        \begin{solution}
         这道题由两个解法,需要注意对比泊松分布时候系数的确定 
         \begin{enumerate}
             \item [(方法一)] 由规范性有 
@@ -235,10 +274,12 @@
             注意到$\lambda=-1$的时候与题设要求接近,故有$ae^{-2}=e^{-1}\implies a = e$
         \end{enumerate}
     \end{solution}
+    }
 
     \item 设$X\sim N(0,\sigma^2)$,$X$在区间$(a,b)$内取值的概率最大,其中$a>0$则$\sigma^2=\_\_\_\_$
     
-    \begin{solution}
+    \answer{
+        \begin{solution}
         这道题还真实蛮奇怪的,有题可知所求概率为
         $$P\{a/\sigma < X < b/\sigma\}=\Phi(b/\sigma)-\Phi(a/\sigma)$$
         不妨记
@@ -259,6 +300,7 @@
         \fbox{$\sigma^2=\frac{a^2-b^2}{2(\ln{a}-\ln{b})}$}
         \]
     \end{solution}
+    }
 \end{enumerate}
 
 
