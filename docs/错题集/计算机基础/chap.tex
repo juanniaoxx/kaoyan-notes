@@ -458,7 +458,7 @@
     \item 进程P1和进程P2均包含并发执行的线程,部分伪代码如下,下列选项中,需要互斥执行的操作是() 
     \begin{center}
         \begin{minipage}[t]{0.45\textwidth}
-\begin{lstlisting}[numbers=left]
+\begin{lstlisting}[language=C, numbers=left]
 // 进程P1                    
 int x = 0;                   
 Thread1() {                  
@@ -475,7 +475,7 @@ Thread2() {
         \end{minipage}
         \hfill
         \begin{minipage}[t]{0.45\textwidth}
-\begin{lstlisting}
+\begin{lstlisting}[language=C]
 // 进程P2                    
 int x = 0;                   
 Thread3() {                  
@@ -496,7 +496,7 @@ Thread4() {
     \item 下面是一个并发进程的程序代码,正确的是() 
     \begin{center}
         \begin{minipage}[t]{0.45\textwidth}
-            \begin{lstlisting}[numbers=left]
+            \begin{lstlisting}[language=C, numbers=left]
 Semaphore x1=x2=y=1;
 int c1=c2=0;
 P1() {

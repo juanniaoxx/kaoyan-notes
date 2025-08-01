@@ -180,18 +180,47 @@ $$
     \item 设 $ n $ 阶矩阵 $ A $ 满足 $ A^2 = 2A $,则下列结论不正确的是： \\
     (A) $A$可逆 \qquad (B) $A-E$可逆\qquad (C)$A+E$可逆\qquad (D)$A-3E$可逆 
     \begin{solution}
-    \newpage
+    利用特征值,由题设可知对于$A$的任意特征值有
+    $$
+        \lambda ^ 2 - 2\lambda = 0 \implies \lambda = 0 \text{或} \lambda = 2
+    $$
+    故B,C,D的特征值分别是  
+    $$
+        \lambda_B:\begin{cases}
+            -1 \\
+            1 
+        \end{cases}, \lambda_C\begin{cases}
+            1 \\
+            3 
+        \end{cases},\lambda_D\begin{cases}
+            -3 \\
+            -1
+        \end{cases}
+    $$
+    由可逆的充分条件可知BCD均可逆
     \end{solution}
     
     % 例题2.5
     \item 设 $ A, B $ 为 $ n $ 阶矩阵,$ a, b $ 为非零常数.证明：
     \begin{enumerate}
-        \item 若 $ AB = aA + bB $,则 $ AB = BA $;
-        \item 若 $ A^2 + aAB = E $,则 $ AB = BA $.
+        \item[(1)] 若 $ AB = aA + bB $,则 $ AB = BA $;
+        \item[(2)] 若 $ A^2 + aAB = E $,则 $ AB = BA $.
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    (1) 
+    \begin{align*}
+        AB = aA + bB& \\
+        A(B-aE) - bB = 0& \\
+        (A-bE)(B-aE)=abE &\implies (A-bE),(B-aE)\text{可逆} \\
+        (B-aE)(A-bE)=abE& \\
+        BA=aA+bB=AB&
+    \end{align*}
+    (2) 
+    \begin{align*}
+        A^2+aAB=E &\\
+        A(A+aE)=E &\implies (A+aE)A = E \implies AB=BA
+    \end{align*}
     \end{solution}
     
     \begin{tcolorbox}[title=总结]
@@ -215,12 +244,30 @@ $$
     \end{pmatrix}$
     满足 $ A^3 = O $.
     \begin{enumerate}
-        \item 求 $ a $ 的值；
-        \item 若矩阵 $ X $ 满足 $ X - XA^2 - AX + AXA^2 = E $,求 $ X $.
+        \item[(1)] 求 $ a $ 的值；
+        \item[(2)] 若矩阵 $ X $ 满足 $ X - XA^2 - AX + AXA^2 = E $,求 $ X $.
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    (1)由$A^3=0\implies \lambda^3=0 \implies \lambda_i = 0 $ 又$\displaystyle tr(A)=\sum_{i=0}^{3}\lambda_i$ 故$a=0$ \\
+    (2) 
+    \begin{align*}
+        \text{原式} &= X(E-A^2)-AX(E-A^2) \\
+        &=(E-A)X(E-A^2) = E
+    \end{align*}
+    有$E-A,E-A^2$均可逆(用特征值)故 
+    $$
+    X=(E-A)^{-1}(E-A^2)^{-1} 
+    $$
+    通过初等行变换化为行最简型有 
+    \begin{align*}
+        \left(E-A-A^2 \mid E\right) \xlongequal{\text{初等行变换}}& \left(E\mid (E-A-A^2)^{-1}\right) \\
+        &= \left(\begin{array}{ccc|ccc}
+            1 & 0 & 0 & 3 & 1 & -2 \\
+            0 & 1 & 0 & 1 & 1 & -1 \\
+            0 & 0 & 1 & 2 & 1 & -1
+        \end{array}\right)
+    \end{align*}
     \end{solution}
 \end{enumerate}
 
@@ -243,15 +290,56 @@ $$
 \begin{enumerate}[label=\arabic*.,start=7]
     \item (2018, 数一、二、三) 设 $ A, B $ 为 $ n $ 阶矩阵,$ (XY) $ 表示分块矩阵,则：
     \begin{enumerate}
-        \item $ r(A\ AB) = r(A) $
-        \item $ r(A\ BA) = r(A) $
-        \item $ r(A\ B) = \max\{r(A), r(B)\} $
-        \item $ r(A\ B) = r(A^T B^T) $
+        \item[A] $ r(A\ AB) = r(A) $
+        \item[B] $ r(A\ BA) = r(A) $
+        \item[C] $ r(A\ B) = \max\{r(A), r(B)\} $
+        \item[D] $ r(A\ B) = r(A^T B^T) $
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    (方法一) 由性质4,联立的秩大于等于每一个有
+    $$
+    r\left[A(E,B)\right] \geq r(A)
+    $$
+    由性质3,乘积的秩小于等于每一个有
+    $$
+    r\left[A(E,B)\right] \leq r(A)
+    $$
+    故A选项正确 \\
+    易错点,B选项为啥不能写成
+    $$
+    r\left[(E+B)A\right] 
+    $$
+    其中$(E+B)_{n\times 2n},A_{n\times 2}$ 列$\neq$行无法乘 \\
+    (方法二) 
+    $$
+    r(A,AB)=r\left[A(E,B)\right]
+    $$
+    其中$(E,B)$显然\underline{行满秩},由性质7右乘行满列则秩不变,即
+    $$
+    r(A,AB)=r(A) 
+    $$
+    (方法三)
+    $$
+    AB=\left(\alpha_1,\alpha_2,\ldots,\alpha_n\right)\begin{pmatrix}
+        b_{11} & \ldots & b_{1n} \\
+        \vdots & \ldots & \vdots \\
+        b_{n1} & \ldots & b_{nn}
+    \end{pmatrix} = \left(b_{11}\alpha_1+\ldots+b_{n1}\alpha_n,\ldots,b_{1n}\alpha_1+\ldots+b_{nn}\alpha_n\right)
+    $$
+    即$AB$的列向量可以由$A$的列向量线性表示,故由极大无关组的定义有
+    $$
+    r(A,AB)=r(A)
+    $$
+    (方法四)\ 广义初等变化(分块矩阵) 
+    $$
+    (A,AB)=(A,O)\begin{pmatrix}
+        E & B \\
+        O & E 
+    \end{pmatrix} \implies r(A,AB)=r(A,O)=r(A)
+    $$
     \end{solution}
+
     \item 设$A$为$n$阶矩阵,证明:
     \begin{enumerate}
         \item [(1)] 若 $ A^2 = A $,则 $ r(A) + r(A - E) = n $.
@@ -259,8 +347,20 @@ $$
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    证明第二个,第一个和第二个基本一致. 由$A^2=E$有$(A+E)(A-E)=0$故
+    $$
+    r(A+E)+r(A-E)\leq n 
+    $$
+    又
+    $$
+    r(A+E)+r(A-E) = r(A+E)+r(E-A) \geq r(2E) = n
+    $$
+    因此$r(A+E)+r(A-E)=n$
     \end{solution}
+
+    \begin{tcolorbox}
+        若$A$的二次方程有两个互异根,则因式分解后,秩的和为$n$
+    \end{tcolorbox}
 \end{enumerate}
 
 \section{关于伴随矩阵}
@@ -287,17 +387,72 @@ $$
     (A) 2\qquad (B) $\frac{1}{3}$\qquad (C) 3\qquad (D)6
     
     \begin{solution}
-    \newpage
+    由题设有
+    $$
+    \left(1,\ldots,1\right)A = 2(1,\ldots, 1)
+    $$
+    两边同时右乘$A^*$即
+    $$
+    (1,\ldots,1)A^*=3(1,\ldots,1)
+    $$
+    故$A^{*}$的各列元素之和均为3
     \end{solution}
-    
+    \begin{tcolorbox}[title=各行/列元素之和]
+        (各行元素之和为$\lambda$)通过右乘列向量即
+        $$
+        A\begin{pmatrix}
+            1 \\
+            \vdots \\
+            1
+        \end{pmatrix} = \lambda \begin{pmatrix}
+            1 \\
+            \vdots \\
+            1
+        \end{pmatrix} \iff \begin{pmatrix}
+            1 \\
+            \vdots \\
+            1
+        \end{pmatrix} \text{为}A\text{的特征值为}\lambda\text{的特征向量}
+        $$ 
+        (各列元素之和为$\lambda$)通过做成行向量即
+        $$
+        \left(1,\ldots,1\right)A=\lambda\left(1,\ldots,1\right)
+        $$
+    \end{tcolorbox}
     \item 设 $ A = (a_{ij}) $ 为 $ n(n \geq 3) $ 阶非零矩阵,$ A_{ij} $ 为 $ a_{ij} $ 的代数余子式,证明：
     \begin{enumerate}
-        \item $ a_{ij} = A_{ij}(i, j = 1, 2, \cdots, n) \Leftrightarrow A^* = A^T \Leftrightarrow AA^T = E $ 且 $ |A| = 1 $；
-        \item $ a_{ij} = -A_{ij}(i, j = 1, 2, \cdots, n) \Leftrightarrow A^* = -A^T \Leftrightarrow AA^T = E $ 且 $ |A| = -1 $.
+        \item[(1)] $ a_{ij} = A_{ij}(i, j = 1, 2, \cdots, n) \Leftrightarrow A^* = A^T \Leftrightarrow AA^T = E $ 且 $ |A| = 1 $；
+        \item[(2)] $ a_{ij} = -A_{ij}(i, j = 1, 2, \cdots, n) \Leftrightarrow A^* = -A^T \Leftrightarrow AA^T = E $ 且 $ |A| = -1 $.
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    {\color{red} 这道题的结论比较重要} 第一个充要条件通过定义即可证明即
+    $$
+    A^{*}=\begin{pmatrix}
+        A_{11} &\ldots & A_{n1} \\
+        \vdots &\ldots & \vdots \\
+        A_{1n} &\ldots & A_{nn} 
+    \end{pmatrix} = \begin{pmatrix}
+        a_{11} &\ldots & a_{n1} \\
+        \vdots &\ldots & \vdots \\
+        a_{1n} &\ldots & a_{nn} 
+    \end{pmatrix} = A^{T}
+    $$
+    下面证明第二个充要条件. \\
+    右推左, 由于$AA^T=E$且$\left|A\right|=1$ 则
+    $$
+    A^{*}=\left|A\right|A^{-1}=A^{-1}=A^{T}
+    $$
+    左推右,由$A^{*}=A^{T}$则$\left|A^*\right|=\left|A\right|^{n-1}=\left|A^{T}\right|=\left|A\right|$ 从而
+    $\left|A\right|=0,1,-1$ \\
+    由于$A\neq O$,不妨设$a_11\neq 0$,按第一行展开有
+    $$
+    \left|A\right| = a_{11}A_{11} + \ldots a_{1n}A_{1n} = \sum_{i=1}^{n}a_{ii}^2 > 0 \implies \left|A\right| = 1
+    $$
+    又
+    $$
+    AA^{T}=AA^*=\left|A\right|E=E
+    $$
     \end{solution}
 \end{enumerate}
 
@@ -320,31 +475,17 @@ $$
     \end{enumerate}
     
     \begin{solution}
-    \newpage
-    \end{solution}
-    
-    \item 设 
+    有题设有
+    $$
+        E(1,2)A = B 
+    $$
+    即
     \begin{align*}
-    A = \begin{pmatrix}
-    1 & 2 & 3 \\
-    0 & 1 & 2 \\
-    0 & 0 & 1  
-    \end{pmatrix}, \quad
-    P = \begin{pmatrix}
-    0 & 0 & 1 \\
-    0 & 1 & 0 \\
-    1 & 0 & 0 
-    \end{pmatrix}, \quad
-    Q = \begin{pmatrix}
-    1 & 1 & 0 \\
-    0 & 1 & 0 \\
-    1 & 0 & 0
-    \end{pmatrix}
+        B^* &= A^*\left[E(1,2)\right]^* \\
+        &=A^*\left|E(1,2)\right|E^{-1}(1,2) \\
+        &=-A^*E(1,2)
     \end{align*}
-    则 $ (P^{-1})^{2023} A (Q^T)^{2022} = $ \underline{\hspace{3cm}}.
-    
-    \begin{solution}
-    \newpage
+    即交换 $ A^* $ 的第 1 列与第 2 列,得 $ -B^* $
     \end{solution}
 \end{enumerate}
 
