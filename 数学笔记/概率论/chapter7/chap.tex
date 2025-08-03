@@ -22,12 +22,14 @@
     \end{cases}
     \]
     最大似然估计
-    \item[(1)]对样本点$x_1,x_2\ldots,x_n$,似然函数为$L(\theta)\begin{cases}
+    \begin{enumerate}
+        \item[(1)]对样本点$x_1,x_2\ldots,x_n$,似然函数为$L(\theta)\begin{cases}
         \prod_{i=1}^{n}p(x_i;\theta) \\
         \prod_{i=1}^{n}f(x_i;\theta) 
     \end{cases}$
     \item[(2)]似然函数两端取对数求导 
-    \item[(3)]令$\frac{\d\ln{L(\theta)}}{\d\theta}=0$就可以得到$\theta$的最大似然估计值\\ 
+    \item[(3)]令$\frac{\d\ln{L(\theta)}}{\d\theta}=0$就可以得到$\theta$的最大似然估计值
+    \end{enumerate}
     一个关于规范的小提示,如果问估计值用小写字母(样本值),问估计量用大写字母(随机变量)
 \end{remark}
 \begin{enumerate}[label=\arabic*.]
@@ -105,10 +107,12 @@
 \section{估计量的评价标准}
 \begin{remark}
     估计量的评价标准
+    \begin{enumerate}
     \item[(1)] (无偏性)设$\hat{\theta}$为$\theta$的估计量,若$E\hat{\theta}=\theta$则称其为$\theta$无偏估计量
     \item[(2)] (有效性)设$\hat{\theta_1},\hat{\theta_2}$为$\theta$的无偏估计,若$D(\hat{\theta_1})<D(\hat{\theta_2})$则称$\hat{\theta_1}$
     比$\hat{\theta_2}$更有效 
     \item[(3)] 设$\hat{\theta}$为$\theta$的估计量,若$\hat{\theta}$依概率收敛于$\theta$,则称$\hat{\theta}$为$\theta$
+    \end{enumerate}
     一致(相合)估计量 \\
     一致性的考点在于---$\frac{1}{n}\sum\fbox{}\xrightarrow{P}E\fbox{}$
 \end{remark}

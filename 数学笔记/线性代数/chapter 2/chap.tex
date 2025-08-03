@@ -272,9 +272,10 @@ $$
 \end{enumerate}
 
 \section{秩的计算与证明}
-\begin{remark} 秩 \\
+\begin{remark}[秩]
     秩的定义:$\exists r$阶子式非零且$\forall r+1$阶子式均为零 \\
     秩的性质
+    \begin{enumerate}
     \item[(1)] 设$A$为$m\times n$阶矩阵,则$r(A)<\min\{m,n\}$
     \item[(2)] $r(A+B)\leq r(A)+r(B)$
     \item[(3)] $r(AB)\leq\min\{r(A),r(B)\}$
@@ -286,6 +287,7 @@ $$
     左乘列满秩,右乘行满秩,秩不变
     \item[(8)] $r(A)=r(A^T)=r(A^TA)=r(AA^T)$
     \item[(9)] 设$A$为$m\times n$阶矩阵, $B$为$n\times s$阶矩阵,$AB=0$,则$r(A)+r(B)\leq n$
+    \end{enumerate}
 \end{remark}
 \begin{enumerate}[label=\arabic*.,start=7]
     \item (2018, 数一、二、三) 设 $ A, B $ 为 $ n $ 阶矩阵,$ (XY) $ 表示分块矩阵,则：
@@ -366,6 +368,7 @@ $$
 \section{关于伴随矩阵}
 \begin{remark}
     伴随矩阵的性质
+    \begin{enumerate}
     \item[(1)] $AA^*=A^*A=\left|A\right|\xrightarrow{|A|\neq 0}A^{-1}=\frac{1}{|A|}A^*,A^*=|A|A^{-1}$
     \item[(2)] $(kA)^*=k^{n-1}A^*$
     \item[(3)] $(AB)^*=B^*A^*$
@@ -380,7 +383,8 @@ $$
         1,& r(A)=n-1\\
         0,& r(A)<n-1
     \end{cases}
-    $       
+    $
+    \end{enumerate}       
 \end{remark}
 \begin{enumerate}[label=\arabic*.,start=9]
     \item 设 $ n $ 阶矩阵 $ A $ 的各列元素之和均为 2,且 $ |A| = 6 $,则 $ A^* $ 的各列元素之和均为：\\
@@ -457,13 +461,14 @@ $$
 \end{enumerate}
 
 \section{初等变换与初等矩阵}
-\begin{remark}
-    初等变换与初等矩阵的性质
+\begin{remark}[初等变换与初等矩阵的性质]
+    \begin{enumerate}
     \item [(1)] $\left|E(i,j)\right|=-1,\left|E(i(k))\right|=k,\left|E(ij(k))\right|=1$
     \item [(2)] $E(i, j)^T=E(i,j),E(i(k))^T=E(i(k)),E(ij(k))^T=E(ji(k))$
     \item [(3)] $E(i,j)^{-1}=E(i,j),E(i(k))^{-1}=E(i(\frac{1}{k})),E(ij(k)^{-1})=E(ij(-k))$
     \item [(4)] 初等行(列)变换相当于左(乘)对应的初等矩阵
     \item [(5)] 可逆矩阵可以写成有限个初等矩阵的乘积
+    \end{enumerate}
 \end{remark}
 \begin{enumerate}[label=\arabic*.,start=11]
     \item (2005, 数一、二) 设 $ A $ 为 $ n(n \geq 2) $ 阶可逆矩阵,交换 $ A $ 的第 1 行与第 2 行得到矩阵 $ B $,则：

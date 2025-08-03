@@ -10,12 +10,14 @@
 \chapter{函数 极限 连续}
 \section{函数的性态}
 \begin{remark}(有界性的判定)
+    \begin{enumerate}
     \item[(1)] 连续函数在闭区间$[a,b]$上必然有界 
 
     \item[(2)] 连续函数在开区间$(a,b)$上只需要判断端点处的左右极限,若$\lim_{x\to a^{+}}\neq \infty$ 且
     $\lim_{x\to b^{-}}\neq \infty$,则连续函数在该区间内有界.
 
     \item[(3)] $f'(x)$在{\color{red} 有限}区间(a,b)内有界.
+    \end{enumerate}
 
     \underline{Proof:}
     $\forall x\in (a,b),\text{由拉格朗日中值定理},\exists\xi$ 
@@ -49,11 +51,13 @@
     $x_n=\frac{1}{2n\pi},f(x_n)=0$, $n\to\infty,f(x_n)\to 0$不为无穷大,仅仅是无界.
 \end{tcolorbox}
 \begin{remark}(导函数与原函数的奇偶性与周期性)
+    \begin{enumerate}
     \item 连续奇函数的所有原函数$\int_{0}^{x}f(t)dt+C$都是偶函数 
 
     \item 连续偶函数仅有一个原函数$\int_{0}^{x}f(t)\d t$为奇函数
     
     \item 连续周期函数的原函数为周期函数 $\iff\int_{0}^{T}f(x)\d x=0$
+    \end{enumerate}
 \end{remark}
 
 \begin{enumerate}[label=\arabic*.,start=2]

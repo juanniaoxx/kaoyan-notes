@@ -8,11 +8,6 @@
 \else
 \fi
 \chapter{真题与模拟题}
-\begin{tcolorbox}
-    真题全刷结束后才开始套卷练习(8月)\\
-    真题卷要保证刷3遍(9月,10月,11月)各一次 \\
-    模拟卷从25年开始往前刷
-\end{tcolorbox}
 \section{数学真题一网打尽} 
 \begin{enumerate}
     \item $\star$ 求 $\displaystyle \lim_{n\to\infty}\left(\frac{\sin\frac{\pi}{n}}{n+1}+
@@ -20,19 +15,85 @@
 
     \answer{
         \begin{solution}
-        
+        显然是一道夹逼定理的题目,但有几点需要注意. 
+        $$
+        \text{原式} < \frac{1}{n}\sum_{i=1}^{n}\sin{\frac{i}{n}\pi} \xlongequal{n\to\infty} \int_{0}^{1}\sin{\pi x}\d x 
+        $$
+        放大这一方向是比较好想的,重点在于缩小.
+        $$
+        \text{原式} > \frac{1}{n+1}\sum_{i=1}^{n}\sin{\frac{i}{n}\pi} = 
+        {\color{red} \frac{n}{n+1}\cdot\frac{1}{n}}\sum_{i=1}^{n}\sin{\frac{i}{n}\pi} \xlongequal{n\to\infty} \int_{0}^{1}\sin{\pi x}\d x
+        $$
+        \begin{align*}
+            \int_{0}^{1}\sin{\pi x} = \frac{2}{\pi}
+        \end{align*}
+        由夹逼定理有
+        $$
+        \lim_{n\to\infty} \text{原式} = \frac{2}{\pi}
+        $$
         \end{solution}
     }
     
     \item $\star\star$ 设函数$f(x)$在区间$\left[0,1\right]$连续,则$\int_{0}^{1}f(x)\d x = $ (   ) \\
     (A).$\displaystyle\lim_{n\to\infty}\sum_{k=1}^{n}f\left(\frac{2k-1}{2n}\right)\cdot\frac{1}{2n}$\qquad
     (B).$\displaystyle\lim_{n\to\infty}\sum_{k=1}^{n}f\left(\frac{2k-1}{2n}\right)\cdot\frac{1}{n}$\\
-    (C).$\displaystyle\lim_{n\to\infty}\sum_{k=1}^{n}f\left(\frac{k-1}{2n}\right)\cdot\frac{1}{2n}$\qquad
+    (C).$\displaystyle\lim_{n\to\infty}\sum_{k=1}^{n}f\left(\frac{k-1}{2n}\right)\cdot\frac{1}{n}$\qquad
     (D).$\displaystyle\lim_{n\to\infty}\sum_{k=1}^{n}f\left(\frac{k}{2n}\right)\cdot\frac{2}{n}$\qquad
 
+    \answer{
+        \begin{solution}[解法一\ 正面突破]
+            这道题显然是考察定积分的定义,但考察的比较细节.
+            \begin{enumerate}
+                \item[i] 其中(A)(B)选项是将区间进行$n$等分的划分,且取的是区间重点,如何得知呢? 考虑
+                端点$0,\frac{1}{n},\frac{2}{n},\ldots,\frac{k}{n},\frac{k+1}{n},\ldots,\frac{n}{n}$而
+                $$
+                    \frac{k-1}{n}=\frac{2k-2}{2n} < \frac{2k - 1}{2n} < \frac{2k}{2n} = \frac{k}{n}
+                $$
+                故由定积分的定义,此时有
+                $$
+                \int_{0}^{1}f(x)\d x = \lim_{n\to\infty}\sum_{k=1}^{n}f(\frac{2k-1}{2n})\cdot \frac{1}{n}
+                $$
+                \item[ii] 其中(C)(D)是将区间进行$2n$等分的划分,取的分别是左/右端点,这并不影响定积分形式,应该为
+                $$
+                \int_{0}^{1}f(x)\d x = \lim_{n\to\infty}\sum_{k=1}^{2n}f(\frac{k}{2n})\cdot\frac{1}{2n} 
+                $$
+            \end{enumerate}
+        \end{solution}
+
+        \begin{solution}[解法二\ 选择题不客气!]
+            取$f(x) = 1$ 则$\displaystyle\int_{0}^{1}1\d x = 1$,对应的选项可以直接计算,结果为
+            \begin{enumerate}
+                \item [(A)] $\displaystyle \text{原式}=\lim_{n\to\infty}\sum_{i=1}^{n}\frac{1}{2n}=\frac{1}{2}\neq 1$ 
+                \item [(B)] $\displaystyle \text{原式}=\lim_{n\to\infty}\sum_{i=1}^{n}\frac{1}{n}= 1$
+                \item [(C)] $\displaystyle \text{原式}=\lim_{n\to\infty}\sum_{i=1}^{2n}\frac{1}{n}= 2\neq 1$
+                \item [(D)] $\displaystyle \text{原式}=\lim_{n\to\infty}\sum_{i=1}^{2n}\frac{2}{n}= 4\neq 1$ 
+            \end{enumerate}
+        \end{solution}
+
+        \newpage
+        \begin{remark}[定积分的定义]
+            定积分的定义有如下几个要点
+            \begin{enumerate}
+                \item [(1)] 将区间$[a,b]$划分为$n$个区域,其中记
+                $$
+                \lambda = \max\{\Delta_1,\Delta_2,\ldots,\Delta_{n-1},\Delta_{n}\}
+                $$
+                \item [(2)] 取任意区间内的某一点$\xi$取其函数值$f(\xi)$,则定积分为
+                $$
+                \int_{a}^{b}f(x)\d x = \lim_{\lambda\to 0}\sum_{i=1}^{n}f(\xi)\Delta_{i} 
+                $$
+                这个$\xi$的选择,即是上题中的划分,可以是中点/左边界/右边界等特殊点,当然也可以是任意非特殊点.
+            \end{enumerate}
+        \end{remark}
+    }
     \item $\star\star$ 设$f(x)$是区间$[0,+\infty)$上单调递减且非负的连续函数,$\displaystyle a_n=\sum_{k=1}^{n}f(k)-\int_{1}^{n}f(x)\d x(n=1,2,\ldots)$证明
     数列$\{a_n\}$极限存在 
 
+    \answer{
+        \begin{solution}
+            
+        \end{solution}
+    }
     \item 
     \begin{enumerate}
         \item [(I)] 证明方程$x^{n}+x^{n-1}+\ldots+x=1(n>1,n\in\mathbf{N})$在区间$\left(\frac{1}{2},1\right)$内仅有一个实根 
@@ -79,9 +140,12 @@
     C.有最小值无最大值 \qquad D.无最大值与最小值
 \end{enumerate}
 
+\section{超越(11-25年)}
 
-\section{计算机基础真题套卷}
-\section{合工大}
+\section{共创(22,23,24)年}
+
+\section{25年模拟卷(百来套)}
+
 \ifx\allfiles\undefined
 \end{document}
 \fi
