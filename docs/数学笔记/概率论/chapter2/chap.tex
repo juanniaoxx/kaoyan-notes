@@ -10,14 +10,15 @@
 \chapter{一维随机变量}
 
 \section{分布函数的判定与计算}
-\begin{remark}
-    (分布函数的性质)
+\begin{remark}[分布函数的性质]
+    \begin{enumerate}
     \item [(1)] $0\leq F(x)\leq 1, -\infty < x < +\infty, F(-\infty) = 0, F(+\infty)=1$ 
     \item [(2)] (单调不减) 当$x_1 < x_2$时,$F(x_1)<F(x_2)$ 
     \item [(3)] (右连续) $F(x+0)=F(x)$ \\
     上面三个性质为分布函数的定义,只要满足上述性质的函数一定是某一个概率分布的分布函数
     \item [(4)] $P\{a<X\leq b\}=F(b)-F(a)$
-    \item [(5)] $P\{X<x\}=F(x-0), P\{X=x\}=F(x)-F(x-0)$ \\
+    \item [(5)] $P\{X<x\}=F(x-0), P\{X=x\}=F(x)-F(x-0)$
+    \end{enumerate}
     $P\{a\leq x\leq b\}=P\{x\leq b\}-P\{x<a\}=F(b)-F(a-0)$ \\
     $P\{a<x<b\}=P\{x<b\}-P\{x\leq a\}=F(b-0)-F(a)$
 \end{remark}
@@ -95,14 +96,15 @@
 \end{enumerate}
 
 \section{概率密度的判定与计算}
-\begin{remark}
-    (概率密度的性质)
+\begin{remark}[概率密度的性质]
+    \begin{enumerate}
     \item [(1)] $f(x)\geq 0, -\infty < x +\infty$ 
     \item [(2)] $\int_{-\infty}^{+\infty}f(x)\d x = 1$ \\
     上面两条性质为概率密度的定义,任何满足上面的函数都是某个概率的概率密度函数 
     \item [(3)] $P\{a<X\leq b\}=\int_{a}^{b}f(x)\d x$ \\
     推广$P\{a<X\leq b\}=P\{a\leq X\leq b\}=P\{a\leq X < b\} = P\{a<X <  b\} =\int_{a}^{b}f(x)\d x$ 
     \item [(4)] 在$f(x)$\textbf{连续点}处有$F'(x)=f(x)$ 
+    \end{enumerate}
 \end{remark}
 \begin{enumerate}[label=\arabic*.,start=3]
     % 例题2.3
@@ -181,9 +183,9 @@
 \end{enumerate}
 
 \section{关于八大分布}
-\begin{remark}
-    (八大分布的概率分布与数字特征)
-    \item [(1)] 0-1分布, $X\sim B(1,p)$ 
+\begin{remark}[八大分布的概率分布与数字特征]
+    \begin{enumerate}
+        \item [(1)] 0-1分布, $X\sim B(1,p)$ 
     $
     \begin{array}{c|c c}
         X & 0 & 1\\
@@ -229,6 +231,7 @@
     $\varphi(x)=\frac{1}{\sqrt{2\pi}}e^{-\frac{x^{2}}{2}}$,
     $\varPhi(0)=\frac{1}{2}$,$\varPhi(-x)=1 - \varPhi(x)$ \\
     正态分布的标准化若$X \sim N(\mu,\sigma^{2})$，则 $\frac{X-\mu}{\sigma}\sim N(0,1)$.
+    \end{enumerate}
 \end{remark}
 
 \myspace{1}

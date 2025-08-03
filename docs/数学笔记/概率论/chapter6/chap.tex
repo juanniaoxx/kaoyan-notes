@@ -22,35 +22,45 @@
     设随机变量$X_1,X_2,\ldots,X_n$相互独立,均服从$N(0,1)$称$\chi^2=X_1^2+X_2^2+\ldots+X_n^2$
     服从自由度为$n$的$\chi^2$分布,记$\chi^2\sim\chi^2(n)$,特别的若$X\sim N(0,1)$,则$\chi^2\sim\chi^2(1)$ \\
     $\chi^2$分布的性质
+    \begin{enumerate}
     \item[(1)] 参数可加性\qquad 设$\chi_1^2$与$\chi_2^2$相互独立,且$\chi_1^2\sim\chi^2(n),\chi_2^2\sim\chi^2(m)$则
     $\chi_1^2+\chi_2^2\sim\chi^2(n+m)$
-    \item[(2)] 设$\chi^2\sim\chi^2(n)$则$E\chi^2=n,D\chi^2=2n$ \\
+    \item[(2)] 设$\chi^2\sim\chi^2(n)$则$E\chi^2=n,D\chi^2=2n$
+    \end{enumerate}
     $F$分布的定义 \\
     设随机变量$X$和$Y$相互独立,且$X\sim \chi^2(n_1),Y\sim\chi^2(n_2),$称$F=\frac{X/n_1}{Y/n_2}$服从自由度为
     $n_1,n_2$的$F$分布,记作$F\sim F(n_1,n_2)$\\
     $F$分布的性质 
+    \begin{enumerate}
     \item[(1)] 设$F\sim F(n_1,n_2),$则$\frac{1}{F}\sim F(n_2,n_1)$
-    \item[(2)] $F_{1-\alpha}(n_2,n_1)=\frac{1}{F_{\alpha}(n_1,n_2)}$ \\
+    \item[(2)] $F_{1-\alpha}(n_2,n_1)=\frac{1}{F_{\alpha}(n_1,n_2)}$
+    \end{enumerate}
     $t$分布的定义\qquad 设随机变量$X$和$Y$相互独立,$X\sim N(0,1),Y\sim \chi^2(n)$,则称$T=\frac{X}{\sqrt{Y/n}}$服从自由度为
     $n$的$t$分布,记作$T\sim t(n)$ \\
-    $t$分布的性质
+    $t$分布的性质 
+    \begin{enumerate}
     \item[(1)] 设$T\sim t(n)$, 则$T^2\sim F(1, n),\frac{1}{T^2}\sim F(n,1)$ 
     \item[(2)] $t_{1-\alpha}(n)=-t_{\alpha}(n)$ 
+    \end{enumerate}
 \end{remark}
 \begin{remark}
     单正态总体与双正态总体 \\
     单正态总体 \\
     设$X_1,X_2,\ldots,X_n$为来自总体$X\sim N(\mu,\sigma^2)$的简单随机样本,$\bar{X}$与$S^2$分别为样本均值与样本方差,则
+    \begin{enumerate}
     \item [(1)] $\frac{\bar{X}-\mu}{\sigma/\sqrt{n}}\sim N(0,1)$,即$\bar{X}\sim N(\mu,\sigma^2/n)$
     \item [(2)] $\frac{(n-1)S^2}{\sigma^2}\sim\chi^2(n-1)$即$\frac{1}{\sigma^2}\sum_{i=1}^{n}(X_i-\bar{X})^2\sim\chi^2(n-1)$,
     且$\bar{X}$与$S^2$相互独立 
-    \item[(3)] $\frac{\bar{X}-\mu}{S/\sqrt{n}}\sim t(n-1)$ \\
+    \item[(3)] $\frac{\bar{X}-\mu}{S/\sqrt{n}}\sim t(n-1)$
+    \end{enumerate}
     双正态总体 \\
     设总体 $X \sim  N\left( {{\mu }_{1},{\sigma }_{1}^{2}}\right)$ ,总体 $Y \sim  N\left( {{\mu }_{2},{\sigma }_{2}^{2}}\right) ,{X}_{1},{X}_{2},\cdots ,{X}_{{n}_{1}}$ 与 ${Y}_{1},{Y}_{2},\cdots ,{Y}_{{n}_{2}}$ 分别为来
     自总体 $X$ 与 $Y$ 的简单随机样本且相互独立,样本均值分别为 $\bar{X},\bar{Y}$ ,样本方差分别为 ${S}_{1}^{2},{S}_{2}^{2}$ ,则
+    \begin{enumerate}
     \item[(4)] $\frac{\bar{X} - \bar{Y} - \left( {{\mu }_{1} - {\mu }_{2}}\right) }{\sqrt{\frac{{\sigma }_{1}^{2}}{{n}_{1}} + \frac{{\sigma }_{2}^{2}}{{n}_{2}}}} \sim  N\left( {0,1}\right)$;
     \item[(5)]$\frac{S_1^2/{\sigma }_{1}^{2}}{{S}_{2}^{2}/\sigma_2^2} \sim  F\left( {{n}_{1} - 1,{n}_{2} - 1}\right)$ ;
     \item[(6)]当 ${\sigma }_{1}^{2} = {\sigma }_{2}^{2}$ 时, $\frac{\bar{X} - \bar{Y} - \left( {{\mu }_{1} - {\mu }_{2}}\right) }{{S}_{\omega }\sqrt{\frac{1}{{n}_{1}} + \frac{1}{{n}_{2}}}} \sim  t\left( {{n}_{1} + {n}_{2} - 2}\right)$ ,其中 ${S}_{\omega } = \sqrt{\frac{\left( {{n}_{1} - 1}\right) {S}_{1}^{2} + \left( {{n}_{2} - 1}\right) {S}_{2}^{2}}{{n}_{1} + {n}_{2} - 2}}$ .
+    \end{enumerate}
 \end{remark}
 \begin{enumerate}[label=\arabic*.]
     \item (2013,数一)设随机变量$X\sim t(n)$,$Y\sim F(1,n)$。给定$\alpha(0<\alpha<0.5)$,常数$c$满足$P\{X>c\}=\alpha$,则$P\{Y>c^2\}=$

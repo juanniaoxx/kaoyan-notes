@@ -10,13 +10,14 @@
 \chapter{二维随机变量}
 
 \section{联合分布函数的计算}
-\begin{remark}
-    (联合分布函数的性质)
+\begin{remark}[联合分布函数的性质]
+    \begin{enumerate}
     \item[(1)] $0\leq F(x,y)\leq 1,-\infty<x<+\infty, F(-\infty,y)=F(x,-\infty)=F(-\infty,-\infty)=0,F(+\infty,+\infty)=1$
     \item[(2)] $F(x,y)$关于$x$和$y$均单调不减
     \item[(2)] $F(x,y)$关于$x$和$y$均右连续
     \item[(4)] $P\{a<X\leq b,c<Y\leq b\}=F(b,d)-F(b,c)-F(a,d)+F(a,c)$ 
     \item[(5)] $F_{X}(x)=F(x,+\infty),F_{Y}(y)=F(+\infty, y)$  
+    \end{enumerate}
 \end{remark}
 
 \begin{enumerate}[label=\arabic*.]
@@ -98,17 +99,24 @@
 \end{enumerate}
 
 \section{二维连续型随机变量分布的计算}
-\begin{remark}
-\begin{enumerate} 主要内容 \\
-联合概率密度的性质
+
+\begin{remark}[联合概率密度的性质]
+\begin{enumerate}
     \item [(1)] $f\left( {x,y}\right)  \geq  0, - \infty  < x <  + \infty , - \infty  < y <  + \infty$ ;
     \item [(2)] ${\int }_{-\infty }^{+\infty }{\int }_{-\infty }^{+\infty }f\left( {x,y}\right) {dxdy} = 1$ ;
     \item [(3)] $P\{ \left( {X,Y}\right)  \in  D\}  = {\iint }_{D}f\left( {x,y}\right) {dxdy}$ ;
-    \item [(4)]在 $f\left( {x,y}\right)$ 的连续点处有 $\frac{{\partial }^{2}F\left( {x,y}\right) }{\partial x\partial y} = f\left( {x,y}\right)$ .\\
-边缘概率密度
+    \item [(4)]在 $f\left( {x,y}\right)$ 的连续点处有 $\frac{{\partial }^{2}F\left( {x,y}\right) }{\partial x\partial y} = f\left( {x,y}\right)$ .
+\end{enumerate}
+\end{remark}
+
+\begin{remark}[边缘概率密度]
+    \begin{enumerate}
     \item[(1)](X,Y)关于 $X$ 的边缘概率密度 ${f}_{X}\left( x\right)  = {\int }_{-\infty }^{+\infty }f\left( {x,y}\right) {dy}$
-    \item[(2)](X,Y)关于 $Y$ 的边缘概率密度 ${f}_{Y}\left( y\right)  = {\int }_{-\infty }^{+\infty }f\left( {x,y}\right) {dx}$\\
-条件概率密度
+    \item[(2)](X,Y)关于 $Y$ 的边缘概率密度 ${f}_{Y}\left( y\right)  = {\int }_{-\infty }^{+\infty }f\left( {x,y}\right) {dx}$
+    \end{enumerate}
+\end{remark}
+\begin{remark}[条件概率密度]
+\begin{enumerate}
     \item[(1)]在 $Y = y$ 的条件下, $X$ 的条件概率密度 ${f}_{X \mid  Y}\left( {x \mid  y}\right)  = \frac{f\left( {x,y}\right) }{{f}_{Y}\left( y\right) }$
     \item[(2)]在 $X = x$ 的条件下, $Y$ 的条件概率密度 ${f}_{Y \mid  X}\left( {y \mid  x}\right)  = \frac{f\left( {x,y}\right) }{{f}_{X}\left( x\right) }$
 \end{enumerate}

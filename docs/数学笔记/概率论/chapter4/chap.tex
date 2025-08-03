@@ -10,10 +10,9 @@
 \chapter{数字特征}
 
 \section{期望与方差的计算}
-\begin{remark}
-    期望与方差 \\
-    期望的定义
-    \item[(1)]设随机变量X的概率分布为$P\{X=x_i\}=p_i,i=1,2,\ldots,$则$EX=\sum_{i}x_ip_i$ \\
+\begin{remark}[期望与方差]
+    \begin{enumerate}
+    \item[(1)] \underline{期望的定义}:设随机变量X的概率分布为$P\{X=x_i\}=p_i,i=1,2,\ldots,$则$EX=\sum_{i}x_ip_i$ \\
     推广:若$Y=g(X)$则$EY=\sum_{i}g(x_i)p_i$ 
     \item[(2)]设随机变量X的概率密度为$f(x)$则$EX=\int_{-\infty}^{+\infty}f(x)\d x$ \\
     推广:若$Y=g(X)$则$EY=\int_{-\infty}^{+\infty}g(x)f(x)\d x$
@@ -35,6 +34,7 @@
     推论 $D(X\pm Y)=D(X)+D(Y)\iff$ X与Y不相关 \\
     特别的,若X与Y独立,则有$D(X\pm Y)=D(X)+D(Y)$
     \item[(3)]若$X$与$Y$独立,则$DXY=DXDY+(EX)^2DY+(EY)^2DX$
+    \end{enumerate}
 \end{remark}
 \begin{enumerate}[label=\arabic*.]
     \item 设随机变量$X$的概率密度为$f(x)=\frac{1}{\pi(1+x^2)}$,$-\infty<x<\infty$,则$E[\min\{|X|,1\}]=$\_\_\_\_.
@@ -221,8 +221,10 @@
     协方差 \\
     协方差的定义 $Cov(X,Y)=E\left[(X-EX)(Y-EY)\right]=E(XY)-EX\cdot EY$ \\
     协方差的性质
+    \begin{enumerate}
     \item[(1)] $Cov(X,Y)=Cov(Y,X),Cov(X,X)=DX$
     \item[(2)] $Cov(aX+bY+c,Z)=aCov(X,Z)+bCov(Y,Z)$ 
+    \end{enumerate}
 \end{remark}
 \begin{enumerate}[label=\arabic*.,start=11]
     \item  设$X_1,X_2,\cdots,X_n$为来自总体$X$的简单随机样本。若$DX=4$,正整数$s\leq n$,$t\leq n$,则
@@ -290,9 +292,11 @@
     相关系数 \\
     相关系数的定义 $\rho_{XY}=\frac{Cov(X,Y)}{\sqrt{DX}\sqrt{DY}}=\frac{EXY-EXEY}{\sqrt{DX}\sqrt{DY}}$ \\
     相关系数的性质 
+    \begin{enumerate}
     \item[(1)] $\left|\rho_{XY}\right|\leq 1$
     \item[(2)] $\rho_{XY}=0\iff Cov(X,Y)=0 \iff EXY=EXEY \iff D(X+Y)=DX+DY$
     \item[(3)] $\rho_{XY}=1\iff P\{Y=aX+b\}=1(a>0);\rho_{XY}=-1\iff P\{Y=aX+b\}=1(a<0)$  
+    \end{enumerate}
 \end{remark}
 \begin{enumerate}[label=\arabic*.,start=13]
     \item  (2016,数一)设试验有三个两两互不相容的结果$A_1,A_2,A_3$,且三个结果发生的概率均为$\frac{1}{3}$。将试验独立重复地做两次,$X$表示两次试验中$A_1$发生的次数,$Y$表示两次试验中$A_2$发生的次数,则$X$与$Y$的相关系数为
@@ -347,17 +351,19 @@
 \end{enumerate}
 
 \section{相关与独立的判定}
-\begin{remark}
-    相关与独立性
+\begin{remark}[相关与独立性]
+    \begin{enumerate}
     \item[(1)] 一般来说独立是强于不相关的条件,即$\text{独立}\implies\text{不相关}$ 
     \item[(2)] 对于二维正态分布有$\text{独立}\iff\text{不相关}$ 
     \item[(3)] 对于0-1分布有 $\text{独立}\iff\text{不相关}$
+    \end{enumerate}
 \end{remark}
-\begin{remark}
-    判断是否独立的基本方法
+\begin{remark}[判断是否独立的基本方法]
+    \begin{enumerate}
     \item [(1)] $P(AB)=P(A)P(B)$,对于离散型选点,对于连续型选区间 
     \item [(2)] 三个充要条件$\forall (x,y)\text{或}(i,j) F(x,y)=F_XF_Y,f(x,y)=f_Xf_Y,P(ij)=P_{\cdot i}P_{j\cdot}$
     \item [(3)] $\rho_{XY}\neq 0\implies X,Y$不独立
+    \end{enumerate}
 \end{remark}
 \begin{enumerate}[label=\arabic*.,start=15]
     \item  设二维随机变量$(X,Y)$服从区域$D=\{(x,y)|x^2+y^2\leq a^2\}$上的均匀分布,则 \\

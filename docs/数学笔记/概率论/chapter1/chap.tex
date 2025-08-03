@@ -15,12 +15,14 @@
     \item 事件的关系(3+1): 包含,互斥,对立 + 独立 
     \item 事件的运算(3个):交,并,补
 \end{enumerate}
-\begin{remark}(事件的运算律)
+\begin{remark}[事件的运算律]
+    \begin{enumerate}
     \item [(1)]\quad 交换律 \qquad $A\cup B = B\cup A, AB=BA$
     \item [(2)]\quad 结合律 \qquad $A\cup(B\cup C)=(A\cup B)\cup A, A(BC)=(AB)C$
     \item [(3)]\quad 分配律 \qquad $A\cup(BC)=(A\cup B)(A\cup C), A(B\cup C)=(AB)\cup(AC)$
     \item [(4)]\quad 摩根律 \qquad $\overline{A\cup B}=\bar{A}\bar{B},\overline(AB)=\bar{A}\cup\bar{B}$
     \item [(5)]\quad 吸收律 \qquad $A\cup(AB)=A,A(A\cup B)=A$
+    \end{enumerate}
 \end{remark}
 
 \begin{enumerate}[label=\arabic*.]
@@ -135,11 +137,12 @@
 \end{enumerate}
 
 \section{三大概型的计算}
-\begin{remark}
-    三大概率模型
+\begin{remark}[三大概率模型]
+    \begin{enumerate}
     \item 经典概型 -- 有限个等可能的样本点,\textbf{排列组合问题}
     \item 几何概型 -- 使用几何参数度量概率,比如说长度,面积,体积等
     \item 伯努利概型 -- 独立重复试验每次成功的概率为$p$,不成功的概率为($1-p$)
+    \end{enumerate}
 \end{remark}
 \begin{enumerate}[label=\arabic*.,start=6]
     % 例题 1.6
@@ -174,10 +177,12 @@
 \section{三大概率公式的计算}
 \begin{remark}
     三大概率公式
+    \begin{enumerate}
     \item 条件概率公式\qquad $P(A\mid B)=\frac{P(AB)}{P(B)}$ \\
     推论 $P(AB)=P(B)P(A\mid B), P(A_1A_2\ldots A_n)=P(A_1)P(A_2\mid P(A_1))P(A_3|P(A_1A_2))\ldots$
     \item 全概率公式\qquad $P(A)=\sum_{i=1}^{n}P(AB_i)=\sum_{i=1}^{n}P(B_i)P(A\mid B_i)$
-    \item 贝叶斯公式\qquad $P(B_j\mid A)=\frac{P(B_j)P(A\mid B_j)}{\sum_{i=1}^{n}P(B_i)P(A\mid B_i)}$ \\
+    \item 贝叶斯公式\qquad $P(B_j\mid A)=\frac{P(B_j)P(A\mid B_j)}{\sum_{i=1}^{n}P(B_i)P(A\mid B_i)}$
+    \end{enumerate}
     若称$P(B_j)$为$B_j$的先验概率,称$P(B_j\mid A)$为$B_j$的后验概率.则贝叶斯公式专门用于计算后验概率的公式.
 \end{remark}
 
