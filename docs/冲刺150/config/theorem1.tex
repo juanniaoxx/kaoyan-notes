@@ -63,4 +63,10 @@
 
 \newtheorem{example}{\indent \color{SeaGreen}{Example}}[section]
 \renewcommand{\proofname}{\indent\textbf{\textcolor{TealBlue}{Proof}}}
-\newenvironment{solution}{\begin{proof}[\indent\textbf{\textcolor{TealBlue}{Solution}}]}{\end{proof}}
+\NewEnviron{solution}{%
+	\begin{proof}[\indent\textbf{\textcolor{TealBlue}{Solution}}]%
+		\color{blue}% 设置内容为蓝色
+		\BODY% 插入环境内容
+		\color{black}% 恢复默认颜色（可选，避免影响后续文字）
+	\end{proof}%
+}
