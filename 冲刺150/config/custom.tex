@@ -12,3 +12,13 @@
 \newcommand{\pll}{\kern 0.56em/\kern -0.8em /\kern 0.56em}
 \newcommand{\dive}[1][F]{\mathrm{div}\;\boldsymbol{#1}}
 \newcommand{\rotn}[1][A]{\mathrm{rot}\;\boldsymbol{#1}}
+
+\newif\ifshowanswers
+\showanswerstrue % 注释掉这行就不显示答案
+
+% 定义答案环境
+\newcommand{\answer}[1]{%
+    \ifshowanswers
+        #1%
+    \fi
+}

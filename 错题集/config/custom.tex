@@ -2,6 +2,8 @@
 
 \def\d{\mathrm{d}}
 \def\R{\mathbb{R}}
+\def\P{\partial} 
+\newcommand{\bs}[1]{\begin{solution}#1\end{solution}}
 %\newcommand{\bs}[1]{\boldsymbol{#1}}
 %\newcommand{\ora}[1]{\overrightarrow{#1}}
 \newcommand{\myspace}[1]{\par\vspace{#1\baselineskip}}
@@ -13,6 +15,17 @@
 \newcommand{\dive}[1][F]{\mathrm{div}\;\boldsymbol{#1}}
 \newcommand{\rotn}[1][A]{\mathrm{rot}\;\boldsymbol{#1}}
 
+\newcommand{\bt}[1][1]{% 默认参数为1
+    \ensuremath{% 确保数学模式
+        \foreach \n in {1,...,#1} {\blacktriangle}% 循环输出 #1 个黑色三角形
+    }%
+}
+
+\newcommand{\bl}[1][1]{% 默认参数为1
+    \ensuremath{% 确保数学模式
+        \foreach \n in {1,...,#1} {\blacklozenge}% 循环输出 #1 个黑色三角形
+    }%
+}
 \newif\ifshowanswers
 \showanswerstrue % 注释掉这行就不显示答案
 

@@ -1,15 +1,76 @@
-% English theorem environment
-\theoremstyle{definition}
-\newtheorem{definition}{\indent Definition}[section]
+% 例题环境
+\newtcolorbox{example}[1][]{
+    breakable,
+    colback=blue!5!white,
+    colframe=blue!75!black,
+    fonttitle=\bfseries,
+    title={\ifstrempty{#1}{Example}{#1}}, 
+    arc=3pt,  
+    width=\linewidth,
+}
 
-\newtheorem{lemma}{\indent Lemma}[section]
-\newtheorem{theorem}[lemma]{\indent Theorem}
-\newtheorem{corollary}[lemma]{\indent Corollary}
-\newtheorem{criterion}[lemma]{\indent Criterion}
+% 解环境
+\newtcolorbox{solution}[1][]{
+    breakable,
+    colback=green!5!white,
+    colframe=green!75!black,
+    fonttitle=\bfseries,
+    title={\ifstrempty{#1}{Solution}{#1}}, 
+    arc=3pt,  
+    width=\linewidth,
+}
 
-\newtheorem{proposition}{\indent Proposition}[section]
-\newtheorem{example}{\indent \color{SeaGreen}{Example}}[section]
-\theoremstyle{plain}
-\newtheorem*{remark}{\indent Remark}
-\renewenvironment{proof}{\indent\textcolor{SkyBlue}{\textbf{Proof.}}\;}{\qed\par}
-\newenvironment{solution}{\indent\textcolor{SkyBlue}{\textbf{Solution.}}\;}{\qed\par}
+% 定义环境
+\newtcolorbox{definition}[1][]{
+    breakable,
+    colback=red!5!white,
+    colframe=red!75!black,
+    fonttitle=\bfseries,
+    title={\ifstrempty{#1}{Definition}{#1}}, 
+    arc=3pt,  
+    width=\linewidth,
+}
+
+% 定理环境
+\newtcolorbox{theorem}[1][]{
+    breakable,
+    colback=orange!5!white,
+    colframe=orange!75!black,
+    fonttitle=\bfseries,
+    title={\ifstrempty{#1}{Theorem}{#1}}, 
+    arc=3pt,  
+    width=\linewidth,
+}
+
+\newtcolorbox{remark}[1][]{
+    breakable,
+    colback=blue!5!white,      % 浅蓝色背景
+    colframe=blue!50!black,   % 蓝色边框
+    fonttitle=\bfseries,
+    title={\ifstrempty{#1}{Reamrk}{#1}}, 
+    arc=3pt,                  % 圆角边框
+    width=\linewidth,
+}
+
+% 推论环境 (Corollary) - 紫色风格
+\newtcolorbox{corollary}[1][]{
+    breakable,
+    colback=purple!5!white,      % 浅紫色背景
+    colframe=purple!75!black,    % 紫色边框
+    fonttitle=\bfseries,
+    title={\ifstrempty{#1}{Corollary}{#1}}, % 默认标题 "Corollary"，可自定义
+    arc=3pt,                    % 圆角边框
+    width=\linewidth,           % 自适应宽度 
+}
+
+% 公式环境 (Formula) - 灰色风格（适合数学公式）
+\newtcolorbox{formula}[1][]{
+    breakable,
+    colback=gray!5!white,        % 浅灰色背景
+    colframe=gray!75!black,      % 灰色边框
+    fonttitle=\bfseries,
+    title={\ifstrempty{#1}{Formula}{#1}}, % 默认标题 "Formula"，可自定义
+    arc=3pt,
+    left=12pt,
+    width=\linewidth,
+}
