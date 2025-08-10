@@ -1,0 +1,277 @@
+\ifx\allfiles\undefined
+\documentclass[12pt, a4paper, oneside, UTF8]{ctexbook}
+\def\path{../config}
+\input{../config/_config}
+\begin{document}
+% \input{../config/cover}
+\else
+\fi
+\chapter{操作系统}
+\section{选择题}
+\begin{enumerate}
+    \item 系统调用是由操作系统提供给用户的,它() \\
+    A.直接通过键盘交互方式使用\qquad B.只能通过用户程序间接使用 \\
+    C.是命令接口中的命令\qquad D.与系统的命令一样
+    
+    \item 操作系统与用户通信接口通常不包括() \\
+    A.shell\qquad B.命令解释器\qquad C.广义指令\qquad D.缓存管理指令 
+
+    \item 下列关于多道程序系统的叙述中,不正确的是() \\
+    A.支持程序的并发执行\qquad B.不必支持虚拟存储管理 \\
+    C.需要实现对共享资源的管理\qquad D.进程数越多CPU利用率也越多 
+
+    \item 分时系统的一个重要指标是系统的响应时间,对操作系统的()因素改进有利于改善操作系统的响应时间. \\
+    A.加大时间片\qquad B.采用静态页式管理 \\
+    C.优先级+非抢占式调度算法\qquad D.代码可重入 
+
+    \item 计算机区分内核态和用户态指令后,从核心态到用户态的转变用操作系统执行后完成,而用户态转换到核心态则有()完成 \\
+    A. 硬件\qquad B.核心态程序\qquad C.用户程序\qquad D.中断处理程序
+
+    \item "访管"指令()使用 \\
+    A. 仅在用户态\qquad B.仅在内核态\qquad C.在规定时间内\qquad D.在调度时间内
+
+    \item 在操作系统中,只能在核心态下执行的指令是() \\
+    A. 读时钟\qquad B.取数\qquad C.广义指令\qquad D.寄存器清零
+
+    \item \bt\bl 中断处理和子程序调用都需要压栈以保护现场,中断处理一定会保存而子程序调用不一定需要保存的内容是() \\
+    A. 程序计数器\qquad B.程序状态字寄存器\qquad C.通用寄存器组\qquad D.通用地址寄存器
+
+    \item \bt 定时器产生时钟中断后,由时钟中断服务程序更新的内容是()
+    \begin{enumerate}
+        \item [I] 内核中时间变量的值
+        \item [II] 当前进程占用的CPU时间
+        \item [III] 当前进程在时间片中的剩余执行时间
+    \end{enumerate}
+    A.仅I,II\qquad B.仅II,III\qquad C.仅I,III\qquad D.I,II,III
+
+    \item \bt\bl 下列与中断相关的操作中,由操作系统完成的是(多选)()  
+    \begin{enumerate}
+        \item [I] 保存中断点
+        \item [II] 提供中断服务
+        \item [III] 初始化中断向量表
+        \item [IV] 保存中断屏蔽字
+    \end{enumerate}
+
+    \item \bl 计算机的启动过程是(排序)() 
+    \begin{enumerate}
+        \item [1] CPU加点, CS:IP指向FFFF0H
+        \item [2] 进行操作系统引导
+        \item [3] 执行JMP指令跳转到BIOS
+        \item [4] 登记BIOS中断例程入口地址
+        \item [5] 硬件自检
+    \end{enumerate}
+
+    \item 在单处理机系统中,若同时存在10个进程,则处于就绪队列的进程最多有() \\
+    A. 10个\qquad B.9个\qquad C.8个\qquad D.7个 
+
+    \item 进程在处理器上执行时,() \\
+    A. 进程之间是无关的,且具有封闭特性 \\
+    B. 进程之间都有交互性,相互依赖,相互制约,具有并发性 \\
+    C. 具有并发性,即同时执行的特性 \\
+    D. 进程之间可能是无关的,但也可能是具有交互性的
+
+    \item 在多对一的线程模型中,当一个多线程中的某线程被阻塞后() \\
+    A. 该进程的其他线程仍然能够运行 \qquad B. 整个进程将被阻塞 \\
+    C. 该阻塞进程将被撤销\qquad D. 该阻塞线程将永远不能再执行 
+
+    \item 系统动态DLL库中的系统线程,被不同的进程所调用,它们是()的线程 \\
+    A. 不同\qquad B.相同\qquad C.可能不同,可能相同\qquad D.不能被调用
+
+    \item 下列不是多线程系统特长的是() \\
+    A. 利用线程可以并发地执行矩阵乘法计算 \\
+    B. Web服务器利用线程响应HTTP请求 \\
+    C.键盘驱动程序为每个正在运行的程序配备一个线程,用以响应用户的输入 \\
+    D. 基于GUI的调试程序用不同的线程分别处理用户输入,计算和跟踪等操作
+
+    \item 下列选中,导致创建新进程的操作是(多选)() \\
+    I.用户登录成功\qquad II.设备分配\qquad III,启动用户执行
+
+    \item 可能导致进程被唤醒的事件是(多选)() \\
+    I. I/O结束\qquad II.某进程退出临界区\qquad III.当前进程的时间片用完 
+
+    \item 下列关于父进程与子进程的说法中错误的是() \\
+    A.父进程和子进程可以并发执行 \\
+    B.父进程和子进程共享虚拟地址空间 \\
+    C.父进程和子进程有不同进程控制块 \\
+    D.父进程和子进程共享临界资源
+
+    \item 一个作业8:00到达系统,估计运行时间为1h,若10:00开始执行作业,其响应比为()
+
+    \item 在进程调度算法中对短进程不利的是() \\
+    A. 短进程优先调度\qquad B.先来先服务调度 \\
+    C.高响应比优先调度算法\qquad D.多级反馈优先队列
+
+    \item 不需要信号量就能实现的功能是() \\
+    A.进程同步\qquad B.进程互斥\qquad C.进程的前驱关系\qquad D.进程的并发执行
+
+    \item 若一个信号量的初始值为3,经过多次PV操作后当前值为-1,这表示进入临界区的进程数是() \\
+    A. 1\qquad B.2\qquad C.3\qquad D.4
+
+    \item 以下()属于临界资源 \\
+    A. 打印机\qquad B.公用队列\qquad C.私有数据\qquad D.可重入的程序代码 
+
+    \item 一个进程因在互斥信号量mutex上执行V操作而导致唤醒另一个进程的时,执行V操作后mutex的值为() \\
+    A.大于0\qquad B.小于0\qquad C.大于等于0\qquad D.小于等于0 
+
+    \item 进程P1和进程P2均包含并发执行的线程,部分伪代码如下,下列选项中,需要互斥执行的操作是() 
+    \begin{center}
+        \begin{minipage}[t]{0.45\textwidth}
+\begin{lstlisting}[language=C, numbers=left]
+// 进程P1                    
+int x = 0;                   
+Thread1() {                  
+    int a;
+    a = 1;
+    x += 1;
+}
+Thread2() {
+    int a;
+    a = 2;
+    x += 2;
+}
+\end{lstlisting}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[t]{0.45\textwidth}
+\begin{lstlisting}[language=C]
+// 进程P2                    
+int x = 0;                   
+Thread3() {                  
+    int a;
+    a = x;
+    x += 3;
+}
+Thread4() {
+    int a;
+    b = x;
+    x += 4;
+}
+\end{lstlisting}
+        \end{minipage}
+    \end{center}
+
+    A.a=1与a=2\qquad B. a=x与b=x\qquad C.x +=1 与 x+=2\qquad D.x+=1与x+=3
+    \item 下面是一个并发进程的程序代码,正确的是() 
+    \begin{center}
+        \begin{minipage}[t]{0.45\textwidth}
+            \begin{lstlisting}[language=C, numbers=left]
+Semaphore x1=x2=y=1;
+int c1=c2=0;
+P1() {
+    while(1) {
+        P(x1);
+        if(++c1 == c) P(y);
+        V(x1);
+        computer(A);
+        P(x1);
+        if(--c1 == 0) V(y);
+        V(x1);
+    }
+}
+                \end{lstlisting}
+            \end{minipage}
+            \hfil
+            \begin{minipage}[t]{0.45\textwidth}
+                \begin{lstlisting}
+Semaphore x1=x2=y=1;
+int c1=c2=0;
+P2() {
+    while(1) {
+        P(x2);
+        if(++c2 == 1) P(y);
+        V(x2);
+        computer(B);
+        P(x2);
+        if(--c2 == 0) V(y);
+        V(x2);
+    }
+}
+            \end{lstlisting}
+        \end{minipage}
+    \end{center}
+A.进程不会死锁,也不会饥饿 \qquad B.进程不会死锁,但会饥饿 \\
+C.进程会死锁,但是不会饥饿\qquad D.进程会死锁,也会饥饿 
+
+    \item 有两个并发进程,对于如这段程序的执行,正确的是() 
+\begin{center}
+    \begin{minipage}[t]{0.45\textwidth}
+        \begin{lstlisting}[numbers=left]
+int x, y, z, t, u;
+P1() {
+    while(1) {
+        x = 1;
+        y = 0;
+        if (x >= 1) y = y + 1;
+        z = y;
+    }
+}
+    \end{lstlisting}
+\end{minipage}
+\hfil
+\begin{minipage}[t]{0.45\textwidth}
+    \begin{lstlisting}
+int x, y, z, t, u;
+P2() {
+    while(1) {
+        x = 0;
+        t = 0;
+        if (x <= 1) t = t + 1;
+        u = t;
+    }
+}
+            \end{lstlisting}
+        \end{minipage}
+    \end{center}
+    A.程序能够正常运行,结果唯一\qquad B.程序不能正常运行,可能出现两种结果\\
+    C.程序不能正常运行,结果不确定\qquad D.程序不能正确运行,可能会死锁
+
+
+    \item 若系统S1采用死锁避免方法,S2采用死锁检查方法,下列叙述中,正确的是(多选)() \\
+    I. S1会限制用户申请资源的顺序,而S2不会 \\
+    II. S1需要进程运行所需要的资源信息,而S2不需要 \\
+    III. S1不会给可能导致死锁的进程分配资源,但S2会
+
+    \item 下列存储管理方案中,()方式可以采用静态重定位 \\
+    A.固定分区\qquad B.可变分区\qquad C.页式\qquad D.段式
+
+    \item 下列不会产生内部碎片的存储管理是() \\
+    A.分页式\qquad B.分段式\qquad C.段页式\qquad D.固定分区
+
+    \item 采用分页和分段管理后,提供给用户的物理地址空间() \\
+    A.分页支持更大的物理地址空间\qquad B.分段支持更大的物理地址空间 \\
+    C.不能确定\qquad D.一样大
+
+    \item 可重入程序是通过()方法来改善系统性能的. \\
+    A.改变时间片长度\qquad B.改变用户数\qquad C.提供对换速度\qquad D.减少对换数量 
+
+    \item 对主存储器的访问() \\
+    A.以块(页)为单位 \qquad B.以字节或字位单位 \\
+    C.随存储器的管理方案有所不同\qquad D.以用户的逻辑记录为单位
+
+    \item 操作系统采用分页存储管理,要求() \\
+    A.每个进程拥有一张页表,且进程的页表驻留在内存中 \\
+    B.每个进程拥有一张页表,仅运行的进程的页表驻留在内存中\\
+    C.所有进程共享一张页表,以节约有限的内存空间,但页表必须驻留在内存中 \\
+    D.每个进程共享一张页表,只有页表中当前使用的页表必须驻留以最大限度节约有限的内存空间
+
+    \item 在下列动态分区分配算法中,最容易产生内部碎片的是()  \\
+    A.首次适应算法\qquad B.最坏适应算法\qquad C.最佳适应算法\qquad D.循环首次适应算法
+
+    \item 请求分页存储管理中,若把页面尺寸增大一倍且可容纳的最大页数不变,则在程序顺序执行时缺页中断次数
+    将会() \\
+    A.增加\qquad B.减少\qquad C.不变\qquad D.无法确定
+
+    \item 考虑页面置换算法,系统有m个物理块供调度,初始时全空,页面引用串长度为p,包含n个不同的页号,无论用啥算法
+    缺页次数不会少于()
+
+    \item 设主存容量为1MB,外存容量为400MB,计算机系统的地址寄存器有32位,那么虚拟存储器的最大容量是() 
+
+    \item 导致LRU算法实现起来消耗特高的原因是() \\
+    A.需要特殊硬件支持\qquad B.需要特殊的中断处理程序 \\
+    C.需要在页表中标明特殊的页类型\qquad D.需要对所有页进行排序
+\end{enumerate}
+
+\section{综合题}
+\ifx\allfiles\undefined
+\end{document}
+\fi
