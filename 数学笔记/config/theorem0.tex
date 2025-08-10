@@ -1,76 +1,33 @@
-% 例题环境
-\newtcolorbox{example}[1][]{
-    breakable,
-    colback=blue!5!white,
-    colframe=blue!75!black,
-    fonttitle=\bfseries,
-    title={\ifstrempty{#1}{Example}{#1}}, 
-    arc=3pt,  
-    width=\linewidth,
+% ---------- 颜色 ----------
+\definecolor{ExBlue}{HTML}{4F81BD}
+\definecolor{SolGreen}{HTML}{77933C}
+\definecolor{DefRed}{HTML}{C5504B}
+\definecolor{ThmOrange}{HTML}{E97132}
+\definecolor{RemGray}{HTML}{7F7F7F}
+\definecolor{CorPurple}{HTML}{7030A0}
+\definecolor{ForGray}{HTML}{595959}
+
+% ---------- 通用“变色”模板 ----------
+\tcbset{
+    mybox/.style n args={1}{
+        enhanced, breakable,
+        arc=6pt,
+        boxrule=0.6pt,
+        left=8pt, right=8pt, top=6pt, bottom=6pt,
+        drop shadow={black!25},
+        fonttitle=\bfseries,
+        coltitle=white,
+        colbacktitle=#1!85,
+        colback=#1!10,
+        colframe=#1,
+    }
 }
 
-% 解环境
-\newtcolorbox{solution}[1][]{
-    breakable,
-    colback=green!5!white,
-    colframe=green!75!black,
-    fonttitle=\bfseries,
-    title={\ifstrempty{#1}{Solution}{#1}}, 
-    arc=3pt,  
-    width=\linewidth,
-}
-
-% 定义环境
-\newtcolorbox{definition}[1][]{
-    breakable,
-    colback=red!5!white,
-    colframe=red!75!black,
-    fonttitle=\bfseries,
-    title={\ifstrempty{#1}{Definition}{#1}}, 
-    arc=3pt,  
-    width=\linewidth,
-}
-
-% 定理环境
-\newtcolorbox{theorem}[1][]{
-    breakable,
-    colback=orange!5!white,
-    colframe=orange!75!black,
-    fonttitle=\bfseries,
-    title={\ifstrempty{#1}{Theorem}{#1}}, 
-    arc=3pt,  
-    width=\linewidth,
-}
-
-\newtcolorbox{remark}[1][]{
-    breakable,
-    colback=blue!5!white,      % 浅蓝色背景
-    colframe=blue!50!black,   % 蓝色边框
-    fonttitle=\bfseries,
-    title={\ifstrempty{#1}{Reamrk}{#1}}, 
-    arc=3pt,                  % 圆角边框
-    width=\linewidth,
-}
-
-% 推论环境 (Corollary) - 紫色风格
-\newtcolorbox{corollary}[1][]{
-    breakable,
-    colback=purple!5!white,      % 浅紫色背景
-    colframe=purple!75!black,    % 紫色边框
-    fonttitle=\bfseries,
-    title={\ifstrempty{#1}{Corollary}{#1}}, % 默认标题 "Corollary"，可自定义
-    arc=3pt,                    % 圆角边框
-    width=\linewidth,           % 自适应宽度 
-}
-
-% 公式环境 (Formula) - 灰色风格（适合数学公式）
-\newtcolorbox{formula}[1][]{
-    breakable,
-    colback=gray!5!white,        % 浅灰色背景
-    colframe=gray!75!black,      % 灰色边框
-    fonttitle=\bfseries,
-    title={\ifstrempty{#1}{Formula}{#1}}, % 默认标题 "Formula"，可自定义
-    arc=3pt,
-    left=12pt,
-    width=\linewidth,
-}
+% ---------- 各环境 ----------
+\newtcolorbox{example}[1][]{mybox={ExBlue}, title={\ifstrempty{#1}{Example}{#1}}}
+\newtcolorbox{solution}[1][]{mybox={SolGreen}, title={\ifstrempty{#1}{Solution}{#1}}}
+\newtcolorbox{definition}[1][]{mybox={DefRed}, title={\ifstrempty{#1}{Definition}{#1}}}
+\newtcolorbox{theorem}[1][]{mybox={ThmOrange}, title={\ifstrempty{#1}{Theorem}{#1}}}
+\newtcolorbox{remark}[1][]{mybox={RemGray}, title={\ifstrempty{#1}{Remark}{#1}}}
+\newtcolorbox{corollary}[1][]{mybox={CorPurple}, title={\ifstrempty{#1}{Corollary}{#1}}}
+\newtcolorbox{formula}[1][]{mybox={ForGray}, title={\ifstrempty{#1}{Formula}{#1}}}

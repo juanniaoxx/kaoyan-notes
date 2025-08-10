@@ -4,17 +4,6 @@
 \def\R{\mathbb{R}}
 \def\P{\partial} 
 \newcommand{\bs}[1]{\begin{solution}#1\end{solution}}
-%\newcommand{\bs}[1]{\boldsymbol{#1}}
-%\newcommand{\ora}[1]{\overrightarrow{#1}}
-\newcommand{\myspace}[1]{\par\vspace{#1\baselineskip}}
-\newcommand{\xrowht}[2][0]{\addstackgap[.5\dimexpr#2\relax]{\vphantom{#1}}}
-\newenvironment{mycases}[1][1]{\linespread{#1} \selectfont \begin{cases}}{\end{cases}}
-\newenvironment{myvmatrix}[1][1]{\linespread{#1} \selectfont \begin{vmatrix}}{\end{vmatrix}}
-\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
-\newcommand{\pll}{\kern 0.56em/\kern -0.8em /\kern 0.56em}
-\newcommand{\dive}[1][F]{\mathrm{div}\;\boldsymbol{#1}}
-\newcommand{\rotn}[1][A]{\mathrm{rot}\;\boldsymbol{#1}}
-
 \newcommand{\bt}[1][1]{% 默认参数为1
     \ensuremath{% 确保数学模式
         \foreach \n in {1,...,#1} {\blacktriangle}% 循环输出 #1 个黑色三角形

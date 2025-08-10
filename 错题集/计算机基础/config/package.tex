@@ -1,0 +1,85 @@
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage[colorlinks, linkcolor=black]{hyperref}
+\usepackage{stackengine}
+\usepackage{yhmath}
+\usepackage{extarrows}
+\usepackage{tikz}
+\usepackage{forest}
+\usetikzlibrary{decorations.pathreplacing, positioning}
+% \usepackage{unicode-math}
+\usepackage{esint}
+\usepackage{pifont}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+
+\usepackage{fontspec} % 使用字体
+
+\setmainfont{Times New Roman}
+\setCJKmainfont{LXGWWenKai-Light}[
+    SlantedFont=*
+]
+
+\usepackage{listings} % 用于插入代码
+
+% 定义代码高亮风格
+\lstset{
+    basicstyle=\ttfamily\small,        % 基本字体样式(等宽小字体）
+    keywordstyle=\color{blue},         % 关键字颜色
+    commentstyle=\color{green},        % 注释颜色
+    stringstyle=\color{red},           % 字符串颜色
+    numbers=none,
+    breaklines=true,                   % 自动换行
+    frame=single,                      % 代码框边框
+    rulecolor=\color{black},           % 边框颜色
+    captionpos=b,                      % 标题位置(底部）
+    showspaces=false,                  % 不显示空格标记
+    showstringspaces=false,            % 不显示字符串中的空格标记
+    language=C                         % 设置语言为 C
+}
+
+\usepackage{fontawesome5}
+
+\usepackage{amsmath}
+\usepackage{booktabs, array}
+\usepackage{fancyhdr}
+\usepackage[dvipsnames, svgnames]{xcolor}
+\usepackage{listings}
+\usepackage{tasks}[2020/01/11]
+
+\everymath{\displaystyle}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{NavyBlue}{RGB}{0,0,128}
+\definecolor{Rhodamine}{RGB}{255,0,255}
+\definecolor{PineGreen}{RGB}{0,128,0}
+
+\graphicspath{ {figures/},{../figures/}, {config/}, {../config/} }
+
+\linespread{1.6}
+
+\geometry{
+    top=25.4mm, 
+    bottom=25.4mm, 
+    left=20mm, 
+    right=20mm, 
+    headheight=2.17cm, 
+    headsep=4mm, 
+    footskip=12mm
+}
+
+\setenumerate[1]{itemsep=5pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+\setitemize[1]{itemsep=5pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+\setdescription{itemsep=5pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+
+
+
+% \begin{lstlisting}[language=TeX] ... \end{lstlisting}

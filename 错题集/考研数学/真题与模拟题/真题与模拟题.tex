@@ -1,0 +1,395 @@
+\ifx\allfiles\undefined
+\documentclass[12pt, a4paper, oneside, UTF8]{ctexbook}
+\def\path{../config}
+\input{../config/_config}
+\begin{document}
+
+% \input{../config/cover}
+\else
+\fi
+\chapter{真题与模拟题}
+
+\begin{tcolorbox}[title=备注]
+    \bt 表示难度,越多越难
+    \bl 表示计算量,越多计算量越大
+\end{tcolorbox}
+
+\section{数学真题一网打尽} 
+\begin{enumerate}
+    \item \bt[2] 求 $ \lim_{n\to\infty}\left(\frac{\sin\frac{\pi}{n}}{n+1}+
+    \frac{\sin\frac{2\pi}{n}}{n+\frac{1}{2}}+\ldots+\frac{\sin\pi}{n+\frac{1}{n}}\right)$ 
+
+    \answer{
+        \begin{solution}
+        显然是一道夹逼定理的题目,但有几点需要注意. 
+        $$
+        \text{原式} < \frac{1}{n}\sum_{i=1}^{n}\sin{\frac{i}{n}\pi} \xlongequal{n\to\infty} \int_{0}^{1}\sin{\pi x}\d x 
+        $$
+        放大这一方向是比较好想的,重点在于缩小.
+        $$
+        \text{原式} > \frac{1}{n+1}\sum_{i=1}^{n}\sin{\frac{i}{n}\pi} = 
+        {\color{red} \frac{n}{n+1}\cdot\frac{1}{n}}\sum_{i=1}^{n}\sin{\frac{i}{n}\pi} \xlongequal{n\to\infty} \int_{0}^{1}\sin{\pi x}\d x
+        $$
+        \begin{align*}
+            \int_{0}^{1}\sin{\pi x} = \frac{2}{\pi}
+        \end{align*}
+        由夹逼定理有
+        $$
+        \lim_{n\to\infty} \text{原式} = \frac{2}{\pi}
+        $$
+        \end{solution}
+    }
+    
+    \item \bt[2] 设函数$f(x)$在区间$\left[0,1\right]$连续,则$\int_{0}^{1}f(x)\d x = $ (   )
+    \begin{choices}[2]
+        \task $\lim_{n\to\infty}\sum_{k=1}^{n}f\left(\frac{2k-1}{2n}\right)\cdot\frac{1}{2n}$ 
+        \task $\lim_{n\to\infty}\sum_{k=1}^{n}f\left(\frac{2k-1}{2n}\right)\cdot\frac{1}{n}$
+        \task $\lim_{n\to\infty}\sum_{k=1}^{n}f\left(\frac{k-1}{2n}\right)\cdot\frac{1}{n}$
+        \task $\lim_{n\to\infty}\sum_{k=1}^{n}f\left(\frac{k}{2n}\right)\cdot\frac{2}{n}$
+    \end{choices}
+
+
+    \answer{
+        \begin{solution}[解法一\ 正面突破]
+            这道题显然是考察定积分的定义,但考察的比较细节.
+            \begin{enumerate}
+                \item[i] 其中(A)(B)选项是将区间进行$n$等分的划分,且取的是区间重点,如何得知呢? 考虑
+                端点$0,\frac{1}{n},\frac{2}{n},\ldots,\frac{k}{n},\frac{k+1}{n},\ldots,\frac{n}{n}$而
+                $$
+                    \frac{k-1}{n}=\frac{2k-2}{2n} < \frac{2k - 1}{2n} < \frac{2k}{2n} = \frac{k}{n}
+                $$
+                故由定积分的定义,此时有
+                $$
+                \int_{0}^{1}f(x)\d x = \lim_{n\to\infty}\sum_{k=1}^{n}f(\frac{2k-1}{2n})\cdot \frac{1}{n}
+                $$
+                \item[ii] 其中(C)(D)是将区间进行$2n$等分的划分,取的分别是左/右端点,这并不影响定积分形式,应该为
+                $$
+                \int_{0}^{1}f(x)\d x = \lim_{n\to\infty}\sum_{k=1}^{2n}f(\frac{k}{2n})\cdot\frac{1}{2n} 
+                $$
+            \end{enumerate}
+        \end{solution}
+
+        \begin{solution}[解法二\ 选择题不客气!]
+            取$f(x) = 1$ 则$\int_{0}^{1}1\d x = 1$,对应的选项可以直接计算,结果为
+            \begin{enumerate}
+                \item [(A)] $ \text{原式}=\lim_{n\to\infty}\sum_{i=1}^{n}\frac{1}{2n}=\frac{1}{2}\neq 1$ 
+                \item [(B)] $ \text{原式}=\lim_{n\to\infty}\sum_{i=1}^{n}\frac{1}{n}= 1$
+                \item [(C)] $ \text{原式}=\lim_{n\to\infty}\sum_{i=1}^{2n}\frac{1}{n}= 2\neq 1$
+                \item [(D)] $ \text{原式}=\lim_{n\to\infty}\sum_{i=1}^{2n}\frac{2}{n}= 4\neq 1$ 
+            \end{enumerate}
+        \end{solution}
+
+        \newpage
+        \begin{remark}[定积分的定义]
+            定积分的定义有如下几个要点
+            \begin{enumerate}
+                \item [(1)] 将区间$[a,b]$划分为$n$个区域,其中记
+                $$
+                a=x_0<x_1<x_2<\ldots<x_n=b 
+                $$
+                记自区间长度即模为 
+                $$
+                \lambda = \max\{\Delta_1,\Delta_2,\ldots,\Delta_{n-1},\Delta_{n}\}
+                $$
+                \item [(2)] 在每个子区间上取任意一点$\xi_i$取其函数值$f(\xi_i)$,则Riemann和为
+                $$
+                S=\sum_{i=1}^{n}f(\xi_i)\Delta x_i
+                $$
+                当$\lambda\to 0$时,若$S$极限存在,且\underline{分割方式与$\xi_i$无关},则称该极限为$f$在$[a,b]$上的定积分,如下
+                $$
+                \int_{a}^{b}f(x)\d x = \lim_{\lambda\to 0} \sum_{i=1}^{n}f(\xi_i)\Delta x_i
+                $$
+            \end{enumerate}
+        \end{remark}
+    }
+    \item  \bt (1999.2)$ a_n=\sum_{k=1}^{n}f(k)-\int_{1}^{n}f(x)\d x(n=1,2,\ldots)$,设$f(x)$是区间$[0,+\infty)$
+    上单调递减且非负的连续函数证明数列$\{a_n\}$极限存在 
+
+    \answer{
+        \begin{solution}
+            先证明单调性,作差有
+            \begin{align*}
+                a_{n+1}-a_n &= f(n+1) - \int_{n}^{n+1}f(x)\d x  \\
+                &\xlongequal{\text{积分中值定理}}f(n+1)-f(\xi), \xi\in(n,n+1) 
+            \end{align*}
+            由于$f(x)$在$[0,+\infty)$上单调递减故$a_{n+1}-a_n < 0 \implies$原数列单调递减. \\
+            再证明有界性 由于
+            $$
+            \color{red} \sum_{k=1}^{n-1}\int_{k}^{k+1}f(x)\d x = \int_{1}^{n}f(x)\d x
+            $$
+            原式化为
+            $$
+            \sum_{k=1}^{n-1}\left[f(k)-\int_{k}^{k+1}f(x)\d x\right] + f(n) 
+            $$
+            由于$f(x)$非负且单调递减,容易直到$f(k) > \int_{k}^{k+1}f(x)\d x$ 故原式一定有
+            $$
+            \text{原式} \geq 0
+            $$
+            即原数列单调递减有下界,故原数列收敛. 
+        \end{solution}
+    }
+    \item (2011-12) \bt[2]
+    \begin{enumerate}
+        \item [(1)] 证明:对于任意的正整数$n$,都有$\frac{1}{n+1}<\ln{\left(1+\frac{1}{n}\right)}<\frac{1}{n}$
+        \item [(2)] 设$a_n=1+\frac{1}{2}+\ldots+\frac{1}{n}-\ln{n}$ 证明数列$\{a_n\}$收敛 
+    \end{enumerate}
+
+    \answer{
+        \begin{solution}[拉氏中值+单调有界证明]
+            (1)令$f(x)=\ln{(1+x)}$ 则 
+            $$
+            \ln{(1+\frac{1}{n})} - \ln{1} = f'(\xi)\cdot\frac{1}{n},\xi\in(0,\frac{1}{n})
+            $$
+            即
+            $$
+            \frac{n}{n+1}<\frac{1}{1+\xi}<1
+            $$
+            综上有
+            $$
+            \frac{1}{n+1}<\ln{\left(1+\frac{1}{n}\right)}<\frac{1}{n}
+            $$
+            (2)首先证明其单调,作差有
+            $$
+            a_{n+1}-a_{n} = \frac{1}{n+1}-\ln{(n+1)}+\ln{n} = \frac{1}{n+1}-\ln{(1+\frac{1}{n})} < 0
+            $$
+            即原数列单调递减,只需证明其有下界即可. 考虑
+            \begin{align*}
+                a_n &= 1 + \frac{1}{2} + \ldots + \frac{1}{n} - ln{n} \\
+                &> \ln{(1+1)} + \ln{(1 + \frac{1}{2})} + \ldots + \ln{(1+\frac{1}{n})} - \ln{n} \\
+                &= \ln{(2\cdot\frac{3}{2}\cdot\frac{4}{3}\ldots\frac{n+1}{n})} - \ln{n} \\
+                &= \ln{(n+1)} - \ln{n} > 0
+            \end{align*}
+            故原数列单调递减有下界,即其极限值存在.
+        \end{solution}
+
+        \begin{solution}[积分放缩法]
+            {\color{blue}由积分保号性,若需证明$\int_{a}^{b}f(x)\d x>\int_{a}^{b}f(x)\d x$只需证明$f(x) > g(x)$}\\
+            (1)考虑如下操作
+            \begin{align*}
+                \frac{1}{n+1} &< \ln{(1+n)} - \ln{n} < \frac{1}{n} \\
+                \frac{1}{n+1} &< \int_{n}^{n+1}\frac{1}{x}\d x <\frac{1}{n} \\
+                \int_{n}^{n+1}\frac{1}{n+1}\d x &< \int_{n}^{n+1}\frac{1}{x}\d x < \int_{n}^{n+1} \frac{1}{n}\d x
+            \end{align*}
+            显然在$(n,n+1)$上有$\frac{1}{n+1}<\frac{1}{x}<\frac{1}{n}$,故原不等式得证  \\
+            (2) 证明单调性,作差有 
+            $$
+            a_{n+1}-a_{n}=\int_{n}^{n+1}\left(\frac{1}{n+1}-\frac{1}{x}\right)\d x < 0
+            $$
+            证明有下界有
+            $$
+            a_n = \sum_{k=1}^{n}\frac{1}{k} - \int_{1}^{n}\frac{1}{x}\d x > 0
+            $$
+            有没有很眼熟,没错,正是上一题(1999.2)的所考察的证明!  \\
+            故原数列单调递减有下界,其极限存在.
+        \end{solution}
+
+        \begin{solution}[收敛级数]
+            (1) 不等式最基本的方法应该想到构建函数,证明单调性. 不妨令$x=\frac{1}{n}$,原不等式等价于证明
+            $$
+            \frac{x}{1+x} < \ln{(1+x)} < x, x\in(0,1)
+            $$
+            令$f(x) = x - \ln(1+x)$ 则$f'(x)=1-\frac{1}{x+1} > 0$,故$f'(x)$单调递增,即$f(x)>f(0) = 0$,同理可证明
+            左边不等式. \\
+            (2) 基于如下结论
+            \begin{center}
+                \fbox{$\lim_{n\to\infty}a_n\text{存在}\iff\sum_{n=1}^{\infty}(a_{n+1}-a_n)\text{收敛}$}
+            \end{center}
+            由于
+            $$
+            a_n = a_1 + (a_2 - a_1) + \ldots + (a_n - a_{n-1}) = a_1 + \sum_{k=2}^{n}(a_k-a_{k-1})
+            $$
+            故数列$\{a_n\}$与技术$\sum_{k=2}^{n}(a_k-a_{k-1})$同敛散. \\
+            由于$\left|a_n-a_{n-1}\right| = \left|\frac{1}{n}+\ln\left(1-\frac{1}{n}\right)\right|$做Taylor展开有 
+            \begin{align*}
+                \left|a_n-a_{n-1}\right| &= \left|\frac{1}{n}\left[-\frac{1}{n}-\frac{1}{2}\frac{1}{n^2}+o(\frac{1}{n^2})\right]\right| \\
+                &=\left|-\frac{1}{2}\frac{1}{n^2}+o(\frac{1}{n^2})\right| \sim \frac{1}{n^2}
+            \end{align*}
+            又因为$\sum_{n=1}^{\infty}\frac{1}{n^2}$收敛,由比较判别法可知原级数绝对收敛,故而原级数收敛.从而数列极限存在
+        \end{solution}
+    }
+    \item (2012-2) \bt 
+    \begin{enumerate}
+        \item [(1)] 证明方程$x^{n}+x^{n-1}+\ldots+x=1(n>1,n\in\mathbf{N})$在区间$\left(\frac{1}{2},1\right)$内仅有一个实根 
+        \item [(2)] 记$(I)$中的实根为$x_n$证明$ \lim_{n\to\infty}x_n$存在,并求出此极限 
+    \end{enumerate}
+
+    \answer{
+        \begin{solution}
+            (1) 令$f(x) = x^n+\ldots+x-1,f'(x)=nx^{n-1}+\ldots + 2x + 1 > 0$ 故f(x) 在$(\frac{1}{2},1)$上
+            单调递增,又有
+            $$
+            \begin{cases}
+                f(1) = n - 1 > 0 \\
+                f(\frac{1}{2}) = -\frac{1}{2^n} < 0
+            \end{cases}
+            $$
+            由零点存在定理可知,在区间$(\frac{1}{2},1)$上仅有唯一零点 \\
+            (2) 考虑$f(x)_{n+1} = x^{n+1}+x^n+\ldots+x - 1$由(1)可知
+            $$
+            \begin{cases}
+            f(x_n)_{n+1} = x_n^{n+1} > 0 \\
+            f(\frac{1}{2})_{n+1} = -\frac{1}{2^{n+1}} < 0
+            \end{cases}
+            $$
+            故在区间$(\frac{1}{2},x_n)$中有唯一零点$x_{n+1}$因此有
+            $$
+            \frac{1}{2}<x_{n+1}<x_n
+            $$
+            即数列$\{x_n\}$单调递减有下界故极限存在. \\
+            不妨令$\lim_{n\to\infty}x_n=a$带入$f(x)$有
+            $$
+            \lim_{n\to\infty}\frac{x_n-x_{n+1}}{1-x_n} = 1
+            $$
+            即
+            $$
+            \frac{a-0}{1-a} = 1 \implies a = \frac{1}{2}
+            $$
+        \end{solution}
+    }
+
+    \item \bt (2013.2)设函数$f(x)=\ln{x}+\frac{1}{x}$ 
+    \begin{enumerate}
+        \item [(1)] 求$f(x)$的最小值 
+        \item [(2)] 设数列$\{x_n\}$满足$\ln{x_n}+\frac{1}{x_{n+1}}<1$证明$\lim_{n\to\infty}x_n$存在,并求此极限
+    \end{enumerate}
+
+        \answer{
+        \begin{solution}
+            (1) $f'(x) = \frac{1}{x}-\frac{1}{x^2} = \frac{x-1}{x^2}(x>0)$ 有$f(x)$在$(0,1)$上递减,
+            在$(1,+\infty)$上递增,故$f(1)=1$为$f(x)$的最小值 \\
+            (2)由题设有 
+            $$
+            \ln{x_n} < \ln{x_n}+\frac{1}{x_{n+1}}<1=\ln{e}
+            $$
+            有$\ln{x}$单调,故$0 < x_n < e$又由于(1)可知$1=f(1) < f(x_n) \implies x_{n+1} < x_n$故原数列单调递减有下界
+            故其极限存在,不妨设$\lim_{n\to\infty}x_n=a$,有题设有
+            $$
+            \ln{a} + \frac{1}{a} {\color{red} \leq } 1 
+            $$
+            又因为
+            $$
+            \ln{x} + \frac{1}{x} \geq 1
+            $$
+            故$a=1$即
+            $$
+            \fbox{$\lim_{n\to\infty}x_n = 1$}
+            $$
+        \end{solution}
+    }
+
+    \item \bt 设对任意的$x$,总有$\varphi(x)\leq f(x)\leq g(x)$,且$ \lim_{n\to\infty}\left[g(x)-\varphi(x)\right]=0$,则
+    $\lim_{n\to\infty}f(x)$(   )
+    \begin{choices}[2]
+        \task 存在且等于零
+        \task 存在但不一定为零
+        \task 一定不存在
+        \task 不一定存在
+    \end{choices}
+
+    \answer{
+        \bs{
+            对于A,B选项,不妨取$f(x)=g(x)=\varphi(x)=x$ 但是$\lim_{x\to\infty}f(x)=\infty$不存在 \\
+            对于C选项,不妨取$f(x)=g(x)=\varphi(x)=1$,此时$\lim_{x\to\infty}f(x)=1$
+        }
+
+        \begin{remark}[夹逼定理]
+            原式形式
+            $$
+            n\text{充分大时}, \begin{cases}
+                \varphi(n) \leq f(n) \leq g(n)  \\
+                \lim_{n\to\infty}\varphi(n) = \lim_{n\to\infty}g(n) = A 
+            \end{cases} \implies \lim_{n\to\infty} f(n) = A
+            $$
+            考虑题设的$\lim_{n\to\infty}\left[g(x)-\varphi(x)\right]=0$ 则有
+            $$
+            0\leq f(x)-\varphi(x) \leq g(x)-\varphi(x) \implies \lim_{n\to\infty} \left[f(x)-\varphi(x)\right] = 0 
+            $$
+            也可以看出$f(x)$的极限与$\varphi(x)$有关,若$\varphi(x)$存在则$f(x)$极限也存在否则不存在.
+        \end{remark}
+    }
+
+    \item \bt (2007-12)设函数$f(x)$在$(0,+\infty)$内具有二阶导数,且$f''(x)>0$,
+    令$u_n=f(n)(n=1,2,\ldots)$则下列结论正确的是(  )
+    \begin{choices}[2]
+        \task 若$u_1>u_2$,则$\{u_n\}$必收敛 
+        \task 若$u_1>u_2$,则$\{u_n\}$必发散
+        \task 若$u_1<u_2$,则$\{u_n\}$必收敛
+        \task 若$u_1<u_2$,则$\{u_n\}$必发散
+    \end{choices}
+
+    \answer{
+        \begin{solution}[拉格朗日中值定理]
+        存在$\xi_n\in(n,n+1),u_{n+1}-u_n=f(n+1)-f(n)=f'(\xi_n)$进而有
+        $u_{n+1}=u_n+f'(\xi_n)$,由于$f''(x)>0\implies f'(x)$单调递增,此时有
+        \begin{align*}
+            u_{n+1} &= u_n + f'(\xi_n) \\
+            &= u_{n-1} + f'(\xi_{n-1}) + f'(\xi_n) \\
+            &\ldots \\
+            &=u_1 + \sum_{i=1}^{n}f'(\xi_i) \\
+            &> u_1 + nf'(\xi_i) = u_1 + n(u_2-u_1)
+        \end{align*}
+        显然当$u_2>u_1$ 当$n\to\infty,u_n > +\infty$显然极限不存在.
+        \end{solution} 
+
+        \begin{solution}[选择题不客气]
+            对于选项A,$f(x)=\frac{1}{x}-x$ \\
+            对于选项B,$f(x)=\frac{1}{x}$ \\
+            对于选项C,$f(x)=x^2$ 
+        \end{solution}
+
+        \begin{solution}[级数]
+            由于$u_{n+1}-u_n=f'(\xi_n) > f'(\xi_i) = u_2 - u_1 > 0$ 此时$\lim_{n\to\infty}u_{n+1}-u_n \neq 0$ 
+            从而级数$\sum_{n=1}^{\infty}\left(a_{n+1}-a_n\right)$极限不存在,由定义有其部分和不存在,即
+            $$
+            \lim_{n\to\infty}S_n = \lim_{n\to\infty} u_{n+1} - u_1 
+            $$
+            进而可知$\lim_{n\to\infty}u_n$不存在.
+        \end{solution}
+    }
+    \item  设$\lim_{n\to\infty}a_n=a$且$a\neq 0$则当$n$充分大的时候,有(   )
+    \begin{choices}
+        \task $\left|a_n\right|>\frac{\left|a\right|}{2}$
+        \task $\left|a_n\right|<\frac{\left|a\right|}{2}$
+        \task $a_n>a-\frac{1}{n}$
+        \task $a_n<a+\frac{1}{n}$
+    \end{choices}
+
+    \item 设有数列$\left\{x_n\right\},-\frac{\pi}{2}\leq x_n\leq \frac{\pi}{2}$则(    )
+    \begin{choices}[1]
+        \task 若$\lim_{n\to\infty}\cos{(\sin{x_n})}$存在,则$\lim_{n\to\infty}x_n$存在
+        \task 若$\lim_{n\to\infty}\sin{(\cos{x_n})}$存在,则$\lim_{n\to\infty}x_n$存在
+        \task 若$\lim_{n\to\infty}\cos{(\sin{x_n})}$存在,则$\lim_{n\to\infty}\sin{x_n}$存在,但$\lim_{n\to\infty}x_n$不存在
+        \task 若$\lim_{n\to\infty}\sin{(\cos{x_n})}$存在,则$\lim_{n\to\infty}\cos{x_n}$存在,但$\lim_{n\to\infty}x_n$不存在
+    \end{choices}
+
+
+    \item 已知$a_n=\sqrt[n]{n}-\frac{(-1)^n}{n}(n=1,2,\ldots)$则$\{a_n\}$(    )
+    \begin{choices}[2]
+        \task 有最大值与最小值
+        \task 有最大值无最小值
+        \task 有最小值无最大值
+        \task 无最大值与最小值
+    \end{choices}
+
+    \item \bl[2] 设$z=z(x,y)$是由方程$x^2+y^2-z=\varphi(x+y+z)$所确定的函数,其中$\varphi$具有2阶导数且$\varphi'\neq -1$ 
+    \begin{enumerate}
+        \item [(1)] 求$\d z$ 
+        \item [(2)] 记$ u(x,y)=\frac{1}{x-y}\left(\frac{\P z}{\P x} - \frac{\P z}{\P y}\right)$,求$\frac{\P u}{\P x}$
+    \end{enumerate}
+
+    \item 
+
+\end{enumerate}
+
+\newpage
+\section{超越(11-25年)}
+
+\newpage
+\section{共创(22,23,24)年}
+
+\newpage
+\section{25年模拟卷(百来套)}
+
+\ifx\allfiles\undefined
+\end{document}
+\fi
