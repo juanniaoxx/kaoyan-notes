@@ -17,6 +17,15 @@ int sum = 0;
             sum++;
     \end{lstlisting}
 
+    \answer{
+        \bs {
+        假设第t次时$2^t\geq n$,此时$sum$执行的总次数为 
+        $$
+        1 + 2 + 4 + \ldots + 2^t = \frac{1-2^t}{1-2}=2^t - 1
+        $$
+        又因为$t=\log_2{n}$故而总的计算执行次数为$n-1\sim O(n)$
+    }
+    }
     \item 若长度为n的非空线性表采用顺序存储结构,在表的第$i$个位置插入一个数据元素,则$i$的合法位置
     应该是(   )
     \begin{choices}
@@ -26,6 +35,12 @@ int sum = 0;
         \task $0\leq i \leq n$
     \end{choices}
 
+    \answer{
+        \bs {
+            区分\underline{序号,位置}的区别.如果问序号一般默认从$0,1,\ldots,n-1$;如果是问位置,想想也不可能有
+            第0个位置这种说法,此时是$1,2,\ldots,n$,所以插入位置应该是$1\leq i\leq n$ 
+        }
+    }
     \item 关于线性表的顺序存储和链式存储结构的描述中,正确的是(    ) 
     \begin{enumerate}
         \item [(1)] 线性表的顺序结构优于其链式存储结构
@@ -39,8 +54,12 @@ int sum = 0;
         \task 2,3
         \task 3,4
     \end{choices}
-
-    \item 对于一个头指针位$head$的带头结点的单链表,判断该表为空表的条件是(   ),对于不带头结点
+    \answer{
+        \bs {
+        选B 
+        }
+    }
+    \item 对于一个头指针为$head$的带头结点的单链表,判断该表为空表的条件是(   ),对于不带头结点
     的单链表,判断空表的条件是(   ) 
     \begin{choices}[2]
         \task $head == NULL$ 
@@ -49,6 +68,11 @@ int sum = 0;
         \task $head \neq NULL$
     \end{choices}
 
+    \answer{
+        \bs{
+            B,A
+        }
+    }
     \item 一个链表最常用的操作为在末尾插入结点和删除节点,则选用(   )最节省时间. 
     \begin{choices}[2]
         \task 带头结点的双循环链表
@@ -57,6 +81,12 @@ int sum = 0;
         \task 单链表
     \end{choices}
 
+    \answer{
+        \bs {
+            选A,可以注意分析时间复杂度.容易得到 \\
+            对于A选项,分别为$O(1),O(1)$;对于B,C,D选项,分别为$O(n),O(n)$
+        }
+    }
     \item 设对$n(n>1)$元素的线性表运算只有4种,删除第一个元素,删除最后一个元素,在第一个元素之前插入
     一个元素,在最后一个元素之后插入一个元素,则最好使用(    ) 
     \begin{choices}[1]
@@ -872,6 +902,9 @@ int sum = 0;
         \task 3
         \task 4
     \end{choices}
+
+
+
 \end{enumerate}
 \section{综合题}
 \ifx\allfiles\undefined

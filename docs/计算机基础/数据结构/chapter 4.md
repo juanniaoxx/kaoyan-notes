@@ -47,3 +47,50 @@ int PatternMathBF(const std::string& S, const std::string& P) {
 时间复杂度$O(nm)$,由于指针会后退所以最坏的情况要遍历主串(n-m)次,遍历模式串(m)次,最大次数为(nm-m^2),所以时间复杂度的上界为$O(nm)$
 
 ## KMP算法
+
+先来个功利部分,不管这些有的没的,直接给出考研可能考的点.求 $PM,next,nextval$ 数组的办法. 
+
+一图流如下 
+
+![](./images/KMP相关计算.png)
+
+- 考研408的这些数组也是够无语的,在算导上都找不到.非得看国产的那本书才有(烦人)
+    -  PM数组即 $\pi$ 数组记录是{++最长前后缀的长度++}
+    -  next数字即将PM数组的值,{++转换为下标++}
+    -  nextval则是{++对next数组的进一步优化++}
+- 计算PM是最简单也是最关键的一步,这步算错了一切都白弄 
+- 计算 $next$ 数组, 不同书有不同的说法,但总共来说就两种.(方法如图) 
+- 计算 $nextval$ 数组要注意对应关系 
+    - 先根据 $next$ 数组查找和原字符串不一致的位,将 $next[i]$ 的值抄下来
+    - 再把相同的位根据 $nextval[i] = nextval[next[i]]$ 的公式找出来
+
+来点不功利的部分, KMP算法的代码实现与算法思路. 
+
+![](./images/KMP算法的流程.png)
+
+```cpp
+using namespace std;
+
+int strStr(const string& txt, const string& pat) {
+    int n = txt.size(), m = pat.size();
+    if (m == 0) return 0;
+
+    /* 1. 预处理 π 数组 */
+    vector<int> pi(m);
+    for (int i = 1, len = 0; i < m; ++i) {
+        while (len > 0 && pat[i] != pat[len]) len = pi[len - 1];
+        if (pat[i] == pat[len]) ++len;
+        pi[i] = len;
+    }
+
+    /* 2. 匹配过程 */
+    for (int i = 0, j = 0; i < n; ++i) {
+        while (j > 0 && txt[i] != pat[j]) j = pi[j - 1];
+        if (txt[i] == pat[j]) ++j;
+        if (j == m) return i - m + 1;   // 找到
+    }
+    return -1;
+}
+```
+
+KMP算法最精彩的地方在于通过预处理模式串,来避免主串的指针回退. 将原本 $O(nm)$ 时间复杂度的BF算法降低至 $O(n+m)$ 

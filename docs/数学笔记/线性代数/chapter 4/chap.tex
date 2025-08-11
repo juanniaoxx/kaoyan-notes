@@ -72,7 +72,7 @@ $$
 $$
 \section{解的判定}
 
-\begin{enumerate}[label=\arabic*.]
+\begin{enumerate}
     \item (2001,数三) 设 $A$ 为 $n$ 阶矩阵, $\alpha$ 为 $n$ 维列向量, 且 $\begin{pmatrix} A & \alpha \\ \alpha^T & 0 \end{pmatrix} = r(A)$，则线性方程组
     \begin{enumerate}
         \item [(A)] $Ax = \alpha$ 有无穷多解
@@ -100,7 +100,7 @@ $$
 
 \section{求齐次线性方程组的基础解系与通解}
 
-\begin{enumerate}[label=\arabic*.,start=3]
+\begin{enumerate}
     \item (2011, 数一,二) 设 $A = (\alpha_1, \alpha_2, \alpha_3, \alpha_4)$ 为 4 阶矩阵, $(1,0,1,0)^T$ 为线性方程组 $Ax = 0$ 的基础解系，则 $A^* x = 0$ 的基础解系可为
     \begin{enumerate}
         \item [(A)] $\alpha_1, \alpha_2$
@@ -138,8 +138,13 @@ $$
 \end{enumerate}
 
 \section{求非齐次线性方程组的通解}
-
-\begin{enumerate}[label=\arabic*.,start=6]
+\begin{remark}[求特解的方法]
+    \begin{enumerate}
+        \item 对于抽象矩阵,用定义和性质凑一个特解$\sum k_i\mu_i(\sum k_i = 1)$
+        \item 对于数字矩阵,$\bar{A}\rightarrow \text{行最简型}$让自由变量取0 
+    \end{enumerate}
+\end{remark}
+\begin{enumerate}
     \item 设 $A$ 为 4 阶矩阵, $k$ 为任意常数, $\eta_1, \eta_2, \eta_3$ 为非齐次线性方程组 $Ax = b$ 的三个解, 满足
     \begin{align*}
     \eta_1 + \eta_2 &= \begin{pmatrix} 1 \\ 2 \\ 3 \\ 4 \end{pmatrix}, \quad \eta_2 + 2\eta_3 = \begin{pmatrix} 2 \\ 3 \\ 4 \\ 5 \end{pmatrix}.
@@ -191,7 +196,33 @@ $$
     \end{pmatrix}
     $
     \begin{solution}
-    \newpage
+    由题设可知$r(A)=3$,可知$Ax=0$基础解系里面有$n-r(A)=4-3=1$个线性无关的向量.根据解的形式可知要凑一个$\sum k_i = 0$ 
+    $$
+    3(\mu_1+\mu_2)-2(\mu_2+2\mu_3) = \begin{pmatrix}
+        -1 \\
+        0 \\
+        1 \\
+        2
+    \end{pmatrix}
+    $$ 为基础解系, 凑一个$\sum k_i = 1$为特解,考虑选项可知 
+    $$
+    2(\mu_1+\mu_2)-(\mu_2+2\mu_3) = \begin{pmatrix}
+        0 \\
+        1 \\
+        2 \\
+        3
+    \end{pmatrix}
+    $$为特解,故其通解为 $$\begin{pmatrix}
+        0 \\
+        1 \\
+        2 \\
+        3 
+    \end{pmatrix} + k\begin{pmatrix}
+        -1 \\
+        0 \\
+        1\\
+        2
+    \end{pmatrix}$$
     \end{solution}
     
     \item (2017, 数一、三、三) 设 3 阶矩阵 $A = (\alpha_1, \alpha_2, \alpha_3)$ 有三个不同的特征值, 其中 $\alpha_3 = \alpha_1 + 2\alpha_2$。
@@ -201,7 +232,25 @@ $$
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    (1) 由于$A$具有三个不同的特征值可知$A$可相似对角化即$P^{-1}AP=\Lambda$ 故$r(A)=r(\Lambda)\geq 2$ 又因为
+    $\alpha_3=\alpha_1+2\alpha_2$ 可知A的列向量组的极大无关组至多为2,故$r(A)\leq 2$ 综上$r(A)=2$  \\
+    (2) 由于$r(A)=2,Ax=0$的基础解系里有$n-r(A)=3-2=1$个线性无关的向量, 又因为
+    $$
+    \alpha_1 + 2\alpha_2 - \alpha_3 = A\begin{pmatrix}
+        1 \\
+        2 \\
+        -1 
+    \end{pmatrix} = 0
+    $$
+    故基础解系为$\xi\begin{pmatrix}
+        1 \\
+        2 \\
+        -1
+    \end{pmatrix}$ 又因为 $\beta = A\begin{pmatrix}
+        1 \\
+        1 \\
+        1 
+    \end{pmatrix} = A\mu$ 故通解为 $\mu+k\xi$,其中k为任意常数
     \end{solution}
     
     \item 设$A=\begin{pmatrix}
@@ -220,7 +269,37 @@ $$
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    (1) 有题设可知$Ax=b$有无穷多解,即$r(A)=r{\bar{(A)}}<3$ 对增广矩阵做初等行变换有 
+    $$
+    \bar{A}\rightarrow \begin{pmatrix}
+        1 & 1 & \lambda & 1 \\
+        0 & \lambda -1 & 0 & 1 \\
+        0 & 0 & 1-\lambda^2 & a+1-\lambda
+    \end{pmatrix} \implies \begin{cases}
+        \lambda = -1\\
+        a = -2
+    \end{cases}
+    $$
+    (2) 将$\bar{A}$经过初等行变换转换为行最简型有 
+    $$
+    \bar{A}\rightarrow\begin{pmatrix}
+        1 & 0 & -1 & \frac{3}{2} \\
+        0 & 1 & 0 & -\frac{1}{2} \\
+        0 & 0 & 0 & 0
+    \end{pmatrix}
+    $$
+    可知其基础解系和特解分别为 
+    $$
+    \xi=\begin{pmatrix}
+        1 \\
+        0 \\
+        1
+    \end{pmatrix}, \eta = \begin{pmatrix}
+        \frac{3}{2} \\
+        -\frac{1}{2} \\
+        0
+    \end{pmatrix}
+    $$ 故该方程组的通解为$\eta+k\xi$,其中k为任意常数 
     \end{solution}
     
     \item 设$A$为$m\times n$阶矩阵,且 $r(A)=r$,若$\xi_1\xi_2\ldots\xi_{n-r}$为齐次方程组$Ax=0$的基础解系,$\eta$为非其次
@@ -232,13 +311,54 @@ $$
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    (1)用定义证明,设$\exists k_1,\ldots,k_{n-r}$使得 
+    \begin{align*}
+        k_0\eta+k_1\xi_1+\ldots+k_{n-r}\xi_{n-r}=0 \tag{*}
+    \end{align*}
+    *式左乘A,可知$k_0 b = 0$又$b\neq 0$ 故$k_0=0$将其值带回*式可知
+    $$
+    k_1\xi_1+\ldots+k_{n-r}\xi_{n-r} = 0
+    $$
+    又因为$\xi_i$之间线性无关,可知$k_1=\ldots=k_{n-r}=0$ 故由线性无关的定义可知$\eta,\xi_1,\ldots,\xi_{n-r}$线性无关.  \\
+    (2) 方法一:用定义 \\
+    设$\exists l_0,\ldots,l_{n-r}$使得 
+    $$
+    l_0\eta + l_1(\eta+\xi_1) + \ldots + l_{n-r}(\eta+\xi_{n-t}) = 0
+    $$
+    即
+    $$
+    (l_0+\ldots+l_{n-r})\eta + l_1\xi_1 + \ldots + l_{n-r}\xi_{n-r} = 0
+    $$
+    由以可知上面的系数都为0,即$l_i = 0$ 从而原命题成立 \\
+    方法二:用秩证明
+    \begin{align*}
+        &(\eta, \eta+\xi_1,\ldots,\eta+\xi_{n-r}) \\
+        &=(\eta,\xi_1,\ldots,\xi_{n-r})\begin{pmatrix}
+            1 & 1 & \ldots & 1 \\
+            0 & 1 & \ldots & 0 \\
+            \vdots & \vdots & \ldots & \vdots \\
+            0 & 0 & \ldots & 1 
+        \end{pmatrix} \\
+        & = (\eta,\xi_1,\ldots,\xi_{n-r}) A_{(n-r+1)\times(n-r+1)}
+    \end{align*}
+    有(1)可知$(\eta,\xi_1,\ldots,\xi_{n-r})$线性无关,即列满秩,故有
+    $$
+    r(\eta, \eta+\xi_1,\ldots,\eta+\xi_{n-r}) = r(A) = n - r + 1
+    $$
+    由线性无关的充要条件可知,该向量组线性无关.  \\
+    (3) 由(2)可知$(\eta, \eta+\xi_1,\ldots,\eta+\xi_{n-r})$为方程$Ax=b$线性无关的解,且$\eta,\xi_1,\ldots,\xi_{n-r}$可由
+    其线性表示,并且$\eta,\xi_1,\ldots,\xi_{n-r}$可表示所有解.从而可知$(\eta, \eta+\xi_1,\ldots,\eta+\xi_{n-r})$亦可以表示
+    所有解,故而其为所有解的极大线性无关组. 
     \end{solution}
+    \begin{definition}[(非)齐次方程解的个数]
+        齐次方程组$Ax=0$的基础解系(解的极大无关组)中解的个数为$n-r$ \\
+        有上题的(3)可知,方程$Ax=b$解的极大无关组中解的个数为$n-r+1$  
+    \end{definition}
 \end{enumerate}
 
 \section{解矩阵方程}
 
-\begin{enumerate}[label=\arabic*.,start=10]
+\begin{enumerate}
     \item 设$A=\begin{pmatrix}
         -1 & 0 & 1\\
         1 & 0 & -1 \\
