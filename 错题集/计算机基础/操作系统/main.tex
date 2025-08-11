@@ -116,7 +116,7 @@
     \item 进程P1和进程P2均包含并发执行的线程,部分伪代码如下,下列选项中,需要互斥执行的操作是() 
     \begin{center}
         \begin{minipage}[t]{0.45\textwidth}
-\begin{lstlisting}[language=C, numbers=left]
+\begin{lstlisting}[language=C]
 // 进程P1                    
 int x = 0;                   
 Thread1() {                  
@@ -154,7 +154,7 @@ Thread4() {
     \item 下面是一个并发进程的程序代码,正确的是() 
     \begin{center}
         \begin{minipage}[t]{0.45\textwidth}
-            \begin{lstlisting}[language=C, numbers=left]
+            \begin{lstlisting}[language=C]
 Semaphore x1=x2=y=1;
 int c1=c2=0;
 P1() {
@@ -195,7 +195,7 @@ C.进程会死锁,但是不会饥饿\qquad D.进程会死锁,也会饥饿
     \item 有两个并发进程,对于如这段程序的执行,正确的是() 
 \begin{center}
     \begin{minipage}[t]{0.45\textwidth}
-        \begin{lstlisting}[numbers=left]
+        \begin{lstlisting}
 int x, y, z, t, u;
 P1() {
     while(1) {
@@ -269,6 +269,42 @@ P2() {
     \item 导致LRU算法实现起来消耗特高的原因是() \\
     A.需要特殊硬件支持\qquad B.需要特殊的中断处理程序 \\
     C.需要在页表中标明特殊的页类型\qquad D.需要对所有页进行排序
+
+    \item 在页面置换策略中,()策略可能引起抖动. 
+    \begin{choices}
+        \task FIFO
+        \task LRU
+        \task 没有一种 
+        \task 所有 
+    \end{choices}
+
+    \item 提供虚拟存储技术的存储管理方法右() 
+    \begin{choices}[2]
+        \task 动态分区存储管理
+        \task 页式存储管理
+        \task 请求段式存储管理
+        \task 存储覆盖技术
+    \end{choices}
+
+    \item 下列说法中正确的是() 
+    \begin{enumerate}
+        \item [(1)] 先进先出页面置换算法会产生Belady现象
+        \item [(2)] 最近最少使用算法会产生Belady现象
+        \item [(3)] 在进程运行时,若其工作集页面都在虚拟存储器内,则能够使该进程有效地进行,否则
+        会频繁的页面调入/调出
+        \item [(4)] 在进程运行时,若其工作集页面都在主存储器内,则能够使该进程有效地进行,否则
+        会频繁的页面调入/调出
+    \end{enumerate}
+    \begin{choices}
+        \task 1,3
+        \task 1,4
+        \task 2,3
+        \task 2,4
+    \end{choices}
+
+    \item \bl 系统为某进程分配了4个页框,该进程已访问的页号序列为\underline{2,0,2,9,3,4,2,8,2,4,8.4.5}.
+    若进程要访问的下一页的页号为7,依据LRU算法,应淘汰的页号是(   ) 
+
 \end{enumerate}
 
 \section{综合题}

@@ -3013,11 +3013,32 @@
 </code></pre></div></td></tr></table></div>
 注意在计算机底层,并没有想象中的行*列结构,而是如下结构
 <img alt="alt text" src="../images/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84.png" /></p>
+<p>此时任意元素 <span class="arithmatex">\(a_ij\)</span> 对应位置由 </p>
+<div class="arithmatex">\[
+LOC(i,j)=LOC(0,0) + (n\times i + j)L 
+\]</div>
+<p>其中L是一个数据单元的大小. </p>
 <h3 id="_4">特殊矩阵的压缩存储<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p><ins>对称矩阵</ins>, 下图为按行优先的方式存储的图示 
+<p><ins>对称矩阵 <span class="arithmatex">\(A^T=A\)</span></ins>, 下图为按行优先的方式存储的图示 
 <img alt="alt text" src="../images/%E5%AF%B9%E8%A7%92%E7%9F%A9%E9%98%B5%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%AD%98%E5%82%A8.png" /></p>
+<p>此时可将 <span class="arithmatex">\(n^2\)</span> 个元素压缩进 <span class="arithmatex">\(n(n+1)/2\)</span> 个元素的一维矩阵,其下标满足如下规则 </p>
+<div class="arithmatex">\[
+k
+\begin{cases}
+\frac{i(i-1)}{2} + j - 1 &amp; i\geq j \\
+\frac{j(j-1)}{2} + i - 1 &amp; i &lt; j
+\end{cases}
+\]</div>
 <p><ins>三对角矩阵</ins></p>
-<p><ins>稀疏矩阵</ins></p>
+<p><img alt="alt text" src="../images/%E4%B8%89%E5%AF%B9%E8%A7%92%E7%9F%A9%E9%98%B5.png" /></p>
+<p>按行优先(列优先),只存储带状部分,一共要存储 <span class="arithmatex">\(3n-2\)</span> 个元素,新数组的下标范围是 <span class="arithmatex">\((0,3n-3)\)</span> </p>
+<p><ins class="critic">映射关系</ins> </p>
+<ul>
+<li>按行优先存储 <span class="arithmatex">\(k=2i+j-3\)</span> </li>
+<li>前 <span class="arithmatex">\(i-1\)</span> 行共有 <span class="arithmatex">\(3(i-1) - 1\)</span> 个元素, <span class="arithmatex">\(a_{ij}\)</span> 时第i行第 <span class="arithmatex">\(i-j+2\)</span> 个元素,相加为 <span class="arithmatex">\(2i+j-2\)</span> 作为下标还要减1 </li>
+</ul>
+<p><ins>稀疏矩阵(三元组表)</ins></p>
+<p><img alt="alt text" src="../images/%E4%B8%89%E5%85%83%E7%BB%84%E8%A1%A8.png" /></p>
 
 
 
