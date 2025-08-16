@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17">
     
     
       
@@ -3408,7 +3408,7 @@
 <h2 id="_16">堆与堆排序<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
 <p>以最大堆为例,说明堆的特性与操作</p>
 <p><ins class="critic">小根堆的定义</ins> 最大堆是一棵<ins class="critic">完全二叉树</ins>,对于堆中的任意结点,其值均不大于其左右子树结点的值.</p>
-<p><img alt="alt text" src="./images/小根堆.png" /></p>
+<p><img alt="alt text" src="../images/%E5%A4%A7%E6%A0%B9%E5%A0%86.png" /></p>
 <p>在一般实现中,会用数组去保存一个堆,比如上面的小根堆用数组表示就是</p>
 <p>[10, 20, 15, 25, 50, 30, 40, 35, 45] </p>
 <p>二叉堆的最重要的两个操作是 <ins class="critic">上浮</ins> 与 <ins class="critic">下沉</ins> 操作</p>
@@ -3421,11 +3421,10 @@
 <p><img alt="" src="../images/%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E5%BB%BA%E7%AB%8B%E5%A0%86.png" /></p>
 <p><img alt="" src="../images/%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E5%BB%BA%E7%AB%8B%E5%A0%86.png" /></p>
 <p><ins class="critic">堆的插入操作</ins> 将待插入的点放到二叉堆的最后,在将其<ins class="critic">上浮</ins>到对应的位置</p>
-<p><ins class="critic">堆的删除操作</ins> 将待删除的结点与堆的最后的节点交换,并将根结点<ins class="critic">下沉</ins>到对应为止
-ß
-<ins class="critic">堆排序</ins> </p>
+<p><ins class="critic">堆的删除操作</ins> 将待删除的结点与堆的最后的节点交换,并将根结点<ins class="critic">下沉</ins>到对应为止</p>
+<p><ins class="critic">堆排序</ins> </p>
 <ul>
-<li>将待排序数组建立成一个大根堆</li>
+<li>将待排序数组建立成一个<mark class="critic">大根堆</mark></li>
 <li>取出堆顶元素,并将其与堆的最后一个元素互换</li>
 <li>调整堆,将其变回小根堆,将堆的size - 1</li>
 <li>循环上述过程,直到堆的大小为0,此时原数组就成了有序数组</li>
@@ -3585,10 +3584,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["announce.dismiss", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "search.share", "navigation.expand", "navigation.indexes", "content.tabs.link", "content.tooltips", "content.code.copy", "content.action.edit", "content.action.view", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["announce.dismiss", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "search.share", "navigation.expand", "navigation.indexes", "content.tabs.link", "content.tooltips", "content.code.copy", "content.action.edit", "content.action.view", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.50899def.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
       
         <script src="../../../javascripts/extra.js"></script>
       

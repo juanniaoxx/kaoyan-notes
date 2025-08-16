@@ -47,17 +47,23 @@ $$
 \end{cases}
 $$
 \section{特征值与特征向量的计算}
-\begin{remark}
-    特征值与特征值向量的性质
+\begin{definition}[特征值与特征值向量的性质]
     \begin{enumerate}
         \item [(1)] 不同特征值的特征向量线性无关 
         \item [(2)] 不同特征值的特征向量之和不是特征向量
         \item [(3)] $k\text{重特征值有}k\text{个线性无关的特征向量}$ 
         \item [(4)] 设$A$的特征值为$\lambda_1,\lambda_2\ldots,\lambda_n$则$\displaystyle \sum_{i=1}^{n}\lambda_i=tr(A),\Pi_{i=1}^{n}\lambda_i=\left|A\right|$ 
+        \begin{enumerate}
+            \item [推论1] 上,下,主对角矩阵特征值为主对角线元素 
+            \item [推论2] $aA+bE(a\neq 0)$不可逆时,$\lambda=-\frac{b}{a}$必然为$A$的一个特征值
+        \end{enumerate}
         \item [(5)] 若$r(A)=1$则$A=\alpha\beta^{T}$,其中$\alpha,\beta$是$n$维非零列向量,则$A$的特征值为 
         $$
         \lambda_1=tr(A)=\alpha^T\beta=\beta^T\alpha, \lambda_2=\ldots=\lambda_n = 0
         $$
+        当$tr(A)\neq 0$时,$\lambda_1 = tr(A),\alpha_1=\alpha,\lambda_2\ldots,\lambda_n = 0,$其特征向量解$\beta^T x = 0$其线性无关的解即为特征向量$\alpha_2\ldots\alpha_n$  \\
+        当$tr(A)=0$时$\lambda_1=\ldots=\lambda_n=0$此时只有$n-1$个线性无关的特征向量. \\
+        综上秩为1矩阵能相似对角化$\color{red}\iff\ tr(A)\neq 0$ 
         \item [(6)] 设$\alpha$为矩阵$A$属于特征值$\lambda$的特征值向量则,有 
         \begin{center}
             \begin{tabular}{ |c|c|c|c|c|c| }
@@ -70,8 +76,19 @@ $$
                 \hline
             \end{tabular}
         \end{center}
+        $f(A)$可以推广为$+/-,kA,A^n,{\color{blue}A^{-1},A^*}$
     \end{enumerate}
+\end{definition}
+
+\begin{remark}[求特征值与特征值向量]
+    (1)利用特征的定义($A\alpha = \lambda\alpha({\color{red}\alpha\neq 0})$)或性质(上述六条) \\
+    (2)特征方程组法(两大步) 
+    \begin{enumerate}
+        \item [(1)] $\left|A-\lambda E\right|=0$可以求出A的n个特征值 
+        \item [(2)] $(A-\lambda_i E)x=0$,可以解出特征值$\lambda_i$对应的线性无关的特征向量($n-r(A-\lambda_i E)$个)
+    \end{enumerate} 
 \end{remark}
+
 \begin{enumerate}
     \item 设
     \begin{align*}
@@ -84,8 +101,32 @@ $$
     \end{align*}
     求 $A$ 的特征值与特征向量。
     
-    \begin{solution}
-    \newpage
+    \begin{solution}[特征方程法]
+    令$\left|A-\lambda E\right| = 0 \implies \begin{vmatrix}
+        -2-\lambda & 1 & & 1 \\
+        0 & 2-\lambda & 0 & 0 \\
+        0 & 0 & 2-\lambda & 0 \\
+        0 & 0 & 0 & 2-\lambda
+    \end{vmatrix} = -(2+\lambda)(2-\lambda)^3 = 0$ 即$\lambda_1 = -2, \lambda_2=\lambda_3=\lambda_4=2$ \\
+    当$\lambda_1=-2$时候,解$(A+2E)x=0\implies \alpha_1=(-1,1,1,1)^T$ \\
+    当$\lambda_1 = -2, \lambda_2=\lambda_3=\lambda_4=2$时,解$(A-2E)x=0$ 解出其线性无关的特征向量为 
+    $$
+    \alpha_2 = (1,1,0,0)^T,\alpha_3 = (1,0,1,0)^T,\alpha_4=(1,0,0,1)^T
+    $$
+    \end{solution}
+
+    \begin{solution}[分解为秩为1]
+    可以将A分解为 
+    $$
+    A = \begin{pmatrix}
+        -1 \\
+        1 \\
+        1 \\
+        1
+    \end{pmatrix}(1,-1,-1,-1) + 2E 
+    $$
+    由性质5和6可以立即确认$A$的特征值为 $\lambda_1=tr(B)+2,\lambda_2=\ldots=\lambda_4=0+2$ 且$\alpha_1=\alpha$其余
+    特征向量解$\beta x = 0$ 结果和上面一样. 
     \end{solution}
     
     \item (2003, 数一) 设
@@ -99,10 +140,44 @@ $$
         0 & 0 & 1 
     \end{pmatrix},B = P^{-1} A^* P$求 $B + 2E$ 的特征值与特征向量。
     
-    \begin{solution}
-    \newpage
+    \begin{solution}[特征方程法]
+    解$\left|A-\lambda E\right|=\begin{vmatrix}
+        3-\lambda & 2 & 2\\
+        2 & 3-\lambda & 2 \\
+        2 & 2 & 3-\lambda
+    \end{vmatrix}=(7-\lambda)(1-\lambda^2)=0$ 可知$\lambda_1=7,\lambda_2=\lambda_3=1$ \\
+    当$\lambda_1=7$解$(A-7E)x=0$可以解出$\alpha_1=(1,1,1)^T$ \\
+    当$\lambda_2=\lambda_3=2$时,解$(A-2E)x=0$可以解出线性无关的特征向量为$\alpha_2=(-1,1,0)^T,\alpha_3=(-1,0,1)^T$
     \end{solution}
     
+    \begin{solution}[分解为秩为1]
+        可以将A分解为
+        $$
+        A=\begin{pmatrix}
+            2 \\
+            2 \\
+            2
+        \end{pmatrix}(1,1,1)+E
+        $$
+        根据性质5,6容易得出和上述一样的答案. \\  
+        $A^*\ldots,1,\ldots,\alpha_1$ \\
+        $A^*\ldots,7,\ldots,\alpha_2,\alpha_3$  \\
+        $B\ldots,1,\ldots,P^{-1}\alpha_1=(0,1,1)^{T}$ \\
+        $B\ldots,7,\ldots,P^{-1}\alpha_2=(1,-1,0)^T,P^{-1}\alpha_3=(-1,-1,1)^T$ \\ 
+        此时求解上述三个特征向量也有三种不同的解法 
+        \begin{enumerate}
+            \item [(1)] 直接求$p^{-1}$
+            \item [(2)] 联立$(P\mid \alpha_1,\alpha_2,\alpha_3)$ 
+            \item [(3)] 观察题设可知$P$是初等矩阵之积,且很容易写出即
+            $$
+            P = E(23(1))E(1,2) \implies P^{-1}=E(1,2)E(23(-1))
+            $$
+            这个方法需要观察题目,不是很通用;虽然所有可逆矩阵都可以分解为初等矩阵,但并非所有
+            都好写出来.
+        \end{enumerate}
+        $B+2E,\ldots,3,\ldots,P^{-1}\alpha_1=(0,1,1)^{T}$ \\
+        $B+2E,\ldots,9,\ldots,P^{-1}\alpha_2=(1,-1,0)^T,P^{-1}\alpha_3=(-1,-1,1)^T$
+    \end{solution}
     \item 设$
     A = \begin{pmatrix}
     1 & 2 & 2 \\
@@ -111,15 +186,40 @@ $$
     \end{pmatrix}$
     的特征方程有一个二重根，求 $A$ 的特征值与特征向量。
     
-    \begin{solution}
-    \newpage
+    \begin{solution}[转圈化简]
+    解特征方程$\left|A-\lambda E\right| = \begin{vmatrix}
+        1-\lambda & 2 & 2 \\
+        -1 & 4-\lambda & -2 \\
+        1 & -2 & a-\lambda 
+    \end{vmatrix} = 0$
+    这种三阶的行列,当然可以直接展开那样比较难算. 由于考研不会故意恶心人,大部分都可以提公因数. 依据此,对行列式
+    按顺(逆)时间,选择{\color{red}不含$\lambda$的数,化简其余不含$\lambda$的数,产生$\lambda$式子的公因数} 
+    因此上式可以化简为 
+    $$
+    \begin{vmatrix}
+        1-\lambda & 4 - 2\lambda & 2 \\
+        -1 & 2-\lambda & -2 \\
+        1 & 0 & a-\lambda 
+    \end{vmatrix} = (2-\lambda)\left[\lambda^2-(a+3)\lambda+3a-6\right]
+    $$
+    此时讨论二重根的值,若$\lambda=2$不是其二重根,对于后面那个二次式必然有$\Delta=0\implies (a+3)^2+24>0$矛盾\\
+    故$\lambda=2$只能是二重根,此时可解出$a=8$特征值为
+    $\lambda_1=\lambda_2=2,\lambda_3=9$分别解$\begin{cases}
+        (A-2E)x = 0 \\
+        (A-9E)x = 0 
+    \end{cases}\implies \begin{cases}
+        \alpha_1 = (2,1,0)^T \\
+        \alpha_2 = (1,3,-7)^T
+    \end{cases}$
     \end{solution}
     
+
     \item 设 3 阶非零矩阵 $A$ 满足 $A^2 = O$，则 $A$ 的线性无关的特征向量的个数是 \\
     A.0\qquad B.1\qquad C.2\qquad D.3
     
     \begin{solution}
-    \newpage
+    由$A^2=O$且$A\neq O$可知$r(A)=1$,设$A$的任意特征值为$\lambda$满足$\lambda^2=0$故$A$的特征值只能是$0$
+    求解$(A-0E)x=0$的基础解系中包含解的个数为$3-r(A)=3-1=2$故$A$的线性无关的特征向量的个数是2
     \end{solution}
     
     \item 设 $A = \alpha \beta^T + \beta \alpha^T$，其中 $\alpha, \beta$ 为 3 维单位列向量，且 $\alpha^T \beta = \frac{1}{3}$，证明：
