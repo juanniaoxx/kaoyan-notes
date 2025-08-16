@@ -354,9 +354,53 @@ $$
         齐次方程组$Ax=0$的基础解系(解的极大无关组)中解的个数为$n-r$ \\
         有上题的(3)可知,方程$Ax=b$解的极大无关组中解的个数为$n-r+1$  
     \end{definition}
+
+    \item 设3阶非零矩阵$A$满足$A^2=O$,非齐次线性方程$Ax=b$有解,则$Ax=b$的线性无关解向量的个数为
+    \_\_\_\_ 
+
+    \begin{solution}
+        由$A^2 = A\cdot A = O \implies r(A) + r(A) \leq 3 \implies r(A)\leq 1$又因为$A\neq O$可知 
+        $r(A) = 1$,由上述结论可知$Ax=b$的线性无关解的个数为$n-r(A)+1 = 3 - 1 + 1 = 3$个. 
+    \end{solution} 
+
+    \item 设n阶矩阵$A$的伴随矩阵$A^*\neq O,\xi_1,\xi_2,\xi_3,\xi_4$为非齐次线性方程组$Ax=b$的互不相等
+    的解,则$Ax=b$的线性无关解向量的个数为\_\_\_\_  
+
+    \begin{solution}
+        由$A^*\neq O \implies r(A^*)\geq 1 \implies r(A) = n-1\text{或} n$,有题设可知$Ax=b$有无穷多解,故$r(A)=r(\bar{A})<n$
+        从而$r(A)=n-1$,由结论可知$Ax=b$的线性无关解的个数为$n-r(A)+1 = n - n + 1 + 1 = 2$个
+    \end{solution}
 \end{enumerate}
 
 \section{解矩阵方程}
+\begin{remark}[解$Ax=B$三种方法]
+    (方法一) 若$A$可逆,此时$X=A^{-1}B$ 
+    \begin{enumerate}
+        \item [(i)] 先求$A^{-1}$,再做$A^{-1}B$ 一般不用 
+        \item [(ii)] 联立做初等行变换 $(A\mid B)\xrightarrow{\text{初等行变换}}(E\mid A^{-1}B)$
+    \end{enumerate}
+    (方法二) 若$A$不可逆,且是二阶的时候直接待定系数 
+    $$
+    X=\begin{pmatrix}
+        x_1 & x_2 \\
+        x_3 & x_4 
+    \end{pmatrix}
+    $$
+    (方法三) 若$A$不可逆且,大于二阶.用分块(按列)矩阵乘法  
+    $$
+    A(x_1,x_2\ldots,x_n)=(\beta_1,\beta_2,\ldots,\beta_n) \implies \begin{cases}
+        Ax_1 = \beta_1 \\
+        Ax_2 = \beta_2 \\
+        \vdots \\
+        Ax_n = \beta_n 
+    \end{cases}
+    $$
+    转换为求解非齐次方程组,此时联立 
+    $$
+    (A\mid \beta_1,\beta_2,\ldots,\beta_n) \xrightarrow{\text{初等行变换}}\text{行最简型}
+    $$
+\end{remark}
+\underline{变种}若矩阵方程为$XA=B$则转换为$A^TX^T=B^T$
 
 \begin{enumerate}
     \item 设$A=\begin{pmatrix}
@@ -366,10 +410,27 @@ $$
     \end{pmatrix}$矩阵 $X$ 满足 $AX + E = A^{2022} + 2X$，求矩阵 $X$。
     
     \begin{solution}
-    \newpage
+    有题$r(A)=1$可知$A^{2022}=[tr(A)]^{2021}A=A$此时原矩阵方程可以转换为
+    $$
+    (A-2E)X=A-E
+    $$
+    此时联立,做初等行变换 
+    $$
+    \begin{pmatrix}
+        -3 & 0 & 1 & -2 & 0 & 1 \\
+        1 & -2 & -1 & 1 & -1 & -1 \\
+        -2 & 0 & 0 & -2 & 0 & 1
+    \end{pmatrix} \rightarrow \begin{pmatrix}
+        E & \begin{pmatrix}
+            1 & 0 & -\frac{1}{2} \\
+            -\frac{1}{2}  & \frac{1}{2} & \frac{1}{2} \\
+            1 & 0 & -\frac{1}{2}
+        \end{pmatrix}
+    \end{pmatrix}
+    $$
     \end{solution}
     
-    \item (例 4.11) (2014, 数一、二、三) 设 
+    \item (2014, 数一、二、三) 设 
     $
     A = \begin{pmatrix}
     1 & -2 & 3 & -4 \\
@@ -378,16 +439,55 @@ $$
     \end{pmatrix}
     $
     \begin{enumerate}
-        \item (I) 求线性方程组 $Ax = 0$ 的一个基础解系；
-        \item (II) 求满足 $AB = E$ 的所有矩阵 $B$。
+        \item [(I)] 求线性方程组 $Ax = 0$ 的一个基础解系；
+        \item [(II)] 求满足 $AB = E$ 的所有矩阵 $B$。
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    直接联立$A,E$做初等行变换,可以一次把两道题一起做了. 
+    $$
+    (A\mid E) \rightarrow \left(
+        \begin{array}{@{}c|c@{}}
+        \begin{matrix}
+            1 & 0 & 0 & 1 \\
+            0 & 1 & 0 & -2 \\
+            0 & 0 & 1 & -3
+        \end{matrix} &
+        \begin{matrix}
+            2 & 6 & -1 \\
+            -1 & -3 & 1 \\
+            -1 & -4 & 1
+        \end{matrix}
+        \end{array}
+        \right)
+    $$
+    通过左边的矩阵可以解出基础解系为$\xi=\begin{pmatrix}
+        -1 \\
+        2 \\
+        3 \\
+        1
+    \end{pmatrix}$ 通过右边的矩阵,可以解出B,此时结果为 
+    $$
+    B = \begin{pmatrix}
+        2-k_1 & 6 - k_2 & -2-k_3 \\
+        2k_1-1 & 2k_2-3 & 2k_3+1 \\
+        3k_1-1 & 3k_2-4 & 3k_3+1 \\
+        k_1 & k_2 & k_3 
+    \end{pmatrix}
+    $$
+    其中$k_1,k_2,k_3$为任意常数
     \end{solution}
+    \begin{remark}[分块矩阵解矩阵方程的注意点]
+        解非齐次方程时候,自由变量取$k$,解其余变量.
+    \end{remark}
 \end{enumerate}
 
 \section{公共解的判定与计算}
+\begin{remark}[公共解的三种情况]
+    (情况一)已知两个方程组(直接联立) \\
+    (情况二)已知一个方程组与另一个方程组的通解,将该通解带入方程组 \\
+    (情况三)已知两个方程组的通解(令通解相等) 
+\end{remark}
 
 \begin{enumerate}[label=\arabic*.,start=12]
     \item (2007, 数三) 设线性方程组
@@ -405,7 +505,24 @@ $$
     有公共解，求 $a$ 的值及所有公共解。
     
     \begin{solution}
-    \newpage
+    直接联立$I,II$有
+    $$
+    \bar{A} = \begin{pmatrix}
+        1 & 1 & 1 & 0 \\
+        1 & 2 & a & 0 \\
+        1 & 4 & a^2 & 0 \\
+        1 & 2 & 1 & a - 1
+    \end{pmatrix} \rightarrow \begin{pmatrix}
+        1 & 1 & 1 & 0 \\
+        0 & 1 & a - 1 & 0 \\
+        0 & 0 & (a-1)(a-2)& 0 \\
+        0 & 0 & 1-a & a-1
+    \end{pmatrix}
+    $$
+    此时讨论参数a的值 \\
+    (当$a\neq 1$且$a\neq 2$) 此时$r(A)<r(\bar{A})$ 无公共解 \\
+    (当$a=1$时)公共解为$k(-1,0,1)^{T}$其中k为任意常数  \\
+    (当$a=2$)只有唯一解$(0,1,-1)^{T}$
     \end{solution}
     
     \item 设齐次线性方程组
@@ -422,9 +539,43 @@ $$
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    (I)比较简单答案是$k_1(5,-3,1,0)^{T}+k_2(-3,2,0,1)^T$其中$k_1,k_2$为任意常数 \\
+    (II,方法一) 令$k_1\xi_1+k_2\xi_2=k_3\alpha_1+k_4\alpha_4$ 则有 
+    $$
+    k_1\xi_1+k_2\xi_2-k_3\alpha_1-k_4\alpha_4 = 0 
+    $$
+    可以转换为求解齐次方程组$(\xi_1,\xi_2,-\alpha_1,-\alpha_2)k=0$的解 \\
+    (II,方法二)将$$
+    m_1\alpha_1+m_2\alpha_2 = \begin{pmatrix}
+        2m_1-m_2 \\
+        2m_2-m_1 \\
+        (a+2)m_1 + 4m_2 \\
+        m_1 + (a+8)m_2
+    \end{pmatrix}\begin{array}{c}
+        x_1 \\
+        x_2 \\
+        x_3 \\
+        x_4
+    \end{array}
+    $$
+    代入方程组(I)有$\begin{cases}
+        (a+1)m_1 = 0 \\
+        (a+1)m_2 = 0
+    \end{cases}$
+    当$a\neq -1$时候,$m_1=m_2=0$此时只有零解不合题意舍去 \\
+    当$a=-1$时候,非零公共解为$m_1\alpha_1+m_2\alpha_2$其中$m_1,m_2$为任意常数
     \end{solution}
-    
+\end{enumerate}
+
+\section{方程组同解}
+\begin{remark}[同解问题的求法]
+    (1)方程组同解的定义 \\
+    (2)秩(三秩相等) $r(A)=r\begin{pmatrix}
+        A \\
+        B
+    \end{pmatrix}=r(B)$ 即行向量组等价
+\end{remark}
+\begin{enumerate}
     \item (2005,数三) 设线性方程组
     \begin{align*}
     (I) \begin{cases}
@@ -440,13 +591,51 @@ $$
     2x_1 + b^2 x_2 + (c+1) x_3 = 0
     \end{cases}
     \end{align*}
-    同解，求 $a, b, c$ 的值。
+    同解，求 $a, b, c$ 的值,并求出同解. 
     
     \begin{solution}
-    \newpage
+    联立A,B有 
+    $$
+    \begin{pmatrix}
+        A \\
+        B
+    \end{pmatrix} \rightarrow \begin{pmatrix}
+        1 & 2 & 3 \\
+        0 & 1 & 1 \\
+        0 & 0 & a-2 \\
+        \hline 
+        0 & 0 & c-b-1 \\
+        0 & 0 & c-b^2-1  
+    \end{pmatrix}
+    $$
+    {\color{red}不要忘记单独讨论B的秩},由方程组同解可知$r(A)=r\begin{pmatrix}
+        A \\
+        B 
+    \end{pmatrix} = r(B)$且显然由$r(A)\geq 2, r(B)\leq 2$ 秩应该为2,此时可以解出 
+    $$
+    \begin{cases}
+        a = 2 \\
+        b = 0 \\
+        c = 1
+    \end{cases} \text{或} \begin{cases}
+        a = 2 \\
+        b = 1 \\
+        c = 2
+    \end{cases}
+    $$ 注意当$\begin{cases}
+        a = 2 \\
+        b = 0 \\
+        c = 1
+    \end{cases}$时$r(B)=1$不满足条件,应该舍去. 由于它们都同解,随便解一个方程即可. 不妨解$Ax=0$,即
+    $$
+    A\rightarrow \begin{pmatrix}
+        1 & 0 & 1 \\
+        0 & 1 & 1 \\
+        0 & 0 & 0
+    \end{pmatrix}
+    $$ 可知基础解系为$\xi=(1,1,-1)^T$故两个方程的同解为$k\xi$,$k$为任意常数.
     \end{solution}
 \end{enumerate}
-
 
 \ifx\allfiles\undefined
 \end{document}
