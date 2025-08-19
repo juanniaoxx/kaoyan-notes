@@ -22,7 +22,7 @@ $$
         \fbox{\text{定义}}\quad\beta=k_1\alpha_1+k_2\alpha_2+\ldots+k_s\alpha_s \\
         \fbox{\text{充要条件}} \begin{cases}
             \text{非其次线性方程组}(\alpha_1,\alpha_2,\ldots,\alpha_s)(x_1,x_2,\ldots,x_s)^{T}=\beta\text{有解} \\
-            r(\alpha_1,\alpha_2,\ldots,alpha_s)=r(\alpha_1,\alpha_2,\ldots,\alpha_s\mid \beta)
+            r(\alpha_1,\alpha_2,\ldots,\alpha_s)=r(\alpha_1,\alpha_2,\ldots,\alpha_s\mid \beta)
         \end{cases} \\
         \fbox{\text{求法}} \left(\alpha_1,\alpha_2,\ldots,\alpha_s\mid\beta\right) \xrightarrow{\text{初等行变换}}\text{行最简形矩阵}
     \end{cases} \\
@@ -250,18 +250,47 @@ $$
     $A^2\alpha_3 = \alpha_2 + A\alpha_3$，证明 $\alpha_1, \alpha_2, \alpha_3$ 线性无关。
     
     \begin{solution}
-    \newpage
+    有题设有
+    $$
+    \begin{cases}
+        (A^2-A)\alpha_1 = O \\
+        (A^2-A)\alpha_2 = \alpha_1 \\
+        (A^2-A)\alpha_3 = \alpha_2 \\
+    \end{cases}
+    $$
+    (用定义证明) 假设存在$k_1,k_2,k_3$使得
+    \begin{align*}
+        k_1\alpha_1+k_2\alpha_2+k_3\alpha_3=O \tag{$\star$}
+    \end{align*}
+    $(\star)$式两端同时左乘以$(A^2-A)$有
+    \begin{align*}
+        k_2\alpha_1+k_3\alpha_3=O \tag{$\star\star$}
+    \end{align*}
+    同理将上式两端同乘$A^2-A$有
+    $$
+    k_3\alpha_1 = 0 
+    $$
+    由于$A\alpha_1\neq O \implies \alpha_1\neq O$可知$k_3=0$代回$(\star\star)$可知$k_2=0$;
+    将$k_3=k_2=0$代回$\star$可知$k_1=k_2=k_3=0$故由线性无关的定义可知$\alpha_i$线性无关. 
     \end{solution}
     
     \item 设 4 维列向量 $\alpha_1, \alpha_2, \alpha_3$ 线性无关，与 4 维列向量 $\beta_1, \beta_2$ 两两正交，证明 $\beta_1, \beta_2$ 线性相关。
     
     \begin{solution}
-    \newpage
+    由题设可知$\forall \alpha_i^T\beta_j=0$ 即$\begin{pmatrix}
+        \alpha_1^T \\
+        \alpha_2^T \\
+        \alpha_3^T
+    \end{pmatrix}\beta_i=O\implies (\beta_1,\beta_2)$为方程$AX=0$的解,因而有$r(\beta_1,\beta_2)\leq 4-r(A)$又因为
+    $(\alpha_i)$线性无关可知$r(A)=3$故而$r(\beta_1,\beta_2)\leq 4-3=1$从而$\beta_1,\beta_2$线性相关. 
     \end{solution}
 \end{enumerate}
-
+\newpage
 \section{极大线性无关组的判定与计算}
-
+\begin{remark}[抽象与数字矩阵]
+    对于抽象矩阵:使用定义 \\
+    对于具体数字矩阵:初等行变换转换为行阶梯形 
+\end{remark}
 \begin{enumerate}
     \item 设 $\alpha_1 = (1,1,1,3)^T$, $\alpha_2 = (-1,-3,5,1)^T$, $\alpha_3 = (3,2,-1, a+2)^T$, $\alpha_4 = (-2,-6,10, a)^T$。
     \begin{enumerate}
@@ -270,7 +299,31 @@ $$
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    (1)联立$(\alpha_1,\alpha_2,\alpha_3,\alpha_4,\mid,\alpha)$化简为行阶梯形有
+    $$
+    \begin{pmatrix}
+        1 & -1 & 3 & -2 & 4 \\
+        0 & 2 & 1 & 4 & 3 \\
+        0 & 0 & 1 & 0 & 1 \\ 
+        0 & 0 & 0 & a-2 & 1-a 
+    \end{pmatrix}
+    $$
+    \begin{enumerate}
+        \item [(1)] 当$a=2$的时候$r(A)=3-4$此时极大无关组为$(\alpha_1,\alpha_2,\alpha_3)$ 
+        \item [(2)] 当$a\neq 2$的时候$r(A)=4$该向量组线性无关 
+    \end{enumerate}
+    (2)当$a\neq 2$将$(A\mid\alpha)$转换为行最简型有
+    $$
+    \begin{pmatrix}
+        E   \begin{array}{|c}
+            2 \\
+            \frac{3a-4}{a-2} \\
+            1 \\
+            \frac{1-a}{a-2}
+        \end{array}
+    \end{pmatrix}
+    $$
+    $\alpha=2\alpha_1+\frac{3a-4}{a-2}\alpha_2+\alpha_3+\frac{1-a}{a-2}\alpha_4$
     \end{solution}
     
     \item 证明:
@@ -285,25 +338,57 @@ $$
 \end{enumerate}
 
 \section{向量空间(数一专题)}
-\begin{remark}
-    向量空间 \\
+\begin{remark}[向量空间]
     \textbf{过度矩阵} \\
-    由基$\alpha_1,\alpha_2,\ldots,\alpha_n$到基$\beta_1,\beta_2,\ldots,\beta_n$的过渡矩阵为$(\beta_1,\beta_2,\ldots,\beta_n)
+    由基(极大线性无关组)$\alpha_1,\alpha_2,\ldots,\alpha_n$到基$\beta_1,\beta_2,\ldots,\beta_n$的过渡矩阵为$(\beta_1,\beta_2,\ldots,\beta_n)
     =(\alpha_1,\alpha_2,\ldots,\alpha_n)C$即$C=(\alpha_1,\alpha_2,\ldots,\alpha_n)^{-1}(\beta_1,\beta_2,\ldots,\beta_n)$ \\
     \textbf{坐标转换公式} \\
     设向量$\gamma$在基$\alpha_1,\alpha_2,\ldots,\alpha_n$中的坐标为$x=(x_1,x_2,\ldots,x_n)^{T}$,在基$\beta_1,\beta_2,\ldots,\beta_n$
     中的坐标为$y=(y_1,y_2,\ldots,y_n)^{T}$则坐标转换公式为$x=Cy$
+    \begin{align*}
+        \gamma &= (\alpha_1,\ldots,\alpha_n)X \\
+        &=(\beta_1,\ldots,\beta_n)Y \\
+        &=(\alpha_1,\ldots,\alpha_n)CY \implies x = Cy
+    \end{align*}
 \end{remark}
 \begin{enumerate}
     \item (2015, 数一) 设向量组 $\alpha_1, \alpha_2, \alpha_3$ 为 $R^3$ 的一个基，$\beta_1 = 2\alpha_1 + 2k\alpha_3$, $\beta_2 = 2\alpha_2$,
     $\beta_3 = \alpha_1 + (k+1)\alpha_3$。
     \begin{enumerate}
-        \item (I) 证明向量组 $\beta_1, \beta_2, \beta_3$ 为 $R^3$ 的一个基:
-        \item (II) 当 $k$ 为何值时，存在非零向量 $\xi$ 在基 $\alpha_1, \alpha_2, \alpha_3$ 与基 $\beta_1, \beta_2, \beta_3$ 下的坐标相同，并求所有的 $\xi$。
+        \item [(I)] 证明向量组 $\beta_1, \beta_2, \beta_3$ 为 $R^3$ 的一个基:
+        \item [(II)] 当 $k$ 为何值时，存在非零向量 $\xi$ 在基 $\alpha_1, \alpha_2, \alpha_3$ 与基 $\beta_1, \beta_2, \beta_3$ 下的坐标相同，并求所有的 $\xi$。
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    (1) 有题设有
+    $$
+    (\beta_1,\beta_2,\beta_3)=(\alpha_1,\alpha_2,\alpha_3)\begin{pmatrix}
+        2 & 0 & 1\\
+        0 & 2 & 0 \\
+        2k & 0 & k+1 
+    \end{pmatrix}
+    $$
+    又因为$\begin{vmatrix}
+        2 & 0 & 1\\
+        0 & 2 & 0 \\
+        2k & 0 & k+1 
+    \end{vmatrix}=4\neq 0$ 从而$\beta_i$线性无关,因此$\beta_i$为$\R^3$的一个基. \\
+    (2)设$\xi$在基$(\alpha_i)$和$(\beta_i)$下的坐标为x,则
+    $$
+    \xi=(\alpha_i)x=(\beta_i)x=(\alpha_i)Cx 
+    $$
+    得齐次方程$(C-E)x=O$有非零解,对其做初等初等行变换,有
+    $$
+    (C-E)=\begin{pmatrix}
+        1 & 0 & 1 \\
+        0 & 1 & 0 \\
+        0 & 0 & k
+    \end{pmatrix}
+    $$ 当$k=0$的时候,方程组有非零解,所有非零解为$x=k(-1,0,1)^T,k$为任意常数,此时在两个基下坐标相同
+    的所有非零向量为 
+    $$
+    \xi = k(\alpha_i)(-1,0,1)^T=k(\alpha_3-\alpha_1) 
+    $$
     \end{solution}
 \end{enumerate}
 

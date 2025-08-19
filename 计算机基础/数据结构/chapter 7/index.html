@@ -3189,7 +3189,7 @@
 <p>如图所示索引的关键字按照从小到大排序,则索引1对应的块内元素均应小于块2,块3内的元素.</p>
 <p>对于索引查找其平均查找长度为项间<span class="arithmatex">\(L_m\)</span>以及块内<span class="arithmatex">\(L_w\)</span>平均查找长度的平均值</p>
 <div class="arithmatex">\[ASL=L_m+L_w=\frac{1}{m}\sum_{j=1}^{m}j+\frac{1}{l}\sum_{i=1}^{l}i=\frac{1}{2}(\frac{n}{l}+l)+1\]</div>
-<p>其中n为表长,均匀分为m块,每块包含l个记录,容易证明当<span class="arithmatex">\(l=\sqrt{n}\)</span>时候<span class="arithmatex">\(ASL_{min}=\sqrt{n+1}\)</span></p>
+<p>其中n为表长,均匀分为m块,每块包含l个记录,容易证明当<span class="arithmatex">\(l=\sqrt{n}\)</span>时候<span class="arithmatex">\(ASL_{min}=\sqrt{n}+1\)</span></p>
 <h2 id="_7">动态查找表<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <h3 id="bst">二叉搜索树(BST)<a class="headerlink" href="#bst" title="Permanent link">&para;</a></h3>
 <p>二叉查找树最关键的性质为<ins class="critic">中序遍历有序</ins></p>

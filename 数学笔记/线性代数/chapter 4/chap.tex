@@ -9,7 +9,6 @@
 \else
 \fi
 \chapter{线性方程组}
-\section{知识体系}
 \[
 \fbox{
     \begin{tabular}{c}
@@ -71,7 +70,6 @@ $$
 \end{cases}
 $$
 \section{解的判定}
-
 \begin{enumerate}
     \item (2001,数三) 设 $A$ 为 $n$ 阶矩阵, $\alpha$ 为 $n$ 维列向量, 且 $\begin{pmatrix} A & \alpha \\ \alpha^T & 0 \end{pmatrix} = r(A)$，则线性方程组
     \begin{enumerate}
@@ -82,7 +80,14 @@ $$
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    对于A,B选项有 
+    $$
+    r(A)\leq r(A,\alpha) \leq r\begin{pmatrix}
+        A &\alpha \\
+        \alpha^T & 0 
+    \end{pmatrix} = r(A)
+    $$ 只能得到$r(A)=r(A,\alpha)$但与$n$的关系无法得出,故$Ax=\alpha$有解,但无法确定是无穷解还是
+    唯一解. (C,D)选项比较较大,有题设可以直接知道D正确. 
     \end{solution}
     
     \item 设 $A$ 为 $m \times n$ 阶矩阵, 且 $r(A) = m < n$，则下列结论不正确的是
@@ -94,8 +99,28 @@ $$
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    (A) $r(A^T)=r(A)=m \implies $只有零解 \\
+    (B) $r(A^TA)=r(A)=m<n \implies$ 有非零解 \\
+    (D) $m=r(A)\leq r(A,b)\leq \min\{m,m+1\} = m \implies r(A)=r(A,b)=m<n$有无穷多解 
     \end{solution}
+
+    \begin{corollary}[行/列满秩总结]
+        \text{行满秩}$A_{m\times n}, r(A)=m$
+        \begin{enumerate}
+            \item [(1)] 右乘行满秩满足消去律 
+            \item [(2)] 右乘行满秩秩不变 $r(BA)=r(B)$ 
+            \item [(3)] $A$的行向量组线性无关 
+            \item [(4)] 非齐次方程组$Ax=b\implies r(A)=r(A,b)\implies$有解
+        \end{enumerate}
+        \text{列满秩}$A_{m\times n}, r(A)=n$
+        \begin{enumerate}
+            \item [(1)] 左乘列满秩满足消去律 
+            \item [(2)] 左乘列满秩秩不变 $r(AB)=r(B)$ 
+            \item [(3)] $A$的列向量组线性无关 
+            \item [(4)] $Ax=O$只有零解 
+            \item [(5)] $ABx=O$与$Bx=O$同解
+        \end{enumerate}
+    \end{corollary}
 \end{enumerate}
 
 \section{求齐次线性方程组的基础解系与通解}
@@ -110,14 +135,33 @@ $$
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    由题设可知$n-r(A)=1\implies r(A)=3$ 且$\alpha_1+\alpha_3=O\implies \alpha_1,\alpha_3$线性相关,而$r(A)=3$其列向量
+    的极大无关组个数为3,从而其一个极大无关组可以是$(\alpha_1,\alpha_2,\alpha_4)$ \\
+    由$r(A)=3=n-1\implies r(A^*)=1$从而$A^*x=O$的基础解系中线性无关解的个数为$n-r(A^*)=3$个,由$A^*A=\left|A\right|E=O$ 
+    从而有
+    $$
+    A^*(\alpha_1,\alpha_2,\alpha_3,\alpha_4)=O
+    $$
+    从而$A^*x=O$的基础解系可以是$(\alpha_1(\alpha_3),\alpha_2,\alpha_4)$
     \end{solution}
     
     \item (2005, 数一、二) 设 3 阶矩阵 $A$ 的第 1 行为 $(a, b, c)$, $a, b, c$ 不全为零, 
     $B = \begin{pmatrix} 1 & 2 &3 \\ 2 & 4 & 6 \\ 3 & 6 & k \end{pmatrix}$ 满足 $AB = O$，求线性方程组 $Ax = 0$ 的通解。
     
     \begin{solution}
-    \newpage
+    由于$AB=O$且$r(A)+r(B)\leq 3$ \\
+    当$k\neq 9,r(B)=2$, $r(A)=1$,从而$Ax=0$的基础解系中线性无关解的个数为$3-r(A)=2$个,此时通解为 
+    $k_1(1,2,3)^T+k_2(3,6,k)^T$ 其中$k_1,k_2$为任意常数 \\
+    当$k=9$时候$r(B)=1$此时$r(A)=1\text{或者}r(A)=2$.  
+    \begin{enumerate}
+        \item [(1)] 当$r(A)=2<3$时,$3-r(A)=1$,此时基础解析中只有一个线性无关的解$\beta=(1,2,3)^T$通解为$k\beta$,k为任意常数 
+        \item [(2)] 当$r(A)=1<3$时候,$A=\alpha^T\beta \rightarrow \begin{pmatrix}
+            a & b & c \\
+            0 & 0 & 0 \\
+            0 & 0 & 0
+        \end{pmatrix}$不妨设$a\neq 0$ 此时基础解系可以是$\xi_1=(-\frac{b}{a},1,0),\xi_2=(-\frac{c}{a},0,1)$ 从而通解为
+        $k_1\xi_1+k_2\xi_2$其中$k_1,k_2$为任意常数 
+    \end{enumerate}
     \end{solution}
     
     \item (2002, 数三) 设线性方程组
@@ -133,7 +177,34 @@ $$
     其中 $a \neq 0, b \neq 0, n \geq 2$。当 $a, b$ 为何值时，方程组只有零解、有非零解，当方程组有非零解时，求其通解。
     
     \begin{solution}
-    \newpage
+    记系数矩阵为$A=\begin{pmatrix}
+        a & b & \ldots & b \\
+        b & a & \ldots & b \\
+        \vdots & \vdots & \ldots & \vdots \\
+        b & b & \ldots & a
+    \end{pmatrix}$ 其行列式为$\left|A\right|=\begin{vmatrix}
+        a & b & \ldots & b \\
+        b & a & \ldots & b \\
+        \vdots & \vdots & \ldots & \vdots \\
+        b & b & \ldots & a
+    \end{vmatrix}=[a+(n-1)b](a-b)^{n-1}$ 有
+    $$
+    \begin{cases}
+        a\neq b \text{且} a+(n-1)b\neq 0 \implies \left|A\right|\neq 0 \text{此时齐次方程只有零解} \\
+        a=b\neq 0, A\rightarrow \begin{pmatrix}
+            1 & 1 & \ldots & 1 \\
+            0 & 0 & \ldots & 0 \\
+            \vdots & \vdots & \ldots & \vdots 
+        \end{pmatrix} \\
+        \text{此时基础解系为} \xi_1=(-1,0,\ldots,0)^T,\ldots,\xi_{n-1}=(-1,0,\ldots,1)^T \\
+        a+(n-1)b=0, A\rightarrow \begin{pmatrix}
+            1 & 0 & \ldots & -1 \\
+            0 & 1 & \ldots & -1 \\
+            \vdots & \vdots & \ldots & \vdots  \\
+            0 & 0 & \ldots & 0
+        \end{pmatrix} \text{此时基础解系为} \xi=(1,1,\ldots,1)^T
+    \end{cases}
+    $$
     \end{solution}
 \end{enumerate}
 
