@@ -2,6 +2,8 @@
 \documentclass[12pt, a4paper, oneside, UTF8]{ctexbook}
 \def\path{../config}
 \input{../config/_config}
+\definecolor{red}{HTML}{e74c3c}
+\definecolor{black}{HTML}{2c3e50}
 \begin{document}
 % \input{../config/cover}
 \else
@@ -771,6 +773,90 @@ int sum = 0;
         }
     }
 
+    \item 以下关于图的叙述中,正确的是(    ) 
+    \begin{choices}[1]
+        \task 图与树的区别在于图的边数大于等于顶点数 
+        \task 假设有图$G=\{V,\{E\}\}$,顶点集$V'\subseteq V, E' \subseteq E$则$V'$和$\{E'\}$构成$G$的子图 
+        \task 无向图的连通分量是指无向图的极大连通子图 
+        \task 图的遍历就是从图中的某一顶点出发遍历图中的其余顶点 
+    \end{choices}
+
+    \answer{
+        \bs {
+            选C \\
+            树无环且连通,边数恰好是n-1;而图没有这种限制. \\
+            B选项第一眼很容易理解错,子图还要求$E'$中每一条边对应的结点都存在于$V'$中,否则不是合法图. \\
+            对于非连通图,通过一个结点并不能一次遍历其余所有结点 
+        }
+    }
+
+    \item 以下关于图的说法,正确的是(   ) 
+    \begin{choices}[1]
+        \task 强连通有向图的任何顶点到其他顶点都有弧 
+        \task 图的任意顶点的入度都等于出度 
+        \task 有向完全图一定是强连通有向图 
+        \task 有向图的边集的子集和顶点集的子集可构成原有向图的子图 
+    \end{choices}
+
+    \answer{
+        \bs {
+            选C \\
+            A: 强连通(连通)图仅保证结点和结点之间有\textbf{路径}而不保证有弧(边) \\
+            B: 只有无向图的入度等于出度,而有向图并不一定满足 \\
+            D: 如上题C一致. 
+        }
+    }
+    \item 对于一个有$n$个顶点的图;若是连通无向图,其边的个数至少是(   );若是强连通有向图,其边的个数至少为(   ) 
+    
+    \answer{
+        \bs {
+            $n-1;n$ \\
+            最小的连通无向图即一颗树,此时边为(n-1);而对于有向图,构成一个有向环,此时边为(n);
+        }
+    }
+    \item 在有$n$个顶点的有向图中,顶点的度最大可以达到(    ) 
+    
+    \answer{
+        \bs {
+            $2n-2$ \\
+            由于408数据结构仅考虑简单图,每个结点最多只能与其余$n-1$个结点存在两条互相指向的弧,即每个顶点
+            出度=入度=$n-1$,综上顶点的度之和为$2n-2$ 
+        }
+    }
+
+    \item 设无向图$G=(V,E),G'=(V',E')$若$G'$是$G$的生成树,则下列不正确的是(   ) 
+    \begin{enumerate}
+        \item [(1)] $G'$为$G$的连通分量 
+        \item [(2)] $G'$为$G$的无环子图
+        \item [(3)] $G'$为$G$的极小连通子图且$V'=V$   
+    \end{enumerate}
+    \begin{choices}
+        \task 1,2 \task 3 \task 2,3 \task 1
+    \end{choices}
+
+    \answer{
+        \bs {
+            选D
+        }
+    }
+    \item \bl 下列关于无向连通图特性的叙述中,正确的是(  ) 
+    \begin{enumerate}
+        \item [(1)] 所有顶点的度之和为偶数 
+        \item [(2)] 边数大于顶点数减一 
+        \item [(3)] 至少有一个顶点的度为一 
+    \end{enumerate}
+    \begin{choices}
+        \task 1 \task 2 \task 1,2 \task 1,3 
+    \end{choices}
+
+    \answer{
+        \bs {
+            选A \\
+            对于无向图$I$总是成立,考虑一棵树其边数等于顶点数减一但此时是连通的,所以$II$错误;考虑成环的无向图,此时每个
+            点的度都为2的倍数,故$III$错误. 
+        }
+    }
+
     \item 带权有向图G用临接矩阵存储,则$v_i$的入度等于邻接矩阵中(    )
     \begin{choices}[2]
         \task 第i行非$\infty$的元素个数
@@ -779,17 +865,65 @@ int sum = 0;
         \task 第i列非$\infty$且非0的元素个数
     \end{choices}
 
+    \answer{
+        \bs {
+            选D \\
+            这道题讲道理有歧义,除非默认$0$表示无边否则应该选B. 
+        }
+    }
+
+    \item 无向图G中包含N(N>15)个顶点,以临接矩阵形式存储时共占用$N^2$个存储单元(其他辅助空间忽略不计);以临接表
+    形式存储时,每个表结点占用3个存储单元,每个头结点占用2个存储单元(其他辅助空间忽略不计).若令图$G$的临接矩阵存储所占空间
+    小于等于临接表存储所占空间,该图$G$所包含的边的数量至少是(   ) \\
+
+    \answer{
+        \bs {
+            $(N^2-2N)/6$ \\
+            不要忘记无向图表要存两次 
+        }
+    }
+
     \item n个顶点的无向图的邻接表中最多有(   )个边表节点
     
+    \answer{
+        \bs {
+            $n(n-1)$ \\
+            临接表有两部分,一部分为顶点表(存顶点)一部分为边表(存边);从而当其是一个完全图的时候边数最多
+            此时有$n(n-1)$条边,从而边表结点有$n(n-1)$个 
+        }
+    }
     \item 假设有n个顶点,e条边的有向图用邻接表表示,则删除与某个顶点v相关的所有边的
     时间复杂度是(    ) 
+
+    \answer{
+        \bs {
+            $O(n+e)$ \\
+            分类加,分步乘,这里是分类;  \\
+            删除顶点$v$的出边,直接顺着顶点表,删除这个顶点即可.$O(n)$ \\
+            删除顶点$v$的入边,遍历整张临接表的所有顶点,并把以含$v$的边表结点删除,此时每边至多遍历一次$O(e)$ \\
+            综上,最终的时间复杂度为$O(n+e)$
+        }
+    }
 
     \item 对于一个有n个顶点,e条边的图采用临接表表示时,进行DFS遍历的时间复杂度是(   ),空间复杂度是
     (   );进行BFS遍历的时间复杂度是(   ),空间复杂度是(    ) 
 
+    \answer{
+        \bs {
+            $O(n+e),O(n);O(n+e),O(n)$ \\
+            空间复杂度不包含临接表的开销, DFS主要是递归栈的消耗,由于要遍历每个点一次最多需要压入$n$个点;BFS
+            使用队列实现,最多同时有$n$个顶点入队. 
+        }
+    }
     \item 对于一个有n个顶点,e条边的图采用临接矩阵表示时,进行DFS遍历的时间复杂度是(   ),空间复杂度是
     (   );进行BFS遍历的时间复杂度是(   ),空间复杂度是(    ) 
 
+    \answer{
+        \bs {
+            $O(n^2),O(n);O(n^2),O(n)$ \\
+            注意这里的空间复杂度不包含临接矩阵的消耗;此时消耗和上题没有区别; 
+        }
+    }
     \item 图的广度优先生成树的树高比深度优先生成的树高(    ) 
     \begin{choices}
         \task 小或相等
@@ -797,6 +931,27 @@ int sum = 0;
         \task 大或相等 
         \task 大
     \end{choices}
+
+    \answer{
+        \bs {
+            小或相等 
+        }
+    }
+
+    \item 从无向图的任意顶点出发进行一次深度优先遍历便可以访问所有顶点,则该图一定是(   ) \\
+    \begin{choices}
+        \task 完全图 
+        \task 连通图 
+        \task 有回路 
+        \task 一棵树 
+    \end{choices}
+
+    \answer{
+        \bs {
+            选B \\
+            一棵树可以通过一次DFS遍历所有点,但并非所有连通图都是一棵树.  
+        }
+    }
 
     \item 一下叙述中,正确的是(   ) 
     \begin{choices}[1]
@@ -806,6 +961,27 @@ int sum = 0;
         \task Floyd算法求两个顶点的最短路径,$path_k-1$一定是$path_k$的子集 
     \end{choices}
 
+    \answer{
+        \bs {
+            选A \\
+            若环的权值之和为负数,此时通过反复过环路径长度为无穷小,不存在所谓最短路;若环权值为0,此时
+            完全不需要经过这个环可以直接删除;若环权值之和为正数$w>0$,设环形路径为$P=s\rightarrow
+            \ldots\rightarrow u\rightarrow C\rightarrow u\ldots\rightarrow t$ 其中C是一个环路,
+            把C删除得到新的路径为$P'=s\rightarrow\ldots\rightarrow u\rightarrow u\ldots\rightarrow t$
+            显然$W(P')=W(P)-W(C)<W(P)$因此最短路必然不包含正权回路.  \\
+            $Dijkstra$算法能够处理\textbf{不含负权环路}的最短路径而非不含环路,对于零(正)权回路的最短路问题一样可以做 \\
+            $Dijkstra$每次可以确定两个顶点间的最短路,只要每个顶点都使用一次就可以确定任意顶点间的最短路 \\
+            Floyd维持的最优子结构是距离值的递推,即
+            $$
+            d_{ij}^{k} = \min\{d_{ij}^{k-1},d_{ik}^{k-1}+d_{kj}^{k-1}\}
+            $$
+            而非维护路径集合. Floyd算法更新规则为若$d_{ik}^{k-1}+d_{kj}^{k-1}<d_{ij}^{k=1}$直接把从$i$到$j$的新路径设置为
+            $$
+            path[i][j]=path[i][k]+path[k][j] 
+            $$
+            整段可能被完全抛弃所以不符合路径子集.
+        }
+    }
     \item 若一个有向图的顶点不能排成一个拓扑序列,则可以判断该有向图(    ) 
     \begin{choices}[2]
         \task 含有多个出度为0的顶点
@@ -814,6 +990,12 @@ int sum = 0;
         \task 含有顶点数大于1的强连通分量 
     \end{choices}
 
+    \answer{
+        \bs {
+            选D \\
+            拓扑排序存在$\iff$ 有向图无环 
+        }
+    }
     \item 下列关于图的说法中,正确的是(   ) 
     \begin{enumerate}
         \item [(1)] 有向图中顶点V的度等于其临接矩阵中第V行中1的个数
@@ -828,12 +1010,52 @@ int sum = 0;
         \task 4
     \end{choices}
 
+    \answer{
+        \bs {
+            选C \\
+            I: 有向图应该考虑行与列, $\text{度}=\text{入度}+\text{出度}=\sum_{j=1}^{n}A[j][i]+\sum_{j=1}^{n}A[i][j]$  \\
+            II: 有向图只要入度等于出度,其临接矩阵也是对称矩阵 \\
+            III: 最小生成树只能保证其权值之和为所有生成树中权值最少,但边权最少的边并不一定能组成一个生成树 \\
+            IV: 考虑如下两图,其拓扑排序一致但图不一致. 
+            \begin{center}
+                \begin{tikzpicture}[node distance=1.8cm,
+                        every node/.style={circle,draw,minimum size=6mm}]
+                %----------------  图 1  ----------------
+                \node (v1) at (0,0)  {$V_1$};
+                \node (v2) at (1.8,0) {$V_2$};
+                \node (v3) at (3.6,0) {$V_3$};
+                \node (v4) at (5.4,0) {$V_4$};
+                \path[->,thick,blue]
+                (v1) edge (v2)
+                (v2) edge (v3)
+                (v3) edge (v4);
+
+                %----------------  图 2  ----------------
+                \begin{scope}[yshift=-2.5cm]
+                \node (u1) at (0,0)  {$V_1$};
+                \node (u2) at (1.8,0.9) {$V_2$};
+                \node (u3) at (1.8,-0.9) {$V_3$};
+                \node (u4) at (3.6,0) {$V_4$};
+                \path[->,thick,red]
+                (u1) edge (u2)
+                (u1) edge (u3)
+                (u2) edge (u3)
+                (u2) edge (u4)
+                (u3) edge (u4);
+                \end{scope}
+
+                \end{tikzpicture}
+            \end{center}
+        }
+    }
     \item 已知带权图为$G=(V,E)$,其中$V=\{v_1,v_2,\ldots,v_{10}\}$,边集合为$E=\{<v_1,v_2>5,
     <v_1,v_3>6,<v_2,v_5>3,<v_3,v_5>6,<v_3,v_4>3,<v_4,v_5>3,<v_4,v_7>1,<v_4,v_8>4,<v_5,v_6>4,
     <v_5,v_7>2,<v_6,v_{10}>4,<v_7,v_9>5,<v_8,v_9>2,<v_9,v_{10}>2\}$则G的关键路径长度为(   ) 
 
     \answer{
-        
+        \bs{
+            21
+        }
     }
 
     \item 下列关于关键路径的说法中,正确的是(   ) 
@@ -851,6 +1073,11 @@ int sum = 0;
         \task 1,4
     \end{choices}
 
+    \answer{
+        \bs {
+            选C 
+        }
+    }
     \item \bl 若用临接矩阵存储有向图,矩阵中主对角线以下的元素全为零,则关于该图拓扑序列的结论是(   )
     \begin{choices}[2]
         \task 存在,且唯一
@@ -859,6 +1086,14 @@ int sum = 0;
         \task 无法确定是否存在
     \end{choices}
 
+    \answer{
+        \bs {
+            选C \\
+            题设条件只能保证有向图无环,而不能保证拓扑排序唯一.当前仅当每次确定拓扑序时只能找到一个入度为0的点,此时
+            拓扑排序唯一.  \\
+            在离散数学中确实有拓扑序列唯一的充要条件\textbf{G的Hasse图是一条链}
+        }
+    }
     \item \bl 对下列图所示的有向带权图,若采用Dijkstra算法求源点a到其他个顶点的最短路径,则得到的
     的第一条最短路径的目标顶点是b,第二条最短路径的目标顶点是c,后续得到的其余各最短路径的目标顶点一次是(   )
     \begin{center}
@@ -898,6 +1133,31 @@ int sum = 0;
     \end{choices}
 
 
+    \answer{
+        \bs {
+            选C \\
+            需要熟练理解下面的过程,很重要! 
+            \begin{center}
+            \begin{tabular}{c|c|c|c|c|c}
+                \hline
+                顶点 & 第一轮 & 第二轮 & 第三轮 & 第四轮 & 第五轮 \\
+                \hline 
+                b & $\color{red}(a,b)2$ & - & - & - & - \\
+                \hline
+                c & $(a,c)5$ & $\color{red}(a,b,c)3$ & - & - & - \\
+                \hline 
+                d & $\infty$ & $(a,b,d)5$ & $(a,b,d) 5$ & $\color{red} (a,b,d) 5$ & - \\
+                \hline
+                e & $\infty$ & $\infty$ & $(a,b,c,e) 7$ & $(a,b,c,e)7$ & $\color{red} (a,b,d,e)6$ \\
+                \hline
+                f & $\infty$ & $\infty$ & $\color{red} (a,b,c,f)4$ & - & - \\
+                \hline 
+                集合S & $(a,b)$ & $(a,b,c)$ & $(a,b,c,f)$ & $(a,b,c,f,d)$ & $(a,b,c,f,d,e)$ \\
+                \hline
+            \end{tabular}
+            \end{center}
+        }
+    }
     \item \bl 使用Dijkstra算法求下图中从顶点1到其他个顶点的最短路径,依次得到的各最短路径的目标
     顶点是(   )
 
@@ -940,6 +1200,12 @@ int sum = 0;
         \task 5,2,6,3,4
     \end{choices}
 
+    \answer{
+        \bs {
+            5,2,6,3,4 \\
+            和上题一样,思考上图的那个表即可. 
+        }
+    }
     \item \bl 下列所示的AOE网表示一项包含8个活动的工程,活动d的最早开始时间和最迟开始时间分别是(   ) 
 
     \begin{center}
@@ -974,6 +1240,152 @@ int sum = 0;
         \task 15,15
     \end{choices}
 
+    \answer{
+        \bs {
+            12和14
+        }
+        \begin{definition}[AOE网络的计算过程] 
+            具体参看笔记,这里只给出上题的计算过程的表格.\\
+            时间的最早开始时间(拓扑)前驱结点的最早开始时间+对应活动之和的\text{最大值} \\
+            时间的最迟开始时间(拓扑)后继结点的最迟开始时间-对应活动之差的\text{最小值} 
+            \begin{center}
+            \begin{tabular}{p{3.5cm}|p{4.5cm}|p{4.5cm}}
+                \hline
+                事件(按拓扑序) & 最早开始时间 & 最迟开始时间  \\ 
+                \hline
+                1(源点)& 0 & 0 \\
+                \hline 
+                3 & 0 + 8 = 8 & $\min\{12-4,18-10\}=8$  \\
+                \hline
+                2 & $\max\{3,8+4\}$ = 12 & $\min\{19-7,18-6\}=12$ \\
+                \hline
+                5 & 12+6=18 & 27-9=18 \\
+                \hline
+                4 & 12+7=19 & 27-6=21 \\
+                \hline
+                6(汇点) & $\max\{19+6,18+9\}=27$ & 27(关键路径长度) \\
+                \hline
+            \end{tabular}
+            \end{center}
+            事件的最早开始时间该事件(弧)对应的弧尾所表示时间的最早开始时间 \\
+            事件的最迟开始时间该事件(弧)对应弧头所示的最迟开始时间与该活动持续时间之间 
+            \begin{center}
+            \begin{tabular}{p{3.5cm}|p{4.5cm}|p{4.5cm}}
+                \hline
+                活动 & 最早开始时间 & 最迟开始时间  \\ 
+                \hline
+                a & $EST[1]=0$ & $LST[2]-3=9$ \\
+                \hline 
+                b & $EST[3]=8$ & $LST[2]-4=8$  \\
+                \hline
+                c & $EST[1]=0$ & $LST[3]-8=0$ \\
+                \hline
+                d & $EST[2]=12$ & $LST[4]-7=14$ \\
+                \hline
+                e & $EST[2]=12$ & $LST[5]-6=12$ \\
+                \hline
+                f & $EST[3]=8$ & $LST[5]-10=8$ \\
+                \hline
+                g & $EST[4]=19$ & $LST[6]-6=21$ \\
+                \hline 
+                h & $EST[5]=18$ & $LST[6]-9=18$ \\
+                \hline
+            \end{tabular}
+            \end{center}
+        \end{definition}
+    }
+
+    \item 图G利用十字链表法表示如下,请问图$G$可能的拓扑排序为(    ) 
+    \begin{center}
+    \includegraphics[scale=0.35]{十字链表.png}
+    \end{center}
+    \begin{choices}
+        \task $V_2,V_0,V_3,V_1,V_4$ 
+        \task $V_0,V_3,V_1,V_4,V_2$ 
+        \task $V_2,V_0,V_4,V_3,V_1$ 
+        \task 不存在拓扑序列
+    \end{choices}
+
+    \answer{
+        \bs {
+        选C \\
+        这道题的关键在于如何通过十字链表复原这个图.十字链表的解读参考笔记. 
+        复原后的图如下 
+        \begin{center}
+        \begin{tikzpicture}[scale=2,
+        vertex/.style={circle, draw, minimum size=6mm, font=\small},
+        edge/.style={->, thick},
+        ]
+
+        % 顶点
+        \node[vertex] (0) at (1,1) {$V_0$};
+        \node[vertex] (1) at (3,0) {$V_1$};
+        \node[vertex] (2) at (1,-1) {$V_2$};
+        \node[vertex] (3) at (-1,0) {$V_3$};
+        \node[vertex] (4) at (3,1) {$V_4$};
+
+        \draw[edge] (0) -- node {} (1);
+        \draw[edge] (0) -- node {} (3);
+        \draw[edge] (0) -- node {} (4);
+        \draw[edge] (2) -- node {} (0);
+        \draw[edge] (2) -- node {} (3);
+        \draw[edge] (2) -- node {} (1);
+        \draw[edge] (4) -- node {} (1);
+
+        \end{tikzpicture}
+        \end{center}
+        }
+    }
+
+    \item 以下对于最小生成树的描述,正确的是(   ) 
+    \begin{enumerate}
+        \item [(1)] 所有无向连通图的最小生成树一定有多个 
+        \item [(2)] $Prim$和$Kruskal$算法构建的最小生成树一定不同 
+        \item [(3)] 只要无向图中不存在相同权值的边,则该无向图的最小生成树唯一 
+        \item [(4)] 只要无向图中存在权值相同的边,则该无向图的最小生成树一定不唯一
+        \item [(5)] 在具有n个顶点的无向图G中,含有n个顶点,n-1条边的G的子图就是G的生成树 
+        \item [(6)] 生成树就是最小生成树 
+    \end{enumerate}
+    \begin{choices}
+        \task 3 \task 3,4 \task 全部正确 \task 全部错误 
+    \end{choices}
+
+    \item 以下说法中错误的是(   ) 
+    \begin{enumerate}
+        \item [(1)] 求从源点到其余顶点的Dijkstra最短路径算法中弧上权不能为负的原因是在实际应用中无意义 
+        \item [(2)] 若图用临接矩阵表示,则利用Dijkstra算法求每一对不同顶点之间的最短路径的算法时间为$O(n^3)$ 
+        \item [(3)] Floyd算法求每对不同顶点对的算法中允许弧上的权为负,但不能有权和为负的回路 
+    \end{enumerate}
+    \begin{choices}
+        \task 1,2,3 \task 1 \task 1,3 \task 2,3 
+    \end{choices}
+
+    \item ()可以求无向图的所有连通分量.  
+
+    \answer{
+        \bs {
+            $dfs,bfs$ 
+        }
+    }
+    \item 存在一张无向连通图$G=(V,E),\left|V\right|=n,\left|E\right|=e$分布使用$Prim,Kruskal$算法来产生图
+    G的最小生成树,则时间复杂度分别是(  ). 
+
+    \answer{
+        \bs {
+            $O(n^2),O(e\log_{2}{e})$
+        }
+    }
+
+    \item 已知7个城市(分别编号$0\sim 6$)之间修建道路的耗费分别为: \\
+    (0,1)22,(0,2)9,(0,3)10,(1,3)15,(1,4)15,(1,6)12,(2,3)4,(2,5)3,(3,5)5,(3,6)23,(4,6)20,(5,6)32\\
+    要修建路网让每两个城市间都可以互通(直达或途径其他城市),最小的耗费是(    ); 
+
+    \answer{
+        \bs {
+            50 
+        }
+    }
+
     \item 由n个数据元素组成的两个表:一个递增有序,一个无序.采用顺序查找算法,对有序表从头开始查找,发现当前
     元素已不小于待查元素时,停止查找,确定查找不成功,已知查找任意元素的概率是相同的,则在两种表中成功查找(   ) 
     \begin{choices}[2]
@@ -983,6 +1395,13 @@ int sum = 0;
         \task 无法确定
     \end{choices}
 
+    \answer{
+        \bs {
+            选B \\
+            对于顺序查找,不管线性表是有序的,成功查找第一个元素的比较次数都是1,成功查找的第二个元素比较次数都是2,
+            依次类推,每个元素查找成功的比较次数只和位置有关而与线性表是否有序无关.
+        }
+    }
     \item 在一个顺序存储的有序线性表上查找一个数据时,既可以采用折半查找,也可以采用顺序查找,但前者
     比后者的查找速度(   ) 
     \begin{choices}[2]
@@ -992,6 +1411,11 @@ int sum = 0;
         \task 必然不快 
     \end{choices}
 
+    \answer{
+        \bs {
+            选C 
+        }
+    }
     \item 折半查找过程所对应的判断树是一颗(   ) 
     \begin{choices}
         \task 最小生成树
@@ -1000,6 +1424,11 @@ int sum = 0;
         \task 满二叉树
     \end{choices}
 
+    \answer{
+        \bs {
+            选B 
+        }
+    }
     \item 折半查找和二叉排序树的时间性能(   ) 
     \begin{choices}
         \task 相同
@@ -1008,6 +1437,11 @@ int sum = 0;
         \task 无法比较
     \end{choices}
 
+    \answer{
+        \bs {
+            选B 
+        }
+    }
     \item 对表长为n的有序表进行折半查找,其判定树的高度为(    ) 
     \begin{choices}
         \task $\lceil\log_{2}{(n+1)}\rceil$
@@ -1015,27 +1449,105 @@ int sum = 0;
         \task $\lceil\log_{2}{n}\rceil$
         \task $\lfloor\log_2{n}\rfloor$ - 1
     \end{choices}
-
+    
+    \answer{
+        \bs {
+            选A 
+        }
+    }
     \item 具有12个关键字的有序表中,对每个关键的查找概率相同,折半查找算法查找成功的平均查找长度是(   ),
     折半查找失败的平均查找长度是(    ) 
 
-    \item 为提高查找效率,对有65025个元素的有序顺序表建立索引顺序结构,在最好的情况下查找到表中亦有元素最多
+    \answer{
+        \bs {
+            $\frac{37}{12},\frac{49}{12}$ \\
+            这种题比较理想的做法是画出该关键字序列的判定树,用虚拟失败结点和叶结点计算失败与成功查找长度.不妨假设
+            含12个关键字的有序表为$0,1,\ldots,11$此时其折半查找判定树为. 
+            \begin{center}
+            \begin{forest}
+            for tree={
+            circle, draw, minimum size=6mm,
+            inner sep=1pt, font=\small,
+            s sep=6mm
+            }
+            [5
+            [2
+                [0[x][1[x][x]]]
+                [3[x][4[x][x]]]
+            ]
+            [8
+                [6[x][7[x][x]]]
+                [10[9[x][x]][11[x][x]]]
+            ]
+            ]
+            \end{forest}
+            \end{center}
+            查找成功的
+            $$
+            ASL=(1+2x2+3x4+4x5)/12 = \frac{37}{12}
+            $$
+            查找失败的 
+            $$
+            ASL=(3x3+4x10)/12 = \frac{49}{12}
+            $$
+            注意查找失败计算的时候不要多加虚拟的失败节点! 
+        }   
+    }
+    \item 为提高查找效率,对有65025个元素的有序顺序表建立索引顺序结构,在最好的情况下查找到表中已有元素最多
     需要执行(   )次关键字比较 
-
+    
+    \answer{
+        \bs {
+            16 \\
+            为了使查找效率最高,每个索引块的大小应该是$\sqrt{n}=\sqrt{65025}=255$,此时索引项的个数为$\frac{65025}{255}=255$,若
+            此时采用折半查找,效率最高,$2x\log_{2}(255+1)=16$
+        }
+    }
     \item \bl 已知一个长度为16的顺序表L,其元素按关键字有序排列,若采用折半查找法查找一个L中不存在的元素,则
     关键字的比较次数最多是(    ) 
 
+    \answer{
+        \bs {
+            查找失败最多只需要查找整个树高即$\lceil \log_{2}(n+1) \rceil$
+        }
+    }
 
     \item \bl 下列二叉树中，可能成为折半查找判定树（不含外部结点）的是
     \begin{center}
     \includegraphics[scale=0.35]{17-折半查找.png}
     \end{center}
 
+    \answer{
+        \bs {
+            选A \\
+            这道题第一眼可以以为是考察折半查找的判定树必然是一棵平衡树,然后发现所有选项都是平衡树.
+            然后想呀想,二分还有啥特性呢?其决策树必然是一棵排序树,但好像没啥用.还有啥特性呢? \\
+            其实谜底在谜面上,二分最重要的当然是确定分界点呀,因此不妨根据中序有序把数字全部还原回去看看分界点的
+            确定是否满足二分的要求. 
+        }
+    }
     
     \item 在含有n个结点的二叉排序中查找某个关键字的结点时,最多进行(   )比较 
+    \answer{
+        \bs {
+            n \\
+            二叉排序树最差会退化为单链表. 
+        }
+    }
     \item 构建一颗具有n个节点的二叉排序树时,最理想情况下的深度为(   )
-    \item 含有20个节点的平衡二叉树的最大深度为(   )
-    \item 具有5层结点的AVL树至少有(   )个结点
+    \answer{
+        \bs {
+            $\lceil \log_2{n+1} \rceil$
+        }
+    }
+    \item 含有20个节点的平衡二叉树的最大深度为(   ),具有5层结点的AVL树至少有(   )个结点.
+    \answer{
+        \bs {
+            6,12 \\
+            关键在于AVL结点树的递推公式,$n_0=0,n_1=1,n_{h}=n_{h-1}+n_{h-2}$
+        }
+    }
+
 
     \item 下列关于红黑树的说法中,正确的是(   ) 
     \begin{choices}[1]
@@ -1045,7 +1557,51 @@ int sum = 0;
         \task 红黑树的子树也一定是红黑树
     \end{choices}
 
+    \answer{
+        \bs {
+            选B \\
+            对于B选项,红黑树的重要特征之一是黑平衡,所以当一个红黑树全为黑结点必然是满二叉树,否则就会破坏黑平衡条件 \\
+            对于D选项,由于红黑树要求根为黑结点,所有根节点为红色的都不是红黑树. 
+        }
+    }
     \item \bt 将关键字序列\underline{1,2,3,4,5,6,7}一次插入初始为空的红黑树T,则T中红结点的个数是(    ) 
+    \answer{
+        \bs {
+            3个 \\
+            红黑树的插入过程比较重要(考察可能性比删除高,删除太难了.) 
+        \forestset{
+            rbt/.style={
+                for tree={circle, draw, minimum size=6mm, font=\small,
+                        inner sep=1pt, s sep=3mm, l sep=6mm},
+                red/.style={fill=red!80, text=white},
+                black/.style={fill=black!80, text=white}
+            }
+        }
+        \begin{center}
+        \begin{forest}rbt
+            [1,black]
+        \end{forest}\quad
+        \begin{forest}rbt
+            [1,black[,black][2,red]]
+        \end{forest}\quad 
+        \begin{forest}rbt
+            [2,black[1,red][3,red]]
+        \end{forest}\quad
+        \begin{forest}rbt
+            [2,black[1,black][3,black[,black][4,red]]]
+        \end{forest}
+        \begin{forest}rbt
+            [2,black[1,black][4,black[3,red][5,red]]] 
+        \end{forest}
+        \begin{forest}rbt
+            [2,black[1,black][4,red[3,black][5,black[,black][6,red]]]]
+        \end{forest}
+        \begin{forest}rbt
+            [2,black[1,black][4,red[3,black][6,black[5,red][7,red]]]]
+        \end{forest}
+        \end{center}
+    }
+}
     \item \bl 现有一颗无重复关键字的平衡二叉树,对其进行中序遍历得到一个降序序列,下列关于该平衡二叉树的叙述中,正确的是(  ) 
     \begin{choices}[2]
         \task 根结点的度一定是2
@@ -1054,6 +1610,12 @@ int sum = 0;
         \task 树中最大元素一定是无左子树
     \end{choices}
 
+    \answer{
+        \bs {
+            选D\\
+            根据题设有左子树>根>右子树. 最小元素只能保证无右子树而不能保证是叶子结点.最大元素可以保证无左子树. 
+        }
+    }
     \item \bl 在任意一颗非空平衡二叉树$T_1$中,删除某结点v之后形成平衡二叉树$T_2$,再将v插入$T_2$形成
     平衡二叉树$T_3$下列关于$T_1,T_3$的描述中,正确的是(   )
     \begin{enumerate}
@@ -1067,37 +1629,46 @@ int sum = 0;
         \task 1,2
         \task 1,3
     \end{choices}
+    \answer{
+        \bs {
+            选A 
+        }
+    }
     \item 下列关于B与B+树的描述中,不正确的是(   ) 
     \begin{choices}[2]
         \task B数和B+树都能有效的支持顺序查找
         \task B树和B+树都能有效的支持随机查找
-        \task B树和B+树都是平衡的二叉树
+        \task B树和B+树都是平衡的多叉树
         \task B树和B+树都可以用于文件索引结构
     \end{choices}
 
+    \answer{
+        \bs {
+            选A \\
+            仅带链的B+树支持顺序查找
+        }
+    }
     \item \bl 已知一颗3阶B树,如下图所示.删除关键字78得到一颗新B树,其最右叶结点中的关键字是(   )
     \begin{center}
         \begin{forest}
-        for tree={
-        rectangle,           % 方框
-        draw,                % 画边
-        minimum size=6mm,    % 宽、高最小 6 mm
-        inner sep=2pt,       % 文字与框距离
-        edge=-               % 去掉箭头（默认是无箭头实线）
-        }
-    [45
-        [
-            17 35 
-            [10][21][37]
-        ]
-        [
-            55 65
-            [47][60 62][78]
-        ]
-    ]
+        for tree={rectangle,draw,minimum size=6mm,inner sep=2pt,edge=-}
+        [45[17 35 [10][21][37]][55 65[47][60 62][78]]]
         \end{forest}
     \end{center}
 
+    \answer{
+        \bs {
+            65 \\
+            对于3阶B树,其关键字范围为$\lceil 3/2 \rceil \sim 3 -1 = 1 \sim 2$ \\
+            其左兄弟的关键字为$2\geq\lceil3/2\rceil$属于够接的情况,删除后的B树如下
+        \begin{center}
+            \begin{forest}
+            for tree={rectangle,draw,minimum size=6mm,inner sep=2pt,edge=-}
+            [45[17 35 [10][21][37]][55 62[47][60][65]]]
+            \end{forest}
+        \end{center}
+        }
+    }
     \item \bl 在一颗高度为2的5阶B树中,所含有的关键的个数至少是(   ) 
     \begin{choices}
         \task 5
@@ -1106,6 +1677,19 @@ int sum = 0;
         \task 14
     \end{choices}
 
+    \answer{
+        \bs {
+            选A \\
+            B树的根结点至少有两个子结点(包含一个关键字),其余分支结点的关键字范围为$\lceil 5/2\rceil - 1 \sim 5 - 1 = 2\sim 4$,所以
+            包含关键字最少的情况如下,个数为(1+2+2)
+            \begin{center}
+                \begin{forest}
+                for tree={rectangle,draw,minimum size=6mm,inner sep=2pt,edge=-}
+                [x[x x[][][]][x x[][][]]]
+                \end{forest}
+            \end{center}
+        }
+    }
     \item \bl 下列应用中,适合使用B+树的是(   ) 
     \begin{choices}[2]
         \task 编译器中的词法分析
@@ -1114,6 +1698,18 @@ int sum = 0;
         \task 操作系统的磁盘空闲块管理
     \end{choices}
 
+    \answer{
+        \bs {
+            选B 
+        }
+    }
+
+    \item 散列表查找成功时,平均查找长度仅和()有关. 
+    \answer{
+        \bs {
+            填充因子
+        }
+    }
     \item 在开放定址法中散列到同一地址而引起的堆积问题是由于(   )而引起的
     \begin{choices}[2]
         \task 同义词之间发生冲突
@@ -1121,6 +1717,12 @@ int sum = 0;
         \task 同义词之间或非同义词之间发生冲突 
         \task 散列表溢出 
     \end{choices}
+
+    \answer{
+        \bs {
+            选C 
+        }
+    }
 
     \item 下列关于散列冲突处理方法中,正确的是(   ) 
     \begin{enumerate}
@@ -1130,6 +1732,15 @@ int sum = 0;
         \item [(4)] 采用链地址法处理冲突时容易引起聚集现象
     \end{enumerate}
 
+    \begin{choices}
+        \task 1,3 \task 1,2,3 \task 3,4 \task 1,4
+    \end{choices}
+
+    \answer{
+        \bs {
+            选A 
+        }
+    }
     \item 对包含n个元素的散列表进行查找,平均查找长度为(   ) 
     \begin{choices}
         \task 为$O(\log_{2}{n})$
@@ -1137,6 +1748,13 @@ int sum = 0;
         \task 不直接依赖于n
         \task 直接依赖于表长m
     \end{choices}
+
+    \answer{
+        \bs {
+            选C \\
+            仅和填充因子有关 
+        }
+    }
 
     \item \bl 现有长度为11且初始为空的散列表HT,散列函数$H(k)=k\%7$,用线性探测再散列法法解决冲突,将
     关键字序列\underline{87,40,30,6,11,22,98,20}依次插入HT后,HT查找失败的平均查找长度是(   )
@@ -1146,7 +1764,29 @@ int sum = 0;
         \task 6
         \task 6.29
     \end{choices}
-
+    
+    \answer{
+        \bs {
+            选C \\
+            哈希表的查找成功和查找失败的平均查找长度是重点,需要掌握.  \\
+            查找成功计算关键字的比较次数,查找失败计算"插槽".  \\
+            最后哈希表如下所示 
+            \begin{center}
+            \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c}
+                \hline 
+                散列地址 & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\
+                \hline 
+                关键字 & 98 & 22 & 30 & 87 & 11 & 40 & 6 & 20 &  &  &  \\
+                \hline 
+            \end{tabular}
+            \end{center}
+            对于算出关键字算出的地址为0,需要比较$0\sim 8$地址的关键字才能确定失败;对于关键字算出地址为1,
+            需要比较$1\sim 8$,一次类推;需要注意原关键字序列算不出$7$,哈希表中的20是被线性探测改到的位置,所以只有7个位置是可能的. 
+            $$
+            ASL_{fail}=\sum_{i=0}^{6}\frac{9-i}{7} = 6
+            $$
+        }
+    }
     \item \bl 下列因素中,影响哈希方法的平均查找长度是(   ) 
     \begin{enumerate}
         \item [(1)] 装填因子
@@ -1160,6 +1800,8 @@ int sum = 0;
         \task 1,2,3
     \end{choices}
 
+    \answer{\bs{选D}} 
+
     \item 下列关于排序的叙述中,正确的是(   ) 
     \begin{choices}[1]
         \task 稳定的排序方法优于不稳定的排序方法
@@ -1167,6 +1809,13 @@ int sum = 0;
         \task 排序方法都是在顺序表上实现的,在链表上无法实现排序方法
         \task 在顺序表上实现的排序方法在链表上也可以实现
     \end{choices}
+
+    \answer{
+        \bs {
+            选B \\
+            注意并非所有排序方法都可以用于链表,例如折半插入排序(用于要使用二分)链表就无法实现. 但大部分应该还是可以的. 
+        }
+    }
 
     \item 对于任意7个关键字进行基于比较的排序,至少要进行()次关键字之间的比较
     \begin{choices}
@@ -1176,6 +1825,12 @@ int sum = 0;
         \task 16
     \end{choices}
 
+    \answer{
+        \bs {
+            选A \\
+            对于任意n个关键字排序的比较次数,其下界为$\lceil\log_{2}(n!)\rceil$ 
+        }
+    }
     \item 用直接插入排序算法对下列4个表进行排序(从小到大),比较次数最少的是(   ) 
     \begin{choices}[2]
         \task \underline{94,32,40,90,80,46,21,69}
@@ -1184,7 +1839,13 @@ int sum = 0;
         \task \underline{90,69,80,46,21,32,94,40}
     \end{choices}
 
-    \item 对序列\underline{98,36,9,0,47,23,1,8,10,7}采用希尔排序,下列序列( )是增量为4的一趟排序结果 
+    \answer{
+        \bs {
+            选B \\
+            插入排序中,越解决正序插入次数越少.
+        }
+    }
+    \item 对序列\underline{98,36,-9,0,47,23,1,8,10,7}采用希尔排序,下列序列( )是增量为4的一趟排序结果 
     \begin{choices}[2]
         \task \underline{10,7,-9,0,47,23,1,8,98,36}
         \task \underline{-9,0,36,98,1,8,23,47,7,10}
@@ -1192,6 +1853,11 @@ int sum = 0;
         \task 以上都不对
     \end{choices}
 
+    \answer{
+        \bs {
+            选A 
+        }
+    }
     \item 若用冒泡排序算法对序列\underline{10,14,26,29,41,52}从大到小进行排序,则需要进行(  )比较 
     \begin{choices}
         \task 3
@@ -1200,22 +1866,12 @@ int sum = 0;
         \task 25
     \end{choices}
 
-    \item 一组记录的关键码为\underline{46,79,56,38,40,84},采用快速排序,以第一个记录为基准,从小到大得到
-    的一次划分结果为(   ) 
-    \begin{choices}[2]
-        \task \underline{38,40,46,56,79,84}
-        \task \underline{40,38,46,79,56,84}
-        \task \underline{40,38,46,56,79,84}
-        \task \underline{40,38,46,84,56,79}
-    \end{choices}
+    \answer{
+        \bs {
+        选C
+        }
+    }
 
-    \item 快速排序算法在()情况下不利于其发挥长处 
-    \begin{choices}[2]
-        \task 要排序的数据量太大
-        \task 要排序的数据中包含多个相同的值
-        \task 要排序的数据个数为奇数
-        \task 要排序的数据基本有序
-    \end{choices}
 
     \item 对下列关键字序列用到了快排进行排序,速度最快的情形是()速度最慢的是() 
     \begin{choices}[2]
@@ -1225,6 +1881,9 @@ int sum = 0;
         \task \underline{5,9,17,21,23,25,30}
     \end{choices}
 
+    \answer{
+        \bs {A,D}
+    }
     \item 对于下列4个序列,以第一个关键字为基准用快速排序算法进行排序,在第一趟过程中移动记录次数最多的是()
     \begin{choices}[2]
         \task \underline{92,96,88,42,30,35,110,100}
@@ -1232,8 +1891,11 @@ int sum = 0;
         \task \underline{100,96,92,35,30,110,88,42}
         \task \underline{42,30,35,92,100,96,88,110}
     \end{choices}
-
-
+    \answer{
+        \bs {
+            选B 
+        }
+    }
     \item 设线性表中每个元素有两个数据项$k_1,k_2$现对线性表按以下规则进行排序,先看数据项$k_1$,若比其值
     小的元素在前,大的元素在后,与其值相同再看$k_2$,小的元素在前,大的元素在后.满足这种要求的算法是(   ) 
     \begin{choices}[1]
@@ -1243,6 +1905,8 @@ int sum = 0;
         \task 先按$k_2$进行简单选择排序,在按$k_1$进行直接插入排序
     \end{choices}
 
+    \answer{\bs{选D}}
+
     \item 若只想得到1000个元素组成的序列中第10个最小元素之前的部分排序的序列,则用()方法最快. 
     \begin{choices}
         \task 冒泡排序
@@ -1250,6 +1914,7 @@ int sum = 0;
         \task 希尔排序
         \task 堆排序
     \end{choices}
+    \answer{\bs{选D}}
 
     \item 在含有n个关键字的小根堆中,关键字最大的记录可能存储在(   )位置 
     \begin{choices}
@@ -1258,7 +1923,13 @@ int sum = 0;
         \task 1
         \task n/2 - 1
     \end{choices}
-
+    \answer{
+        \bs{
+        选B \\
+        小根堆中最大元素必然位于叶结点,而堆是一棵完全二叉树,其最后一个非叶结点的编号为$\lfloor n/2 \rfloor$,所以
+        关键字的存储范围为$\lfloor n/2\rfloor + 1 \sim n$ 
+        }
+    }
     \item 构建n个记录的初始堆,其时间复杂度为(),对n个记录进行堆排序,最坏情况下时间复杂度是()
     \begin{choices}
         \task $O(n)$
@@ -1267,13 +1938,11 @@ int sum = 0;
         \task $O(n\log_2{n})$
     \end{choices}
 
-    \item 对关键字\underline{23,17,72,60,25,8,68,71,52}进行堆排序,输出两个最小关键码后的剩余堆堆是()
-    \begin{choices}[2]
-        \task \underline{23,72,60,25,68,71,52}
-        \task \underline{23,25,52,60,71,72,68}
-        \task \underline{71,25,23,52,60,72,68}
-        \task \underline{23,25,68,52,60,72,71}
-    \end{choices}
+    \answer{
+        \bs {
+            这个题目一点都不好,建堆要考虑是自上而下($O(n)$)还是自下而上($O(n\log_2{n})$)
+        }
+    }
 
     \item 已知小根堆为\underline{8,15,10,21,34,16,12}删除关键字8之后需要重新建堆,关键字之间的比较次数是()
     \begin{choices}
@@ -1282,7 +1951,11 @@ int sum = 0;
         \task 3
         \task 4
     \end{choices}
-
+    \answer{
+        \bs {
+            选C 
+        }
+    }
     \item 将序列\underline{6,1,5,9,8,4,7}建成大根堆时,正确的序列变化时() 
     \begin{choices}[1]
         \task 6,1,7,9,8,4,5$\rightarrow$6,9,7,1,8,4,5$\rightarrow$9,6,7,1,8,4,5$\rightarrow$9,8,7,1,6,4,5
@@ -1290,7 +1963,37 @@ int sum = 0;
         \task 6,9,5,1,8,4,7$\rightarrow$9,6,5,1,8,4,7$\rightarrow$9,6,7,1,8,4,5$\rightarrow$9,8,7,1,6,4,5
         \task 6,1,7,9,8,4,5$\rightarrow$7,1,6,9,8,4,5$\rightarrow$7,9,6,1,8,4,5$\rightarrow$9,7,6,1,8,4,5$\rightarrow$9,8,6,1,7,4,5
     \end{choices}
-
+    \answer{
+        \bs {
+            选A,这道题一看默认是自顶向下,其建堆过程如下. 
+            \begin{center}
+            \forestset{
+                rbt/.style={
+                    for tree={circle, draw, minimum size=6mm, font=\small,
+                            inner sep=1pt, s sep=3mm, l sep=6mm},
+                    red/.style={fill=red!80, text=white},
+                    black/.style={fill=black!80, text=white}
+                }
+            }
+                \begin{forest}rbt
+                    [6[1[9][8]][5,red[4][7,red]]]
+                \end{forest}\qquad
+                \begin{forest}rbt
+                    [6[1,red[9,red][8]][7[4][5]]]
+                \end{forest}\qquad
+                \begin{forest}rbt
+                    [6,red[9,red[1][8]][7[4][5]]]
+                \end{forest} \\ 
+                \begin{forest}rbt 
+                    [9[6,red[1][8,red]][7[4][5]]]
+                \end{forest}\qquad
+                \begin{forest}rbt
+                    [9[8[1][6]][7[4][5]]]
+                \end{forest}
+            \end{center}
+            
+        }
+    }
     \item 下列关于大根堆(至少包含两个元素)的叙述中,正确的是()
     \begin{enumerate}
         \item [(1)]可以将堆视为一颗完全二叉树
@@ -1305,7 +2008,10 @@ int sum = 0;
         \task 1,3,4
     \end{choices}
 
-    \item 若对27个元素值进行三趟多路归并排序,则选取的归并路数最少是() 
+    \answer{
+        \bs {选C}
+    }
+    \item 若对27个元素值只进行三趟多路归并排序,则选取的归并路数最少是() 
     \begin{choices}
         \task 2
         \task 3
@@ -1313,6 +2019,11 @@ int sum = 0;
         \task 5
     \end{choices}
 
+    \answer{
+        \bs {
+            选B 
+        }
+    }
     \item 将两个各有N个元素的有序表合并为一个有序表,最少的比较次数(),最多比较次数是() 
     \begin{choices}
         \task N 
@@ -1320,7 +2031,7 @@ int sum = 0;
         \task 2N 
         \task N-1 
     \end{choices}
-
+    \answer{\bs{A,B}}
     \item 若要求排序是稳定的,且关键字为实数,则在下列排序中应该选用() 
     \begin{choices}
         \task 直接插入排序
@@ -1328,7 +2039,7 @@ int sum = 0;
         \task 基数排序
         \task 快速排序 
     \end{choices}
-
+    \answer{\bs{A}}
     \item 下列排序算法中属于稳定排序的是(),平均时间复杂度为$O(n\log{n})$的是(),在最好的情况下,
     时间复杂度可以达到线性的时间有() 
     \begin{choices}[4]
@@ -1340,7 +2051,13 @@ int sum = 0;
         \task 归并排序 
         \task 快速排序
     \end{choices}
-
+    \answer{
+        \bs {
+            I,IV,VI \\
+            II,VI,VII \\
+            I,IV
+        }
+    }
     \item 若序列的原始状态为\underline{1,2,3,4,5,10,6,7,8,9}要想使得排序过程中元素比较次数最少,则应该采用的是()
     \begin{choices}
         \task 插入排序 
@@ -1348,7 +2065,7 @@ int sum = 0;
         \task 希尔排序 
         \task 冒泡排序 
     \end{choices}
-
+    \answer{\bs{A}}
     \item \bl 下列排序方法中,若将顺序存储转换为链式存储,则算法时间效率会降低的是() 
     \begin{choices}[3]
         \task 插入排序 
@@ -1357,7 +2074,7 @@ int sum = 0;
         \task 希尔排序 
         \task 堆排序 
     \end{choices}
-
+    \answer{\bs{DE}}
     \item 设有5个初始归并段,每个归并段有20个记录,采用5路平衡归并排序,若不采用败者树,使用传统的
     顺序选择出最小记录(简单选择排序)的方法,总的比较次数为();若采用败者树最小的方法,总的比较次数约为() 
     \begin{choices}
@@ -1366,6 +2083,14 @@ int sum = 0;
         \task 396
         \task 500
     \end{choices}
+    \answer{
+        \bs {
+            C, B \\
+            不采用败者树,在5个记录中选出最小的需要4次比较,从100个记录中选出最小的需要99次操作. 总共需要$4\times 99=396$ \\
+            采用败者树,败者树的高度为$\lceil\log_2{5}\rceil=3$,每次确定一个关键字的最小记录不超过树高,共100个记录,需要
+            比较的次数不多于$3\times 100=300$ 
+        }
+    }
 
     \item 在做m路平衡归并排序过程中,为实现输入/内部归并/输出的并行处理,需要设置()个输入缓冲区和()输出
     缓冲区. 
@@ -1375,7 +2100,13 @@ int sum = 0;
         \task 2m-1
         \task 2m
     \end{choices}
-
+    \answer{
+        \bs {
+            D, A \\
+            由于要求\textbf{并行},所以需要2m个输入缓冲区,m个用于读输入缓冲,m个用于输入到内部排序;2个外部
+            缓冲区,1个用于内部归并输出缓冲,一个用于缓冲输出. 
+        }
+    }
     \item \bl 已知三叉树T中的6个叶结点的权分别是\underline{2,3,4,5,6,7},T的带权路径长度最小是() 
     \begin{choices}
         \task 27
@@ -1383,7 +2114,32 @@ int sum = 0;
         \task 54
         \task 56
     \end{choices}
-
+    \answer{
+        \bs {
+            选B \\
+            按照二叉huffman树的方法构建三叉haffman树,构建过程如下
+            \begin{center}
+            \forestset{
+                rbt/.style={
+                    for tree={circle, draw, minimum size=6mm, font=\small,
+                            inner sep=1pt, s sep=3mm, l sep=6mm},
+                    red/.style={fill=red!80, text=white},
+                    black/.style={fill=black!80, text=white}
+                }
+            }
+            \begin{forest}rbt
+                [5,red[0,black][2][3]] 
+            \end{forest}\qquad
+            \begin{forest}rbt
+                [14,red[5[0,black][2][3]][4][5]]
+            \end{forest}\qquad
+            \begin{forest}rbt
+                [27,red[14[5[0,black][2][3]][4][5]][6][7]]
+            \end{forest}
+            \end{center}
+            注意要加入虚拟结点! 
+        }
+    }
     \item \bl 设外存上有120个初始归并段,进行12路归并时,为实现最佳归并,则需要补充的虚段个数是() 
     \begin{choices}
         \task 1
@@ -1391,7 +2147,14 @@ int sum = 0;
         \task 3
         \task 4
     \end{choices}
-
+    
+    \answer{
+        \bs {
+            选B \\
+            注意多叉haffman树需要补充的都是叶子结点,且其只有$n_{12}$和$n_0$的结点,不妨设$n_0=120+n_{\text{补}}$又因为
+            $n_0=(12-1)n_12+1$ 从而$n_{12}=(120-1+n_{\text{补}})(12-1)$由于$n_{12}$是整数,从而$n_{\text{补}}=2$
+        }
+    }
 
 
 \end{enumerate}

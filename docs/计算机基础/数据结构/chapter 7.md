@@ -50,7 +50,7 @@ $$ ASL=\frac{1}{n}(1+2^{0}+2^{1}+\ldots+2^{h-1}h)=\frac{n+1}{n}\log_{2}(n+1)-1\a
 
 $$ASL=L_m+L_w=\frac{1}{m}\sum_{j=1}^{m}j+\frac{1}{l}\sum_{i=1}^{l}i=\frac{1}{2}(\frac{n}{l}+l)+1$$
 
-其中n为表长,均匀分为m块,每块包含l个记录,容易证明当$l=\sqrt{n}$时候$ASL_{min}=\sqrt{n+1}$
+其中n为表长,均匀分为m块,每块包含l个记录,容易证明当$l=\sqrt{n}$时候$ASL_{min}=\sqrt{n}+1$
 
 ## 动态查找表
 
