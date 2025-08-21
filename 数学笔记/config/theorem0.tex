@@ -24,10 +24,31 @@
 }
 
 % ---------- 各环境 ----------
+% 例题
 \newtcolorbox{example}[1][]{mybox={ExBlue}, title={\ifstrempty{#1}{Example}{#1}}}
+% 解答
 \newtcolorbox{solution}[1][]{mybox={SolGreen}, title={\ifstrempty{#1}{Solution}{#1}}}
+% 定义
 \newtcolorbox{definition}[1][]{mybox={DefRed}, title={\ifstrempty{#1}{Definition}{#1}}}
+% 定理
 \newtcolorbox{theorem}[1][]{mybox={ThmOrange}, title={\ifstrempty{#1}{Theorem}{#1}}}
+% 标注
 \newtcolorbox{remark}[1][]{mybox={RemGray}, title={\ifstrempty{#1}{Remark}{#1}}}
+% 推论
 \newtcolorbox{corollary}[1][]{mybox={CorPurple}, title={\ifstrempty{#1}{Corollary}{#1}}}
+% 公式
 \newtcolorbox{formula}[1][]{mybox={ForGray}, title={\ifstrempty{#1}{Formula}{#1}}}
+
+
+\settasks{
+    label-format = \bfseries,
+    label        = \arabic*.,
+    label-width  = 1.2em,
+    label-offset = 0.3em,
+    item-indent  = 1.9em,
+    column-sep   = 0.5em
+}
+
+\newenvironment{choices}[1][4]   % 默认 4 栏
+    {\begin{tasks}(#1)}
+    {\end{tasks}}

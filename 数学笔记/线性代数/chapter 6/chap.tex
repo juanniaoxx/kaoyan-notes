@@ -50,16 +50,98 @@ $$
 \end{cases}
 $$
 \section{求二次型的标准形}
-
+\begin{definition}[常规方法]
+    (方法一\ 拉格朗日配方法) \\
+    $\circ 1$令$f(x_1,x_2,x_3)=d_1(x_1+x_2+x_3)^2+d_2(x_2+cx_3)^2+d_3x_3^2 = d_1y_1^2+d_2y_2^2+d_3y_3^2$ \\
+    $\circ 2$换元,令
+    $$\begin{cases}
+        y_1 =x_1+ax_2+bx_3 \\
+        y_2 =x_2+cx_3 \\
+        y_3 =x_3
+    \end{cases}\implies \begin{cases}
+        x_3 = y_3 \\
+        x_2 = y_2 -cy_3 \\
+        x_3 = y_1 - ay_2 + (ac-b)y_3 
+    \end{cases}$$
+    从而可以通过\textbf{可逆线性变换}$x=Cy$其中$C=\begin{pmatrix}
+        1 & -a & ac-b \\
+        0 & 1 & -c \\
+        0 & 0 & 1
+    \end{pmatrix}$ \\
+    (方法二\ 正交变换法) $x=Qy$ 二次型转换为标准型$\lambda_1y_1^2+\lambda_2y_2^2+\lambda_3y_3^2$,系数为特征值 
+\end{definition}
+\begin{definition}[合同变化法]
+    $$
+    \begin{pmatrix}
+        A \\
+        E
+    \end{pmatrix} \xrightarrow{\text{行列成对的初等变换}} \begin{pmatrix}
+        \Lambda \\
+        C
+    \end{pmatrix}
+    $$此时$C^TAC=\Lambda$,举例说法计算过程
+    \begin{align*}
+        \begin{pmatrix}
+            A \\
+            E 
+        \end{pmatrix} &= \begin{pmatrix}
+            1 & 2 & 3 \\
+            2 & 3 & 4 \\
+            3 & 4 & 5 \\
+            \hline 
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1
+        \end{pmatrix}\xrightarrow{}\begin{pmatrix}
+            1 & 0 & 0 \\
+            0 & -1 & 0 \\
+            0 & 0 & 0 \\
+            \hline 
+            1 & -2 & 1 \\
+            0 & 1 & -2 \\
+            0 & 0 & 1
+        \end{pmatrix}
+    \end{align*}
+    即经过可逆线性变换$x=Cy$其中$C=\begin{pmatrix}
+        1 & -2 & 1 \\
+        0 & 1 & -2 \\
+        0 & 0 & 1
+    \end{pmatrix}$等价于做如下变量代换$\begin{cases}
+        x_1 = y_1 - 2y_2 + y_3 \\
+        x_2 = y_2 - 2y_3 \\
+        x_3 = y_3 
+    \end{cases}$此时标准型为$f(y_1,y_2,y_3)=y_1^2-y_2^2$
+\end{definition}
 \begin{enumerate}[label=\arabic*.]
     \item (2016,数二、三) 设二次型 $ f(x_1, x_2, x_3) = a(x^1_1+x^2_2+x_3^2)+
     2x_1x_2+2x_2x_3+2x_1x_3$ 的正、负惯性指数分别为1,2则 \\
     A. $a > 1$\qquad B. $a < -2$ \qquad C.$-2<a<1$\qquad D.$a=1$或$a=-2$ 
     
-    \begin{solution}
-    \newpage
+    \begin{solution}[直接求特征值]
+    由题设可知$A=\begin{pmatrix}
+        a & 1 & 1 \\
+        1 & a & 1 \\
+        1 & 1 & a 
+    \end{pmatrix}$
+    求解特征值方程$\left|A-\lambda E\right|=0\implies (a-\lambda+2)(a-\lambda-1)^2$ 由题设可知 
+    $$
+    \begin{cases}
+        a+2 > 0 \\
+        a-1 < 0 
+    \end{cases} \implies -2 < a < 1
+    $$
     \end{solution}
     
+    \begin{solution}[分解为秩1矩阵]
+        $A=(1,1,1)\begin{pmatrix}
+            1 \\
+            1 \\
+            1
+        \end{pmatrix}+(a-1)E$ 从而可知其特征值为$\begin{cases}
+            \lambda_1 = a + 2 \\
+            \lambda_2=\lambda_3 = a - 1
+        \end{cases}$
+    \end{solution}
     \item (2022,数一) 设二次型 $ f(x_1, x_2, x_3) = 
     \displaystyle \sum_{i=1}^3 \sum_{j=1}^3 i j x_i x_j $。
     \begin{enumerate}
@@ -69,7 +151,34 @@ $$
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    由题设可知$f=x_1^2+4x_2^2+9x_3^2+4x_1x_2+6x_1x_3+12x_1x_3$ \\
+    (1)矩阵A为$\begin{pmatrix}
+        1 & 2 & 3 \\
+        2 & 4 & 6 \\
+        3 & 6 & 9
+    \end{pmatrix} = (1,2,3)\begin{pmatrix}
+        1 \\
+        2 \\
+        3
+    \end{pmatrix}$,即$r(A)=1$ \\
+    (2)由秩一矩阵特性可知$\lambda_1=tr(A)=14,\alpha_1=(1,2,3)^T$ 通过知一求二,设$\alpha_2=(a,b,0)^T,\alpha_3=(-b,a,c)^T$可知
+    当$\lambda_2=\lambda_3=0,\alpha_2=(-2,1,0)^T,\alpha_3=(-3,-6,5)$ \\
+    单位化后有 
+    $$
+    \gamma_1=\frac{1}{\sqrt{14}}(1,2,3)^T,\gamma_2=\frac{1}{\sqrt{5}}(-2,1,0)^T,\gamma_3=\frac{1}{\sqrt{70}}(-3,-6,5)^T
+    $$
+    记$Q=(\gamma_1,\gamma_2,\gamma_3)$,此时经过$x=Qy$二次型化为标准型$f=14y_1^2$ \\
+    (3)方法一,解$f=14y_1^2=0\implies y_1=0,y_2=k_1,y_3=k_2$又$x=Qy=(\gamma_1,\gamma_2,\gamma_3)\begin{pmatrix}
+        0 \\
+        k_1 \\
+        k_2
+    \end{pmatrix}=k_1\gamma_2+k_2\gamma_3$其中$k_1,k_2$为任意常数 \\
+    方法二,配方直接接. 
+    $$
+    f(x_1,x_2,x_3)=(x_1+2x_2+3x_3)^2 = 0
+    $$
+    从而可知$x_1+2x_2+3x_3=0$其基础解系为$\xi_1=(-2,1,0)^T,\xi_2=(-3,0,1)^T$,从而可知$f=0$的通解为 
+    $k_1\xi_1+k_2\xi_2$其中$k_1,k_2$为任意常数
     \end{solution}
     
     \item (2020,数一、三) 设二次型 $ f(x_1, x_2) = 4 x_1^2 + 4 x_2^2 + 4 x_1 x_2 $
@@ -81,7 +190,30 @@ $$
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    (1)$A=\begin{pmatrix}
+        1 & -2 \\
+        -2 & 4
+    \end{pmatrix}$ 由题设可知$Q_1^TAQ_1=\Lambda=Q_2^TBQ_2$ 从而可知$A\sim B$,又因为$r(A)=1$可知A的特征值与特征向量分别为\\
+    当$\lambda_1=tr(A)=5,\alpha_1=(1,-2)^T$ \\
+    当$\lambda_2=0,\alpha_2=(2,1)^T$ \\
+    单位化后有$\gamma_1=\frac{1}{\sqrt{5}}(1,-2)^T,\gamma_2=\frac{1}{\sqrt{5}}(2,1)^T$从而$Q_1=(\gamma_1,\gamma_2)$ \\
+    有题设可知$B=\begin{pmatrix}
+        a & 2 \\
+        2 & b 
+    \end{pmatrix}$通过$B\sim A$ 可知 $\begin{cases}
+        ab - 4 = 0 \\
+        a + b = 5 \\
+        a > b 
+    \end{cases}\implies \begin{cases}
+        a = 4 \\
+        b = 1
+    \end{cases}$\\
+    当$\lambda_1=tr(B)=5,\beta_1=(2,1)^T;\lambda_2=0,\beta_2=(-1,2)^T$ \\
+    单位化后$\gamma_1^{'}=\frac{1}{\sqrt{5}}(2,1)^T;\gamma_2^{'}=\frac{1}{\sqrt{5}}(-1,2)^T$ 从而有$Q_2=(\gamma_1^{'},\gamma_2^{'})$ \\
+    因此$B=Q_2Q_1^TAQ_1Q_2^T$进而可知$Q=Q_1Q_2^T=\frac{1}{5}\begin{pmatrix}
+        4 & -3 \\
+        -3 & -4
+    \end{pmatrix}$
     \end{solution}
 \end{enumerate}
 
@@ -95,7 +227,7 @@ $$
         D.$\begin{pmatrix} 1 & -2 \\ -2 & 1 \end{pmatrix} $
     
     \begin{solution}
-    \newpage
+    D 
     \end{solution}
     
     \item 设 $ A, B $ 为 $ n $ 阶实对称可逆矩阵,则存在 $ n $ 阶可逆矩阵 $ P $,使得 \\
@@ -104,12 +236,32 @@ $$
     A.1\qquad B.2\qquad C.3\qquad D.4
     
     \begin{solution}
-    \newpage
+    (I) 有$BA^{-1}A=B$  \\
+    (II) $A^{-1}ABA=BA$  \\
+    (III) 令$A=E,B=-E$则$P^{-1}AP=E\neq B$ \\
+    (IV) 设$A$的任意特征值为$\lambda$则$A^2$的任意特征值为$\lambda^2$又$A$可逆可知$\lambda^2>0$,同理可知$B^2$的任意特征值为$\lambda^2>0$ 
+    从而$A^2,B^2$均只有n个正的特征值从而$A,B$合同. 
     \end{solution}
 \end{enumerate}
 
 \section{二次型正定与正定矩阵的判定}
-
+\begin{definition}[方法]
+    \begin{enumerate}
+        \item [(1)]正定的定义 
+            \begin{enumerate}
+                \item [$\circ 1$] A为实对称矩阵 
+                \item [$\circ 2$] $\forall\alpha\neq 0$有$\alpha^TA\alpha>0$
+            \end{enumerate}
+            注意着两个条件缺一不可!
+        \item [(2)] 充要条件
+            \begin{enumerate}
+                \item [$\circ 1$] 对于n阶矩阵,其正惯性指数为n 
+                \item [$\circ 2$] 与单位矩阵$E$合同 
+                \item [$\circ 3$] 对于任意特征值$\lambda_i>0$
+                \item [$\circ 4$] 对于任意顺序主子式均大于0
+            \end{enumerate}
+    \end{enumerate}
+\end{definition}
 \begin{enumerate}[label=\arabic*.,start=6]
     \item 设 $ A $ 为 $ m \times n $ 阶矩阵,且 $ r(A) = m $,则下列结论
     \begin{enumerate}
@@ -121,9 +273,18 @@ $$
     正确的个数是 \\
     A. 1 \qquad B. 2\qquad C.3\qquad D.4 
     
-    \begin{solution}
-    \newpage
-    \end{solution}
+    \begin{corollary}[$r(A)=m$时有关$AA^T$的结论]
+        对于矩阵$A_{m\times n},r(A)=m$此时$AA^T_{m\times m}$ 有如下结论 
+        \begin{choices}[2]
+        \task $\iff \left|AA^T\right|\neq 0$ \task $\iff AA^T$可逆 
+        \task $\iff r(AA^T)=r(A)=m$  \task $\iff AA^T$与$E_{m\times m}$等价 
+        \task $\iff AA^T$行(列)向量组线性无关 \task $\iff AA^TX=0$只有零解
+        \task $\iff AA^TX=b$有唯一解 
+        \task $\iff \lambda_i\neq 0$ \task $\implies AA^T$可相似对角化 
+        \task $\implies AA^T$为实对称矩阵 \task $\iff AA^T$与$E$合同 
+        \task $\iff AA^T$正定
+        \end{choices}
+    \end{corollary}
     
     \item 证明：
     \begin{enumerate}
@@ -132,7 +293,21 @@ $$
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    (1)由$A^T=A,B^T=-B$因此$(A-B^2)^T=A^T-(B^T)^2=A-B^2$故而$A-B^2$为实对称矩阵. \\
+    $\forall \alpha\neq 0$ 
+    \begin{align*}
+        \alpha^T(A-B^2)\alpha &=\alpha^TA\alpha-\alpha^TB^2\alpha\\
+        &=\alpha^TA\alpha+\alpha^TB^TB\alpha 
+    \end{align*}
+    又$\alpha^TA\alpha>0,\alpha^TB^TB\alpha\geq 0$ 从而$\alpha^T(A-B^2)\alpha>0$ 故而$A-B^2$为正定矩阵. \\
+    (2)$(A^TA+B^TB)^T=A^TA+B^B$从而其为实对称矩阵 \\
+    $\forall \alpha\neq 0$有
+    \begin{align*}
+        \alpha^T(A^TA+B^TB)\alpha &= \alpha^TA^TA\alpha + \alpha^TB^TB\alpha \\
+        &=(A\alpha)^TA\alpha+(B\alpha)^TB\alpha \geq 0
+    \end{align*}
+    当且仅当$A\alpha=B\alpha=0$时候上式才能取0,此时有$(A+B)\alpha=0$由$\alpha\neq 0$故$(A+B)X=0$由非零解而$r(A+B)=n$矛盾,从而
+    不可能$A\alpha=B\alpha=0$故而上式只能大于0. 从而题设得证.
     \end{solution}
 \end{enumerate}
 

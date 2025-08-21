@@ -230,19 +230,35 @@ $$
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    (1)由于$r(A)=r(\alpha\beta^T+\beta\alpha^T)\leq 2 \leq 3 \implies \left|A\right|=0$ 从而可知必然有一个特征值为0 \\
+    (2)由于$\alpha,\beta$为三阶\textbf{单位}矩阵,从而有$\begin{cases}
+        \alpha^T\alpha=\beta^T\beta=1 \\
+        \alpha^T\beta=\beta^T\alpha=\frac{1}{3}
+    \end{cases}\implies \begin{cases}
+        \alpha \neq \beta \\
+        \alpha \neq -\beta
+    \end{cases}$矩阵A右乘$\alpha,\beta$有 
+    \begin{align*}
+        A\alpha &= \alpha\beta^T\alpha+\beta\alpha^T\alpha = \frac{1}{3}\alpha + \beta \tag{1}\\
+        A\beta &= \frac{1}{3}\beta+\alpha \tag{2}
+    \end{align*}
+    (1)+(2)有$A(\alpha+\beta)=\frac{4}{3}(\alpha+\beta)$ \\
+    (1)-(2)有$A(\alpha-\beta)=-\frac{2}{3}(\alpha-\beta)$ \\
+    从而由特征值的定义可知$(\alpha+\beta)(\alpha-\beta)$为$A$的特征值$\frac{4}{3},-\frac{2}{3}$的特征值向量. \\
+    (3)由于三阶矩阵至多有3个特征值,从而A有三个不同的特征值向量$(0,\frac{4}{3},-\frac{2}{3})$,从而A可相似对角化 \\
+    也可以通过$A^T=(\alpha\beta^T+\beta\alpha^T)^T=A$可知A为实对称矩阵,从而$A$可相似对角化. 
     \end{solution}
 \end{enumerate}
 
 \section{相似的判定与计算}
-\begin{remark}
-    相似的性质
+\begin{definition}[相似的性质]
     \begin{enumerate}
         \item [(1)] 若$A\sim B$,则$A,B$具有相同的行列式,秩,特征方程,特征值与迹
         \item [(2)] 若$A\sim B$,则$f(A)\sim f(B),A^{-1}\sim B^{-1}, AB\sim BA(\left|A\neq 0\right|),A^{T}\sim B^{T},A^{*}\sim B^{*}$ 
         \item [(3)] 若$A\sim B, B\sim C$ 则 $A\sim C$
     \end{enumerate}
-\end{remark}
+\end{definition}
+
 \begin{enumerate}
     \item 设$A=\begin{pmatrix}
         1 & 0 & 0 & 0 \\
@@ -252,15 +268,23 @@ $$
     \end{pmatrix}$矩阵$B,A$相似,则$r(B-A)+r(B-3E)=\_\_\_\_$
     
     \begin{solution}
-        \newpage
+    由$A\sim B$可知$B-E\sim A-E,B-3E\sim A-3E$ 从而可知$r(B-E)+r(B-3E)=r(A-E)+r(A-3E)=3+2=5$
     \end{solution}
 
     \item 设$n$阶矩阵$A,B$相似,满足$A^2=2E$,则$\left|AB+A-B-E\right|=\_\_\_$
     
-    \begin{solution}
-        \newpage
+    \begin{solution}[化简正常做]
+    \begin{align*}
+        \text{原式} &= \left|A(B+E)-(B+E)\right| \\
+        &=\left|(A-E)\right|\left|(B+E)\right| \\
+        &\xlongequal{A\sim B} \left|(A-E)(A+E)\right| \\
+        &=\left|E\right| = 1
+    \end{align*}
     \end{solution}
 
+    \begin{solution}[特殊值]
+        不妨令$B=A$,则原式为$\left|A^2-E\right|=1$
+    \end{solution}
     \item (2019, 数一、二、三) 设
     $
     A = \begin{pmatrix}
@@ -278,11 +302,69 @@ $$
     (II) 求可逆矩阵 $P$，使得 $P^{-1}AP = B$。
     
     \begin{solution}
-    \newpage
+    (1)由$A\sim B$可知$\left|A\right|=\left|B\right|$从而由$-2(-2x+4)=-2y$ 又$tr(A)=tr(B)$联立可以解出$x=3,y=2$ \\
+    (2)$A,B$的特征值为$(2,-1,-2)$从而可知$A,B$必然能相似对角化,从而由 
+    $$
+        P_1^{-1}AP_1=\Lambda=P_2^{-1}BP_2
+    $$
+    从而可知$(P_1P_2^{-1})^{-1}A(P_1P_2^{-1})=B$ 从而可知题设的$P=P_1P_2^{-1}$ 
+    \begin{formula}[用特征值求特征值向量]
+    当$\lambda_1=2$时$(A-2E)X=0$可知$\alpha_1=(1,-2,0)^T$ \\
+    当$\lambda_1=-1$时$(A+E)X=0$可知$\alpha_1=(-2,1,0)^T$ \\
+    当$\lambda_1=-2$时$(A+2E)X=0$可知$\alpha_1=(1,-2,-4)^T$ \\
+    同理可以求出B的特征向量为$\begin{cases}
+        \beta_1=(1,0,0)^T \\
+        \beta_2=(1,-2,0)^T \\
+        \beta_3=(0,0,1)^T
+    \end{cases}$
+    从而$P_1=(\alpha_1,\alpha_2,\alpha_3),P_2=(\beta_1,\beta_2,\beta_3)$  
+    $$
+    (P_1\mid P_2) \rightarrow (E\mid P)
+    $$
+    从而$P=\begin{pmatrix}
+        1 & 1 & 1 \\
+        -2 & -1 & -2 \\
+        0 & 0 & -4
+    \end{pmatrix}$
+    \end{formula}
+
+    \begin{formula}[分块矩阵法]
+        由$P^{-1}AP=B$可知$AP=PB$令$P=(\alpha_1,\alpha_2,\alpha_3)$从而有 
+        \begin{align*}
+        A(\alpha_1,\alpha_2,\alpha_3) &= (A\alpha_1,A\alpha_2,A\alpha_3) \\
+        &=(\alpha_1,\alpha_2,\alpha_3)\begin{pmatrix}
+            2 & 1 & 0 \\
+            0 & -1 & 0 \\
+            0 & 0 & -2
+        \end{pmatrix} \\
+        &=(2\alpha_1,\alpha_1-\alpha_2,-2\alpha_3)
+        \end{align*}
+        从而问题转换为
+        $$\begin{cases}
+            A\alpha_1=2\alpha_1 \\
+            A\alpha_2=\alpha_1-\alpha_2\\
+            A\alpha_3=-2\alpha_3
+        \end{cases} \implies \begin{cases}
+            (A-2E)\alpha_1=0 \\
+            (A+E)\alpha_2=\alpha_1 \\
+            (A+2E)\alpha_3=0
+        \end{cases} \implies \begin{cases}
+            \alpha_1 = (1,-2,0)^T \\
+            \alpha_2 = (1,-1,0)^T \\
+            \alpha_3 = (1,-2,4)^T 
+        \end{cases}$$
+    \end{formula}
     \end{solution}
 \end{enumerate}
 
 \section{相似对角化的判定与计算}
+\begin{definition}[方法]
+    \begin{enumerate}
+        \item [(1)] 定义: $P^{-1}AP=\Lambda$ 
+        \item [(2)] 充分条件: $1\circ$具有n个不同的特征值 $2\circ$ A是实对称矩阵 
+        \item [(3)] 充要条件: $1\circ$具有n个线性无关的特征向量 $2\circ$ k重特征值有k个线性无关的特征向量
+    \end{enumerate}
+\end{definition}
 
 \begin{enumerate}
     \item (2005, 数一、二) 设 3 阶矩阵 $A$ 的特征值为$1, 3, -2$,对应的特征向量分别为 $\alpha_1, \alpha_2, \alpha_3$。若
@@ -290,13 +372,21 @@ $$
     则 $P^{-1}AP = $ \underline{\hspace{3cm}}。
     
     \begin{solution}
-    \newpage
+    \textbf{$k\alpha$仍然是同一特征值的特征向量},从而$2\alpha_3$仍然是特征值$-2$的特征值向量,从而 
+    $$
+    P^{-1}AP=(\alpha_1,\alpha3,\alpha_2)^TA(\alpha_1,\alpha3,\alpha_2) = \Lambda(1,-2,3)
+    $$
+    注意特征值间的对应关系
     \end{solution}
     
     \item 设 $n$ 阶方阵 $A$ 满足 $A^2 - 3A + 2E = O$，证明 $A$ 可相似对角化。
     
     \begin{solution}
-    \newpage
+    设A的任意特征值$\lambda$,由题设可知$\lambda^2-3\lambda+2=0$从而有$(\lambda-1)(\lambda-2)=0$; \\
+    且由题设有$(A-2E)(A-E)=0\implies r(A-2E)+r(A-E)\leq n$又$r(A-E)+r(2E-A)\geq r(E)= n$ 从而可知 
+    $r(A-E)+r(A-2E)=n$,从而对于$\lambda_i=1$解$(A-E)X=O$;\\
+    对于$\lambda_j=2$解$(A-2E)X=0$ 其基础解系中含有线性无关的
+    特征向量分别为$n-r(A-E)$与$n-r(A-2E)$从而$2n-r(A-E)-r(A-2E)=n$个线性无关的特征向量从而$A$可相似对角化.
     \end{solution}
     
     \item (2020, 数一、二、三) 设 $A$ 为 2 阶矩阵，$P = (\alpha, A\alpha)$，其中 $\alpha$ 为非零向量且不是 $A$ 的特征向量。
@@ -306,17 +396,76 @@ $$
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    (1)若$P$不可逆,则$\exists k$使得$A\alpha=k\alpha,\alpha\neq 0$故$\alpha$是$A$的特征向量,这与题设矛盾,从而$P$可逆. \\
+    (2) 
+    \begin{align*}
+        P^{-1}A(\alpha,A\alpha) &= P^{-1}(A\alpha,A^2\alpha) \\
+        &= P^{-1}(A\alpha,6\alpha-A\alpha) \\
+        &= \begin{pmatrix}
+            0 & 6 \\
+            1 & -1 
+        \end{pmatrix}
+    \end{align*}
+    从而可知$A\sim \begin{pmatrix}
+            0 & 6 \\
+            1 & -1 
+    \end{pmatrix}$ 只需要求解特征方程$\left|B-\lambda E\right|=\begin{vmatrix}
+        -\lambda & 6 \\
+        1 & -1-\lambda 
+    \end{vmatrix}=\lambda(1+\lambda)-6=(\lambda-2)(\lambda+3)$ 从而B具有两个不同的特征向量,从而B可相似对角化. 
+    故而$A$可相似对角化.
     \end{solution}
 \end{enumerate}
 
 \section{实对称矩阵的计算}
-
-\begin{enumerate}[label=\arabic*.,start=12]
+\begin{definition}[方法]
+    \begin{enumerate}
+        \item [(1)] 实对称的性质 
+        \item [(2)] 正交相似对角化 $Q^{-1}AQ=Q^TAQ=\Lambda$ 
+        \item [(3)] 求正交矩阵Q 
+            \begin{enumerate}
+                \item [$\circ 1$] 求A的n个特征值$\lambda_1,\ldots,\lambda_n$ 
+                \item [$\circ 2$] 求A的n个线性无关的特征向量$\alpha_1,\ldots,\alpha_n$
+                \item [$\circ 3$] 将不同特征值的特征向量分别(斯密特正交化)\textbf{三阶矩阵通常使用知二求一/知一求二}转换为$Q=(\gamma_1,\ldots,\gamma_n)$ \\
+                \underline{斯密特正交化}
+                \begin{align*}
+                    \beta_1 &=\alpha_1 \\
+                    \beta_2 &=\alpha_2 - \frac{(\alpha_2,\beta_1)}{(\beta_1,\beta_1)}\beta_1 \\
+                    \beta_3 &=\alpha_3 - \frac{(\alpha_3,\beta_1)}{(\beta_1,\beta_1)}\beta_1-\frac{(\alpha_3,\beta_2)}{(\beta_2,\beta_2)}\beta_2 \\
+                    {} & \vdots \\
+                    \beta_i &= \alpha_{i-1} - \sum_{j=1}^{i-1}\frac{(\alpha_i,\beta_j)}{\beta_j,\beta_j}\beta_j
+                \end{align*} 
+                上述求的$\beta_i$仅是正交化的结果,还需要单位化即$\gamma_i=\frac{\beta_i}{\left|\left|\beta_i\right|\right|}$
+            \end{enumerate}
+        \item [(4)] 求实对称矩阵A 
+            \begin{enumerate}
+                \item [$\circ 1$] 可逆矩阵P, $P^{-1}AP=\Lambda \implies A=P\Lambda P^{-1}$
+                \item [$\circ 2$] 正交矩阵Q $Q^TAQ=\Lambda,\left|Q\right|=\pm 1$,$A=Q\Lambda Q^{T}$ 
+                \item [$\circ 3$] 分解定理 
+                \begin{align*}
+                    A=Q\Lambda Q^T &=(\gamma_1,\ldots,\gamma_n)\Lambda \begin{pmatrix}
+                        \gamma_1^T \\
+                        \vdots \\
+                        \gamma_n^T 
+                    \end{pmatrix} \\
+                    &=(\lambda_1\gamma_1,\ldots,\lambda_n\gamma_n)\begin{pmatrix}
+                        \gamma_1^T \\
+                        \vdots \\
+                        \gamma_n^T 
+                    \end{pmatrix} \\
+                    &=\lambda_1\gamma_1\gamma_1^T+\ldots+\lambda_n\gamma_n\gamma_n^T
+                \end{align*}
+                特别的当$r(A)=1$时候$A=tr(A)\gamma_1\gamma_1^T$
+            \end{enumerate}
+    \end{enumerate}
+\end{definition}
+\begin{enumerate}
     \item 设$n$阶实对称矩阵$A$满足$A^2+A=O,n$阶矩阵$B$满足$B^2+B=E$且$r(AB)=2$则$\left|A+2E\right|=\_\_\_$
     
     \begin{solution}
-        \newpage
+    由$B^2+B-E=0$可知$B$可逆,从而有$r(AB)=r(A)=2$,设A的任意特征值为$\lambda$,从而由题设可知$\lambda^2+\lambda=0$
+    即$\lambda=0$或者$\lambda=-1$从而可知$\lambda_1=\lambda_2=-1,\lambda_3=\ldots=\lambda_n=0$ 从而可知$A+E$的特征值为 
+    $\lambda_1=\lambda_2=1,\lambda_3=\ldots=\lambda_n=2$从而$\left|A+2E\right|=2^{n-2}$
     \end{solution}
 
     \item (2010, 数二、三) 设
@@ -330,7 +479,35 @@ $$
     $\frac{1}{\sqrt{6}}(1,2,1)^T$，求 $a, Q$。
     
     \begin{solution}
-    \newpage
+    设$\gamma_1=\frac{1}{\sqrt{6}}(1,2,1)^T$为A的特征值$\lambda_1$的特征向量,从而有$A\gamma_1=\lambda_1\gamma_1$,可以解出$\begin{cases}
+        \lambda_1=2\\
+        a=-1
+    \end{cases}$因此矩阵A为$\begin{pmatrix}
+        0 & -1 & 4 \\
+        -1 & 3 & -1 \\
+        4 & -1 & 0
+    \end{pmatrix}$ \\
+    解特征方程$\left|A-\lambda E\right|=0\implies -(\lambda+4)(\lambda-2)(\lambda-5)=0$ 从而可知A的特征值为$(2,-4,5)$
+    分别求解三个齐次方程
+    $$\begin{cases}
+        (A+4E)X=0 \\
+        (A-5E)X=0 \\
+        (A-2E)X=0 
+    \end{cases} \implies \begin{cases}
+        \alpha_1 = (1,-1,1)^T \\
+        \alpha_2 = (-1,0,1)^T \\
+        \alpha_3 = (1,-1,1)^T
+    \end{cases} \xrightarrow{\text{单位化}} \begin{cases}
+        \gamma_1 = \frac{1}{\sqrt{3}}(1,-1,1)^T \\
+        \gamma_2 = \frac{1}{\sqrt{2}}(-1,0,1)^T \\
+        \gamma_3 = \frac{1}{\sqrt{3}}(1,-1,1)^T
+    \end{cases}
+    $$
+    从而可知$Q=(\gamma_1,\gamma_2,\gamma_3)$ \\
+    其实也可以不求解三个齐次方程,求出两个后可以通过向量积求另一个,比如说已知$\gamma_1,\gamma_2$,有
+    $$
+    \gamma_3=\gamma_1\times\gamma_2
+    $$
     \end{solution}
     
     \item 设 3 阶实对称矩阵 $A$ 满足 $A^2 = E$,$A+E$ 的各行元素之和均为零，且 $r(A+E) = 2$。
@@ -340,7 +517,46 @@ $$
     \end{enumerate}
     
     \begin{solution}
-    \newpage
+    (1)设$\lambda$为任意特征值,从而有$\lambda^2=1\implies \lambda=\pm 1$,当$\lambda=-1$时候齐次方程$(A+E)X=0$的基础解系中包含解的个数为
+    $n-r(A+E)=1$从而可知$\lambda_1=-1,\lambda_2=\lambda_3=1$ \\
+    又有题设的行元素之和均为零可知, 
+    $$
+    (A+E)(1,1,1)^T=0(1,1,1)^T
+    $$
+    可知$\alpha_1=(1,1,1)$设$\lambda_2=\lambda_3=1$的特征向量为$(x_1,x_2,x_3)$则 
+    $$
+    x_1+x_2+x_3=0
+    $$
+    线性无关的特征值向量为$\alpha_2=(-1,1,0)^T,\alpha_3=(-1,0,1)^T$ \\
+    \begin{formula}[可逆矩阵]
+        由(1)可知$P=(\alpha_1,\alpha_2,\alpha_3),P^{-1}AP=\Lambda$从而可以求出 
+        $$
+        A=P\Lambda P^{-1} = \frac{1}{3} \begin{pmatrix}
+            1 & -2 & -2 \\
+            -2 & 1 & -2 \\
+            -2 & -2 & 1 
+        \end{pmatrix}
+        $$
+    \end{formula}
+    \begin{formula}[正交矩阵]
+        可以采用\textbf{知一求二},不妨设$\alpha_2=(a,b,0)^T,\alpha_3=(-b,a,c)^T$保证正交性. 又因为 
+        $\alpha_1\cdots\alpha_2=\alpha_1\cdot\alpha_3=0$可以解出$a=-1,b=1,c=2$ 然后单位化有 
+        $$
+        \begin{cases}
+            \gamma_1 = \frac{1}{\sqrt{3}} (1,1,1)^T \\
+            \gamma_2 = \frac{1}{\sqrt{2}} (-1,1,0)^T \\
+            \gamma_3 = \frac{1}{\sqrt{6}} (-1,-1,2)
+        \end{cases}
+        $$
+        从而可知$Q=(\gamma_1,\gamma_2,\gamma_3)$又$Q^TAQ=\Lambda(-1,1,1)$则$A=Q\Lambda Q^T$一样可求出
+        $$
+        A=P\Lambda P^{-1} = \frac{1}{3} \begin{pmatrix}
+            1 & -2 & -2 \\
+            -2 & 1 & -2 \\
+            -2 & -2 & 1 
+        \end{pmatrix}
+        $$
+    \end{formula}
     \end{solution}
 \end{enumerate}
 
