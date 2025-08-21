@@ -77,8 +77,15 @@
         \task 寄存器
     \end{choices}
     
+    \item 在串行进位的并行加法器中,影响加法器运算速度的关键因素是() 
+    \begin{choices}[2]
+        \task 门电路的级延迟 
+        \task 元器件速度 
+        \task 进位传递延迟 
+        \task 各位加法器速度的不同
+    \end{choices}
 
-    \item \bl 加法器中每位的进位信号由(   )组成
+    \item 加法器中每位的进位信号由(   )组成
     \begin{choices}
         \task $X_i\oplus Y_i$
         \task $X_iY_i$
@@ -133,6 +140,14 @@
         \task 0100\ 0101,1101\ 1010, 1
     \end{choices}
 
+    \item 某计算机中有一个8位加法器,带符号整数x和y的机器数用补码表示,$[x]_{\text{补}}=F5H$\\ 
+    $[y]_{\text{补}}=7EH$如果在该加法器中计算$x-y$,则加法器的低位进位输入信息和运算后的溢出标志OF分别是()
+    \begin{choices}
+        \task 1,1 
+        \task 1,0
+        \task 0,1 
+        \task 0,0
+    \end{choices}
 
     \item \bt 某计算机存储器按字节编制,采用小端方式存放数据.假定编译器规定int型和short型长度分别为32位和16位
     并且数据按边界对齐存储.某C语言程序段如下
@@ -260,6 +275,11 @@
         \item [(4)] 尾数溢出时结果不一定溢出 
     \end{enumerate}
 
+    \item \bl $-0.4375$的$IEEE\ 754$单精度浮点数表示为(    ) 
+    \begin{choices}
+        \task BEE0\ 0000H \task BF06\ 0000H \task BF07\ 0000H \task C0E0\ 0000H
+    \end{choices}
+
     \item \bt 假定用若干$2K\times 4$的芯片组成一个$8K\times 8$的存储器,则地址081FH所在芯片的
     最小地址是(    ) 
     \begin{choices}
@@ -342,9 +362,271 @@
     \task 25 \task 32 \task 64 \task 100
     \end{choices} 
 
+    \item 计算机使用总线结构便于增减外设,同时() 
+    \begin{choices}
+        \task 减少信息传输量 
+        \task 提高信息的传输速度 
+        \task 减少信息传输线的条数 
+        \task 提高信息传输的并行性 
+    \end{choices}
+
+    \item 间接寻址第一次访问内存所得到的信息经系统总线的()传送到CPU 
+    \begin{choices}
+        \task 数据总线 
+        \task 地址总线 
+        \task 控制总线 
+        \task 总线控制器 
+    \end{choices}
+
+    \item 在单机系统中,三总线结构计算机的总线系统组成是() 
+    \begin{choices}[1]
+        \task 片内总线,系统总线和通信总线
+        \task 数据总线,地址总线和控制总线 
+        \task DMA总线,主存总线和I/O总线 
+        \task ISA总线,VESA总线和PCI总线
+    \end{choices} 
+    
+    \item \bl 假定一台计算机采用3通道存储器总线,配套的内存条型号为DDR3-1333,即内存条所接插的存储器总线
+    的工作评率为1333MHz,总线宽度为64位,则存储器总线的总线带宽大约是()
+
+    \item 在不同速度的设备之间传输数据,(  ) 
+    \begin{choices}[1]
+        \task 必须采用同步控制方式 
+        \task 必须采用异步控制方式 
+        \task 可以选用同步控制方式,也可以选用异步控制方式 
+        \task 必须采用应答方式
+    \end{choices}
+
+    \item 在异步总线中,传送操作() 
+    \begin{choices}[2]
+        \task 由设备控制器控制 
+        \task 由CPU控制 
+        \task 有统一时序信号控制 
+        \task 按需分配时间
+    \end{choices}
+
+    \item \bl 下列关于总线的叙述中,错误的是() 
+    \begin{choices}[1]
+        \task 总线是在两个或多个部件间进行数据交换的传输介质
+        \task 同步总线由时钟信号定时,时钟频率不一定等于工作频率 
+        \task 异步总线由握手信号定时,一次握手过程完成一位数据传送 
+        \task 突发(Burst)传送总线事务可以在总线上连续传送多个数据 
+    \end{choices}
+
+    \item 下列关于I/O端口和接口的说法中,正确的是() 
+    \begin{choices}[1]
+        \task 按照不同的数据传送格式,可将接口分为同步传送接口和异步传送接口
+        \task 在统一编址方式下,存储单元和I/O设备是靠不同的地址线来区分的 
+        \task 在独立编址方式下,存储单元和I/O设备是靠不同的地址线来区分的 
+        \task 在独立编址方式下,CPU需要设置专门的输入/输出指令的访问端口 
+    \end{choices}
+
+    \item 在统一编址情况下,就I/O设备而言,其对应的I/O地址说法错误的是() 
+    \begin{choices}[2] 
+        \task 要求固定的地址高端
+        \task 要求固定的地址地段
+        \task 要求相对固定在地址的某部分
+        \task 可以任意在地址的任何地方
+    \end{choices}
+
+    \item 磁盘驱动器向盘片磁道记录数据时采用()方式写入 
+    \begin{choices}
+        \task 并行 \task 串行 \task 并行-串行 \task 串行-并行 
+    \end{choices}
+
+    \item \bl I/O指令实现的数据传送通常发生在() 
+    \begin{choices}[2]
+        \task I/O设备和I/O端口之间 
+        \task 通用寄存器和I/O设备之间 
+        \task I/O设备和I/O端口之间 
+        \task 通用寄存器和I/O端口之间 
+    \end{choices}
+
+    \item 下列选项中,不属于I/O接口的是() 
+    \begin{choices}[2]
+        \task 磁盘驱动器 \task 打印机适配器 \task 网络控制器 \task 可编程中断控制器 
+    \end{choices}
+
+    \item 以下说法中,错误的是() 
+    \begin{choices}[1]
+        \task 中断服务程序一般是操作系统模块 
+        \task 中断向量方法课提高中断源的识别速度 
+        \task 中断向量地址是中断服务程序入口地址 
+        \task 重叠处理中断现象称为中断嵌套 
+    \end{choices}
+
+    \item  关于程序中断和DMA方式叙述,错误的是() 
+    \begin{enumerate}
+        \item [(1)] DMA的优先级比程序中断的优先级更高
+        \item [(2)] 程序中断方式需要保护现场,DMA方式不需要包含现场
+        \item [(3)] 程序中断方式的中断请求是为了报告CPU数据的传输结束,而DMA方式的中断请求完全是为了传
+        送数据 
+    \end{enumerate}
+    \begin{choices}
+        \task 2 \task 2,3 \task 3 \task 1,3
+    \end{choices}
+
+    \item 中断响应优先级由高到低次序应该使用() 
+    \begin{choices}[2]
+        \task 访管,程序性,机器故障 
+        \task 访管,程序性,重新启动 
+        \task 外部,访管,程序性 
+        \task 程序性,I/O,访管 
+    \end{choices}
+
+    \item 在具有中断向量表的计算机中,中断向量地址是() 
+    \begin{choices}[2]
+        \task 子程序入口地址 
+        \task 中断服务程序入口地址 
+        \task 中断服务程序入口地址的地址 
+        \task 中断服务断点 
+    \end{choices}
+
+    \item 在配有通道的计算机系统,用户程序需要输入/输出时,引起中断的是(   ) 
+    \begin{choices}
+        \task 访管中断 \task I/O中断 \task 程序性中断 \task 外中断 
+    \end{choices}
+
+    \item 在中断响应周期中,CPU主要完成的工作是() 
+    \begin{choices}[1]
+        \task 关中断,保护断点,发中断响应信号并形成向量地址 
+        \task 开中断,保护断点,发中断响应信号并形成向量地址 
+        \task 关中断,执行中断服务程序 
+        \task 开中断,执行中断服务程序  
+    \end{choices}
+
+    \item 设置中断屏蔽标致可以改变() 
+    \begin{choices}[2]
+        \task 多个中断源的中断请求优先级 
+        \task CPU对多个中断请求响应的优先次序
+        \task 多个中断服务程序开始执行的顺序 
+        \task 多个中断服务程序执行完的次序 
+    \end{choices}
+
+    \item 下列叙述中,()时正确的 
+    \begin{choices}[1]
+        \task 程序中断方式和DMA方式中实现数据传送都需要中断请求
+        \task 程序中断方式中有中断请求,DMA方式中没有中断请求
+        \task 程序中断方式和DMA方式都有中断请求,但目的不同
+        \task DMA要等指令周期结束时才可以进行周期窃取 
+    \end{choices}
+
+    \item 以下关于DMA方式进行I/O的描述中,正确的是() 
+    \begin{choices}[1]
+        \task 一个完整的DMA过程,不仅有DMA控制器控制,部分有CPU控制 
+        \task 一个完整的DMA过程,完全有CPU控制 
+        \task 一个完整的DMA过程,完全由DMA控制器控制,CPU不介入任何控制 
+        \task 一个完整的DMA过程,完全由CPU采用周期挪用法控制
+    \end{choices}
+
+    \item 以下有关DMA方式的叙述中,错误的是() 
+    \begin{choices}[1]
+        \task 在DMA方式下,DMA控制器向CPU请求的是总线使用权 
+        \task DMA方式可用键盘和鼠标的数据输入 
+        \task 在数据传输阶段,不需要CPU介入,完全由DMA控制器控制 
+        \task DMA方式要用中断处理 
+    \end{choices}
+
+    \item \bl 某计算机有五级中断$L_4\sim L_0$,中断屏蔽字为$M_4M_3M_2M_1M_0,M_i=1(0\leq i \leq 4)$表示队$L_i$级
+    中断进行屏蔽,若中断响应优先级从高到低的顺序是$L_4,L_0,L_2,L_1,L_3$则$L_1$的中断处理程序中设置的中断屏蔽字是\_\_\_\_\_ 
+
+    \item \bl 下列关于中断I/O方式和DMA方式比较的叙述中,错误的是() 
+    \begin{choices}[1]
+        \task 中断I/O方式请求的CPU控制时间,DMA方式请求的总线控制权 
+        \task 中断响应发生在一条指令执行结束后,DMA响应发生在一条总线事务后 
+        \task 中断I/O方式下数据传输通过软件完成,DMA方式下的数据有硬件完成 
+        \task 中断I/O方式适用于所有外部设备,DMA方式适用于快速外部设备 
+    \end{choices}
+
+    \item \bl 若某设备中断请求的响应和处理时间为$100ms$,每$400ns$发出一次中断请求,中断响应所允许的
+    最长延迟的时间$50ns$,则在该设备持续工作过程中,CPU用于该设备的I/O时间占CPU时间的百分比至少是() 
+    \begin{choices}
+        \task 12.5\% \task 25\% \task 27.5\% \task 50\%
+    \end{choices}
+
+    \item \bl 若某设备以中断方式与CPU进行数据交换,CPU主频为1GHz,设备接口中的数据缓冲寄存器为32位,设备的数据传输率
+    为50kb/s.若每次中断开销(包含中断响应与中断处理)为1000个时钟周期,则CPU用于该设备输入/输出的时间占整个CPU时间的百分比
+    至多是() 
+    \begin{choices}
+        \task 1.25\% \task 2.5\% \task 5\% \task 12.5\% 
+    \end{choices}
+
+    \item \bl 若设备采用周期挪用DMA方式进行输入和输出,每次DMA传送的数据块大小为512字节,响应的I/O接口中有一个
+    32位数据缓冲寄存器.对于数据输入过程,下列叙述中,错误的是() 
+    \begin{choices}[1]
+        \task 每准备好32位数据,DMA控制器就发出一次总线请求 
+        \task 相对于CPU,DMA控制器的总线使用权的优先级更高 
+        \task 在整个数据块的传送过程中,CPU不可以访问主存储器
+        \task 数据块传送结束后,会产生"DMA传送结束"中断请求
+    \end{choices}
+
+    \item \bl 下列关于中断I/O方式的叙述中,不正确的是() 
+    \begin{choices}[1]
+        \task 适用于键盘,针式打印机等字符型设备 
+        \task 外设和主机之间的数据传送通过软件完成
+        \task 外设准备数据的时间应小于中断处理时间 
+        \task 外设为某进程准备数据时CPU可运行其他进程
+    \end{choices}
 \end{enumerate}
 
 \section{综合题}
+
+\section{选择题答案}
+\begin{enumerate}[label=\arabic*.\textbf{答案}:]
+\item A;冯诺依曼体系结构的基本工作方式:控制流驱动方式;基本特点:按地址访问并顺序执行(存储程序). 
+\item C;
+\begin{center}
+\begin{tabular}{c|c}
+    \hline 
+    程序编译过程 & 具体作用 \\ 
+    \hline 
+    预处理程序 & 展开程序中的宏定义和头文件  \\
+    \hline 
+    编译程序 & 将高级语言转换为编译语言文件(.s)或者直接转换为(.o)文件 \\
+    \hline 
+    汇编程序 & 将汇编语言程序转换为机器语言目标文件(.o) \\
+    \hline 
+    链接程序 & 将多个(.o)文件链接形成二进制可执行文件 \\
+    \hline  
+    解释程序 & 它一边读取源代码（或字节码等中间表示一边立即将其翻译成机器 \\
+    {}     &  能直接执行的指令序列并立即执行，而不生成单独的可执行文件 \\
+    \hline 
+\end{tabular}
+\end{center}
+\item A \\
+这道题有种高中的时候计算式和决定式的味道了.CPI(每条指令的平均时钟周期数)只与指令集、系统结构、
+计算机组织等“每拍做什么”有关;时钟频率决定“每秒多少拍”.并不改变一条指令需要多少拍,因此与CPI无关. 
+\item A 
+\item D 
+\item A 
+\item D 
+\item B 
+\item C 
+\item B 
+\item C 
+\item C 
+\item B 
+\item B 
+\item B 
+\item A
+\item C 
+\item 32769
+\item A  
+\item C 
+\item B 
+\item C 
+\item $-(2-2^{-52})\times 2^{+1023}$
+\item D 
+\item $2^7-1$
+\item 1.00010
+\item 1.011011
+\item 5
+\item 1,3
+\item C104\ 0000H 
+\item 1,2,3,4
+\item BEE0\ 0000H
+\end{enumerate}
+\section{综合题答案}
 \ifx\allfiles\undefined
 \end{document}
 \fi
