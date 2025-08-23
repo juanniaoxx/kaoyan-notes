@@ -3,13 +3,12 @@
 \def\path{../../config}
 \input{../../config/_config}
 \begin{document}
-\input{../../config/cover}
 \else
 \fi
 
 \chapter{函数 极限 连续}
 \section{函数的性态}
-\begin{remark}(有界性的判定)
+\begin{remark}[有界性的判定]
     \begin{enumerate}
     \item[(1)] 连续函数在闭区间$[a,b]$上必然有界 
 
@@ -36,21 +35,24 @@
     D\quad $f(x)=\int_0^x\frac{\sin t}{t} dt, x\in(0,2022)$
     
     \begin{solution}
-    \item[(A)] $\lim_{x\to 0^{+}}f(x)=1$, $\lim_{x\to +\infty}=0$均为有限值,故A在区间$(0, +\infty)$有界
-    \item[(B)] $\lim_{x\to 0^{+}}f(x)=0$, $\lim_{x\to +\infty}=1$均为有限值,故B在区间$(0, +\infty)$有界
-    \item[(C)] $\lim_{x\to 0^{+}}f(x)=+\infty$, $\lim_{x\to +\infty}=0$在0点的极限不为有限值,故C在区间$(0, +\infty)$无界
-    \item[(D)] $\lim_{x\to 0^{+}}f(x)=\lim_{x\to 0^{+}}\int_{0}^{x}1dt=0$, 
-    $\lim_{x\to 2022^{-}}f(x)=\int_{0}^{2022}\frac{\sin{t}}{t}dt=\text{有限值}$ 故D在区间$(0, 2022)$有界
+        \begin{enumerate}
+        \item[(A)] $\lim_{x\to 0^{+}}f(x)=1$, $\lim_{x\to +\infty}=0$均为有限值,故A在区间$(0, +\infty)$有界
+        \item[(B)] $\lim_{x\to 0^{+}}f(x)=0$, $\lim_{x\to +\infty}=1$均为有限值,故B在区间$(0, +\infty)$有界
+        \item[(C)] $\lim_{x\to 0^{+}}f(x)=+\infty$, $\lim_{x\to +\infty}=0$在0点的极限不为有限值,故C在区间$(0, +\infty)$无界
+        \item[(D)] $\lim_{x\to 0^{+}}f(x)=\lim_{x\to 0^{+}}\int_{0}^{x}1dt=0$, 
+        $\lim_{x\to 2022^{-}}f(x)=\int_{0}^{2022}\frac{\sin{t}}{t}dt=\text{有限值}$ 故D在区间$(0, 2022)$有界
+        \end{enumerate}
     \end{solution}
 \end{enumerate}
 
-\begin{tcolorbox}[title=无穷VS无界]
+\begin{corollary}[无穷VS无界]
     \underline{无界} 只有有一个子列趋于无穷即可 \\
     \underline{无穷} 任意子列均趋于无穷.  \\
     例如A选项,当 $x_n=\frac{1}{2n\pi+\pi/2},f(x_n)=2n\pi+\pi/2$,$n\to\infty,f(x_n)\to\infty$;当
     $x_n=\frac{1}{2n\pi},f(x_n)=0$, $n\to\infty,f(x_n)\to 0$不为无穷大,仅仅是无界.
-\end{tcolorbox}
-\begin{remark}(导函数与原函数的奇偶性与周期性)
+\end{corollary}
+
+\begin{remark}[导函数与原函数的奇偶性与周期性]
     \begin{enumerate}
     \item 连续奇函数的所有原函数$\int_{0}^{x}f(t)dt+C$都是偶函数 
 
@@ -70,6 +72,7 @@
     
     \begin{solution}
     这种题可以采用奇偶性的定义直接去做,如下面选项A,B的解法,也可以按照上述的函数奇偶性的性质判断
+    \begin{enumerate}
     \item [(A)] 令$F(x) = \int_0^x f(t^2) dt$
     \[
     F(-x)=\int_0^{-x} f(t^2) dt=-\int_0^x f(t^2) dt=-F(x)
@@ -82,6 +85,7 @@
     推导不出B的奇偶性
     \item [(C)] $t[f(t)-f(-t)]$是一个偶函数,故C选项是一个奇函数
     \item [(D)] $t[f(t)+f(-t)]$是一个奇函数,故D选项是一个偶函数
+    \end{enumerate}
     \end{solution}
 \end{enumerate}
 
@@ -159,10 +163,10 @@ $\frac{\cdot}{\infty}$模型上面靠,辅助以Taylor公式,拉格朗日中值�
 
 \begin{enumerate}[label=\arabic*.,start=6]
     \item  (2014,数一、数二、数三)求极限
-    \[
+    $
     \lim_{x\to \infty}\frac{\int_{1}^{x}\left[t^2(e^{\frac{1}{t}} - 1) - t\right]dt}
     {x^2\ln{(1+\frac{1}{x})}}
-    \]
+    $
     \begin{solution}
     \begin{align*}
         \lim_{x\to \infty}\frac{\int_{1}^{x}\left[t^2(e^{\frac{1}{t}} - 1) - t\right]dt}
@@ -238,11 +242,15 @@ $\frac{\cdot}{\infty}$模型上面靠,辅助以Taylor公式,拉格朗日中值�
 \end{enumerate}
 
 \section{数列极限的计算}
-\begin{remark}(方法)
+\begin{remark}[方法]
     \begin{enumerate}
         \item [(1)] 单调有界准则 (三步走,先确定单调性,在确定有界性,最后解方程求极限) \\
         确定单调性,可以考虑作差/做商/求导
         \item [(2)] 压缩映射原理
+        \begin{enumerate}
+            \item [$\circ 1$] 先猜出极限$x^*$
+            \item [$\circ 2$] 证明递推式$\left|x^*_{n+1}-x^*_{n}\right|\leq k\left|x_{n}^*\right|$ 其中$k<1$
+        \end{enumerate}
         \item [(3)] 夹逼准则
         \item [(4)] 定积分的定义 (n项和/n项积)
     \end{enumerate}
@@ -288,15 +296,15 @@ $\frac{\cdot}{\infty}$模型上面靠,辅助以Taylor公式,拉格朗日中值�
     $$
     \end{solution}
     
-    \begin{tcolorbox}
-        常见的等价代换有 \\
+    \begin{corollary}[常见的等价代换有]
         \underline{1}: $e^{0},\sin(\pi/2),\cos(0),\ln(e)$ 具体情况还得看题目,题目有啥用啥替换 \\
         \underline{0}: $\sin(0),\cos(pi/2),\ln(1)$ 
-    \end{tcolorbox}
+    \end{corollary}
+
     \item  (2019,数一、数三)设$a_n=\int_0^1 x^n\sqrt{1-x^2}dx\ (n=0,1,2,\cdots)$。
     \begin{enumerate}[label=(\roman*)]
-        \item 证明数列$\{a_n\}$单调减少,且$a_n=\frac{n-1}{n+2}a_{n-2}\ (n=2,3,\cdots)$
-        \item 求$\lim_{n\to\infty}\frac{a_n}{a_{n-1}}$
+        \item[(1)] 证明数列$\{a_n\}$单调减少,且$a_n=\frac{n-1}{n+2}a_{n-2}\ (n=2,3,\cdots)$
+        \item[(2)] 求$\lim_{n\to\infty}\frac{a_n}{a_{n-1}}$
     \end{enumerate}
     
     \begin{solution}

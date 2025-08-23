@@ -4,6 +4,8 @@
 \input{../config/_config}
 \definecolor{red}{HTML}{e74c3c}
 \definecolor{black}{HTML}{2c3e50}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
 \begin{document}
 % \input{../config/cover}
 \else
@@ -213,9 +215,6 @@ int sum = 0;
 
     \item \bl 由一个100阶的三对角矩阵M,其元素$m_{i,j}(1\leq i, j\leq 100)$按行优先依次压入下标从0开始的一维
     数组N中.元素$m_{30,30}$在N中的下标是() 
-
-
-    \item \bt 在KMP算法中,串\underline{ababaaababaa}的PM数组,Next数组,Nextval数组分别为? 
 
     \item \bl 设主串$T=abaabaabcabaabc$模式串$S=abaabc$采用KMP算法进行模式匹配,到匹配成功为止,在匹配过程中进行的
     单个字符间的比较次数是()
@@ -1206,7 +1205,7 @@ int sum = 0;
     \begin{lstlisting}[language=C]
     int x = 1;
     for (int i = 0; i < n; ++i)
-        for (int j = 1; j < n; ++j)
+        for (int j = i; j < n; ++j)
             x *= 2;
     \end{lstlisting}
 
@@ -1231,7 +1230,7 @@ int sum = 0;
     \item 对于没有尾指针的单链表,将n个元素采用头插法建立单链表的时间复杂度为(    ),采用尾插法建立单链表的
     时间复杂度为(    ). 
 
-    \item (多选)某线性表用带头结点的循环单链表存储,头指针为$head$,当$head\rightarrow next\rightarrow next \rightarrow next == head$
+    \item 某线性表用带头结点的循环单链表存储,头指针为$head$,当$head\rightarrow next\rightarrow next \rightarrow next == head$
     成立的时候,线性表的可能长度是(    ). 
 
     \item (多选)以下选项中正确的是(   ) 
@@ -1504,14 +1503,158 @@ int sum = 0;
 
     \item 设内存工作却能容纳m个记录,那么对磁盘上的n个记录进行k路平衡归并排序,需要做多少遍归并排序() 
 
+    \item 下列说法不正确的是(   ) 
+    \begin{choices}[1]
+        \task 数组可以看成线性结构的一种推广,因此与线性表一样,可以对它进行插入,删除等操作 
+        \task 系数矩阵以三元组表压缩存储后,必会失去随机存取的功能
+        \task 从逻辑上来看,n维数组的每个元素均属于n个向量
+        \task 数组也能采用链式存储结构
+    \end{choices}
+
+    \item 下列关于顺序表的叙述中,正确的是(   ) 
+    \begin{choices}[1]
+        \task 顺序表可以用一维数组表示,因此顺序表与一维数组在逻辑结构上式相同的
+        \task 在顺序表中,逻辑上相邻的元素位置上不一定相邻
+        \task 顺序表可以进行随机存取
+        \task 在顺序表中,每个元素的类型不必相同 
+    \end{choices}
+
+    \item 设有线性表$A=(a_1,a_2,\ldots,a_m),B=(b_1,b_2,\ldots,b_n)$线性表$A,B$交叉合并为线性表
+    $C=(a_1,b_1,a_2,b_2,\ldots)$线性表$A,B,C$均以单链表的方式存储,$A,B$中长度更大的,后续多出的元素
+    全部放到C的最后,那么时间复杂度是(    )
+    \begin{choices}
+        \task $O(m)$ \task $O(n)$ \task $O(m+n)$ \task 均不对
+    \end{choices}
+
+    \item 设有一个长度为n的循环单链表,若从表中删除首元元素的时间复杂度为$O(n)$,则此时采用的循环单链表的结构可能是()
+    \begin{choices}[2]
+        \task 只有表头指针,没有头结点 \task 只有表尾节点,没有头结点 
+        \task 只有表尾指针,带头结点 \task 只有表头指针,带头结点
+    \end{choices}
+
+    \item 设线性表有$2n$个元素,算法()在单链表上实现比在顺序表上实现效率更高. 
+    \begin{choices}[1]
+        \task 删除所有值为x的元素 
+        \task 在最后一个元素前插入一个新元素 
+        \task 顺序输出前K个元素 
+        \task 交换第$i$个元素和第$2n-i-1$个元素的值($i=0,1,\ldots,n-1$) 
+    \end{choices}
+
+    \item 下列说法中正确的是() 
+    \begin{enumerate}[label= (\arabic*)]
+        \item 不带头结点单链表中,无论是插入还是删除元素,都需要找到其前驱 
+        \item 删除带头结点的循环双链表中某结点时,只需要修改两个指针域
+        \item 带尾指针的单旋循环链表中,删除为结点的时间复杂度是$O(1)$
+        \item 带头结点不带尾指针的单向循环链表,在链头插入一个元素的时间复杂度时$O(1)$
+        \item 链式存储结构都是动态申请时间,各元素逻辑相邻,物理上不一定相邻 
+    \end{enumerate}
+    \begin{choices}
+        \task 1,4,5 \task 2,4 \task 3,4,5 \task 1,2,5
+    \end{choices}
+
+    \item 已知带头结点的非空循环双链表,指针$p$指向链表中非首且非尾的任意一个结点,则执行下列语句序列实现
+    的功能是(   ) 
+    \begin{enumerate}[label= (\arabic*)]
+        \item $p\rightarrow pre \rightarrow pre \rightarrow next = p;$ 
+        \item $p\rightarrow next \rightarrow pre = p \rightarrow pre;$
+        \item $p\rightarrow pre\rightarrow next = p\rightarrow next;$
+        \item $p\rightarrow next = p\rightarrow pre;$
+        \item $p\rightarrow pre = p\rightarrow pre \rightarrow pre;$
+        \item $p\rightarrow next \rightarrow pre = p;$
+    \end{enumerate}
+
+    \begin{choices}[1]
+        \task 删除p指向的结点 
+        \task 将p执行的结点前的结点插入p结点之后 
+        \task 将p指向的结点与其后继结点交换
+        \task 将p执行的结点的后继与p执行的结点的前驱互换 
+    \end{choices}
+
+    \item 某带链的队列初始状态为$rear=front=NULL$,经过一系列正常的入队和出队操作后,$front==read$该队列中
+    元素的个数为(   )
+    \begin{choices}
+        \task 1 \task 0 \task 1或0 \task 不确定
+    \end{choices}
+
+    \item 循环队列在一维数组$A[0\ldots M-1]$中,$front$指向队头元素,$rear$执行队尾的后一个位置,数组大小不可拓展,
+    并且不考虑额外开销的情况下,该队列的剩余可用空间为()
+    \begin{choices}[2]
+        \task $M-(rear-front)$ \task $M-(rear-front)\%(M-1)$
+        \task $M-(rear-front+M)\% M$ \task $M-1-(rear-front+M)\% M$
+    \end{choices}
+
+    \item 下列叙述中正确的是() 
+    \begin{choices}[1]
+        \task 在栈中,栈顶点指针的动态变化决定栈中元素的个数
+        \task 在循环队列中, 队尾指针的动态变化决定队列的长度
+        \task 在循环链表中,头指针和链尾指针的动态变化决定链表的长度
+        \task 在线性链表中,头指针和链尾指针的动态变化决定链表的长度 
+    \end{choices}
+
+    \item 若某队列允许在其两端进行入队操作,但仅允许在一端进行出队操作,允许入队出队操作交替进行.若入队序列为$a,b,c,d,e$,则
+    下列出队序列中,可能得到的有()
+    \begin{enumerate}[label= (\arabic*)]
+        \item $b,a,c,d,e$
+        \item $d,b,a,c,e$
+        \item $d,b,c,a,e$
+        \item $b,c,a,d,e$
+    \end{enumerate}
+    \begin{choices}
+        \task 1,2,4 \task 3,4 \task 1,2 \task 2,4
+    \end{choices}
+
+    \item 设一个输入序列为$a,b,c,d$,借助一个输出受限的双向队列,所得到的输出序列不可能是(   )
+    \begin{choices}
+        \task $d,a,c,d$ \task $c,a,d,b$ \task $a,b,c,d$ \task $b,d,a,c$
+    \end{choices}
+
+    \item 在输入受限的双端队列中,输入序列为$1,2,\ldots,n$输出序列为$P_1,P_2,\ldots$,若$P_1=n,P_2$的可能
+    取值有()种 
+    \begin{choices}
+        \task $n-1$ \task $n-2$ \task $2$ \task $1$
+    \end{choices}
+
+    \item 将一个$10\times 10$的对称矩阵M的下三角部分的元素$M_{i,j}(1\leq j \leq i \leq 10)$按列优先优先存入$C$语言的一维
+    数组$N$中,元素类型为结构体,N的首地址为$1000$,按字节编址,结构体内部成员构成如下所示,则元素$M_{6,10}$的成员b所在的地址为\_\_\_\_\_\_
+    \begin{lstlisting}[language=C]
+struct M{
+    char a;
+    int b;
+    short c;
+}
+    \end{lstlisting}
+
+    \item 系数矩阵的三元组的存储方法()
+    \begin{choices}[1]
+        \task 实现转置运算很简单,只需要将每个三元组的行标和列标交换
+        \task 是一种链式存储方法
+        \task 矩阵的非零元个数和位置在操作过程中变化不大时候较为有效
+        \task 比十字链表更高效
+    \end{choices}
+
+    \item 已知一稀疏矩阵的三元组表为(1,2,3)(1,6,1)(3,1,5)(3,2,-1)(5,4,5)(5,1,-3),则其转置矩阵的
+    三元组表中第3个三元组为\_\_\_\_\_\_
+
+    \item 下列关于广义表(a,(b,c),((d,e),f))的叙述错误的是(   ) 
+    \begin{choices}
+        \task 表头是a \task 表尾时f \task 表的长度为3 \task 表的深度为3
+    \end{choices}
+
+    \item 设主串$T="abaabaabacacaabaabcc"$模式串$S="abaabc"$采用KMP算法进行模式匹配,到匹配成功为止,
+    在匹配过程中模式串右滑的总距离是\_\_\_\_\_\_(模式串首个字符匹配失败记右滑1格)
 \end{enumerate}
 \newpage
 \section{综合题}
 
 \begin{enumerate}
+    \item \bt 在KMP算法中,串\underline{ababaaababaa}的PM数组,Next数组,Nextval数组分别为? 
+    \blankline{4}
     \item 选择-置换排序的功能是?图示过程是? 
+    \blankline{4}
     \item 图示败者树的维护过程 
+    \blankline{4}
     \item 最佳归并树的虚拟节点是?如何确定需要多少虚拟结点?为啥需要虚拟结点?
+    \blankline{4}
 \end{enumerate}
 \newpage
 \section{选择题答案}
@@ -1588,11 +1731,6 @@ int sum = 0;
     (1) 可以记公式$k=2i+j-3$ \\
     (2) 把三对角线矩阵画出来,观察. 第一个行元素为两个,在$m_{30,30}$所在行之前有$28$行这些行有3个元素;
     本行在$m_{30,30}$之前仅有$m_{30,29}$故$2+28\times+3+2 - 1 = 87$
-    \item 
-    (1) PM数组结果 \underline{001231123456} \\
-    (2) Next(1)数组 \underline{-100123112345} \\
-    (3) Next(2)数组 \underline{011234223456} \\
-    (4) Nextval数组 \underline{010104210104} 
     \item 10次
     \item 
     树的路径长度:从树根到每个结点的路径长度的总和 \\
@@ -2096,8 +2234,113 @@ int sum = 0;
     \item B \\
     注意多叉huffman树需要补充的都是叶子结点,且其只有$n_{12}$和$n_0$的结点,不妨设$n_0=120+n_{\text{补}}$又因为
     $n_0=(12-1)n_12+1$ 从而$n_{12}=(120-1+n_{\text{补}})(12-1)$由于$n_{12}$是整数,从而$n_{\text{补}}=2$
-    \item 
+    \item $\frac{(n+1)n}{2}$; 
+    $$
+    \sum_{i=0}^{n-1}n-i = \frac{(n+1)n}{2}
+    $$
+    \item D  \\
+    数据项:最小的不可拆分的零件,是数据的基本单位 \\
+    数据元素:由若干数据项组成的程序中一次处理的最小单元 \\
+    数据结构:描述的数据元素之间的组织方式
+
+    \item 顺序存储结构,索引存储结构,链式存储结构,散列存储结构 \\
+    题目问的存储(物理)结构,注意区分逻辑结构,
+
+    \item B \\
+    \textbf{线性表}的定义:线性表是$n(n\geq 0)$个具有相同特性的数据元素的有限序列. 
+
+    \item $O(n),O(n^2)$ 
+    \item 0或2
+    \begin{center}
+    \begin{tikzpicture}[
+        node distance=2.2cm,
+        head/.style={circle,fill=black,inner sep=2pt,label=below:$head$},
+        data/.style={circle,draw,minimum size=6mm}
+    ]
+    \node[head] (H1) {};
+    \draw[->] (H1) to[out=135,in=45,looseness=7] (H1);
+    \node[below=1.2cm of H1] {情形1:\ 空表(0个数据结点)};
+    \begin{scope}[xshift=5.5cm]
+    \node[head] (H2) {};
+    \node[data,right of=H2] (A) {$A$};
+    \node[data,right of=A]  (B) {$B$};
+    \draw[->] (H2) -- (A);
+    \draw[->] (A)  -- (B);
+    \draw[->] (B) .. controls +(up:1.2cm) and +(up:1.2cm) .. (H2);
+    \node[below=1cm of A] {情形2:\ 2个数据结点};
+    \end{scope}
+    \end{tikzpicture}
+    \end{center}
+    \item BCD \\
+    静态链表是通过数组取模拟链表, 通过两个数组$Data,Next$数组分别记录结点数据和下一个结点的下标.
+    注意静态链表并不支持顺序存取任意位置的数据,因为需要通过$Next$数组的内容,确定$Data$数组的下标.
+    \item C 
+    \item 65720 \\
+    三维数组可以看做如下的二维数组组成的三维数组,本题的数组A可以看做高80,行20,列40的立方体. 
+    \begin{center}
+    \begin{tikzpicture}[x=(330:1cm),y=(210:1cm),z=(90:1cm)]
+    \begin{scope}[shift={(0,-2.4,2.4)}]
+    \fill[blue!20] (0,0,0) rectangle (8,5);
+    \draw[step=1cm,red!80] (0,0,0) grid (8,5);
+    \end{scope}
+    \begin{scope}[shift={(0,-1.2,1.2)}]
+    \fill[red!20] (0,0,0) rectangle (8,5);
+    \draw[step=1cm,red!80] (0,0,0) grid (8,5);
+    \end{scope}
+    \begin{scope}[shift={(0,0,0)}]
+    \fill[green!20] (0,0,0) rectangle (8,5);
+    \draw[step=1cm,green!80] (0,0,0) grid (8,5);
+    \end{scope}
+    \end{tikzpicture}
+    \end{center}
+    则$A[20][10][30]$是第$20\times(20\times 40)+10\times 40+30=16430$个元素,每个元素占4个存储单元
+    从而该地址为$0+16430\times 4=65720$
+
+    \item 82 \\
+    对于$x$叉树
+    \begin{enumerate}
+        \item [$\circ 1$] 设总结点数为$n$,边数为$e$,则$n=e-1$ 
+        \item [$\circ 2$] 设树中度为$i$节点的个数为$n_i$,则$e=\sum_{i=0}^{x}i\times n_i $
+    \end{enumerate}
+    对于本题,有$n-1=n_1+2n_2+3n_3+4n_4=n_0+n_1+n_2+n_3+n_4$有$n_0=82$
+    \item 1532; \\
+    这道题要注意数据对齐(如图),一个结构体占$12B$ 
+    \begin{center}
+        \begin{tikzpicture}[
+        box/.style={draw, minimum width=#1*1cm, minimum height=1cm, anchor=west},
+        byte/.style={box=1, font=\ttfamily\footnotesize},
+        pad/.style={byte, fill=gray!30}]
+        \foreach \i in {0,...,11}{
+            \node[below] at (\i,0) {\tiny\i};
+        }
+        \node[byte, fill=blue!15] (a) at (0,0) {a};
+        \node[pad] (p1) at (1,0) {pad};
+        \node[pad] (p2) at (2,0) {pad};
+        \node[pad] (p3) at (3,0) {pad};
+        \node[box=4, fill=green!15] (b) at (4,0) {b};
+        \node[box=2, fill=yellow!15] (c) at (8,0) {c};
+        \node[pad] (p4) at (10,0) {pad};
+        \node[pad] (p5) at (11,0) {pad};
+        \path (a.north west) -- (a.north east) node[midway, above=1pt] {\tiny char a};
+        \path (b.north west) -- (b.north east) node[midway, above=1pt] {\tiny int b (4 Bytes)};
+        \path (c.north west) -- (c.north east) node[midway, above=1pt] {\tiny short c (2 Bytes)};
+        \draw[decoration={brace,mirror}, decorate] (0,-0.8) -- (12,-0.8)
+            node[midway,below=2pt] {sizeof(struct M) = 12 Bytes};
+        \end{tikzpicture}
+    \end{center}
+
+    
 \end{enumerate}
+
+\section{综合题答案}
+\begin{enumerate}[label=\arabic*.\textbf{答案}:]
+    \item 
+    (1) PM数组结果 \underline{001231123456} \\
+    (2) Next(1)数组 \underline{-100123112345} \\
+    (3) Next(2)数组 \underline{011234223456} \\
+    (4) Nextval数组 \underline{010104210104} 
+\end{enumerate}
+
 \ifx\allfiles\undefined
 \end{document}
 \fi

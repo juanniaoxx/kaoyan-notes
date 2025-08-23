@@ -70,5 +70,15 @@
         "PIFS",
         "SIFS",
         "SSAP"
+    ],
+    "cSpell.words": [
+        "CSMA",
+        "eret",
+        "MAXV",
+        "Mbps",
+        "Nextval",
+        "PDBR",
+        "syscall",
+        "Syscell"
     ]
 }

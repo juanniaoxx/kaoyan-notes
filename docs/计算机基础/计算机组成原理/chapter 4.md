@@ -171,7 +171,3 @@ struct S@ {
 
 ![](./images/CISC-vs-RISC.png)
 
-### x86-64 程序的机器表示
-
-!!! tip
-    主要参考 CSAPP-chapter 3 程序的机器级表示
