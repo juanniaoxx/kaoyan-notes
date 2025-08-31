@@ -99,14 +99,12 @@
 
     \begin{corollary}
         若$AB=\bar{A}\bar{B}$,则$A,B$必然对立
-        \begin{proof}
-            \begin{align*}
-                &AB =\bar{A}\bar{B} \\
-                &\iff AB\cup \bar{A}B =\bar{A}\bar{B}\cup \bar{A}B \\
-                &\iff (A\cup \bar{A})B = \bar{A}(\bar{B}\cup B) \\
-                &\iff B = \bar{A}
-            \end{align*}
-        \end{proof}
+        \begin{align*}
+            &AB =\bar{A}\bar{B} \\
+            &\iff AB\cup \bar{A}B =\bar{A}\bar{B}\cup \bar{A}B \\
+            &\iff (A\cup \bar{A})B = \bar{A}(\bar{B}\cup B) \\
+            &\iff B = \bar{A}
+        \end{align*}
     \end{corollary}
 
     % 例题 1.4
@@ -150,7 +148,7 @@
     
     \begin{solution}
     (古典概型) 
-    \[\frac{\binom{3}{1}\binom{2}{1}\binom{2}{3}}{3^4}=\frac{2}{9}\]
+    \[\frac{\binom{3}{1}\binom{2}{1}\binom{3}{2}}{3^4}=\frac{2}{9}\]
     首先从3个颜色中选择一个为第四次抽的颜色,再从剩下两个颜色中选择一个为出现两次的颜色,在选择该颜色抽出的次序.
     \end{solution}
     % 例题 1.7
@@ -179,9 +177,13 @@
     三大概率公式
     \begin{enumerate}
     \item 条件概率公式\qquad $P(A\mid B)=\frac{P(AB)}{P(B)}$ \\
-    推论 $P(AB)=P(B)P(A\mid B), P(A_1A_2\ldots A_n)=P(A_1)P(A_2\mid P(A_1))P(A_3|P(A_1A_2))\ldots$
+    推论 
+    \begin{align*}
+        P(AB) &= P(B)P(A\mid B) \\
+        P(\prod_{i=1}^{n}A_i) &= P(A_1)P(A_2\mid A_1)P(A_3\mid A_1A_2) \ldots P(A_n\mid A_1,\ldots,A_{n-1})
+    \end{align*}
     \item 全概率公式\qquad $P(A)=\sum_{i=1}^{n}P(AB_i)=\sum_{i=1}^{n}P(B_i)P(A\mid B_i)$
-    \item 贝叶斯公式\qquad $P(B_j\mid A)=\frac{P(B_j)P(A\mid B_j)}{\sum_{i=1}^{n}P(B_i)P(A\mid B_i)}$
+    \item 贝叶斯公式\qquad $P(B_j\mid A)=\frac{P(B_j)P(A\mid B_j)}{\displaystyle \sum_{i=1}^{n}P(B_i)P(A\mid B_i)}$
     \end{enumerate}
     若称$P(B_j)$为$B_j$的先验概率,称$P(B_j\mid A)$为$B_j$的后验概率.则贝叶斯公式专门用于计算后验概率的公式.
 \end{remark}
@@ -220,17 +222,15 @@
         \item[(2)] 求从乙箱中任取一件产品是次品的概率.
     \end{enumerate}
 
-    \begin{solution}(作为小题来考还可以)
-    \item [方法一:用概率] 
-    \item{(1)} 对于数字特征的题目,先求概率分布再说,由于$P(X=k)=\frac{C_{3}^{k}C_{3}^{3-k}}{C_{6}^{3}}$
-    \begin{center}
-        $$
-        \begin{array}{c|c c c c}
-        X  & 0 & 1 & 2 & 3 \\ \hline
-        P(x)  &  \frac{1}{20}  &  \frac{9}{20}  &  \frac{9}{20}  &  \frac{1}{20}
-        \end{array}
-        $$
-    \end{center}
+\begin{solution}[用概率计算]
+    \begin{enumerate}
+    \item[(1)] 对于数字特征的题目,先求概率分布再说,由于$P(X=k)=\frac{C_{3}^{k}C_{3}^{3-k}}{C_{6}^{3}}$
+    $$
+    \begin{array}{c|c c c c}
+    X  & 0 & 1 & 2 & 3 \\ \hline
+    P(x)  &  \frac{1}{20}  &  \frac{9}{20}  &  \frac{9}{20}  &  \frac{1}{20}
+    \end{array}
+    $$
     则所求数学期望$EX=\frac{9}{20} + 2\times \frac{9}{20} + \frac{3}{20} = \frac{3}{2}$
     \item [(2)] 
     \begin{align*}
@@ -239,8 +239,11 @@
         + \frac{9}{20}\times\frac{2}{6} + \frac{1}{20}\times \frac{3}{6}  \\
         &= \frac{1}{4}
     \end{align*}
+    \end{enumerate}
+\end{solution}
 
-    \item [方法二:超几何分布]  
+\begin{solution}[使用超几何分布]
+    \begin{enumerate}
     \item [(1)] $X\sim H(N, M, n), N = 6, M = 3, n = 3$, 则$EX=\frac{nM}{N}=\frac{3}{2}$
     \item [(2)]
     \begin{align*}
@@ -250,12 +253,14 @@
         &= \frac{1}{6}EX \\
         &= \frac{1}{4}
     \end{align*}
-    \end{solution}
+    \end{enumerate}
+\end{solution}
+
 \end{enumerate}
 
 \section{事件独立的判定}
 
-\begin{remark}(事件独立的充要条件)
+\begin{remark}[事件独立的充要条件]
 \begin{align*}
         & P(AB) = P(A)P(B) \\
         & \iff P(A\mid B) = P(A) \\
@@ -286,9 +291,12 @@
     \end{tcolorbox}
     % 例题 1.13
     \item  设$A,B,C$为随机事件,$A$与$B$相互独立,且$P(C)=0$,则$\bar{A},\bar{B},\bar{C}$
-    \newline
-    \text{(A)}相互独立\qquad\qquad \text{(B)}两两独立,但不一定相互独立 \\
-    \text{(C)}不一定两两独立\qquad \text{(D)}一定不两两独立
+    \begin{choices}[2]
+    \task 相互独立 
+    \task 两两独立,但不一定相互独立
+    \task 不一定两两独立 
+    \task 一定不两两独立
+    \end{choices}
     \begin{solution}
     由$P(C)=0$知$A,B,C$相互独立,则$\bar{A}\bar{B}\bar{C}$也相互独立.
     \end{solution}
