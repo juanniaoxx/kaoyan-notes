@@ -1,3 +1,4 @@
+\usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{array}
@@ -11,13 +12,10 @@
 \usepackage{yhmath}
 \usepackage{extarrows}
 \usepackage{tikz}
-\usetikzlibrary{decorations.pathreplacing, positioning}
-% \usepackage{unicode-math}
-\usepackage{esint}
-\usepackage{pifont}
-\usepackage{tcolorbox}
-\tcbuselibrary{skins, breakable}
-
+\usepackage{tasks}
+\usepackage{pgfplots}
+\usepackage{asymptote}
+\usepackage{float}
 \usepackage{fontspec} % 使用字体
 
 \setmainfont{Times New Roman}
@@ -25,16 +23,21 @@
     SlantedFont=*
 ]
 
-\usepackage{fontawesome5}
+\everymath{\displaystyle}
 
-\usepackage{amsmath}
-\usepackage{booktabs, array}
+\usepgfplotslibrary{polar}
+\usepackage{subcaption}
+\usetikzlibrary{decorations.pathreplacing, positioning}
+
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.18}
+% \usepackage{unicode-math}
+\usepackage{esint}
+\usepackage[most]{tcolorbox}
+
 \usepackage{fancyhdr}
 \usepackage[dvipsnames, svgnames]{xcolor}
 \usepackage{listings}
-\usepackage{tasks}[2020/01/11]
-
-\everymath{\displaystyle}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
