@@ -14,203 +14,52 @@
     B. 由自治的计算机互联起来的集合体 \\
     C. 多个处理器通过共享内存视线的耦合系统 \\
     D. 用于共同完成一项任务的分布式系统 
-    \answer{
-        \begin{solution}
-        选B \\
-        计算机网络是由\underline{自治计算机互连起来的集合体.} 其中包含三个关键点:自治计算机,互连,集合体.
-        其中自治计算机有\underline{硬件和软件}两部分组成,能完成地实现计算机的各种功能;互连是指计算机之间能实现
-        \underline{相互通信}.
-        \end{solution}
-    }
+
     \item 下列不属于计算机网络功能的是() \\
     A. 提高系统的可靠性\qquad B.提高工作效率 \\
     C. 分散数据的综合处理 \qquad D. 使各计算机相对独立 
-    
-    \answer{
-        \begin{solution}
-            选D \\
-            计算机网络的功能为\underline{数据通信,资源共享以及分布式处理}
-        \end{solution}
-    }
+
 
     \item 在计算机中可以没有的是() \\
     A. 客户机 \qquad B. 服务器\qquad C.操作系统\qquad D.数据库管理系统 
 
-    \answer{
-        \begin{solution}
-            选D \\
-            从物理组成上看,计算机网络由硬件、软件和协议组成.客户机是客户访问网络的出入口,服务器是提供服务、存储信息的设备
-        \end{solution}
-    }
 
     \item 局域网和广域网的差异不仅在于它们所覆盖的范围不同,还主要在于它们() \\
     A.所使用的介质不同\qquad B.所使用的协议不同 \\
     C.所能支持的通信量不同\qquad D.所提供的服务不同
 
-    \answer{
-        \begin{solution}
-            选B \\
-            局域网使用广播技术(CSMA/CD或者CSMA/CA为主要协议)而广域网普遍使用点对点技术(P2P协议为主要协议)
-        \end{solution}
-    }
-
     \item 广域网的拓扑结构通常为() \\
     A.星型\qquad B.总线型\qquad C.网状\qquad D.环形
-
-    \answer{
-        \begin{solution}
-            选C
-        \end{solution}
-    }
 
 
     \item \bl OSI参考模型中数据链路层不具有的功能是() \\
     A.物理寻址\qquad B.流量控制\qquad C.差错检验\qquad D.拥塞控制
 
-    \answer{
-        \begin{solution}
-            选D \\
-            数据链路层在\underline{不可靠的物理层}上提供可靠的传输,其主要功能为\textbf{成帧,物理寻址,流量控制
-            ,差错检验,数据重发}等,拥塞控制是网络层与传输层的概念.
-        \end{solution}
-    }
+
 
     \item \bl 在ISO/OSI参考模型中,可同时提供无连接服务和面向连接服务的是() \\
     A.物理层\qquad B.数据链路层\qquad C.网络层\qquad D.传输层
     
-    \answer{
-        \begin{solution}
-            选C \\
-            这道题考察TCP/IP协议栈和ISO/OSI参考模型的区别. ISO/OSI在网络层提供无连接服务和面向连接服务;
-            但在传输层仅支持面向连接到通信;TCP/IP协议栈,网络层仅支持无连接服务;而传输层提供无连接服务和面向连接服务
-        \end{solution}
-    }
     \item \bl[1] 二进制信号在信噪比为127:1的4kHz的信道上传输,最大数据传输速率可达到() \\
     A.28000bps\qquad B.8000bps\qquad C.4000bps\qquad D.无限大
 
-    \answer{
-        \begin{solution}
-            考虑奈氏定理有
-            $$
-            R_{max} = 2 \times 4k \times \log_{2}{2} = 8 kbps 
-            $$
-            考虑香农定理有 
-            $$
-            R_{max} = 4k \times \log_{2}(1+127) = 28 kbps
-            $$
-            最大带宽(数据传输速率)受限于二者的较小值,即$R_{max} = 8kbps$
-        \end{solution}
-    }
     \item 为了使数据在网络中的传输延迟最小,首选的交换方式是() \\
     A.电路交换\qquad B.报文交换\qquad C.分组交换\qquad D.信元交换 
     
-    \answer{
-        \begin{solution}
-            答案选A,电路交换的特点就是实时性好.
-        \end{solution}
-        \begin{tcolorbox}[title=四种交换方式的一图流]
-            \begin{tabular}{|c|c|c|}
-                \hline 
-                交换方式&特点(优点)&缺点 \\
-                \hline
-                电路交换&\begin{tabular}{c}
-                    独占信道 \\
-                    实时性强,无冲突 \\
-                    数据顺序到达 
-                \end{tabular} & \begin{tabular}{c}
-                    建立时间长 \\
-                    信道利用率低 \\
-                    灵活性差 \\
-                    不具备差错控制能力 
-                \end{tabular} \\
-                \hline
-                报文交换 & \begin{tabular}{c}
-                    不需要预先建立连接 \\
-                    动态分配链路资源 \\
-                    支持多目标广播 \\
-                    不划分报文 
-                \end{tabular} &\begin{tabular}{c}
-                    存储转发延迟高 \\
-                    需要较大的存储空间 \\
-                    不适合实时通信
-                \end{tabular} \\
-                \hline 
-                虚电路分组交换​ & \begin{tabular}{c}
-                    分组按序到达 \\
-                    资源动态共享 \\
-                    差错控制由网络层负责
-                \end{tabular} & \begin{tabular}{c}
-                    需要需要建立连接 \\
-                    路由故障需要重新建立 \\
-                    有额外的开销
-                \end{tabular} \\ 
-                \hline
-                数据分组交换 & \begin{tabular}{c}
-                    无须连接建立,灵活高效 \\
-                    健壮性强 \\
-                    适合短报文,突发流量
-                \end{tabular} & \begin{tabular}{c}
-                    分组可能失序,丢失 \\
-                    网络部保证可靠性 \\
-                    每个分组需要携带完整的地址 
-                \end{tabular} \\
-                \hline
-            \end{tabular}
-        \end{tcolorbox} 
-    }
-
     \item 下列关于三种数据交换方式的叙述,错误的是() \\
     A.电路交换不提供差错控制功能 \\
     B.分组交换的分组有最大长度限制 \\
     C.虚电路是面向连接的,它提供的是一种可靠服务 \\
     D.在出错率很高的传输系统中,选择虚电路方式更合适 
 
-    \answer{
-        \begin{solution}
-            选D,简单立即的话就是虚电路所有分组按照同一虚电路传输,出错率较高容易出现结点故障;此时就
-            需要重新建立虚电路耗费极大.而数据报可以任意路由,部分结点即使故障也不影响.
-        \end{solution}
-    }
     \item 同一报文中的分组可以由不同的传输路径通过通信子网的方法是()  \\
     A.分组交换\qquad B.电路交换\qquad C.虚电路\qquad D.数据报
 
-    \answer{
-        \begin{solution}
-            选D
-        \end{solution}
-    }
     \item 下列4中传输方法中,由网络负责差错控制和流量控制,分组按顺序被递交的是() \\
     A.电路交换\qquad B.报文交换\qquad C.虚电路分组交换 \qquad D.数据报分组交换 
 
-    \answer{
-        \bs{
-            选C 
-        }
-    }
-
     \item 利用一根同轴电缆互联主机构成以太网,则主机间的通信方式为() \\
     A.全双工\qquad B.半双工\qquad C.单工\qquad D.不能确定
-    
-    \answer{
-        \bs{
-            这道题吧,其实没啥道理.单纯想总结一下传统以太网(10BASE-T)的特点. 
-            \begin{enumerate}
-                \item [(1)] 采用CSMA/CD协议 
-                \item [(2)] 共享总线型拓扑结构,通过集线器连接;所有主机共享带宽
-                \item [(3)] 最小帧长$64B$,数据范围$46B\sim 1500B$
-                \item [(4)] 半双工通信
-                \item [(5)] 采用曼彻斯特编码
-            \end{enumerate}
-            对比一下现代交换式以太网(高速以太网 $100Mbps,1Gbps,10Gbps$) 
-            \begin{enumerate}
-                \item [(1)] 拓扑结构通常为星型(交换机为主要设备) 
-                \item [(2)] 独享带宽(交换机的特性)
-                \item [(3)] 全双工通信
-                \item [(4)] 每个端口是一个冲突域(交换机的特性)
-                \item [(5)] 弃用曼彻斯特编码
-            \end{enumerate}
-        }
-    }
 
     \item 两个网段在物理层进行互联时要求() \\
     A.数据传输速率和数据链路层协议都可以不同 \\
@@ -218,70 +67,27 @@
     C.数据传输速率要相同,但数据链路层协议可以不同 \\
     D.数据传输速率可以不同,但数据链路层要相同
 
-    \answer{
-        \bs {
-            选C,由于数据传输速率不同会导致数据丢失或者效率低下(没有流量控制),而数据链路层协议在物理层上层
-            与物理层互连无关; 若是要求数据链路层互连,则协议也要相同.
-        }
-    }
     \item \bl[2] 要发送的数据是\underline{1101\ 0110\ 11},采用CRC校验,生成多项式是10011,那么最终发送的
     数据应该是() \\
     A.\underline{1101\ 0110\ 1110\ 10} \qquad B.\underline{1101\ 0110\ 1101\ 10}  \\
     C.\underline{1101\ 0110\ 1111\ 10} \qquad C.\underline{1111\ 0011\ 0111\ 00}
     
-    \answer{
-        \bs{
-            答案为 C
-        }
 
-        \begin{remark}[CRC的计算方法]
-            \begin{enumerate}
-                \item [(1)] 根据给的生成多项式$G(x)$其的阶数$n$,往要发送的数据后加入$n$个零
-                \item [(2)] 将上面得到的01串与生成多项式做模2除法(加减法做异或操作) 
-                \item [(3)] 得到的\textbf{余数}加入原发送数据,并发送给接收方
-                \item [(4)] 接收方接收到数据后,与生成多项式做模2除法,若余数为0则无差错否则出错  
-            \end{enumerate}
-        \end{remark}
-    }
 
     \item 数据链路层采用后退N帧协议方式,进行流量控制和差错控制,发送方已经发送了编号$0\sim 6$的帧,计时器超时时,
     仅收到了对$1,3,5$好帧的确认,发送方需要重传的帧数目是() \\
     A. 1\qquad B.2 \qquad C.5\qquad D.6
 
-    \answer{
-        \bs {
-            选A, 显然采用了累积确认,最后收到的确认是$5$说明$0\sim 5$号帧以被接受,只有$6$需要重传
-        }
-    }
     \item 一个使用选择重传协议的数据链路层协议,如果采用5位的帧序列号,那么可以选择的最大接受窗口是() \\
     A.15\qquad B.16\qquad C.31\qquad D.32
 
-    \answer{
-        \bs {
-            选B \\
-            这道题比较有争议,有的书上说最大接受窗口要满足$W_{R}\leq 2^{n-1},W_{R}=W_{A}$而有的只要
-            满足$W_{R}\leq 2^n - 1,W_{A}=1$ 即可,王道这里采用的是前者的说法. 
-        }
-    }
     \item 对于窗口大小为$n$的滑动窗口,最多可以有()帧以发送但还没有确认 \\
     A. 0 \qquad B.n-1\qquad C.n\qquad D.n/2 
-
-    \answer{
-        \bs {
-            选B \\
-            滑动窗口协议中,发送方窗口的大小$W_{A}\leq n - 1$,故同一时间至多有$n-1$个帧以发送而未被确认. 
-        }
-    }
 
     \item \bt[1] 主机甲采用停止等待协议向主机乙发送数据,数据传输速率是$3kb/s$,单向传播时延是$200ms$忽略
     确认帧的延迟.当信道利用率达到$40\%$时,数据帧的长度是() \\
     A.240比特\qquad B.400比特\qquad C.480比特\qquad D.800比特
-    
-    \answer{
-        \bs {
 
-        }
-    }
     \item 从表面看,$FDM$比$TDM$能更好地利用信道的传输能力,但现在计算机网络更多地使用TDM而非FDM的原因是() \\
     A.FDM实际能力更差\qquad B.TDM可以用于数字传输而FDM不行 \\
     C.FDM技术更成熟\qquad D.TDM能更充分利用带宽
@@ -541,11 +347,117 @@
     \item 下列关于Cookie的说法中,错误的是() \\
     A.Cookie存储在服务器端\qquad B.Cookie是服务器产生的\\
     C.Cookie会威胁客户的隐私\qquad D.Cookie的作用是跟踪用户的访问和状态
+
+    \item 传输层上使用套接字的主要优点是(\qquad) 
+    \begin{choices}[1]
+        \task 使客户机与服务器的通信更加快捷 
+        \task 能够完成点对点通信
+        \task 降低服务器请求失败的可能性
+        \task 当请求服务器时可以使用面向连接的协议
+    \end{choices}
+
+    \item 以下协议与其他熟知端口号的对应关系正确的是(\qquad)
+    \begin{choices}
+        \task DNS:80
+        \task HTTP:69
+        \task SMTP:20
+        \task TELNET:23
+    \end{choices}
+
+    \item TCP报文中目的端口号的作用是(\qquad)
+    \begin{choices}
+        \task 指定服务器
+        \task 指定请求的服务
+        \task 指定传输方式
+        \task 指定报文长度
+    \end{choices}
+
+    \item 长度为2000B的应用层数据依次封装成TCP报文段,IP数据报和以太网的帧后传送出去(不考虑前导码以及以太网帧拆分情况),
+    则数据的最高传输效率为(\qquad)
+    
+    \item 以下说法错误的是(\qquad)
+    \begin{choices}[1]
+        \task UDP是无连接的,TCP是面向连接的
+        \task UDP比IP多了复用分用和数据差错检测的功能
+        \task 一个进程使用UDP协议,另一个进程使用TCP协议,它们可以同时使用同一端口号,
+        当从网络层获取数据时,可以根据协议类型实现分用
+        \task HTTP协议通信过程中,客户端使和服务端都使用80号端口
+    \end{choices}
+
+    \item 下列网络应用中,(\qquad)不适合使用UDP协议. 
+    \begin{choices}[2]
+        \task 客户-服务器领域
+        \task 远程调用
+        \task 实时多媒体应用
+        \task 远程登录
+    \end{choices}
+
+    \item 以下关于UDP校验和的描述中,错误的是(\qquad)
+    \begin{choices}[1]
+        \task 计算校验和的时候,需要4字节对齐,若数据部分不足,需用0比特填充
+        \task 校验和检查UDP的首部和数据部分
+        \task 检验处UDP数据报错误的时,可以丢弃或报告上层
+        \task UDP校验和能检验UDP数据报外,还能检验IP数据报的源IP地址和目的IP地址.
+    \end{choices}
+
+    \item TCP是面向字节流的传输协议,关于TCP报文段长度的表达,正确的是(\qquad)
+    \begin{choices}[1]
+        \task TPC报文段长度根据每次应用进程需要传输的数据块长度决定
+        \task TCP报文段长度根据路径上能够传送的最大数据块长度决定
+        \task TCP报文段长度根据接收方的接受能力和网络状态决定
+        \task TCP报文段长度确定后,在本应用进程通信过程中保持不变
+    \end{choices}
+
+    \item 一个TCP连接的数据传输阶段,如果发送端的发送窗口由2000变成3000,意味着发送端可以发送(\qquad)
+    \begin{choices}[1]
+        \task 在接受到一个确认前可以发送3000个TCP报文段
+        \task 在收到一个确认之前可以发送1000B
+        \task 在收到一个确认之前可以发送3000B
+        \task 在接受到一个确认前可以发送1000个TCP报文段
+    \end{choices}
+
+    判断正误:
+    \begin{enumerate}
+        \item [(1)] 网络拥塞窗口是发送端根据网络的拥塞程度和接收端的接受能力而设定的. 
+        \item [(2)] 将流量控制用于TCP数据传输的原因是为了防止输入数据耗尽接收方资源
+    \end{enumerate}
+
+    \item 主机A和主机B刚建立TCP连接时候,约定最大的报文段为2KB,假设主机B的接受窗口为20KB,且保证及时
+    清空缓存,拥塞门限值为16KB,RTT=10ms,在不发送拥塞的情况下.则经过(\qquad)ms主机A的发送窗口第一次为20KB.
+
+    \item 主机甲和主机乙新建了一个TCP连接,甲的初始拥塞门限值为32KB,甲向乙始终以MSS=1KB的大小段发送数据.乙
+    未该连接分配16KB接受缓存,并对每一个数据段进行确认,忽略其余延迟.若乙收到数据后全部收入缓存,不被取走,则甲从连接
+    成功时刻起,未发生超时的情况下,经过4个RTT后,甲的发送窗口大小为(\qquad)
+    \begin{choices}
+        \task 1KB
+        \task 8KB
+        \task 16KB
+        \task 32KB
+    \end{choices}
 \end{enumerate}
 
 
 \section{综合题}
 
+\newpage
+
+\section{选择题答案}
+\begin{enumerate}
+    \item 选A; 套接字(socket)本质是IP地址+端口号,是传输层的T-SAP(传输服务访问点). 传输层并不提供{\color{red}点到点,而是提供端到端(进程到进程)间的通信}
+    需要注意并非TCP专用套接字,UDP也使用. 
+    \item 选D; 应用层协议端口号与对应传输层协议需要多记
+    \item 选B; 服务器由IP地址决定,传输方式由所使用的协议决定,报文长度由报文首部决定
+    \item 97.19\%; 需要熟练记忆各协议首部的长度以及关键参数 
+    \item D; HTTP协议的客户端端口为动态分配,服务器为熟知端口80
+    \item D; UDP的特点是效率高,开销小,延迟低;但不保证数据准确.通常不用于需要持久性连接的应用.
+    \item A; 计算校验和需要{\color{red} 2字节对齐而非4字节对齐} 
+    \item C;
+    \item C; 这题并不严谨,主要是记录TCP是以字节为单位控制窗口而非TCP端 \\
+    判断正误: 错, 网络拥塞窗口->发送窗口 \\
+    判断正误: 对
+    \item 50ms; 注意MSS=2KB, 其变化规律应该是4KB->8KB->16KB(到达上限)->18KB-20KB 注意后面每次是加1MSS而非1KB
+    \item A; 题设很长注意抓关键点{\color{red} 收入数据后不被取走},发送窗口由接收方窗口大小和拥塞窗口大小的较小值决定.
+\end{enumerate}
 \ifx\allfiles\undefined
 \end{document}
 \fi
