@@ -382,6 +382,105 @@
 \end{enumerate}
 
 \newpage
+
+\section{逐年整理}
+\subsection{1987年}
+\begin{enumerate}
+    \item 由$y=\ln{x}$与两直线$y=(e+1)-x,y=0$围成图像的面积是$\_\_\_\_\_$ 
+
+    \begin{solution}
+    \begin{align*}
+        S &= \int_{1}^{e}\ln{x}\d x + \int_{e}^{e+1}(e+1-x)\d x \\
+        &=\left[(e+1)x-\frac{x^2}{2}\right]\bigg|_{e}^{e+1} \\
+        &=1+1-\frac{1}{2}=\frac{3}{2}
+    \end{align*}
+    \end{solution}
+    \item \bl[2] 求微分方程$y'''+6y''+(9+a^2)y'=1$的通解,其中常数$a>0$. 
+    \begin{solution}
+        本质是对于二阶非齐次方程组的推广.首先求齐次方程的解. 其特征方程为
+        $$
+        r^3 + 6r^2 + (9+a^2)r = 0
+        $$
+        其特征方程的解为$r_1=0,r_{2,3}=-3\pm ai$因此可设其齐次通解为
+        $$
+        y_1=C_1+e^{-3x}\left(C_2\cos{ax}+C_3\sin{ax}\right)
+        $$ 
+        其中$C_1,C_2,C_3$均为任意常数.
+        由于$x=0$是特征方程的一重根,故可设齐次特解为$y^*=Ax$,带入方程可以解出$A=\frac{1}{9+a^2}$.\\
+        综上可求出原三阶非齐次方程的通解为
+        $$
+        y_1+y^*=C_1+C_2e^{-3x}\cos{ax}+C_3e^{-3x}\sin{ax}+\frac{1}{1+9a^2}x 
+        $$
+        其中$C_1,C_2,C_3$均为任意常数.
+    \end{solution}
+    \item 求幂级数$\sum_{n=1}^{\infty}\frac{1}{n2^n}x^{n-1}$的收敛域,并求出其和函数 
+    \begin{solution}
+        由柯西定理容易求出该幂级数的收敛区间为$(-2,2)$当$x=-2$由莱布尼兹判别法知原级数收敛;而当$x=2$的时候原级数为
+        调和级数显然发散,故原幂级数的收敛区间为$[-2,2)$ \\
+        $S(x)=\frac{1}{x}\sum_{n=1}^{\infty}\frac{1}{n}(\frac{x}{2})^n(x\neq 0)$,当$x=0$的时候$S(0)=\frac{1}{2}$ \\
+        记$S_1(x)=\sum_{i=1}^{\infty}\frac{1}{n}\left(\frac{x}{2}\right)^n$ 典型的先导后积模型,故 \\
+        $S'_1(x)=\frac{1}{2}\sum_{i=1}^{\infty}\left(\frac{x}{2}\right)^{n-1}=\frac{1}{2}\sum_{n=0}^{\infty}\left(\frac{x}{2}\right)^n=\frac{1}{2}\cdot\frac{1}{1-\frac{1}{2}}=\frac{1}{2-x}$ \\
+        利用牛顿-莱布尼兹公式有
+        $$
+        S_1(x)-S_1(0) = \int_{0}^{x}S'_1(x)\d x = \int_{0}^{x}\frac{\d x}{2 - x} = \ln\frac{2}{2-x}
+        $$
+        综上可知原幂级数的和函数为
+        $$
+        S(x) = \begin{cases}
+            \frac{1}{2}, &x=0 \\
+            \frac{1}{x}\ln{\frac{2}{2-x}}, & -2\leq x\leq 2,\text{且}x\neq 0.
+        \end{cases}
+        $$
+    \end{solution}
+    \item 计算曲面积分
+    $$
+    I = \iint_{\sum}x(8y+1)\d y\d z + 2(1-y^2)\d z\d x - 4yz\d x\d y. 
+    $$
+    其中曲面$\sum$是由曲线$\begin{cases}
+        z = \sqrt{y-1} \\
+        x = 0
+    \end{cases}(1\leq y\leq 3)$绕$y$轴旋转一周所形成的曲面,其法向量与$y$轴正方向夹角始终大于$\frac{\pi}{2}$. 
+    \begin{solution}
+        
+    \end{solution}
+    \item 已知三维线性空间的一组基$\alpha_1=(1,1,0)^T,\alpha_2=(1,0,1)^T,\alpha_3=(0,1,1)^T$则向量$\alpha=(2,0,0)^T$在
+    该基下的坐标是$\_\_\_\_\_$
+    \begin{solution}
+        关键点寻找一组$k_i$使得$\alpha = \sum_{i=1}^{3}k_i\alpha_i$成立,此时问题转换为求解方程组. 
+        $$
+        (\alpha_1,\alpha_2,\alpha_3)\begin{pmatrix}
+            x_1 \\
+            x_2 \\
+            x_3
+        \end{pmatrix} = \alpha
+        $$
+        解线性方程有
+        $$
+        \begin{pmatrix}
+            1 & 0 & 0 & 1\\
+            0 & 1 & 0 & 1\\
+            0 & 0 & 1 & -1
+        \end{pmatrix}
+        $$
+        此时非齐次方程仅有唯一解即$(1,1,-1)^{T}$故$\alpha$在题设基的坐标为$(1,1,-1)^T$
+    \end{solution}
+    \item 三个箱子,第一个箱子重有4个黑球1个白球,第二个箱子中有3个黑球3个白球,第三个箱子中有3个黑球5个白球,现随机抽取一个箱子,
+    再从这个箱子中取出一个球,这个球为白球的概率等于(\qquad).已知取出的是白球,则该球属于第二个箱子的概率为(\qquad).
+
+    \item 设随机变量X,Y相互独立,概率密度函数分别为
+    $$
+    f_{X}(x)=\begin{cases}
+        1, &0\leq 1\leq 1 \\
+        0, &\text{其他}
+    \end{cases},f_{Y}(y)=\begin{cases}
+        e^{-y}, &y>0 \\
+        0, &y\leq 0
+    \end{cases}
+    $$
+    求随机变量$Z=2X+Y$的随机密度函数$f_{Z}(z)$.
+\end{enumerate}
+
+\newpage
 \section{超越(11-25年)}
 
 \newpage

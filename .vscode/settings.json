@@ -78,7 +78,20 @@
         "Mbps",
         "Nextval",
         "PDBR",
+        "SNMP",
         "syscall",
         "Syscell"
-    ]
+    ],
+    "files.associations": {
+        "__config": "cpp",
+        "__split_buffer": "cpp",
+        "algorithm": "cpp",
+        "bit": "cpp",
+        "locale": "cpp",
+        "memory": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "bitset": "cpp",
+        "unordered_map": "cpp"
+    }
 }
