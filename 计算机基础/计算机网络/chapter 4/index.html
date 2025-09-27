@@ -3465,7 +3465,7 @@ CSMA/CA
 <p><ins class="critic">后退N帧自动重传协议-GBN</ins> </p>
 <p><img alt="alt text" src="../images/GBN.png" /></p>
 <p><ins>核心思想</ins>: 接收方收到一个出错或者乱序的数据帧的时候, <ins class="critic">丢弃所有帧</ins>,并且不为这些帧发送确认,发送方出现<ins class="critic">超时</ins>后,重传所有未确认的帧. </p>
-<p><ins>关键参数</ins>: 假设帧编号为(0~n-1),则发送方窗口<ins class="critic">小于等于n-1</ins>;接受方窗口大小为<ins class="critic">1</ins></p>
+<p><ins>关键参数</ins>: 假设用于编号的比特位数为n,则发送窗口的大小 <span class="arithmatex">\(1&lt;W_{T}\leq 2^n - 1\)</span>, 接收方窗口大小为 <span class="arithmatex">\(W_{R}=1\)</span></p>
 <p><ins class="critic">GBN帧破坏</ins></p>
 <p><img alt="alt text" src="../images/GBN1.png" /></p>
 <p><ins>基本步骤</ins> </p>
@@ -3500,7 +3500,7 @@ CSMA/CA
 <p><img alt="alt text" src="../images/GBN4.png" /></p>
 <p><ins class="critic">选择拒绝自动重传协议-SR</ins> </p>
 <p><ins>核心思想</ins> 发送方发出若干帧后,收到对其中某一整的否认帧,或某一帧的定时器超时后,则只重传该出错帧或计时器超时的数据帧</p>
-<p><ins>关键参数</ins> 假设数据帧编号为(0~n-1) 发送方窗口 + 接收方窗口 小于等于 n:</p>
+<p><ins>关键参数</ins> 假设用于窗口编号的比特位数为n,则窗口满足 <span class="arithmatex">\(W_T+W_R\leq 2^n\)</span>,由于 <span class="arithmatex">\(W_R \leq W_T\)</span>,从而 <span class="arithmatex">\(W_R\leq 2^{n-1}\)</span>, 通常情况下<span class="arithmatex">\(W_R = W_T\)</span> </p>
 <div class="admonition note">
 <p class="admonition-title">区别</p>
 <ul>
@@ -3669,7 +3669,7 @@ t = D/ V
 <li><ins class="critic">1字节</ins> 帧起始分界符 <code>10101011</code> <ins class="critic">提示接收方后面是数据并以地址开始</ins></li>
 <li><ins class="critic">6字节</ins> 目的地址/源地址(MAC地址,物理地址)<ul>
 <li>单播地址 第一个字节的最低位为 0</li>
-<li>组播地址 第一个字节的最低位为 0</li>
+<li>组播地址 第一个字节的最低位为 1</li>
 <li>广播地址 所有48位都为1 </li>
 <li>组播地址和广播地址 <ins class="critic">只能作为目的地址</ins></li>
 </ul>

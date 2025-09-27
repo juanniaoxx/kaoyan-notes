@@ -12,6 +12,8 @@
 \fi
 \chapter{数据结构}
 \section{选择题}
+
+\subsection{25-王道}
 \begin{enumerate}
     \item \bt 下列程序段的时间复杂度是\_\_\_\_ 
     \begin{lstlisting}[language=C]
@@ -1198,9 +1200,12 @@ int sum = 0;
         \task 3
         \task 4
     \end{choices}
-    
+\end{enumerate}
 
+\newpage
+\subsection{25-竟成}
 
+\begin{enumerate}
     \item 下面算法中,语句"x*=2;"执行的次数是(   ) 
     \begin{lstlisting}[language=C]
     int x = 1;
@@ -1502,7 +1507,10 @@ int sum = 0;
     \end{choices}
 
     \item 设内存工作却能容纳m个记录,那么对磁盘上的n个记录进行k路平衡归并排序,需要做多少遍归并排序() 
-
+\end{enumerate}
+\newpage 
+\subsection{强化1000题}
+\begin{enumerate}
     \item 下列说法不正确的是(   ) 
     \begin{choices}[1]
         \task 数组可以看成线性结构的一种推广,因此与线性表一样,可以对它进行插入,删除等操作 
@@ -1642,23 +1650,230 @@ struct M{
 
     \item 设主串$T="abaabaabacacaabaabcc"$模式串$S="abaabc"$采用KMP算法进行模式匹配,到匹配成功为止,
     在匹配过程中模式串右滑的总距离是\_\_\_\_\_\_(模式串首个字符匹配失败记右滑1格)
-\end{enumerate}
-\newpage
-\section{综合题}
 
-\begin{enumerate}
-    \item \bt 在KMP算法中,串\underline{ababaaababaa}的PM数组,Next数组,Nextval数组分别为? 
-    \blankline{4}
-    \item 选择-置换排序的功能是?图示过程是? 
-    \blankline{4}
-    \item 图示败者树的维护过程 
-    \blankline{4}
-    \item 最佳归并树的虚拟节点是?如何确定需要多少虚拟结点?为啥需要虚拟结点?
-    \blankline{4}
+    \item 4个结点的二叉树的树形有\_\_\_\_种 
+    \item 若一棵树有4个结点,那么其所有可能的树型有(\qquad)种
+    \item 8个结点且高度为8的二叉树的树型有(\qquad)种
+    \item 设有n($n\geq 1$)个结点的二叉树采用三叉链表示,其中每个结点包含3个指针,分别指向左孩子,右孩子以及双亲
+    (若不存在,则置空),则下列说法正确的是(\qquad) 
+    \begin{choices}[1]
+        \task 树中空指针的数量为n+2
+        \task 所有度为2的结点均被三个指针指向
+        \task 每个叶结点均被一个指针指向
+    \end{choices}
+
+    \item 一个具有513个结点的二叉树,有(\qquad)可能的层高
+    \item 下列关于二叉树的遍历的描述中,正确的是(\qquad)(多选)
+    \begin{choices}[1]
+        \task 存在一颗二叉树的叶节点在先序,中序,后序遍历序列中的相对序列不同
+        \task 要交换二叉树的所有分支结点的左右子树的位置,利用中序遍历框架解决最合适
+        \task 含有4个结点的二叉树最多有14种形态
+        \task 一颗非空的二叉树的前序序列和中序序列正好相反,则该二叉树一定只有一个叶结点
+    \end{choices}
+
+    \item 若一颗二叉树的先序遍历序列为\underline{a,e,b,d,c},后序遍历序列为\underline{b,c,d,e,a},则下列说法错误的是(\qquad)
+    \begin{choices}[2]
+        \task 根结点仅有一个孩子
+        \task 度为2的结点只有一个
+        \task b一定是e的左孩子
+        \task c一定是d的左孩子
+    \end{choices}
+    \item 一颗具有n个非叶结点完全二叉树的线索二叉树,含有(\qquad)条线索
+    \item 判断线索二叉树中$*p$结点有右孩子的条件是(\qquad\qquad)
+    \item 知一颗二叉树的后序序列为\underline{DEBAC},则其对应的二叉树的先序线索二叉树中,右指针为线索的
+    结点个数为(\qquad)
+    \item 下列关于线索二叉树的描述中,错误的是(\qquad)
+    \begin{choices}[1]
+        \task 在中序线索二叉树中,若某结点有右孩子,那么其后继结点一定是右子树的最左下结点
+        \task 在先序线索二叉树中,若某结点有左孩子,那么可能无法通过该结点的指针找到他的前驱结点
+        \task 线索二叉树中, 若总结点数为n,那么表示线索的指针有$n+1$个
+        \task 在后序线索二叉树中,若一个非根结点没有右孩子,那么他的右指针一定指向其父亲结点
+    \end{choices}
+    
+    \item 下列说法错误的是(\qquad)
+    \begin{choices}[1]
+        \task 若一颗二叉排序树中有一个结点有两个孩子,则他的中序后继结点没有左孩子,它的中序前驱结点没有右孩子
+        \task 若二叉排序树中的一个结点x的右孩子为空,且x有一个后继y,则y一定是x的祖先,且其左孩子也是x的祖先(结点本身
+        也视为自己的一个祖先)
+        \task 中序线索树中,从最左边的结点开始不断地查右线索,不一定能遍历树中所有的结点
+        \task 若x是二叉排序树的也结点,y是其父节点,那么y的数值要么是树中大于x的最小关键字,要么是小于x的最大关键字
+    \end{choices}
+
+    \item 采用双亲表示法描述一颗树,则具有n个结点的树至少需要(\qquad)个指向双亲的指针
+    \item 若某个森林转换的二叉树是一颗高度为h的满二叉树,那么关于原始森林说法错误的是(\qquad)
+    \begin{choices}[2]
+        \task 有h棵树 
+        \task 分支结点有$2^{h=1}-1$
+        \task 第i棵树的结点个数是$2^{h-i}$
+        \task 第i棵树的度为$h-i-1$
+    \end{choices}
+    \item 若度为m的哈夫曼树中,叶结点个数为n,则非叶结点的个数为(\qquad)
+    \item 下列关于并查集的说法中,错误的是(\qquad)(多选)
+    \begin{choices}[1]
+        \task 并查集使用的树的双亲表示法
+        \task 一个集合中根结点的双亲域的绝对值表示集合中的结点个数
+        \task find()操作返回的一定是负值
+        \task 改进的Union()操作是其本身的时间复杂度降低了
+        \task 在改进Union()操作后,进一步,find()经过路径压缩后,可使集合树的深度为($O(\log{n})$)
+    \end{choices}
+    \item 判断对错
+    \begin{choices}[1]
+        \task 树的先序遍历和中序遍历可以得到树的后序遍历
+        \task 在先序遍历的二叉树的序列中,任何结点其子树的所有结点都是直接跟在该结点之后
+        \task 若一个叶节点是某二叉树先序遍历序列的最后一个结点,则他必是该树中序遍历序列的最后一个结点
+        \task 由同一组互异关键码,按不同次序逐个插入而生成的BST必然互异
+        \task 若初始森林共有n棵二叉树,最终求得的哈夫曼树共有2n-1个结点
+        \task 在并查集中Find()操作返回集合中元素个数的相反数,它用来作为某个集合的标志
+    \end{choices}
+    \item 下列关于有向图的强联通分量特性的描述中, $<u,v>$表示顶点u到顶点v的有向弧,下列说法正确的是(\qquad) 
+    \begin{choices}[1]
+        \task 若有向图G有两个不同的强联通分量c和c',设顶点$u\in c, u'\in c'$那么不可能存在弧$<u,u'>$
+        \task 若有向图G有强连通分量c,$u,v\in c,$若删除弧$<u,v>$有向图G的强连通分量一定增加
+        \task 若有向图G有两个不同的强连通分量$c$和$c'$,设顶点$u,v \in c, u', v' \in c'$,若存在一条$u\to u'$的路径
+        则一定不存在$v'\to v$ 
+        \task 若有向图G有两个不同的强联通分量c和c',设顶点$u\in c, u'\in c'$若不存在$<u,u'>$那么添加$<u,u'>$后,该图的
+        强连通分量一定不变.
+    \end{choices}
+    \item 有31条弧的强连通有向图至少有(\qquad)个顶点
+    \item 有向图的结点数为4,则至少需要(\qquad)条边满足在任意条件下这个图都是连通图
+    \item 如果G的强连通分量的数量等于k($k > 1$)结点总数是n,那么边数应该满足(\qquad)
+    \item 具有51个顶点和21条边的无向图的连通分量最多为(\qquad)
+    \item 下列关于深度优先遍历,正确的是(\qquad)(多选)
+    \begin{choices}[1]
+        \task 深度优先遍历有向图的过程中, DFSTraverse()调用DFS的次数是强连通分量的个数
+        \task 深度优先遍历有向图过程中,回边的存在说明图中包含环
+        \task 在有向图的深度预先遍历过程中,若一个顶点u访问过后,另一个顶点v访问时发现有到这个顶点的边$<v,u>$那么该
+        有向图一定存在环
+        \task 深度优先遍历算法访问有向无环图,如果在退出DFS的时候依次输出顶点,得到的是逆拓扑序
+    \end{choices}
+    \item 下列关于Prim和Kruskal算法,正确的是(\qquad)(多选)
+    \begin{choices}[1]
+        \task Prime算法每轮选取距离上一轮次选取的顶点距离最近的顶点
+        \task Prim算法的时间复杂度可以优化为$O(E\log{V})$
+        \task 稠密图时,无向图采用临接矩阵存储,Kruskal算法的时间复杂度为$O(V^2)$
+        \task Kruskal算法使用了并查集的数据结构
+    \end{choices}
+    \item 下列关于图的最短路径的相关途径中,正确的是(\qquad)(多选)
+    \begin{choices}[1]
+        \task Dijkstra算法求单源最短路不允许存在负权重的边
+        \task Dijkstra算法求每对顶点间的最短路径的时间复杂度为$O(n^2)$
+        \task Floyd算法求每对不同顶点对的算法中允许弧上的权为负,但不允许含有负边的回路.
+    \end{choices}
+    \item 判断正误
+    \begin{choices}[1]
+        \task 如果G的强连通分量的数量等于k<n(结点总数),那么边数$m\geq n$
+        \task 任意无向图的生成森林中顶点数量=边数+1
+        \task 邻接矩阵为上/下三角的图一定存在唯一的拓扑排序
+        \task 若邻接矩阵中的主对角线以下的元素为0,则该图必定存在一个拓扑排序序列
+        \task 因为有向无环图具有拓扑排序,所以他的临接矩阵一定是上/下三角矩阵 
+        \task 若有向无环图的拓扑序列唯一,则可以唯一确定该图
+    \end{choices}
+
+    \item 含有10个关键字的有序序列,关于其二分查找判定树(不含外部结点)的说法错误的是(\qquad)(多选)
+    \begin{choices}
+        \task 每个分支结点的左右子树的结点总数之差始终不变(1或者-1)
+        \task 度为1的结点个数为3
+        \task 是一颗完全二叉树
+        \task 是一颗平衡二叉树
+    \end{choices}
+
+    \item 对于511个关键字的有序序列进行折半查找,查找失败的平均查找长度为(\qquad)
+    \item 设查找表中有100个元素,如果用二分法查找数据元素X,则最多需要进行(\qquad)次比较久可以判断X是否在表中.
+    \item 分别一下列序列构建BST,与用其他三个序列构建的BST不同的是(\qquad)
+    \begin{choices}[2]
+        \task \{100,80,69,90,120,130,110\} \task \{100,120,110,130,80,60,90\}
+        \task \{100.80.90.60.120,110,130\} \task \{100,60,80,90,120,110,130\}
+    \end{choices}
+
+    \item 高度为8的AVL树的结点数至少为(\qquad)
+    \item 含有18个结点的AVL树的最大深度为(\qquad)
+    \item 在含有15个结点的平衡二叉树上,查找关键字为28的叶子结点(该结点存在)则依次比较的关键字可能是(\qquad)
+    \begin{choices}
+        \task 30,28 \task 38,48,28 \task 48,18,38,28 \task 60,20,50,40,38,28
+    \end{choices}
+    \item 高度为3的平衡二叉树的形态共有(\qquad)种
+    \item 下列关于红黑树的说法错误的是(\qquad)(多选)
+    \begin{choices}[1]
+        \task 红黑树的某棵子树(若存在)也是红黑树
+        \task 如果根结点黑高为h,则内部节点数(含关键字的结点)最多为$2^{2h}-1$
+        \task 任何一个结点的左右子树高度差不超过2倍
+        \task 红黑树和平衡二叉树的查找,插入,删除操作,最坏时间复杂度数量级一致
+    \end{choices}
+    \item 下列关于B树的说法错误的是(\qquad)
+    \begin{choices}[1]
+        \task 高度为h的m阶B树最多存储$m^h-1$个关键字
+        \task 所有叶结点都在同一层次上
+        \task 含有n个结点(不含失败结点)的m阶B树至少包含$(n-1)\times(\lceil m/2\rceil-1)+1$个关键字
+        \task 和二叉搜索树相同,B树高度的增加也是发生在底部
+    \end{choices}
+    \item 下列关于B树的说法错误的是(\qquad)(多选)
+    \begin{choices}[1]
+        \task 查找B树的一个结点的前驱结点就是在其左孩子的最右结点
+        \task B树支持顺序查找
+        \task B树的查找每次都需要查找到叶结点,查找性能稳定
+        \task 使用B树进行范围查找时,需要依赖中序遍历
+    \end{choices}
+    \item 在7阶B树中搜索第2025个关键字,若根结点已经读入内存,则最多需要启动(\qquad)次硬盘
+    \item 具有n个关键字的m阶B树的失败节点个数最多为(\qquad)
+    \item 已知关键字序列为\{2,52,66,30,41,21,19,6,10,16,101,1\}, Hash函数为$key \% 11$表长为12,冲突解决办法为
+    拉链法,请问该表的查找失败的ASL为(\qquad)
+    \item 将关键字序列\{34,69,9,56,24,44\}散列到散列表中,散列表是一个一维数组$A[0\ldots 8]$,散列函数为$H(key)=key mod 7$,采用
+    线性探测法解决冲突,现删除24,插入关键字51,则51在散列表中的下标为(\qquad),查找失败的平均查找长度ASL是(\qquad)
+    \item 假定有k个关键字互为同义词,若采用线性探测法把这K个关键字存入足够长的散列表中,至多要进行(\qquad)次探测.
+    \item 如果要求一个线性表既能较快的查找,又能适应动态变化的要求,最好采用(\qquad)查找法
+    \item 散列表查找过程和给定值进行比较的关键字个数取决于(\qquad)
+    \begin{choices}
+        \task 散列函数 \task 冲突处理方法 \task 装填因子 \task 以上全部
+    \end{choices}
+    \item 下列能说明希尔排序(增量d每轮一次取3,1)是不稳定的算法的初始数据序列是(\qquad)
+    \begin{choices}[2]
+        \task \{49,38,65,49,76,13\} \task \{49,38,49,65,13,76\}
+        \task \{49,49,13,65,76,38\} \task \{49,13,65,38,76,49\}
+    \end{choices}
+    \item 对数据序列\{4,9,10,8,5,6,20,1,2\}进行升序冒泡排序,则下列说法错误的是(\qquad)
+    \begin{choices}[1]
+        \task 至少需要6趟
+        \task 元素的移动次数是21次
+        \task 无论是从前往后还是从后往前进行冒泡排序,元素的移动次数都是22次
+        \task 从前往后进行冒泡排序,第三趟的结果是\{1,2,4,9,10,8,5,6,20\}
+    \end{choices}
+    \item 能说明快速排序是不稳定的排序方法的一组关键字序列是(\qquad)
+    \begin{choices}[2]
+        \task \{10,20,30,40,50\} \task \{50,40,30,20,10\}
+        \task \{20,20,30,10,40\} \task \{20,40,30,30,10\}
+    \end{choices}
+
+    \item 对下列关键字序列利用快速排序进行排序的时,速度最快的情形是(\qquad)
+    \begin{choices}[2]
+        \task \{21,25,5,17,9,23,30\} \task \{25,23,30,17,21,5,9\}
+        \task \{21,9,17,30,25,23,5\} \task \{5,9,17,21,23,25,30\}
+    \end{choices}
+
+    \item 对下列关键字序列利用快排排序进行从小到大排序时,递归深度最小的序列是(\qquad)
+    \begin{choices}[2]
+        \task \{4,2,6,1,5,3,8,7\} \task \{5,2,6,1,4,3,8,7\}
+        \task \{7,1,2,3,4,5,6,8\} \task \{1,2,3,4,5,6,7,8\}
+    \end{choices}
+
+    \item 下列初始数据序列中,不能说明简单选择排序不稳定的是(\qquad)
+    \begin{choices}[2]
+        \task \{4,3,5,7,6,5,2\} \task \{2,5,4,6,5,3,7\}
+        \task \{1,6,3,6,2,6,7\} \task \{2,1,3,4,5,5,7\}
+    \end{choices}
+
+    \item 现有关键字序列\{5,2,34,16,20,19,1\}需求对其进行降序排列,下列那个选项是第二次调整堆之后的结果(\qquad)
+    \begin{choices}[2]
+        \task \{2,16,5,34,20,19,1\} \task \{19,16,5,34,20,2,1\}
+        \task \{5,16,19,34,20,2,1\} \task \{16,19,5,34,20,2,1\}
+    \end{choices}
+
+
+    \item 对n个r进制的关键字,关键字最多有m位进行基数排序,时间复杂度是(\qquad)
+    \item 有n个十进制整数进行基数排序,其中最大的整数为5位,则基数排序过程中临时建立的队列个数是(\qquad)
 \end{enumerate}
-\newpage
 \section{选择题答案}
-\begin{enumerate}[label=\arabic*.\textbf{答案}:]
+\subsection{25-王道-答案}
+\begin{enumerate}
     \item $O(N)$ \\
     假设第t次时$2^t\geq n$,此时$sum$执行的总次数为 
     $$
@@ -1939,8 +2154,8 @@ struct M{
     \item 12和14 
     \begin{definition}[AOE网络的计算过程] 
         具体参看笔记,这里只给出上题的计算过程的表格.\\
-        时间的最早开始时间(拓扑)前驱结点的最早开始时间+对应活动之和的\text{最大值} \\
-        时间的最迟开始时间(拓扑)后继结点的最迟开始时间-对应活动之差的\text{最小值} 
+        事件的最早开始时间(拓扑)前驱结点的最早开始时间+对应活动之和的\text{最大值} \\
+        事件的最迟开始时间(拓扑)后继结点的最迟开始时间-对应活动之差的\text{最小值} 
         \begin{center}
         \begin{tabular}{p{3.5cm}|p{4.5cm}|p{4.5cm}}
             \hline
@@ -1960,8 +2175,8 @@ struct M{
             \hline
         \end{tabular}
         \end{center}
-        事件的最早开始时间该事件(弧)对应的弧尾所表示时间的最早开始时间 \\
-        事件的最迟开始时间该事件(弧)对应弧头所示的最迟开始时间与该活动持续时间之间 
+        活动的最早开始时间该事件(弧)对应的弧尾所表示事件的最早开始时间 \\
+        活动的最迟开始时间该事件(弧)对应弧头所示的最迟开始时间与该活动持续时间之间 
         \begin{center}
         \begin{tabular}{p{3.5cm}|p{4.5cm}|p{4.5cm}}
             \hline
@@ -2238,6 +2453,10 @@ struct M{
     $$
     \sum_{i=0}^{n-1}n-i = \frac{(n+1)n}{2}
     $$
+\end{enumerate}
+
+\subsection{25-竟成-答案}
+\begin{enumerate}
     \item D  \\
     数据项:最小的不可拆分的零件,是数据的基本单位 \\
     数据元素:由若干数据项组成的程序中一次处理的最小单元 \\
@@ -2329,10 +2548,12 @@ struct M{
             node[midway,below=2pt] {sizeof(struct M) = 12 Bytes};
         \end{tikzpicture}
     \end{center}
-
-    
 \end{enumerate}
 
+\subsection{强化1000题-答案}
+\begin{enumerate}
+    \item 
+\end{enumerate}
 \section{综合题答案}
 \begin{enumerate}[label=\arabic*.\textbf{答案}:]
     \item 
