@@ -72,11 +72,16 @@
         "SSAP"
     ],
     "cSpell.words": [
+        "CDEF",
+        "CDMA",
         "CSMA",
         "eret",
+        "IGMP",
+        "KEEPALIVE",
         "MAXV",
         "Mbps",
         "Nextval",
+        "OSPF",
         "PDBR",
         "SNMP",
         "syscall",
