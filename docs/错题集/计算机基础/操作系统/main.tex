@@ -8,6 +8,8 @@
 \fi
 \chapter{操作系统}
 \section{选择题}
+
+\subsection{25-王道}
 \begin{enumerate}
     \item 系统调用是由操作系统提供给用户的,它() \\
     A.直接通过键盘交互方式使用\qquad B.只能通过用户程序间接使用 \\
@@ -307,7 +309,216 @@ P2() {
 
 \end{enumerate}
 
-\section{综合题}
+\subsection{强化-1000题}
+\begin{enumerate}
+    \item 关于I/O接口的I/O逻辑说法错误的是(\qquad)
+    \begin{choices}[1]
+    \task 不同I/O接口的I/O端口不重复,各I/O逻辑同时对地址线上的地址进行译码,分辨出此次传输是否属于自己
+    \task 通过控制线的读/写信号来对地址标明的I/O端口进行读写
+    \task 对控制寄存器的I/O命令字进行译码,对外设发出具体的控制
+    \task 采集外设的状态,并通过控制线向CPU反馈设备状态信息以及发出中断请求
+    \end{choices}
+
+    \item 在下列关于各种I/O控制方式的说法中,错误的是(\qquad)
+    \begin{choices}[1]
+    \task 程序直接控制I/O方式适用于结构简单、只需少量硬件的电路,不需要设备驱动程序来完成数据的传输工作
+    \task 中断驱动I/O方式适用于具有中断机构的系统,用于处理中低速的I/O操作和随机事件
+    \task DMA方式适用于具有DMA控制器的系统,用于高速外设的大批量数据传输
+    \task 设备驱动程序和各种I/O控制方式之间密切相关
+    \end{choices}
+
+    \item 键盘硬件产生输入后,系统的正确处理流程是(\qquad)
+    \begin{choices}[1]
+    \task 键盘硬件→中断处理程序→设备驱动程序→进程调度→系统调用返回→用户程序
+    \task 键盘硬件→设备驱动程序→中断处理程序→系统调用返回→进程调度→用户程序
+    \task 键盘硬件→系统调用返回→设备驱动程序→中断处理程序→进程调度→用户程序
+    \task 键盘硬件→中断处理程序→系统调用返回→设备驱动程序→进程调度→用户程序
+    \end{choices}
+
+    \item 用户进程调用了读磁盘系统调用,其中将逻辑盘块号转换为物理地址的工作是由(\qquad)完成的
+    \begin{choices}
+    \task 设备无关软件
+    \task 设备驱动程序
+    \task 中断处理程序
+    \task 硬件
+    \end{choices}
+
+    \item 以下设备管理工作中,适合由设备独立性软件来完成的有(\qquad)\\
+    I.向控制寄存器写命令\quad
+    II.检查用户是否有权使用设备\quad
+    III.检查用户I/O请求的合法性\quad
+    IV.缓冲管理
+    \begin{choices}[2]
+    \task I、II、III
+    \task II、III、IV
+    \task II、IV
+    \task I、II、III、IV
+    \end{choices}
+
+    \item 设备分配策略与(\qquad)因素有关\\
+    I.I/O设备的固有属性\quad
+    II.系统所采用的分配策略\quad
+    III.设备分配中的安全性\quad
+    IV.设备的无关性
+    \begin{choices}[2]
+    \task I、II、III
+    \task I、III、IV
+    \task I、II、IV
+    \task I、II、III、IV
+    \end{choices}
+
+    \item 设备分配策略的主要目标是(\qquad)\\
+    I.确保设备不被过度使用\quad
+    II.提高设备利用率\quad
+    III.减少用户等待时间
+    \begin{choices}[2]
+    \task I、II
+    \task I、III
+    \task II、III
+    \task I、II、III
+    \end{choices}
+
+    \item 在设备分配与回收过程中,计算机需要访问的数据结构有:设备控制表DCT、控制器控制表COCT、通道控制表CHCT和系统设备表SDT,它们在设备分配流程中访问的先后顺序为(\qquad)
+    \begin{choices}[2]
+    \task DCT→COCT→CHCT→SDT
+    \task SDT→DCT→COCT→CHCT
+    \task SDT→COCT→CHCT→DCT
+    \task DCT→COCT→SDT→CHCT
+    \end{choices}
+
+    \item 若某系统采用了SPOOLing技术,则用户进程打印的数据首先被传送到(\qquad)
+    \begin{choices}
+    \task 输出井
+    \task 输入井
+    \task 内存
+    \task 外部设备
+    \end{choices}
+
+    \item 下列关于虚拟设备的说法中,正确的是(\qquad)
+    \begin{choices}[1]
+    \task 虚拟设备是指允许用户以统一的接口使用物理设备
+    \task 虚拟设备是指允许用户使用比系统具有的物理设备更多的设备
+    \task 虚拟设备是指把一个物理设备变换为多个对应的逻辑设备
+    \task 虚拟设备是指允许用户程序部分装入内存即可使用系统中的设备
+    \end{choices}
+
+    \item 下面不属于设备驱动程序的功能的是(\qquad)
+    \begin{choices}[1]
+    \task 访问I/O端口,向外部设备发送读写命令
+    \task 提供上层系统所需的I/O设备操作接口,隐藏具体的操作细节
+    \task 查询设备状态并返回给上层系统
+    \task 为I/O设备提供缓冲区,加速I/O
+    \end{choices}
+
+    \item 关于进程A执行“scanf函数”的说法正确的是(\qquad)
+    \begin{choices}[1]
+    \task 唤醒进程A由对应的系统调用服务例程完成
+    \task 将数据从寄存器送往内核缓冲区由系统调用服务程序完成
+    \task 将数据从内核缓冲区送往用户缓冲区由中断服务程序完成
+    \task 初始化键盘设备的代码在驱动程序中
+    \end{choices}
+
+    \item 下列关于磁盘的说法中正确的有(\qquad)\\
+    I.磁盘地址构成为：柱面号—磁道号—扇区号\quad
+    II.磁盘驱动器是CPU与磁盘设备之间的I/O接口\quad
+    III.磁盘逻辑格式化时,完成对磁盘的分区(如Windows系统中的C盘、D盘)
+    \begin{choices}[2]
+    \task 仅II
+    \task I、II
+    \task I、III
+    \task 全部错误
+    \end{choices}
+
+    \item 下列关于磁盘调度的说法中,正确的有(\qquad)\\
+    I.一次磁盘读/写操作中,寻道时间占大头\quad
+    II.FCFS算法会导致磁臂粘着\quad
+    III.将磁盘替换为随机访问的Flash半导体存储器后,FCFS调度策略效率最高
+    \begin{choices}[2]
+    \task 仅I
+    \task 仅I、II
+    \task 仅I、III
+    \task I、II、III
+    \end{choices}
+
+    \item 某磁盘共200个磁道,编号从0到199现有一个磁盘请求序列为:142,82,197,90,108,当前磁头的位置为100,正在向磁道号增加的方向移动则按照最短寻道时间优先算法（SSTF）和改进后的SCAN扫描算法（LOOK）,处理完以上请求后,磁头扫过的磁道数分别为(\qquad)
+    \begin{choices}
+    \task 149,212
+    \task 149,216
+    \task 342,212
+    \task 342,216
+    \end{choices}
+
+    \item 已知磁道号从0到99,假设当前磁头位置为78号磁道,且正向磁道号增大的方向移动现有一个磁盘读写请求队列为：65,34,24,89,86,53,74,98若采用CLOOK算法依次响应这些请求,则平均移动的磁道数是
+    \begin{choices}
+    \task 16
+    \task 17
+    \task 18
+    \task 19
+    \end{choices}
+
+    \item 某磁盘组共有80个柱面,每个柱面有12条磁道,每条磁道划分为16个扇区,现有一个8000条逻辑记录的文件,逻辑记录的大小与扇区大小相等,该文件按顺序结构存放在磁盘组上,柱面、磁道、扇区均从0开始编址,逻辑记录的编号从0开始,文件数据从0号柱面、0号磁道、0号扇区开始存放,则该文件的5687号逻辑记录应存放在(\qquad)
+    \begin{choices}
+    \task 29号柱面,7号磁道,6号扇区
+    \task 30号柱面,8号磁道,7号扇区
+    \task 29号柱面,7号磁道,7号扇区
+    \task 28号柱面,7号磁道,7号扇区
+    \end{choices}
+
+    \item 下列关于固态硬盘(SSD)的说法中,错误的是(\qquad)
+    \begin{choices}[1]
+    \task 固态硬盘不受震动和物理冲击的影响,更适合移动设备使用
+    \task 固态硬盘的磨损均衡技术中,动态磨损均衡比静态磨损均衡技术更先进、表现更优秀
+    \task 固态硬盘的数据存储于Flash芯片之中
+    \task 机械硬盘使用的硬盘调度算法不一定适用于固态硬盘
+    \end{choices}
+
+    \item 下列关于固态硬盘SSD的说法中,正确的有(\qquad)\\
+    I.固态磁盘是基于闪存技术的存储技术\quad
+    II.固态磁盘在写入前必须进行擦除\quad
+    III.固态磁盘的读写性能、使用寿命均优于机械硬盘\quad
+    IV.固态硬盘写入时,总是要选择擦写次数少的存储块
+    \begin{choices}[2]
+    \task I、II
+    \task I、II、III
+    \task I、II、IV
+    \task II、III、IV
+    \end{choices}
+
+    \item 检查用户是否有权使用设备是在I/O软件的(\qquad)完成的.
+    \item 判断正误
+    \begin{choices}[1]
+        \task 设备驱动程序应该允许系统调用
+        \task 引入缓冲区可以减少I/O中断的频率,放宽CPU中断响应时间的限制
+        \task SPOOLing技术用时间换空间
+    \end{choices}
+
+    \item 信息在外存空间的排序也会影响存取等待时间.考虑几条逻辑记录A,B,C,....,J.它们被存放于磁盘上,
+    每个磁道存放10条记录,安排如表第一行所示,假定要经常按顺序处理这些记录,磁道旋转速度为20ms/转,处理程序读出每条记录后
+    花4ms进行处理.考虑对信息进行优化,优化后如表第二列所示,相比于之前的信息分布,优化后的时间缩短了(\qquad)
+    \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+    \textbf{物理块} & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\ \hline 
+    \textbf{逻辑记录(未优化)} & A & B & C & D & E & F & G & H & I & J \\ \hline 
+    \textbf{逻辑记录(优化后)} & A & H & E & B & I & F & C & J & G & D \\ \hline 
+    \end{tabular}
+    \end{center}
+    
+    \item 一个交叉存放信息的磁盘,信息存放方式如图所示.每个磁道有8个扇区,每个扇区大小为512B,旋转速度为3000r/min
+    假定磁头已在读取信息的磁道上,0扇区转到磁头下需要1/2转,且设备对应的控制器不能同时进行输入/输出,在数据从控制器传送至内
+    存的这段时间内,从磁头下通过的扇区数为2.问依次读取一个磁道上所有扇区的数据到内存的平均传输速度为(\qquad)
+    \begin{center}
+    \begin{tikzpicture}
+        \def\R{2cm}          
+        \def\list{0,3,6,1,4,7,2,5}  
+        \draw[line width=.6pt] (0,0) circle (\R);
+        \foreach \idx [count=\i from 0] in \list{
+            \draw[thick] (0,0) -- ++(90-\i*45:\R);
+            \node at (90-\i*45-22.5:0.7*\R) {\Large\bfseries \idx};
+        }
+    \end{tikzpicture}
+    \end{center}
+\end{enumerate}
 \ifx\allfiles\undefined
 \end{document}
 \fi

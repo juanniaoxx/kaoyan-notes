@@ -74,8 +74,12 @@
     "cSpell.words": [
         "CDEF",
         "CDMA",
+        "CHCT",
+        "CISC",
+        "COCT",
         "CSMA",
         "eret",
+        "FCFS",
         "IGMP",
         "KEEPALIVE",
         "MAXV",
@@ -85,7 +89,9 @@
         "PDBR",
         "SNMP",
         "syscall",
-        "Syscell"
+        "Syscell",
+        "traceroute",
+        "tracert"
     ],
     "files.associations": {
         "__config": "cpp",

@@ -9,6 +9,8 @@
 \chapter{计算机组成原理}
 
 \section{选择题}
+
+\subsection{25-王道}
 \begin{enumerate}
     \item 冯$\cdot$诺依曼机的基本工作方式是(  ) 
     \begin{choices}[2]
@@ -214,7 +216,8 @@
     \end{choices}
 
 
-    \item 在$IEEE\ 754$标准中,它所能表示的最小规格化负数为(    )
+    \item 浮点数的IEEE 754标准规定的64位浮点数格式中,符号位为1位,阶码为11位,尾数为52位,则它能表达的最小
+    规格化负数为(\qquad),最大规格化负数为(\qquad),最小规格化正数为(\qquad),最大规格化正数为(\qquad)
 
     \item 采用规格化的浮点数最主要是为了(   ) 
     \begin{choices}[2]
@@ -363,7 +366,7 @@
     \end{choices} 
 
     \item 计算机使用总线结构便于增减外设,同时() 
-    \begin{choices}
+    \begin{choices}[2]
         \task 减少信息传输量 
         \task 提高信息的传输速度 
         \task 减少信息传输线的条数 
@@ -569,8 +572,424 @@
     \end{choices}
 \end{enumerate}
 
-\section{综合题}
+\newpage 
 
+\subsection{强化1 000题}
+\begin{enumerate}
+    \item 下面各选项不属于指令集架构ISA描述的内容是(\qquad)
+    \begin{choices}[2]
+        \task 指令的寻址方式
+        \task 指令的操作码的个数
+        \task 乘法器的设计方式
+        \task 通用寄存器组的编号
+    \end{choices} 
+
+    \item 加法器实现采用并行进位方式还是串行进位方式属于计算机体系结构中的(\qquad)层
+    \item 下列说法正确的是(\qquad)
+    \begin{choices}[1]
+        \task 在冯若依曼计算器中,指令流是由数据流驱动的
+        \task 执行指令时,指令在主存中的地址存放在指令寄存器中
+        \task 指令周期是指CPU从主存中读出一条指令的时间
+        \task 在单周期的五级流水处理器中,取指周期的操作与指令的操作码无关
+    \end{choices}
+
+    \item $[x]_{\text{补}}=X_0,.X_1X_2\ldots X_n$ 它的模是(\qquad)
+    \item 数值数据和逻辑数据在形式上没有区别,计算机区分数值数据和逻辑数据的主要方法是(\qquad)
+    \item 一个8位二进制整数由2个0和6个1组成,采用补码或者移码表示,则下列说法正确的是(\qquad)
+    \begin{choices}[1]
+        \task 若采用移码表示,偏置值为127,则此整数的最小为-64
+        \task 若采用移码表示,偏置值为128,则此整数的最大为123
+        \task 若采用补码表示,则此整数的最小为-96
+        \task 若采用补码表示,则此整数的最大为252
+    \end{choices}
+
+    \item 用12位补码规格化表示定点小数的时候,所能表示的正数范围是(\qquad)
+    \item 在补码的除法运算中,若采用不恢复余数法,当余数为负的时候,下一步操作为(\qquad)
+    \item 下列关于运算电路正确的是(\qquad)
+    \begin{choices}[1]
+        \task 乘法运算电路只能通过加法器和移位器来实现
+        \task 减法运算电路与加法运算电路的硬件结构完全相同
+        \task 实现除法运算的电路比乘法电路复杂
+        \task 基本运算部件中的全加器不能进行减法运算
+    \end{choices}
+    \item 下列关于Booth补码一位乘法算法的描述中,错误的是(\qquad)
+    \begin{choices}[1]
+        \task 符号位与数值位同时进行运算,无须专门的符号生成部件
+        \task 通过循环执行"加/减"和"移位"得到乘积
+        \task 有乘数的最低两位决定对部分积和被乘数进行何种运算
+        \task 移位时,将进位位,部分积和乘积部分一起进行算法右移
+    \end{choices}
+
+    \item 对于两个n为无符号整数的除法运算,以下关于不恢复余数算法要点的描述中,错误的是(\qquad)
+    \begin{choices}[1]
+        \task 起始时被除数的高位拓展n位0,以将其拓展为2n位无符号整数
+        \task 位判断中间余数的正负,需要在余数寄存器的最高位前添加一位符号位
+        \task 至少需要n+1次循环执行"加/减"和移位操作才能得到位商
+        \task 运算结果一定不会发生溢出,故无需通过最高位的位商来判断是否溢出
+    \end{choices}
+
+    \item 已知无符号数$X=10101010B,Y=01010101B$,若进行$X-Y$则结果为(\qquad)
+    \item 若浮点数阶码用4位移码表示,尾数用8位补码表示(含符号位),规格化的正的尾数的范围是(\qquad)
+    \item 设机器字长为16位,表示浮点数的时候,阶符占1位,阶码数值占5位,数符占1位,浮点数的阶码和数值部分都用补码表示,
+    则可以表示的最大值为(\qquad)
+    \item 设浮点数阶码的基数为8,尾数用补码表示,则下列浮点数尾数中的规格化数是(\qquad)
+    \item IEEE754标准提供四种舍入模式,其中(\qquad)模式平均误差最小
+    \item 对于IEEE754单精度浮点数的对阶过程,需要计算两个阶码$E_x,E_y$之差的补码$[\Delta E]_{\text{补}}$,若$\Delta \geq 128$或者
+    $\Delta \leq -129$,则其发生溢出,假定$[E_x]_{\text{移}},\left[-[E_y]_{\text{移}}\right]_{\text{补}},[\Delta E]_{\text{补}}$的 
+    最高有效位分别记作$E_{xs},E_{ys},E_{bs}$则相应的溢出判断方程是(\qquad)
+    \item 下列关于浮点数加减运算中说法正确的是(\qquad)(多选)
+    \begin{choices}[1]
+        \task 当浮点数执行舍入操作时,会引起阶码下溢
+        \task 当浮点数左规引起阶码下溢,则按照机器零处理
+        \task 浮点数执行对阶操作,不会引起阶码溢出
+        \task 单精度浮点数能表示的最大规格化负数为$-2^{-126}$
+    \end{choices}
+    \item 对于IEEE754单精度浮点数的对阶过程,只要对阶时候两个阶码之差的绝对值大于等于(\qquad)就无需后续处理,直接取阶码大的即可
+    \item 对于IEEE754单精度浮点数a,b,假设$a=00840000,b=00800000H$,则同为float浮点数$c=a-b$的机器数是(\qquad),若$float\ d=c+b$,则
+    $d==a$返回(\qquad)
+    \item 在计算机内部,浮点数往往采用IEEE754格式进行存储,那么在某计算机中,浮点数x的机器数为$43322000H$,浮点数y的机器数为$C14C000H$,则
+    $x-y$的机器数是(\qquad)
+    \item 若两个float类型的浮点数x,y,x的机器数为$50280001H$,y的机器数是$44000000H$,计算$z=x+y$运算时保留两个附加位采用就近舍入,则
+    下列说法正确的是(\qquad)(多选)
+    \begin{choices}[1]
+        \task y要向x对阶
+        \task 舍入过程中无进位
+        \task 运算无溢出
+        \task z-x == y 为真
+    \end{choices}
+
+    \item 执行下列C语言程序后$i$的值是(\qquad)
+    \begin{lstlisting}[language=C]
+    char c = -1;
+    unsigned int u = c;
+    float f = u;
+    double i = f;
+    \end{lstlisting}
+
+    \item 假定编译器规定int型和short型长度分别为32位何16位,执行下列C语言语句,得到y的机器数是(\qquad)
+    \begin{lstlisting}{language=C}
+    unsigned short x = 65530;
+    int y = x;
+    \end{lstlisting}
+
+    \item 判断正误
+    \begin{choices}[1]
+        \task 模4补码与模2补码不同,它更容易检查乘除运算中的溢出问题
+        \task 在小数除法中,为避免溢出,要求被除数的绝对值小于除数的绝对值
+        \task 可以通过直接访问标志寄存器,并修改它的值
+        \task 快速阵列乘法器中的基本部件包括移位器
+        \task 不恢复余数的除法运算不存在恢复余数的操作
+        \task 将补码的符号位改用多位来表示,就变成了变形补码,一个用双符号位表示的变形补码01.1010是正数
+        \task 所有进位计数制,其整数部分最低位位权都是1
+        \task 某R进位计数制,其嘴边1为的权是其相邻右边1位权的R倍
+        \task 从int转换为float,数值可能溢出
+        \task 从int转换为double,数据不会溢出
+        \task 从double转换为float,数据可能溢出也能舍入
+        \task 从double转换为int,数据可能舍入
+    \end{choices}
+
+    \item Flash存储器的特点不包括(\qquad)
+    \begin{choices}[2]
+        \task 非易失性,断电后数据不丢失 
+        \task 可点擦除与编程
+        \task 读操作速度解决SRAM
+        \task 写比读操作更快
+    \end{choices}
+
+    \item 容量1Mx16位的DRAM存储芯片,如果采用二维地址结构,且行地址和列地址的位数相同,行译码器输出的行选择线有(\qquad),该
+    芯片的刷新地址计数器是(\qquad)位
+
+    \item 有一个16Kx16的存储器,有4kx4的DRAM芯片(内部存储阵列为64x64)构成,采用集中刷新,刷新间隔为2ms,存储器的读写周期为0.5us,
+    死时间率约为(\qquad)
+
+    \item 某机器的主存储器为32MB,由若干片16KB(内部采用128x128存储阵列)的DRAM芯片字和位同时扩展构成。若采用集中式刷新方式,
+    且刷新周期为2ms,那么所有存储单元刷新一遍需要(\qquad)个存储周期。
+
+    \item  对于某存储芯片,假定动态刷新间隔为2ms,读写周期和刷新周期均为0.2us,该芯片中包含128行,每个刷新周期
+    可以完成1行存储单元的刷新,如果该芯片采用异步刷新方式工作,那么其读写周期和刷新周期可以安排为(\qquad)
+
+    \begin{choices}[1]
+        \task 3999次读写周期后,安排一次刷新操作
+        \task  2000次读写周期后,安排一次刷新操作
+        \task 128次读写周期后,安排一次刷新操作
+        \task 64次读写周期后,安排一次刷新操作
+    \end{choices}
+
+    \item 某容量为256MB的存储器由若干64Kx8位的DRAM芯片构成,按异步刷新方案,2ms内将全部单元刷新一遍。则芯片刷新信号周期时间为(\qquad)
+    \item 某存储器按字节编址,地址$0000\sim FFFFH$为RAM区,若采用16Kx2的RAM芯片进行设计,则在字方向和位方向上分别拓展了(\qquad)和(\qquad)倍呢?
+    \item 假定主存地址空间大小为1024MB,按字节编址,每次读/写操作最多可以一次存取32位.不考虑其他因素,则存储器地址寄存器MAR和存储器数据寄存器MDR的位数
+    至少应该分别为(\qquad)和(\qquad)
+    \item 假定DDR3\ SDRAM芯片内部核心频率为133.25MHz,与之相连的存储器总线每次传输8B,则下面有关叙述错误的是(\qquad)
+    \begin{choices}[1]
+        \task 芯片内部I/O缓冲采用8位预取技术
+        \task 存储器总线每秒传1066M次数据
+        \task 存储器总线的时钟频率为1066MHz
+        \task 存储器总线的带宽大约为8.5GB/s
+    \end{choices}
+    \item 某计算机使用4体低位交叉编址存储器,存取周期T=80ns,总线启动访问间隔Δt=20ns。在存储器总线上出现的主存地址(十进制)序列为
+    8005,8006,8007,8008,8001,8002,8003,8004,8000,则总存取时间是(\qquad).(到最后一次存取的存取周期结束为止)
+
+    \item 设存储器容量为512K字, 字长32位, 模块数=8,用交叉方式进行组织, 采用突发传送,一次突发传送8个字. 存储周期T=200ns,
+    数据总线宽度为32位, 总线传送周期T=50ns,则交叉存储器带宽是(\qquad)b/s.
+
+    \item 下列关于固态硬盘(SSD)的说法中, 错误的是(\qquad).(多选)
+    \begin{choices}[1]
+        \task 固态硬盘不受震动和物理冲击的影响, 更适合移动设备使用.
+        \task 固态硬盘的磨损均衡技术中, 动态磨损均衡比静态磨损均衡技术更先进、表现更优秀.
+        \task 固态硬盘的数据存储于Flash芯片之中.
+        \task 机械硬盘使用的硬盘调度算法不一定适用于固态硬盘.
+    \end{choices}
+
+    \item 下列关于固态硬盘SSD的说法中, 正确的有(\qquad)(多选)
+    \begin{choices}[1]
+        \task 固态磁盘是基于闪存技术的存储技术
+        \task 固态磁盘在写入前必须进行擦除
+        \task 固态磁盘的读写性能、使用寿命均优于机械硬盘
+        \task 固态硬盘写入时, 总是要选择擦写次数少的存储块
+    \end{choices}
+
+    \item 下列关于cache的描述中, 正确的是(\qquad)
+    \begin{choices}[1]
+        \task cache行越大越好, 这样可以提高cache命中率
+        \task 直接映射方式无需考虑替换方式
+        \task cache可以看作内存的扩充
+        \task 在多级cache系统中, 主存侧的cache通常将指令和数据分开, 用两个cache存储
+    \end{choices}
+
+    \item 已知cache-主存系统效率为85\%, 平均访问时间为60ns,cache比主存快4倍, 先访问cache, 未命中再访问主存,
+    则cache命中率是(\qquad).
+
+    \item 已知cache命中率H=0.98, 主存周期是cache的4倍,主存存取周期为200ns, 先访问cache, 未命中再访问主存,
+    则cache-主存的效率为(\qquad).
+
+    \item 有如下c语言段,数组a中都是int型数据,数组长度为72,每个int型数据占4B,假定数组a在主存中是从$00000000H$开始存储,其中数据
+    Cache采用4路组相联,数据区大小为256B,cache行(主存块)大小为16B,采用LRU替换算法该程序段执行前Cache为空,则该程序执行过程中访问数组a的
+    cache命中率是多少?(\qquad)
+    \begin{lstlisting}[language=C]
+    for(int i = 0; i < 10; ++i)
+        for(int j = 0; j < 72; ++j)
+            a[j] = a[j] + c;
+    \end{lstlisting}
+
+    \item 某32位计算机的cache容量为16KB, cache行的大小为16B,若主存与cache地址映射采用直接映射方式,
+    则主存地址为0x1234E8F8的单元装入cache的地址是(\qquad).
+
+    \item 关于Cache的全写法(写直达法)和写回法这两种写策略,以下说法正确的是(\qquad).
+    \begin{choices}[1]
+        \task 采用写回法时, 只有在第一次写入Cache时需要写入主存
+        \task 采用全写法时, 写命中时则同时写Cache和辅存
+        \task 采用写回法时, 每块Cache都需要多加一位辅助位
+    \end{choices}
+
+    \item 假定页表有一个控制位C, 用来表示对应页面是否可在Cache缓存.C=1表示可在Cache缓存, C=0表示不可在Cache缓存.
+    以下关于虚实地址转换时对C进行相关处理的描述, 其中错误的是(\qquad).
+    \begin{choices}[1]
+        \task 若装入位为0, 则无需考虑C的取值如何
+        \task 若修改位为1, 则不管C原来的值如何都将其清0
+        \task 若C=0, 则根据转换后的地址直接访问主存而不访问Cache
+        \task 若C=1, 则根据转换后的地址先到Cache中进行访问
+    \end{choices}
+
+    \item 假定编译器将赋值语句"x=x+3;"转换为指令"add xaddt, 3",其中xaddt是x对应的存储单元地址,若执行该指令的计算机采用页式虚拟存储管理方式,
+    并配有相应的TLB, 且Cache使用直写方式,完成该指令的功能, 需要访问主存的次数最少是(\qquad)次.
+
+    \item 下列关于cache缺失和TLB缺失的说法, 错误的是(\qquad)
+    \begin{choices}[1]
+        \task cache缺失无需进行进程切换
+        \task cache缺失处理由硬件实现
+        \task TLB缺失, 需要执行TLB缺失异常处理
+        \task TLB缺失, cache不一定缺失
+    \end{choices}
+
+    \item 以下是有关段式存储管理的叙述, 其中错误的是(\qquad)
+    \begin{choices}[1]
+        \task 段是逻辑结构上相对独立的程序块, 因此段是可变长的
+        \task 按程序中实际的段来分配主存, 所以分配后的存储块是可变长的
+        \task 每个段表项必须记录对应段在主存的起始位置和段的长度
+        \task 分段方式对低级语言程序员和编译器来说是透明的
+    \end{choices}
+
+    \item 指令系统的兼容性是指(\qquad)
+    \begin{choices}[1]
+    \task 不同计算机的指令系统完全一样
+    \task 同一计算机的指令系统在不同操作系统下都能运行
+    \task 一种计算机的目标程序可以不加修改地在另一种计算机上运行
+    \task 指令系统能同时支持多种高级语言
+    \end{choices}
+
+    \item 在指令格式中采用扩展操作码的设计方案是为(\qquad)
+    \begin{choices}[1]
+    \task 减少指令字长度
+    \task 增加指令字长度
+    \task 保持指令字长度不变
+    \task 保持指令字长度不变,而增加寻址空间
+    \end{choices}
+
+    \item 零地址的运算类指令在指令格式中不给出操作数地址,参加的两个操作数来自(\qquad)
+    \begin{choices}[1]
+    \task 累加器和寄存器
+    \task 累加器和暂存器
+    \task 堆栈的栈顶和次栈顶单元
+    \task 暂存器和堆栈的栈顶单元
+    \end{choices}
+
+    \item 偏移量存储在寄存器中的寻址方式为(\qquad)
+    \begin{choices}[2]
+    \task 变址寻址
+    \task 基址寻址
+    \task 相对寻址
+    \task 间接寻址
+    \end{choices}
+
+    \item 假设地址为 1200H 的内存单元中的内容为120CH,地址为 120CH的内存单元的内容为 38B8H,
+    而38B8H单元的内容为88F9H,下列说法正确的(\qquad)(多选)
+    \begin{choices}[1]
+        \task 操作数采用变址寻址,变址寄存器中存放内容的值是12,指令中的形式地址为1200H,那么有效地址为1212H 
+        \task 操作数采用一次间接寻址,指令中给出的地址码为120CH,那么操作数为38B8H
+        \task 操作数采用寄存器间接寻址,指令中给出的寄存器编号为8,8号寄存器的内容为1200H,有效地址为120CH
+    \end{choices}
+
+    \item 以下关于 CISC 和 RISC 的说法,正确的是(\qquad)
+    \begin{choices}[1]
+    \task CISC 更适合用于对性能要求高的实时系统
+    \task RISC 的硬件实现复杂度比 CISC 高
+    \task CISC 的编程灵活性比 RISC 好
+    \task RISC 的指令系统指令数目比 CISC 多
+    \end{choices}
+
+    \item 当高级语言中的函数调用转换为机器级代码时,以下操作顺序正确的是(\qquad)
+    \begin{choices}[1]
+    \task 保存现场→传递参数→执行函数体→恢复现场→返回
+    \task 传递参数→保存现场→执行函数体→恢复现场→返回
+    \task 传递参数→执行函数体→保存现场→恢复现场→返回
+    \task 保存现场→执行函数体→传递参数→恢复现场→返回
+    \end{choices}
+
+
+    % 缺CPU章节
+    \item 总线中,有些信息是单向传输的,有些信息是双向传输的,下列说法中,正确的是(\qquad)
+    \begin{choices}[1]
+    \task 数据信息是单向传输的,由内存或者外设传送至CPU
+    \task 地址信息是单向传输的,由CPU发送至内存或者外设
+    \task 控制信息是单向传输的,由CPU发送至内存或者外设
+    \task 状态信息是双向传输的,由CPU发送至内存或者外设,也可反向
+    \end{choices}
+
+    \item 下列属于I/O接口中寄存器的有(\qquad)\\
+    I.指令寄存器\quad
+    II.控制寄存器\quad
+    III.状态寄存器\quad
+    IV.地址寄存器\quad
+    V.数据缓冲寄存器
+    \begin{choices}[2]
+    \task I、II、III、V
+    \task II、III、IV
+    \task II、III、V
+    \task II、III、IV、V
+    \end{choices}
+
+    \item 独立编址方式下,可以实现从I/O端口到CPU寄存器的数据传输的指令是(\qquad)
+    \begin{choices}
+    \task OUT指令
+    \task WRITE指令
+    \task READ指令
+    \task IN指令
+    \end{choices}
+
+    \item 下列关于程序查询方式的叙述,正确的是(\qquad)
+    \begin{choices}[1]
+    \task CPU在与硬盘交换信息时,一般采用程序查询方式
+    \task 按启动查询方式的不同,可分为软件查询方式和硬件查询方式
+    \task 适用于鼠标、针式打印机等字符类设备
+    \task CPU需要一直查询外设的状态,直到设备准备就绪时才可以进行数据传输
+    \end{choices}
+
+    \item 下列关于程序查询方式工作过程的叙述,正确的是(\qquad)
+    \begin{choices}[1]
+    \task 当CPU查询到外设状态没有准备就绪时,会重启外设
+    \task CPU主要负责启动外设和查询其状态,不参与数据传送
+    \task 当数据没有传送完时,CPU必须重启外设,继续进行下一轮传送
+    \task 每完成一次数据传送后,会修改主存地址和计数值
+    \end{choices}
+
+    \item 在某台计算机中,处理器的主频为100\,MHz,处理器与硬盘之间通过程序中断的方式传输数据,每次最多传送4\,字节数据,传输速率为100\,KB/s,每次传输需要100个CPU时钟周期。那么CPU处理硬盘I/O的时间占整个CPU时间的百分比是(\qquad)
+    \begin{choices}
+    \task 0.5\%
+    \task 2.5\%
+    \task 4\%
+    \task 5\%
+    \end{choices}
+
+    \item 下列关于中断向量的说法,错误的是(\qquad)
+    \begin{choices}[1]
+    \task 中断向量指的是标识中断类型的编号
+    \task 中断向量地址在中断响应阶段由硬件产生
+    \task 中断向量表记录了中断号和中断向量地址的对应关系
+    \task 中断向量表记录了各中断的优先级
+    \end{choices}
+
+    \item 关于DMA控制器的说法,错误的是（）
+    \begin{choices}[1]
+    \task 字计数器的作用是记录数据块的长度,每传送1个字(节),计数减1,到0时DMA控制器发出DMA中断
+    \task DMA控制器是通过执行DMA中断服务程序来完成数据传输的
+    \task 一般要用到两个地址寄存器设置源/目设备地址
+    \task 传输的方向跟控制寄存器有关
+    \end{choices}
+
+    \item 以下是有关对DMA方式的叙述,其中正确的有(\qquad)个\\
+    I.DMA方式下,在主存和外设之间有一条物理通路直接相连\\
+    II.DMA方式一般不用于键盘和鼠标器的数据输入\\
+    III.在进行数据传送之前,通过硬件完成对DMA控制器中各参数寄存器的初始值的设定\\
+    IV.发生缺页中断时,若在缺页处理程序中将缺页调入内存采用DMA方式,则需要把磁盘物理地址写入DMA控制器中的设备地址寄存器DAR,把页表基地址写入其主存地址寄存器AR\\
+    V.在DMA的后处理中,如果还要继续传送,则不需要再对DMA接口进行初始化\\
+    VI.采用周期挪用时,发生访存冲突时,CPU在访存事务结束后挪用一个主存存取周期给DMA
+    \begin{choices}
+    \task 2
+    \task 3
+    \task 4
+    \task 5
+    \end{choices}
+
+    \item 中断方式和DMA方式是两种典型的I/O控制方式。下列关于中断方式与DMA方式的说法错误的是(\qquad)
+    \begin{choices}[1]
+    \task 从本质上讲,中断方式以软件方式传输数据,DMA方式以硬件方式传输数据
+    \task 当CPU运行中断处理程序时,若外设发出DMA请求信号,则CPU中断当前中断处理程序的运行,处理DMA请求,处理完毕后,继续运行原中断处理程序
+    \task 对中断请求的响应只能发生在每个指令周期结束时,对DMA请求的响应可以发生在每个总线事务结束后
+    \task 中断方式传输数据时需要保护原程序的现场,DMA方式传输数据时无须保护现场
+    \end{choices}
+
+    \item DMA传送过程分为预处理、数据传输和后处理3个阶段,下列操作在数据传输阶段进行的是(\qquad)\\
+    I.主存地址寄存器的自增和字计数器的自减\\
+    II.确定数据传输方向\\
+    III.校验数据正确性\\
+    IV.设备选择\\
+    V.DMA控制器申请总线控制权
+    \begin{choices}
+    \task I、V
+    \task I、II、IV
+    \task I、III、IV
+    \task II、IV、V
+    \end{choices}
+
+    \item DMA的传送方式可分为停止CPU访存、周期挪用、DMA与CPU交替访存3种方式。下列说法错误的是(\qquad)
+    \begin{choices}[1]
+    \task 停止CPU访存方式适用于高速I/O设备进行DMA传输
+    \task 周期挪用方式适用于I/O设备的读写周期大于存取周期的情况
+    \task DMA与CPU交替访存适用于总线周期大于存取周期的情况
+    \task 周期挪用方法可以兼顾I/O传送的及时性和CPU访问内存的效率
+    \end{choices}
+
+    \item 判断正误
+    \begin{choices}[1]
+        \task 采用数据/地址线复用技术,总线中保留地址线,不会设置数据线,数据通过地址线传输
+        \task 串行传输总线的速度可以比并行传输总线快得多
+        \task I/O接口就像显卡和网卡之类的一种外设控制逻辑
+        \task 中断控制器不属于I/O接口
+        \task 中断控制器与外部设备的设备控制器直接相连
+    \end{choices}
+\end{enumerate}
+
+\newpage
 \section{选择题答案}
 \begin{enumerate}[label=\arabic*.\textbf{答案}:]
 \item A;冯诺依曼体系结构的基本工作方式:控制流驱动方式;基本特点:按地址访问并顺序执行(存储程序). 
@@ -589,42 +1008,56 @@
     链接程序 & 将多个(.o)文件链接形成二进制可执行文件 \\
     \hline  
     解释程序 & 它一边读取源代码（或字节码等中间表示一边立即将其翻译成机器 \\
-    {}     &  能直接执行的指令序列并立即执行，而不生成单独的可执行文件 \\
+    {}     &  能直接执行的指令序列并立即执行,而不生成单独的可执行文件 \\
     \hline 
 \end{tabular}
 \end{center}
 \item A \\
 这道题有种高中的时候计算式和决定式的味道了.CPI(每条指令的平均时钟周期数)只与指令集、系统结构、
 计算机组织等“每拍做什么”有关;时钟频率决定“每秒多少拍”.并不改变一条指令需要多少拍,因此与CPI无关. 
+
 \item A 
-\item D 
-\item A 
-\item D 
-\item B 
-\item C 
-\item B 
-\item C 
-\item C 
-\item B 
-\item B 
-\item B 
+\item D
+\item A, N位二进制小数可以表示的个数为 $1+2^0+2^1+\ldots+2^{N-1}=2^N$, 十进制小时能表示的个数为 $10^N$,二者比值为
+$(0.2)^N$, 这表明{\color{red} 仅有$(0.2)^N$ 的概率一个十进制数可以由二进制数精确表示} 
+
+\item D, 当x为0或者负数的时候成立 
+\item B, ALU是无时钟无寄存器的纯逻辑原件的组合电路
+\item C, 串行进位（行波进位）加法器里,高位的和必须等低位的进位到来才能形成,
+因此整个运算时间取决于进位信号从最低位传到最高位所需的时间
+\item B, 进位信号为$X_iY_i$, 向高位输出的信号$C_{i+1} = X_iY_i + (X_i + Y_i)C_i$ 或者
+$C_{i+1} = X_iY_i \oplus (X_i + Y_i)C_i$二者等价
+\item C, 注意题干{\color{red} 循环} 左移
+\item C, 注意算术右移要填充符号位,逻辑右移不需要
+\item B, 由于任意一个正确模4补码双符号为必然一致,故存储数值的时候需要1位.但送入ALU的时候需要将符号位拓展为双符号位
+进行计算,输出结果若正常则存储否则发生溢出进行溢出处理而非被存储. 
+\item B, 原码乘法中,符号位率先计算 $P_n = X_n \oplus Y_n$ (符号位做异或操作)
+\item B, 注意加法器的电路,运行减法的是否 $sub=1$,并且$sub$会与所有$Y_i$做异或操作后才进入输入端, 并且不要忘记$sub$是需要
+作为$C_0$参与计算, 这一步是为了实现按位取反+1.
 \item A
-\item C 
-\item 32769
-\item A  
-\item C 
-\item B 
-\item C 
-\item $-(2-2^{-52})\times 2^{+1023}$
 \item D 
-\item $2^7-1$
-\item 1.00010
-\item 1.011011
-\item 5
-\item 1,3
-\item C104\ 0000H 
-\item 1,2,3,4
-\item BEE0\ 0000H
+\item 32769, 注意到$2^{15} = 32768$ 故$-32767 = 8001H$, 转换为无符号数即$2^{15}+1=36769$
+\item A, 小端法:低地址存地位;大端法:低地址存高位(和日常书写一致)
+\item C, 补码浮点数的规格化尾数类型为{\color{red} 1.0xxxx},此时只需左移1位即可
+\item B, 题目没说按照IEEE754的标准, 考虑最简单尾数规格化需要保证第一有效位为1,即尾数部分对于整数0.1xxx,对于负数1.1xxxx 
+\item C, 浮点数对阶只会使的阶码小的往阶码大的靠齐,不存在将大阶码降为小阶码的可能性. 
+\item 
+\begin{enumerate}
+    \item 最小规格化负数为(s=1,E=2046,尾数全1: $(-1.1111\ldots1111)\times 2^{2046-1023}=-(2-2^{-52})\times 2^{1023})$ 
+    \item 最大规格化负数为(s=1,E=1,尾数全0: $(-1.00000\ldots000)\times 2^{1-1023}=-2^{-1022}$)
+    \item 最大规格化正数为(s=0,E=2046,尾数全1) 
+    \item 最小规格化正数为(s=0,E=1,尾数全0)
+\end{enumerate}
+\item $2^7 - 1$
+\item D, 补码规格化尾数类型为{\color{red} 1.0xxxx}
+\item C, 基为4表明尾数的值要满足$\left| M \right| \in [1/4, 1)$,原码表示下只需要保证小数点后两位不
+全为0即可
+\item (5), 浮点数仅在对阶和右规的时候可能发生舍入. 舍入通过设置附件位能保证一定的精度,并不一定总会丢失精度 
+\item 1,3, 想太多并没用考虑最简单的思路,int->float必然会丢失小数,float->double不会发生精度丢失即可.此为
+注意浮点数计算需要对阶,double+float很可能会吸收掉小数. 
+\item C104000H, 需要数量掌握IEE754的转换方法 
+\item 1,2,3,4, {\color{red} 浮点数仅当阶码溢出的时候才会发生溢出}
+\item A, 首先需要将这个数转换为IEEE754的规格化类型$-1.75\times 2^{-2}$
 \end{enumerate}
 \section{综合题答案}
 \ifx\allfiles\undefined
