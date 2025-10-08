@@ -1795,6 +1795,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      和图相关时间复杂度的总结
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2908,6 +2917,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      和图相关时间复杂度的总结
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3450,6 +3468,25 @@
 </table>
 <p>确定了事件后通过活动与时间的关系可以很容易的确定活动的最早开始时间和最晚开始时间.</p>
 <p>例如活动<code>a</code>其最早开始时间与弧尾<code>1</code>的最早开始时间一致,而最迟开始时间为弧头<code>2</code>的最迟开始-活动<code>a</code>的持续时间=4-2=2,其余结点类似.</p>
+<h2 id="_7">和图相关时间复杂度的总结<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>假设有n个顶点,m条边</p>
+<p><ins class="critic">采用临接矩阵</ins></p>
+<ul>
+<li>图的遍历(BFS/DFS) <span class="arithmatex">\(O(n^2)\)</span></li>
+<li>Floyd <span class="arithmatex">\(O(n^3)\)</span></li>
+<li>Prim <span class="arithmatex">\(O(n^2)\)</span></li>
+</ul>
+<p><ins class="critic">采用临接表</ins></p>
+<ul>
+<li>图的遍历(BFS/DFS) <span class="arithmatex">\(O(n + m)\)</span></li>
+<li>Dijkstra(堆优化) <span class="arithmatex">\(O(m \log{m})\)</span><ul>
+<li>朴素Dijkstra <span class="arithmatex">\(O(n^2 + m)\)</span></li>
+</ul>
+</li>
+<li>Kruskal (并查集) <span class="arithmatex">\(O(m \log{m})\)</span></li>
+<li>Prime <span class="arithmatex">\(O(n^2 + m)\)</span></li>
+<li>拓扑排序 <span class="arithmatex">\(O(n+m)\)</span></li>
+</ul>
 
 
 
