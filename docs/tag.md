@@ -40,14 +40,6 @@ hide:
 - {==Operating Systems: Three Easy Pieces==}
 
 
-{++七月份每周安排++}
-
-![](./七月份总体规划.png)
-
-{++八月份整体安排++}
-
-![](./八月份总体规划.png)
-
 <!-- material/tags -->
 
 
